@@ -85,7 +85,8 @@ alpha:1.0]
     
     topPos += inputHeight + 1;
 
-    UIView *passwordContainer  = [[UIView alloc] initWithFrame:CGRectMake(paddingEdge, topPos, bgRect.size.width - paddingEdge * 2, inputHeight)];
+    inputHeight += 7;
+    UIView *passwordContainer  = [[UIView alloc] initWithFrame:CGRectMake(paddingEdge, topPos, bgRect.size.width - paddingEdge * 2, inputHeight + 7)];
     UILabel *passwordLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 52, inputHeight - 1)];
     passwordLabel.text = @"验证码";
     passwordLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:17];
@@ -104,27 +105,26 @@ alpha:1.0]
     self.passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.passwordField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
     
-    self.sendCodeBtn = [[UIButton alloc] initWithFrame:CGRectMake(passwordContainer.frame.size.width - 72, (inputHeight - 1 - 23) / 2.0, 72, 23)];
+    self.sendCodeBtn = [[UIButton alloc] initWithFrame:CGRectMake(passwordContainer.frame.size.width - 81, (inputHeight - 1 - 23) / 2.0, 81, 30)];
     [self.sendCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-    self.sendCodeBtn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:12];
-    self.sendCodeBtn.layer.borderWidth = 1;
-    self.sendCodeBtn.layer.cornerRadius = 4;
-    self.sendCodeBtn.layer.borderColor = [UIColor colorWithHexString:@"0x191919"].CGColor;
-    [self.sendCodeBtn setTitleColor:[UIColor colorWithHexString:@"0x171717"] forState:UIControlStateNormal];
-    [self.sendCodeBtn setTitleColor:[UIColor colorWithHexString:@"0x171717"] forState:UIControlStateSelected];
+    self.sendCodeBtn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:12.45];
+    self.sendCodeBtn.layer.cornerRadius = 5;
+    [self.sendCodeBtn setTitleColor:[UIColor colorWithHexString:@"0x626262"] forState:UIControlStateNormal];
+    [self.sendCodeBtn setTitleColor:[UIColor colorWithHexString:@"0x626262"] forState:UIControlStateSelected];
+    [self.sendCodeBtn setBackgroundColor:[UIColor colorWithHexString:@"0xFFD767"]];
     [self.sendCodeBtn addTarget:self action:@selector(onSendCode:) forControlEvents:UIControlEventTouchDown];
     self.sendCodeBtn.enabled = NO;
     
     
     topPos += 71;
-    self.loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(paddingEdge, topPos, bgRect.size.width - paddingEdge * 2, 43)];
+    self.loginBtn = [[UIButton alloc] initWithFrame:CGRectMake(29, topPos, bgRect.size.width - 29 * 2, 48)];
     [self.loginBtn addTarget:self action:@selector(onLoginButton:) forControlEvents:UIControlEventTouchDown];
     self.loginBtn.layer.masksToBounds = YES;
-    self.loginBtn.layer.cornerRadius = 4.f;
+    self.loginBtn.layer.cornerRadius = 24.f;
     [self.loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     self.loginBtn.backgroundColor = [UIColor colorWithHexString:@"0xe1e1e1"];
-    [self.loginBtn setTitleColor:[UIColor colorWithHexString:@"0xb1b1b1"] forState:UIControlStateNormal];
-    self.loginBtn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleMedium size:16];
+    [self.loginBtn setTitleColor:[UIColor colorWithHexString:@"0x1E233A"] forState:UIControlStateNormal];
+    self.loginBtn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleMedium size:18];
     self.loginBtn.enabled = NO;
     
     [self.view addSubview:self.topImageView];
