@@ -7,3 +7,9 @@
 //
 
 import Foundation
+class Test: NSObject {
+    @objc var page: Int = 0
+    @objc static func test() {
+        print("98765")
+    }
+}

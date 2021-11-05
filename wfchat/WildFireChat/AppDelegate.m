@@ -39,6 +39,8 @@
 #import <PttClient/WFPttClient.h>
 #endif
 
+#import "野火IM-Swift.h"
+
 @interface AppDelegate () <ConnectionStatusDelegate, ReceiveMessageDelegate,
 #if WFCU_SUPPORT_VOIP
     WFAVEngineDelegate,
@@ -56,7 +58,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //替换为您自己的Bugly账户。
     [Bugly startWithAppId:@"6f54460b01"];
-    
+    [Test test];
     [WFCCNetworkService startLog];
 //    [[WFCCNetworkService sharedInstance] useSM4];
     [WFCCNetworkService sharedInstance].connectionStatusDelegate = self;
