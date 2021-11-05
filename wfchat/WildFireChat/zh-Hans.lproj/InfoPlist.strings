@@ -5,8 +5,8 @@
   Created by Heavyrain.lee on 2019/9/16.
   Copyright © 2019 WildFireChat. All rights reserved.
 */
-CFBundleName="野火IM";
-CFBundleDisplayName="野火IM";
+CFBundleName="云在App";
+CFBundleDisplayName="云在App";
 Message="消息";
 Contact="联系人";
 Discover="发现";

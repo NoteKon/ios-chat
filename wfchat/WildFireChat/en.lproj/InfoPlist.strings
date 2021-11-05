@@ -5,8 +5,8 @@
   Created by Heavyrain.lee on 2019/9/16.
   Copyright © 2019 WildFireChat. All rights reserved.
 */
-CFBundleName="Wildfire IM";
-CFBundleDisplayName="Wildfire IM";
+CFBundleName="云在App";
+CFBundleDisplayName="云在App";
 Message="Message";
 Contact="Contact";
 Discover="Disconver";
