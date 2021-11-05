@@ -32,7 +32,7 @@ blue:((float)(rgbValue & 0xFF)) / 255.0                                         
 alpha:1.0]
 
 @interface WFCLoginViewController () <UITextFieldDelegate>
-@property (strong, nonatomic) UILabel *hintLabel;
+@property (strong, nonatomic) UIImageView *topImageView;
 @property (strong, nonatomic) UITextField *userNameField;
 @property (strong, nonatomic) UITextField *passwordField;
 @property (strong, nonatomic) UIButton *loginBtn;
@@ -56,15 +56,13 @@ alpha:1.0]
     CGRect bgRect = self.view.bounds;
     CGFloat paddingEdge = 16;
     CGFloat inputHeight = 40;
-    CGFloat hintHeight = 26;
+    CGFloat hintHeight = 96;
     CGFloat topPos = kStatusBarAndNavigationBarHeight + 45;
     
-    self.hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(paddingEdge, topPos, bgRect.size.width - paddingEdge - paddingEdge, hintHeight)];
-    [self.hintLabel setText:@"手机号登录"];
-    self.hintLabel.textAlignment = NSTextAlignmentLeft;
-    self.hintLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:hintHeight];
+    self.topImageView = [[UIImageView alloc] initWithFrame:CGRectMake((bgRect.size.width - 78) / 2, topPos, 78, hintHeight)];
+    self.topImageView.image = [UIImage imageNamed:@"login_top"];
     
-    topPos += hintHeight + 50;
+    topPos += hintHeight + 61.5;
     
     UIView *userNameContainer = [[UIView alloc] initWithFrame:CGRectMake(paddingEdge, topPos, bgRect.size.width - 2 * paddingEdge, inputHeight)];
     
@@ -129,7 +127,7 @@ alpha:1.0]
     self.loginBtn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleMedium size:16];
     self.loginBtn.enabled = NO;
     
-    [self.view addSubview:self.hintLabel];
+    [self.view addSubview:self.topImageView];
     
     [userNameContainer addSubview:userNameLabel];
     [userNameContainer addSubview:self.userNameField];
