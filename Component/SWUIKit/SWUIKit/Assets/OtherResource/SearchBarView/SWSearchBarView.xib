@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SWSearchBarView" customModule="SWUIKit" customModuleProvider="target">
+            <connections>
+                <outlet property="clearButton" destination="l0e-OW-b1M" id="tI0-Uy-dJL"/>
+                <outlet property="clearButtonWidthConstaint" destination="QZR-H6-kjV" id="mBL-tM-yPs"/>
+                <outlet property="containerView" destination="0js-Jh-5eM" id="JoP-Sq-fnR"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="9sC-rG-HdH"/>
+                <outlet property="searchIconImageView" destination="7U8-cJ-20g" id="feG-l7-fo4"/>
+                <outlet property="searchTextField" destination="GSc-Dn-Y0l" id="SYv-zk-zxj"/>
+                <outlet property="textfieldRightConstraint" destination="PsT-we-9WI" id="aVA-TT-oBL"/>
+                <outlet property="textfieldTailConstraint" destination="PsT-we-9WI" id="TW7-m2-Opm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0js-Jh-5eM">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="38"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sw_search_grey_icon" translatesAutoresizingMaskIntoConstraints="NO" id="7U8-cJ-20g">
+                            <rect key="frame" x="10" y="11" width="16" height="16"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="sw_search_grey_icon"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="bundleName" value="SWUIKitImages"/>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Merchant, Commodity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GSc-Dn-Y0l">
+                            <rect key="frame" x="34" y="0.0" width="298" height="38"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                            <connections>
+                                <action selector="textFieldEditingBeginAction:" destination="-1" eventType="editingDidBegin" id="yPt-Zy-ZZz"/>
+                                <action selector="textFieldEditingChangedAction:" destination="-1" eventType="editingChanged" id="6mA-u4-sMa"/>
+                                <action selector="textFieldEditingDidEndAction:" destination="-1" eventType="editingDidEnd" id="rgg-iR-zOW"/>
+                                <outlet property="delegate" destination="-1" id="gks-ID-IuC"/>
+                            </connections>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0e-OW-b1M">
+                            <rect key="frame" x="378" y="0.0" width="30" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="QZR-H6-kjV"/>
+                            </constraints>
+                            <state key="normal" image="sw_search_bar_clear_gray"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="sw_search_bar_clear_gray"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="imageBundleName" value="SWUIKitImages"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="clearAction:" destination="-1" eventType="touchUpInside" id="5kn-mq-EM5"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="0.0" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="l0e-OW-b1M" secondAttribute="trailing" constant="6" id="2am-JE-AeA"/>
+                        <constraint firstItem="l0e-OW-b1M" firstAttribute="top" secondItem="0js-Jh-5eM" secondAttribute="top" id="8ZB-zx-GVg"/>
+                        <constraint firstItem="7U8-cJ-20g" firstAttribute="leading" secondItem="0js-Jh-5eM" secondAttribute="leading" constant="10" id="F6i-u8-7Za"/>
+                        <constraint firstAttribute="bottom" secondItem="l0e-OW-b1M" secondAttribute="bottom" id="IBF-Hd-GbC"/>
+                        <constraint firstItem="l0e-OW-b1M" firstAttribute="leading" secondItem="GSc-Dn-Y0l" secondAttribute="trailing" constant="46" id="PsT-we-9WI"/>
+                        <constraint firstItem="GSc-Dn-Y0l" firstAttribute="top" secondItem="0js-Jh-5eM" secondAttribute="top" id="ViE-d6-iKy"/>
+                        <constraint firstItem="GSc-Dn-Y0l" firstAttribute="leading" secondItem="7U8-cJ-20g" secondAttribute="trailing" constant="8" id="WzJ-4z-RKt"/>
+                        <constraint firstAttribute="bottom" secondItem="GSc-Dn-Y0l" secondAttribute="bottom" id="nDp-C7-EcV"/>
+                        <constraint firstItem="7U8-cJ-20g" firstAttribute="centerY" secondItem="0js-Jh-5eM" secondAttribute="centerY" id="oYf-su-mSX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="0js-Jh-5eM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7we-uR-v8b"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0js-Jh-5eM" secondAttribute="trailing" id="9SY-4K-Ora"/>
+                <constraint firstAttribute="bottom" secondItem="0js-Jh-5eM" secondAttribute="bottom" id="JAJ-7A-WwT"/>
+                <constraint firstItem="0js-Jh-5eM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gSy-kR-nuf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131.8840579710145" y="-131.25"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="sw_search_bar_clear_gray" width="18" height="18"/>
+        <image name="sw_search_grey_icon" width="16" height="16"/>
+    </resources>
+</document>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Dbg Net Detail View Controller-->
+        <scene sceneID="ofS-OR-VyE">
+            <objects>
+                <viewController storyboardIdentifier="DbgNetDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dUu-05-e41" customClass="DbgNetDetailViewController" customModule="VVDebugKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vlu-7Z-Grl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4pH-LG-fiL">
+                                <rect key="frame" x="60" y="72" width="294" height="32"/>
+                                <segments>
+                                    <segment title="请求"/>
+                                    <segment title="响应"/>
+                                    <segment title="详情"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectAction:" destination="dUu-05-e41" eventType="valueChanged" id="zze-iw-r3L"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wFj-Ix-Iif">
+                                <rect key="frame" x="0.0" y="123" width="414" height="773"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dUu-05-e41" id="Vfg-UT-mlb"/>
+                                    <outlet property="delegate" destination="dUu-05-e41" id="qEe-g0-K6h"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="miX-dy-lfq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4pH-LG-fiL" firstAttribute="leading" secondItem="Vlu-7Z-Grl" secondAttribute="leading" constant="60" id="3Iy-18-r6M"/>
+                            <constraint firstItem="wFj-Ix-Iif" firstAttribute="top" secondItem="4pH-LG-fiL" secondAttribute="bottom" constant="20" id="Gav-vx-P3W"/>
+                            <constraint firstItem="4pH-LG-fiL" firstAttribute="top" secondItem="miX-dy-lfq" secondAttribute="top" constant="28" id="HMP-LP-yVQ"/>
+                            <constraint firstAttribute="bottom" secondItem="wFj-Ix-Iif" secondAttribute="bottom" id="XbI-dq-an7"/>
+                            <constraint firstItem="wFj-Ix-Iif" firstAttribute="leading" secondItem="Vlu-7Z-Grl" secondAttribute="leading" id="ek1-Pj-uri"/>
+                            <constraint firstAttribute="trailing" secondItem="wFj-Ix-Iif" secondAttribute="trailing" id="gw9-jK-1Qk"/>
+                            <constraint firstAttribute="trailing" secondItem="4pH-LG-fiL" secondAttribute="trailing" constant="60" id="jXA-fX-sUk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="segmentView" destination="4pH-LG-fiL" id="7jT-h8-TpQ"/>
+                        <outlet property="tableView" destination="wFj-Ix-Iif" id="vEo-Kp-e8k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o6z-uC-yDZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="46"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

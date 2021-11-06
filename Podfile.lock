@@ -1,0 +1,165 @@
+PODS:
+  - ActiveLabel (1.1.5)
+  - Alamofire (5.4.2)
+  - Aspects (1.4.1)
+  - FFRouter (1.1.1)
+  - HandyJSON (5.0.2)
+  - IQKeyboardManagerSwift (6.5.7)
+  - KeychainSwift (19.0.0)
+  - Kingfisher (7.1.1)
+  - KingfisherWebP (1.4.0):
+    - Kingfisher (~> 7.0)
+    - libwebp (>= 1.1.0)
+  - libwebp (1.2.1):
+    - libwebp/demux (= 1.2.1)
+    - libwebp/mux (= 1.2.1)
+    - libwebp/webp (= 1.2.1)
+  - libwebp/demux (1.2.1):
+    - libwebp/webp
+  - libwebp/mux (1.2.1):
+    - libwebp/demux
+  - libwebp/webp (1.2.1)
+  - MBProgressHUD (1.2.0)
+  - MJRefresh (3.7.2)
+  - R.swift (5.4.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
+  - RxCocoa (5.1.3):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.3):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SnapKit (5.0.1)
+  - SWBusinessKit (1.7.4):
+    - SWBusinessKit/File (= 1.7.4)
+  - SWBusinessKit/Dependency (1.7.4):
+    - Alamofire (= 5.4.2)
+    - KingfisherWebP
+    - RxCocoa
+    - RxSwift (= 5.1.1)
+    - SWFoundationKit
+  - SWBusinessKit/File (1.7.4):
+    - SWBusinessKit/Dependency
+    - SWBusinessKit/Resources
+  - SWBusinessKit/Resources (1.7.4)
+  - SWFoundationKit (1.1.3):
+    - SWFoundationKit/File (= 1.1.3)
+  - SWFoundationKit/Dependency (1.1.3):
+    - Alamofire (= 5.4.2)
+    - FFRouter
+    - HandyJSON
+    - KeychainSwift
+    - Kingfisher
+  - SWFoundationKit/File (1.1.3):
+    - SWFoundationKit/Dependency
+  - SwiftDate (6.3.1)
+  - SWPageControl (1.0.0):
+    - SWPageControl/File (= 1.0.0)
+  - SWPageControl/File (1.0.0)
+  - SWToast (1.0.0):
+    - SWToast/File (= 1.0.0)
+  - SWToast/File (1.0.0)
+  - SWUIKit (1.7.9):
+    - SWUIKit/File (= 1.7.9)
+  - SWUIKit/Dependency (1.7.9):
+    - IQKeyboardManagerSwift
+    - KingfisherWebP
+    - MBProgressHUD
+    - MJRefresh
+    - SnapKit
+    - SWBusinessKit
+    - SWFoundationKit
+    - SwiftDate
+  - SWUIKit/File (1.7.9):
+    - SWUIKit/Dependency
+    - SWUIKit/Resources
+  - SWUIKit/Resources (1.7.9)
+  - VVDebugKit (0.4.3):
+    - Aspects
+    - RxCocoa
+    - SnapKit
+    - SWBusinessKit
+    - SWFoundationKit
+    - SWUIKit
+
+DEPENDENCIES:
+  - ActiveLabel (from `./Component/ActiveLabel.swift/ActiveLabel.podspec`)
+  - HandyJSON (= 5.0.2)
+  - Kingfisher
+  - R.swift
+  - SnapKit (= 5.0.1)
+  - SWBusinessKit (from `./Component/SWBusinessKit`)
+  - SWFoundationKit (from `./Component/SWFoundationKit`)
+  - SWPageControl (from `./Component/SWPageControl`)
+  - SWToast (from `./Component/SWToast`)
+  - SWUIKit (from `./Component/SWUIKit`)
+  - VVDebugKit (from `./Component/VVDebugKit`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Aspects
+    - FFRouter
+    - HandyJSON
+    - IQKeyboardManagerSwift
+    - KeychainSwift
+    - Kingfisher
+    - KingfisherWebP
+    - libwebp
+    - MBProgressHUD
+    - MJRefresh
+    - R.swift
+    - R.swift.Library
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SnapKit
+    - SwiftDate
+
+EXTERNAL SOURCES:
+  ActiveLabel:
+    :path: "./Component/ActiveLabel.swift/ActiveLabel.podspec"
+  SWBusinessKit:
+    :path: "./Component/SWBusinessKit"
+  SWFoundationKit:
+    :path: "./Component/SWFoundationKit"
+  SWPageControl:
+    :path: "./Component/SWPageControl"
+  SWToast:
+    :path: "./Component/SWToast"
+  SWUIKit:
+    :path: "./Component/SWUIKit"
+  VVDebugKit:
+    :path: "./Component/VVDebugKit"
+
+SPEC CHECKSUMS:
+  ActiveLabel: d757b2404064bc63127c25c1a6beab0ca578bbaa
+  Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
+  FFRouter: dfda137b8f6817ca92dc9a1151727449548abfd3
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  IQKeyboardManagerSwift: c742184c72b0b3bbb902cc6cdcf4ecda91d3b3e0
+  KeychainSwift: a06190cf933ad46b1e0abc3d77d29c06331715c7
+  Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
+  KingfisherWebP: f4b76064c50a36c4cadd37548496ecebfdcb39e8
+  libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
+  R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SWBusinessKit: 1d01724f07cde9634ca6584e63db5999357ddc09
+  SWFoundationKit: 5ca51af0ed7baaf9c6279f38e2b9d3acf3e06639
+  SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
+  SWPageControl: 0980925abe43a2616f23b3473a532d2c9ada9735
+  SWToast: e6d5144f77fc1f57c1dc9fb46d241febdb0bf664
+  SWUIKit: fe9d4d077bbd95418bcf33fa172bbc1fdff1d153
+  VVDebugKit: d05551f3c0607debb501229f6ca896765c89f203
+
+PODFILE CHECKSUM: fb8c7cd288cdc45cdfdbec34b46c50ea5d48671b
+
+COCOAPODS: 1.11.2

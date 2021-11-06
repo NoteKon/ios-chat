@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  YunZaiApp
+
+  Created by ice on 2021/11/6.
+  
+*/
+CFBundleDisplayName = "云在App";
+CFBundleName = "云在App";

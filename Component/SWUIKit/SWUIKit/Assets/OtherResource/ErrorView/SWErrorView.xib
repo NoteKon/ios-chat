@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SWErrorView" customModule="SWUIKit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdz-28-Z65">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="290.5"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vl_no_network_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Ath-jr-v6c">
+                            <rect key="frame" x="117" y="0.0" width="180" height="180"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="bundleName" value="SWUIKitImages"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="imageName" value="vl_no_network_icon"/>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="暂无网络" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stf-8e-wDW">
+                            <rect key="frame" x="20" y="180" width="374" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="请检查你的网络设置" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ro7-xp-fuq">
+                            <rect key="frame" x="20" y="213.5" width="374" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="deviceRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTp-2v-Vj9">
+                            <rect key="frame" x="155.5" y="262.5" width="103" height="28"/>
+                            <color key="backgroundColor" red="1" green="0.63529411764705879" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="103" id="02B-v8-Yac"/>
+                                <constraint firstAttribute="height" constant="28" id="sCA-n6-Ysm"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <state key="normal" title="重试"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="reloadAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="6SC-vl-g1j"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Ath-jr-v6c" firstAttribute="top" secondItem="xdz-28-Z65" secondAttribute="top" id="BBi-TJ-kfG"/>
+                        <constraint firstItem="Ro7-xp-fuq" firstAttribute="top" secondItem="Stf-8e-wDW" secondAttribute="bottom" constant="12" id="Nc5-TG-t59"/>
+                        <constraint firstItem="DTp-2v-Vj9" firstAttribute="top" secondItem="Ro7-xp-fuq" secondAttribute="bottom" constant="32" id="VV2-bZ-8JE"/>
+                        <constraint firstAttribute="trailing" secondItem="Ro7-xp-fuq" secondAttribute="trailing" constant="20" id="WJJ-4n-rDt"/>
+                        <constraint firstItem="Stf-8e-wDW" firstAttribute="leading" secondItem="xdz-28-Z65" secondAttribute="leading" constant="20" id="aqU-MO-b5w"/>
+                        <constraint firstItem="Ro7-xp-fuq" firstAttribute="leading" secondItem="xdz-28-Z65" secondAttribute="leading" constant="20" id="bQw-Hk-Ai3"/>
+                        <constraint firstItem="Ro7-xp-fuq" firstAttribute="centerX" secondItem="xdz-28-Z65" secondAttribute="centerX" id="dYR-Gj-Z9H"/>
+                        <constraint firstAttribute="bottom" secondItem="DTp-2v-Vj9" secondAttribute="bottom" id="fPc-Xb-tQg"/>
+                        <constraint firstItem="Stf-8e-wDW" firstAttribute="top" secondItem="Ath-jr-v6c" secondAttribute="bottom" id="gwj-sU-Lp0"/>
+                        <constraint firstItem="Ath-jr-v6c" firstAttribute="centerX" secondItem="xdz-28-Z65" secondAttribute="centerX" id="jhs-Kn-xsV"/>
+                        <constraint firstItem="Stf-8e-wDW" firstAttribute="centerX" secondItem="xdz-28-Z65" secondAttribute="centerX" id="pzE-mT-fdO"/>
+                        <constraint firstAttribute="trailing" secondItem="Stf-8e-wDW" secondAttribute="trailing" constant="20" id="rWs-aE-cKF"/>
+                        <constraint firstItem="DTp-2v-Vj9" firstAttribute="centerX" secondItem="xdz-28-Z65" secondAttribute="centerX" id="xWD-qZ-fZY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="xdz-28-Z65" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hxc-ut-BtS"/>
+                <constraint firstAttribute="trailing" secondItem="xdz-28-Z65" secondAttribute="trailing" id="ldN-Jl-YOf"/>
+                <constraint firstItem="xdz-28-Z65" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wBj-9R-rIt"/>
+            </constraints>
+            <connections>
+                <outlet property="contentView" destination="xdz-28-Z65" id="jJY-ga-swK"/>
+                <outlet property="descLabel" destination="Ro7-xp-fuq" id="o3K-Ce-3pT"/>
+                <outlet property="descTopLayout" destination="Nc5-TG-t59" id="3Ax-Vr-Dgc"/>
+                <outlet property="imageViewTopLayout" destination="BBi-TJ-kfG" id="wVC-dq-VVK"/>
+                <outlet property="reloadButton" destination="DTp-2v-Vj9" id="I5f-Hg-oOm"/>
+                <outlet property="retryButtonHeight" destination="sCA-n6-Ysm" id="NES-WP-Hf9"/>
+                <outlet property="titleLabel" destination="Stf-8e-wDW" id="Ezf-Om-IQC"/>
+                <outlet property="titleTopLayout" destination="gwj-sU-Lp0" id="zWT-mL-L9o"/>
+                <outlet property="topImageView" destination="Ath-jr-v6c" id="yqc-0p-SeR"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="vl_no_network_icon" width="180" height="180"/>
+    </resources>
+</document>

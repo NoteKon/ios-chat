@@ -1,0 +1,97 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by huang on 2019/9/19.
+  
+*/
+
+"sw_select_country" = "Select your country/region";
+"sw_ok" = "OK";
+"sw_cancel" = "Cancel";
+"sw_done" = "Done";
+
+"sw_refresh_pulldown" = "Pull down to refresh";
+"sw_refresh_release" = "Release to refresh";
+"sw_refresh_loading" = "Loading";
+"sw_refresh_end" = "- That's all for now! -";
+"sw_refresh_loading_footer" = "Loading Data";
+"sw_refresh_footer_not_netword" = "No internet connection, click and refresh";
+"sw_refresh_footer_not_more_data" = "- That's all for now! -";
+"sw_mail_error" = "Please check if the phone mailbox is set correctly";
+
+"sw_input_pop_save" = "Save";
+"sw_input_pop_cancel" = "Canel";
+
+//Extension
+"sw_remarks_comment_a_moment_ago" = "A moment ago";
+"sw_remarks_comment_today" = "Today";
+"sw_remarks_comment_yesterday" = "Yesterday";
+"sw_network_error" = "Network error";
+"sw_errorview_no_network" = "No network, please check the network";
+"sw_errorview_no_network_title" = "No network";
+"sw_errorview_no_network_des" = "Please check your network Settings";
+"sw_network_system_error" = "System error, please try again later";
+"sw_finder_common_time_just_now" = "Just now";
+"sw_finder_common_time_min_ago" = " min ago";
+"sw_finder_common_time_hours_ago" = " hours ago";
+"sw_finder_common_time_days_ago" = " days ago";
+
+//PhotoView
+"sw_photo_view_option_camera" = "Camera";
+"sw_photo_view_option_photo" = "Photo Library";
+"sw_photo_view_uploadImage" = "Upload image";
+"sw_photo_view_cancel" = "Cancel";
+"sw_photo_view_delete" = "Delete";
+"sw_photo_view_sure" = "Confirm";
+"sw_photo_view_photos_max" = "Upload at most 3 pictures";
+
+"sw_photo_album_permission" = "Please allow access to your album in the Settings - privacy - albums option on your iPhone";
+"sw_camera_needs_to_obtain_permissions" = "Camera needs to obtain system camera permissions";
+"sw_edit_profile_OK" = "OK";
+
+/// ErrorView
+"vl_errorview_empty_here" = "It’s empty here";
+"vl_errorview_havent_add_any_credit_card" = "You haven’t add any Credit Card yet.\nClick Add Credit Card to get started.";
+"vl_errorview_no_available_favourites" = "You Have No Favorite";
+"vl_errorview_no_network" = "No network, please check the network";
+"vl_errorview_no_network_title" = "No network";
+"vl_errorview_life_plan_no_data" = "Working hard to generate a life plan for you…";
+"vl_errorview_no_network_des" = "Please check your network Settings";
+"vl_network_error" = "Network error";
+"vl_errorview_reload_title" = "Retry";
+"vl_errorview_setting_title" = "Setting";
+"vl_puerrorview_net_error_title" = "It’s empty here";
+"vl_puerrorview_net_error_des" = "There is no content yet";
+"vl_errorview_cart_empty_reload_title" = "View More";
+"vl_no_data_empty_desc" = "There is no content yet";
+"vl_fresh_list_view_not_data_des" = "see other";
+"vl_errorview_food_empty_title" = "No content currently";
+"vl_finder_comment_error_view_title" = "No comments";
+"vl_personal_center_feedBack_noRecord" = "No record";
+"vl_reserve_home_store_not_data" = "Unable to book temporarily";
+"vl_common_add" = "Add";
+"vl_message_nodata_error_des" = "Once you receive a new message,\n you'll see it listed here.";
+"vl_home_search_didnt_find_any" = "Didn’t Find Anything";
+"vl_home_search_try_another_word" = "Please try another word";
+
+"pu_puerrorview_locate_failed_title" = "Failed to Locate.";
+"pu_puerrorview_locate_failed_des" = "Please try again.";
+"pu_puerrorview_locate_nodata_title" = "Ops!No shops around.";
+"pu_pucartemptyerrorview_title" = "It's empty here.";
+"pu_pucartemptyerrorview_des" = "You haven't added anything to your cart yet.\n See restaurants nearby.\n They offer awesome meals.";
+"pu_puerrorview_address_empty_here" = "It’s empty here";
+"pu_puerrorview_address_havent_add_any_address" = "You haven’t add any address yet.\nClick Add New Address to get started.";
+"pu_errorview_search_address_empty" = "It’s Empty Here";
+"pu_errorview_search_address_empty_try_again" = "Please try again.";
+"pu_puerrorview_location_failed_title" = "location failed";
+"pu_puerrorview_location_failed_des" = "Location failed, please try again.";
+"pu_puerrorview_open_location_failed_des" = "";
+"pu_orderlist_empty_desc" = "You don’t have any orders yet.\nTry one and place your first order!";
+"pu_remarks_empty_title" = "No Available Reviews";
+"pu_remarks_food_empty_desc" = "Ops! The food has not yet \n been commented on.";
+"pu_remarks_empty_desc" = "Ops! The merchant has not yet \n been commented on.";
+
+/// graphicCode
+"sw_graphic_code_loading" = "Loading";
+"sw_graphic_code_load_failed" = "failed";

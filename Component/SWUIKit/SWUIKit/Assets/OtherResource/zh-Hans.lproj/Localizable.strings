@@ -1,0 +1,97 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by huang on 2019/9/19.
+  
+*/
+
+"sw_select_country" = "选择你的国家/地区";
+"sw_ok" = "确定";
+"sw_cancel" = "取消";
+"sw_done" = "完成";
+
+"sw_refresh_pulldown" = "下拉刷新";
+"sw_refresh_release" = "松开刷新";
+"sw_refresh_loading" = "加载中";
+"sw_refresh_end" = "~已经到底啦~";
+"sw_refresh_loading_footer" = "数据加载中";
+"sw_refresh_footer_not_netword" = "网络异常,点击重试";
+"sw_refresh_footer_not_more_data" = "- no more -";
+"sw_mail_error" = "请检查手机邮箱是否设置正确";
+
+"sw_input_pop_save" = "保存";
+"sw_input_pop_cancel" = "取消";
+
+//扩展
+//"sw_remarks_comment_a_moment_ago" = "刚刚";
+//"sw_remarks_comment_today" = "今天";
+//"sw_remarks_comment_yesterday" = "昨天";
+"sw_network_error" = "网络错误";
+"sw_errorview_no_network" = "没有网络，请检查网络";
+"sw_errorview_no_network_title" = "暂无网络";
+"sw_errorview_no_network_des" = "请检查你的网络设置";
+"sw_network_system_error" = "系统繁忙，请稍后重试";
+//"sw_finder_common_time_just_now" = "刚刚";
+//"sw_finder_common_time_min_ago" = "分钟前";
+//"sw_finder_common_time_hours_ago" = "小时前";
+//"sw_finder_common_time_days_ago" = "天前";
+
+//PhotoView
+"sw_photo_view_option_camera" = "相机";
+"sw_photo_view_option_photo" = "相册";
+"sw_photo_view_uploadImage" = "上传图片";
+"sw_photo_view_cancel" = "取消";
+"sw_photo_view_delete" = "删除";
+"sw_photo_view_sure" = "确定";
+"sw_photo_view_photos_max" = "最多可上传3张图片";
+
+"sw_photo_album_permission" = "请在iPhone的“设置-隐私-相册”选项中，允许访问你的相册。";
+"sw_camera_needs_to_obtain_permissions" = "相机需要获取系统相机权限";
+"sw_edit_profile_OK" = "我知道了";
+
+/// ErrorView
+"vl_errorview_empty_here" = "这里是空的";
+"vl_no_data_empty_desc" = "暂时还没有内容";
+"vl_errorview_havent_add_any_credit_card" = "您尚未添加任何银行卡/信用卡,\n快去添加吧~";
+"vl_errorview_no_available_favourites" = "您还没有相关收藏";
+"vl_errorview_no_network" = "没有网络，请检查网络";
+"vl_errorview_life_plan_no_data" = "正在努力为您生成生活计划……";
+"vl_errorview_no_network_title" = "暂无网络";
+"vl_errorview_no_network_des" = "请检查你的网络设置";
+"vl_network_error" = "网络错误";
+"vl_errorview_reload_title" = "重试";
+"vl_errorview_setting_title" = "去设置";
+"vl_errorview_cart_empty_reload_title" = "逛一逛";
+"vl_puerrorview_net_error_title" = "这里是空的";
+"vl_puerrorview_net_error_des" = "暂时还没有内容";
+"vl_fresh_list_view_not_data_des" = "看看其他商品吧";
+"vl_errorview_food_empty_title" = "暂无内容";
+"vl_finder_comment_error_view_title" = "暂无评论，来抢沙发";
+"vl_personal_center_feedBack_noRecord" = "暂无记录";
+"vl_reserve_home_store_not_data" = "暂时无法预订";
+"vl_common_add" = "去添加";
+"vl_message_nodata_error_des" = "收到新消息后，会在此处看到";
+"vl_home_search_didnt_find_any" = "没有搜索到相关信息";
+"vl_home_search_try_another_word" = "换一个词试试吧";
+
+"pu_puerrorview_locate_failed_title" = "定位失败";
+"pu_puerrorview_locate_failed_des" = "请再试一遍";
+"pu_puerrorview_locate_nodata_title" = "哦！附近无商铺";
+"pu_pucartemptyerrorview_title" = "这里是空的";
+"pu_pucartemptyerrorview_des" = "您的购物车还没有添加任何商品哦";
+"pu_puerrorview_address_empty_here" = "暂无地址";
+"pu_puerrorview_address_havent_add_any_address" = "您尚未添加任何地址，快去添加吧~";
+"pu_errorview_search_address_empty" = "这里是空的";
+"pu_errorview_search_address_empty_try_again" = "请再试一遍";
+"pu_puerrorview_location_failed_title" = "无法获取定位";
+"pu_puerrorview_location_failed_des" = "定位获取失败，请点击重试";
+"pu_puerrorview_open_location_failed_des" = "请在设置->隐私->定位服务中开启VV Life\n定位服务，以获取附近信息";
+"pu_orderlist_empty_desc" = "您尚未下单，快去下单吧~";
+"pu_remarks_empty_title" = "暂无评论";
+"pu_remarks_food_empty_desc" = "哦！该食物尚未收到评论";
+"pu_remarks_empty_desc" = "哦！该商家尚未收到评论";
+
+/// graphicCode
+"sw_graphic_code_loading" = "加载中...";
+"sw_graphic_code_load_failed" = "加载失败";

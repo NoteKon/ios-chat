@@ -1,0 +1,35 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'http://172.16.6.11:8050/Component/VVComponentSpec.git'
+
+use_frameworks!
+#use_modular_headers!
+
+def commonPod_Git
+  pod 'SWFoundationKit'
+  pod 'SWBusinessKit'
+  pod 'SWUIKit','1.5.4'
+end
+
+def commonPod_Path
+  #pod 'SWFoundationKit', :path => '../../SWFoundationKit'
+  pod 'SWBusinessKit/File', :path => '../../SWBusinessKit'
+  # pod 'SWUIKit', :path => '../../SWUIKit'
+end
+
+
+target 'VVDebugKit_Example' do
+  pod 'VVDebugKit', :path => '../'
+  
+  commonPod_Git
+  #commonPod_Path
+  pod 'Aspects'
+  pod 'SnapKit'
+  
+  pod 'RxSwift', '5.1.1'
+
+  target 'VVDebugKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

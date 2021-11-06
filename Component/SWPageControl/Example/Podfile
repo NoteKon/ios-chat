@@ -1,0 +1,32 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+# 使用Framework（默认）方式时，如果pod install过程中提示
+# target has transitive dependencies that include static binaries:
+# 可打开下面这句话再试试：
+# pre_install do |installer| Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+# end
+
+# 设置所有target版本为10.0
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
+        end
+    end
+end
+
+target 'SWPageControl_Example' do
+  # 依赖官方版本
+#  pod 'SWPageControl'
+
+  # 本地依赖
+  pod 'SWPageControl', :path => '../'
+
+  target 'SWPageControl_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

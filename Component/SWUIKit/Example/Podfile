@@ -1,0 +1,38 @@
+
+use_frameworks!
+
+platform :ios, '10.0'
+
+# 使用Framework（默认）方式时，如果pod install过程中提示
+# target has transitive dependencies that include static binaries:
+# 可打开下面这句话再试试：
+ pre_install do |installer| Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+ end
+
+# 设置所有target版本为10.0
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '10.0'
+        end
+    end
+end
+
+target 'SWUIKit_Example' do
+
+  pod 'SWFoundationKit', :path => '../../SWFoundationKit'
+  pod 'SWBusinessKit', :path => '../../SWBusinessKit'
+  
+  # 源码依赖
+#  pod 'SWUIKit', :path => '../'
+#  pod 'SWUIKit_IB', :path => '../' # IBInspectables库，用于xib中使用自定义属性
+  # framework依赖（需要先打包）
+  pod 'SWUIKit', :path => '../'
+  pod 'SWUIKit_IB', :path => '../'
+
+  target 'SWUIKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
