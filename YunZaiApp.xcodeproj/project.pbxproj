@@ -88,6 +88,7 @@
 		589884D72739055B00C6B6D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA62738D61D007241B1 /* Assets.xcassets */; };
 		589884D82739055D00C6B6D1 /* Album.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA72738D61D007241B1 /* Album.xcassets */; };
 		589884D92739056700C6B6D1 /* foreman.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAC12738D61E007241B1 /* foreman.mp4 */; };
+		589884DA2739072300C6B6D1 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D7EA922738D61D007241B1 /* Bugly.framework */; };
 		589917112736884C00D43D9C /* AppDelegate+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589917102736884C00D43D9C /* AppDelegate+Config.swift */; };
 		5899171627368F7C00D43D9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5899171827368F7C00D43D9C /* InfoPlist.strings */; };
 		5899171C27368FB300D43D9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5899171E27368FB300D43D9C /* Localizable.strings */; };
@@ -155,6 +156,7 @@
 		5877D5A12735384B00C65732 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5877D5A42735384B00C65732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5877D5A62735384B00C65732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		589884DB2739077700C6B6D1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		589917102736884C00D43D9C /* AppDelegate+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Config.swift"; sourceTree = "<group>"; };
 		5899171727368F7C00D43D9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5899171927368F9E00D43D9C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -253,7 +255,6 @@
 		58D7EA802738D61D007241B1 /* LBXPermissionPhotos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBXPermissionPhotos.h; sourceTree = "<group>"; };
 		58D7EA812738D61D007241B1 /* LBXPermissionSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBXPermissionSetting.h; sourceTree = "<group>"; };
 		58D7EA822738D61D007241B1 /* DIYScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIYScanViewController.h; sourceTree = "<group>"; };
-		58D7EA842738D61D007241B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58D7EA862738D61D007241B1 /* DiscoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		58D7EA872738D61D007241B1 /* DiscoverMomentsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverMomentsTableViewCell.h; sourceTree = "<group>"; };
 		58D7EA882738D61D007241B1 /* DiscoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
@@ -383,6 +384,7 @@
 				58D7E86D2738C8BD007241B1 /* AudioToolbox.framework in Frameworks */,
 				589884D22739018700C6B6D1 /* SDWebImage.framework in Frameworks */,
 				58D7E86B2738C8B1007241B1 /* CoreTelephony.framework in Frameworks */,
+				589884DA2739072300C6B6D1 /* Bugly.framework in Frameworks */,
 				58D7EB1B2738EE0E007241B1 /* WFChatUIKit.framework in Frameworks */,
 				58D7E8692738C8A5007241B1 /* PushKit.framework in Frameworks */,
 				58D7E8672738C89E007241B1 /* SystemConfiguration.framework in Frameworks */,
@@ -542,9 +544,9 @@
 		58D7EA482738D61C007241B1 /* WildFireChat */ = {
 			isa = PBXGroup;
 			children = (
+				589884DB2739077700C6B6D1 /* AppDelegate.h */,
 				58D7EA492738D61C007241B1 /* ShareExtension */,
 				58D7EA4F2738D61C007241B1 /* LBXScan */,
-				58D7EA842738D61D007241B1 /* AppDelegate.h */,
 				58D7EA852738D61D007241B1 /* Discover */,
 				58D7EA8F2738D61D007241B1 /* Moments */,
 				58D7EA922738D61D007241B1 /* Bugly.framework */,
@@ -1373,6 +1375,7 @@
 					"$(PROJECT_DIR)/wfchat/Frameworks/GoogleWebRTC/Frameworks/frameworks",
 					"$(PROJECT_DIR)/wfchat/WildFireChat/Moments",
 					"$(PROJECT_DIR)/wfchat/WildFireChat/SDWebImage",
+					"$(PROJECT_DIR)/wfchat/WildFireChat",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/wfchat/WildFireChat/WFChat-Prefix-Header.pch";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1415,6 +1418,7 @@
 					"$(PROJECT_DIR)/wfchat/Frameworks/GoogleWebRTC/Frameworks/frameworks",
 					"$(PROJECT_DIR)/wfchat/WildFireChat/Moments",
 					"$(PROJECT_DIR)/wfchat/WildFireChat/SDWebImage",
+					"$(PROJECT_DIR)/wfchat/WildFireChat",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/wfchat/WildFireChat/WFChat-Prefix-Header.pch";
 				GENERATE_INFOPLIST_FILE = YES;

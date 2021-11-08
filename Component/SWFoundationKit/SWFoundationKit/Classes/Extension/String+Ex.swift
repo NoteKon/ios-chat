@@ -359,6 +359,19 @@ extension String {
         return false
     }
     
+    
+    /// 判断是否包含某个子字符串
+    /// - Parameters:
+    ///   - str: 子字符串
+    ///   - flag: 是否忽略大小写
+    /// - Returns: 判断结果
+    public func contain(str: String, flag: Bool = false) -> Bool {
+        if flag {
+            return self.range(of: str, options: .caseInsensitive) != nil
+        }
+        return self.range(of: str) != nil
+    }
+    
     /// 比较两个版本号
     /// - Parameters:
     ///   - version1: 版本号1
