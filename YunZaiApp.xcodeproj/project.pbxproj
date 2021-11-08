@@ -84,6 +84,10 @@
 		589884D32739018A00C6B6D1 /* ring.caf in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAF82738D61E007241B1 /* ring.caf */; };
 		589884D42739019200C6B6D1 /* WFCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAFC2738D61E007241B1 /* WFCLoginViewController.m */; };
 		589884D52739019800C6B6D1 /* ptt_begin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAFE2738D61E007241B1 /* ptt_begin.m4a */; };
+		589884D62739054500C6B6D1 /* ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA52738D61D007241B1 /* ring.mp3 */; };
+		589884D72739055B00C6B6D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA62738D61D007241B1 /* Assets.xcassets */; };
+		589884D82739055D00C6B6D1 /* Album.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA72738D61D007241B1 /* Album.xcassets */; };
+		589884D92739056700C6B6D1 /* foreman.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAC12738D61E007241B1 /* foreman.mp4 */; };
 		589917112736884C00D43D9C /* AppDelegate+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589917102736884C00D43D9C /* AppDelegate+Config.swift */; };
 		5899171627368F7C00D43D9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5899171827368F7C00D43D9C /* InfoPlist.strings */; };
 		5899171C27368FB300D43D9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5899171E27368FB300D43D9C /* Localizable.strings */; };
@@ -204,7 +208,6 @@
 		58D7EA4A2738D61C007241B1 /* SharedConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedConversation.m; sourceTree = "<group>"; };
 		58D7EA4B2738D61C007241B1 /* SharePredefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharePredefine.h; sourceTree = "<group>"; };
 		58D7EA4C2738D61C007241B1 /* SharedConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedConversation.h; sourceTree = "<group>"; };
-		58D7EA4E2738D61C007241B1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		58D7EA502738D61C007241B1 /* QQLBXScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQLBXScanViewController.h; sourceTree = "<group>"; };
 		58D7EA522738D61C007241B1 /* CodeScan.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CodeScan.bundle; sourceTree = "<group>"; };
 		58D7EA532738D61C007241B1 /* LBXScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBXScanView.h; sourceTree = "<group>"; };
@@ -250,7 +253,6 @@
 		58D7EA802738D61D007241B1 /* LBXPermissionPhotos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBXPermissionPhotos.h; sourceTree = "<group>"; };
 		58D7EA812738D61D007241B1 /* LBXPermissionSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBXPermissionSetting.h; sourceTree = "<group>"; };
 		58D7EA822738D61D007241B1 /* DIYScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIYScanViewController.h; sourceTree = "<group>"; };
-		58D7EA832738D61D007241B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		58D7EA842738D61D007241B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58D7EA862738D61D007241B1 /* DiscoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		58D7EA872738D61D007241B1 /* DiscoverMomentsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverMomentsTableViewCell.h; sourceTree = "<group>"; };
@@ -303,8 +305,6 @@
 		58D7EABF2738D61D007241B1 /* WFCFavoriteLocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFCFavoriteLocationCell.h; sourceTree = "<group>"; };
 		58D7EAC02738D61E007241B1 /* WFCFavoriteTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFCFavoriteTableViewController.m; sourceTree = "<group>"; };
 		58D7EAC12738D61E007241B1 /* foreman.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = foreman.mp4; sourceTree = "<group>"; };
-		58D7EAC32738D61E007241B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		58D7EAC52738D61E007241B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		58D7EAC62738D61E007241B1 /* WFChat-Prefix-Header.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WFChat-Prefix-Header.pch"; sourceTree = "<group>"; };
 		58D7EAC82738D61E007241B1 /* PCSessionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCSessionViewController.h; sourceTree = "<group>"; };
 		58D7EAC92738D61E007241B1 /* PCLoginConfirmViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PCLoginConfirmViewController.h; sourceTree = "<group>"; };
@@ -338,7 +338,6 @@
 		58D7EAE72738D61E007241B1 /* WFPttCreateChannelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFPttCreateChannelViewController.m; sourceTree = "<group>"; };
 		58D7EAE82738D61E007241B1 /* WFPttJoinChannelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFPttJoinChannelViewController.h; sourceTree = "<group>"; };
 		58D7EAE92738D61E007241B1 /* ptt_end.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ptt_end.m4a; sourceTree = "<group>"; };
-		58D7EAEA2738D61E007241B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		58D7EAEC2738D61E007241B1 /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		58D7EAED2738D61E007241B1 /* DeviceTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceTableViewController.h; sourceTree = "<group>"; };
 		58D7EAEE2738D61E007241B1 /* CreateDeviceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateDeviceViewController.m; sourceTree = "<group>"; };
@@ -354,7 +353,6 @@
 		58D7EAF92738D61E007241B1 /* WildFireChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WildFireChat.entitlements; sourceTree = "<group>"; };
 		58D7EAFB2738D61E007241B1 /* WFCLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WFCLoginViewController.h; sourceTree = "<group>"; };
 		58D7EAFC2738D61E007241B1 /* WFCLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFCLoginViewController.m; sourceTree = "<group>"; };
-		58D7EAFD2738D61E007241B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58D7EAFE2738D61E007241B1 /* ptt_begin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ptt_begin.m4a; sourceTree = "<group>"; };
 		58D7EAFF2738D61E007241B1 /* WFCConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFCConfig.m; sourceTree = "<group>"; };
 		58D7EB032738EE0D007241B1 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -545,7 +543,6 @@
 			isa = PBXGroup;
 			children = (
 				58D7EA492738D61C007241B1 /* ShareExtension */,
-				58D7EA4D2738D61C007241B1 /* InfoPlist.strings */,
 				58D7EA4F2738D61C007241B1 /* LBXScan */,
 				58D7EA842738D61D007241B1 /* AppDelegate.h */,
 				58D7EA852738D61D007241B1 /* Discover */,
@@ -561,21 +558,17 @@
 				58D7EAA82738D61D007241B1 /* WFCConfig.h */,
 				58D7EAA92738D61D007241B1 /* Favorite */,
 				58D7EAC12738D61E007241B1 /* foreman.mp4 */,
-				58D7EAC22738D61E007241B1 /* LaunchScreen.storyboard */,
-				58D7EAC42738D61E007241B1 /* Main.storyboard */,
 				58D7EAC62738D61E007241B1 /* WFChat-Prefix-Header.pch */,
 				58D7EAC72738D61E007241B1 /* Utilities */,
 				58D7EACE2738D61E007241B1 /* main.m */,
 				58D7EACF2738D61E007241B1 /* Me */,
 				58D7EAE22738D61E007241B1 /* Ptt */,
 				58D7EAE92738D61E007241B1 /* ptt_end.m4a */,
-				58D7EAEA2738D61E007241B1 /* AppDelegate.m */,
 				58D7EAEB2738D61E007241B1 /* Things */,
 				58D7EAF62738D61E007241B1 /* SDWebImage */,
 				58D7EAF82738D61E007241B1 /* ring.caf */,
 				58D7EAF92738D61E007241B1 /* WildFireChat.entitlements */,
 				58D7EAFA2738D61E007241B1 /* Login */,
-				58D7EAFD2738D61E007241B1 /* Info.plist */,
 				58D7EAFE2738D61E007241B1 /* ptt_begin.m4a */,
 				58D7EAFF2738D61E007241B1 /* WFCConfig.m */,
 			);
@@ -1030,15 +1023,19 @@
 			files = (
 				58D7EB232738EE0E007241B1 /* Emoj.plist in Resources */,
 				5877D5A52735384B00C65732 /* LaunchScreen.storyboard in Resources */,
+				589884D72739055B00C6B6D1 /* Assets.xcassets in Resources */,
+				589884D62739054500C6B6D1 /* ring.mp3 in Resources */,
 				58D7EB1F2738EE0E007241B1 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				58D7EB1D2738EE0E007241B1 /* wfc.strings in Resources */,
 				5899171C27368FB300D43D9C /* Localizable.strings in Resources */,
 				5877D5A22735384B00C65732 /* Assets.xcassets in Resources */,
 				5877D5A02735384800C65732 /* Main.storyboard in Resources */,
 				589884922739009600C6B6D1 /* CodeScan.bundle in Resources */,
+				589884D92739056700C6B6D1 /* foreman.mp4 in Resources */,
 				58D7EB1A2738EE0E007241B1 /* wfc.strings in Resources */,
 				589884D32739018A00C6B6D1 /* ring.caf in Resources */,
 				58D7EB202738EE0E007241B1 /* Stickers.bundle in Resources */,
+				589884D82739055D00C6B6D1 /* Album.xcassets in Resources */,
 				58D7E9382738CFDA007241B1 /* vvmodule.plist in Resources */,
 				58D7EB222738EE0E007241B1 /* WFChatUIKit.xcassets in Resources */,
 				58D7EB212738EE0E007241B1 /* WFCUShareMessageView.xib in Resources */,
@@ -1220,31 +1217,6 @@
 				58D7E82C2738C6B8007241B1 /* Base */,
 			);
 			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-		58D7EA4D2738D61C007241B1 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				58D7EA4E2738D61C007241B1 /* zh-Hans */,
-				58D7EA832738D61D007241B1 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		58D7EAC22738D61E007241B1 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				58D7EAC32738D61E007241B1 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		58D7EAC42738D61E007241B1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				58D7EAC52738D61E007241B1 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		58D7EB092738EE0D007241B1 /* wfc.strings */ = {
