@@ -2,6 +2,8 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
+#define WFCU_SUPPORT_VOIP 1
+
 #import <WFChatClient/WFCChatClient.h>
 #if WFCU_SUPPORT_VOIP
 #import <WFAVEngineKit/WFAVEngineKit.h>
@@ -23,6 +25,6 @@
 #import "SharePredefine.h"
 #ifdef WFC_PTT
 #import <PttClient/WFPttClient.h>
-#import "OC-Define.h"
+#import "WFCCNetworkService.h"
 #endif
 

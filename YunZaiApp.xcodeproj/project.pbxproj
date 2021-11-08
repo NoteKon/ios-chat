@@ -12,6 +12,78 @@
 		5877D5A02735384800C65732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5877D59E2735384800C65732 /* Main.storyboard */; };
 		5877D5A22735384B00C65732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5877D5A12735384B00C65732 /* Assets.xcassets */; };
 		5877D5A52735384B00C65732 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5877D5A32735384B00C65732 /* LaunchScreen.storyboard */; };
+		5898848E2738F90A00C6B6D1 /* WFCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAFF2738D61E007241B1 /* WFCConfig.m */; };
+		5898848F2739002700C6B6D1 /* AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAA42738D61D007241B1 /* AppService.m */; };
+		589884902739006200C6B6D1 /* PCSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EACB2738D61E007241B1 /* PCSessionViewController.m */; };
+		589884912739006D00C6B6D1 /* SharedConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA4A2738D61C007241B1 /* SharedConversation.m */; };
+		589884922739009600C6B6D1 /* CodeScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EA522738D61C007241B1 /* CodeScan.bundle */; };
+		589884932739009C00C6B6D1 /* LBXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA552738D61C007241B1 /* LBXScanViewController.m */; };
+		589884942739009F00C6B6D1 /* LBXScanViewStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA562738D61C007241B1 /* LBXScanViewStyle.m */; };
+		58988495273900A100C6B6D1 /* LBXScanVideoZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA572738D61C007241B1 /* LBXScanVideoZoomView.m */; };
+		58988496273900A300C6B6D1 /* LBXScanLineAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA582738D61C007241B1 /* LBXScanLineAnimation.m */; };
+		58988497273900A600C6B6D1 /* LBXScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA592738D61C007241B1 /* LBXScanView.m */; };
+		58988498273900AC00C6B6D1 /* LBXScanNetAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA5B2738D61C007241B1 /* LBXScanNetAnimation.m */; };
+		58988499273900AF00C6B6D1 /* StyleDIY.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA602738D61C007241B1 /* StyleDIY.m */; };
+		5898849A273900B100C6B6D1 /* LBXScanTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA612738D61C007241B1 /* LBXScanTypes.m */; };
+		5898849B273900B500C6B6D1 /* LBXAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA632738D61C007241B1 /* LBXAlertAction.m */; };
+		5898849C273900BA00C6B6D1 /* UIWindow+LBXHierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA692738D61C007241B1 /* UIWindow+LBXHierarchy.m */; };
+		5898849D273900BC00C6B6D1 /* UIActionSheet+LBXAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA6A2738D61C007241B1 /* UIActionSheet+LBXAlertAction.m */; };
+		5898849E273900BF00C6B6D1 /* UIAlertView+LBXAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA6B2738D61C007241B1 /* UIAlertView+LBXAlertAction.m */; };
+		5898849F273900C100C6B6D1 /* UIAlertController+supportedInterfaceOrientations.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA6C2738D61C007241B1 /* UIAlertController+supportedInterfaceOrientations.m */; };
+		589884A0273900C400C6B6D1 /* DIYScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA6E2738D61C007241B1 /* DIYScanViewController.m */; };
+		589884A1273900C800C6B6D1 /* UIImageView+CornerRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA712738D61C007241B1 /* UIImageView+CornerRadius.m */; };
+		589884A2273900CA00C6B6D1 /* CreateBarCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA722738D61C007241B1 /* CreateBarCodeViewController.m */; };
+		589884A3273900CD00C6B6D1 /* QQLBXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA732738D61C007241B1 /* QQLBXScanViewController.m */; };
+		589884A4273900D100C6B6D1 /* LBXScanNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA782738D61C007241B1 /* LBXScanNative.m */; };
+		589884A5273900D600C6B6D1 /* LBXPermissionSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA7C2738D61D007241B1 /* LBXPermissionSetting.m */; };
+		589884A6273900D800C6B6D1 /* LBXPermissionPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA7D2738D61D007241B1 /* LBXPermissionPhotos.m */; };
+		589884A7273900DB00C6B6D1 /* LBXPermissionCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA7E2738D61D007241B1 /* LBXPermissionCamera.m */; };
+		589884A8273900DE00C6B6D1 /* LBXPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA7F2738D61D007241B1 /* LBXPermission.m */; };
+		589884A9273900E200C6B6D1 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA882738D61D007241B1 /* DiscoverViewController.m */; };
+		589884AA273900E600C6B6D1 /* ChatroomListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA8B2738D61D007241B1 /* ChatroomListViewController.m */; };
+		589884AB273900E800C6B6D1 /* ChatroomItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA8C2738D61D007241B1 /* ChatroomItemCell.m */; };
+		589884AC273900EB00C6B6D1 /* DiscoverMomentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA8E2738D61D007241B1 /* DiscoverMomentsTableViewCell.m */; };
+		589884AD273900F200C6B6D1 /* WFCPrivacyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA942738D61D007241B1 /* WFCPrivacyViewController.m */; };
+		589884AE273900F700C6B6D1 /* Archive.zip in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EA962738D61D007241B1 /* Archive.zip */; };
+		589884AF273900FB00C6B6D1 /* UILabel+YBAttributeTextTapAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA9A2738D61D007241B1 /* UILabel+YBAttributeTextTapAction.m */; };
+		589884B0273900FF00C6B6D1 /* UIFont+YH.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA9D2738D61D007241B1 /* UIFont+YH.m */; };
+		589884B12739010200C6B6D1 /* UIColor+YH.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA9E2738D61D007241B1 /* UIColor+YH.m */; };
+		589884B22739010500C6B6D1 /* UIImage+ERCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EA9F2738D61D007241B1 /* UIImage+ERCategory.m */; };
+		589884B32739011D00C6B6D1 /* WFCFavoriteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAC02738D61E007241B1 /* WFCFavoriteTableViewController.m */; };
+		589884B42739012400C6B6D1 /* WFCFavoriteSoundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAB02738D61D007241B1 /* WFCFavoriteSoundCell.m */; };
+		589884B52739012600C6B6D1 /* WFCFavoriteVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAB12738D61D007241B1 /* WFCFavoriteVideoCell.m */; };
+		589884B62739012800C6B6D1 /* WFCFavoriteLinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAB32738D61D007241B1 /* WFCFavoriteLinkCell.m */; };
+		589884B72739012A00C6B6D1 /* WFCFavoriteLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAB42738D61D007241B1 /* WFCFavoriteLocationCell.m */; };
+		589884B82739012D00C6B6D1 /* WFCFavoriteUnknownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAB62738D61D007241B1 /* WFCFavoriteUnknownCell.m */; };
+		589884B92739012F00C6B6D1 /* WFCFavoriteCompositeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAB72738D61D007241B1 /* WFCFavoriteCompositeCell.m */; };
+		589884BA2739013100C6B6D1 /* WFCFavoriteImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAB82738D61D007241B1 /* WFCFavoriteImageCell.m */; };
+		589884BB2739013300C6B6D1 /* WFCFavoriteFileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAB92738D61D007241B1 /* WFCFavoriteFileCell.m */; };
+		589884BC2739013500C6B6D1 /* WFCFavoriteBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EABA2738D61D007241B1 /* WFCFavoriteBaseCell.m */; };
+		589884BD2739013800C6B6D1 /* WFCFavoriteTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EABE2738D61D007241B1 /* WFCFavoriteTextCell.m */; };
+		589884BE2739014200C6B6D1 /* PCLoginConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EACC2738D61E007241B1 /* PCLoginConfirmViewController.m */; };
+		589884BF2739014500C6B6D1 /* WFCBaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EACD2738D61E007241B1 /* WFCBaseTabBarController.m */; };
+		589884C02739014C00C6B6D1 /* WFCSecurityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAD32738D61E007241B1 /* WFCSecurityTableViewController.m */; };
+		589884C12739014F00C6B6D1 /* WFCDiagnoseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAD42738D61E007241B1 /* WFCDiagnoseViewController.m */; };
+		589884C22739015100C6B6D1 /* WFCMeTableViewHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAD82738D61E007241B1 /* WFCMeTableViewHeaderViewCell.m */; };
+		589884C32739015400C6B6D1 /* WFCAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAD92738D61E007241B1 /* WFCAboutViewController.m */; };
+		589884C42739015600C6B6D1 /* WFCSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EADA2738D61E007241B1 /* WFCSettingTableViewController.m */; };
+		589884C52739015800C6B6D1 /* WFCPrivacyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EADB2738D61E007241B1 /* WFCPrivacyTableViewController.m */; };
+		589884C62739015C00C6B6D1 /* WFCThemeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EADC2738D61E007241B1 /* WFCThemeTableViewCell.m */; };
+		589884C72739015E00C6B6D1 /* WFCThemeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EADD2738D61E007241B1 /* WFCThemeTableViewController.m */; };
+		589884C82739016100C6B6D1 /* WFCMeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EADE2738D61E007241B1 /* WFCMeTableViewController.m */; };
+		589884C92739016500C6B6D1 /* WFPttJoinChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAE52738D61E007241B1 /* WFPttJoinChannelViewController.m */; };
+		589884CA2739016700C6B6D1 /* WFPttChannelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAE62738D61E007241B1 /* WFPttChannelListViewController.m */; };
+		589884CB2739016900C6B6D1 /* WFPttCreateChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAE72738D61E007241B1 /* WFPttCreateChannelViewController.m */; };
+		589884CC2739017200C6B6D1 /* ptt_end.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAE92738D61E007241B1 /* ptt_end.m4a */; };
+		589884CD2739017700C6B6D1 /* CreateDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAEE2738D61E007241B1 /* CreateDeviceViewController.m */; };
+		589884CE2739017A00C6B6D1 /* DeviceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAEF2738D61E007241B1 /* DeviceInfoViewController.m */; };
+		589884CF2739017D00C6B6D1 /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAF02738D61E007241B1 /* DeviceViewController.m */; };
+		589884D02739018000C6B6D1 /* DeviceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAF12738D61E007241B1 /* DeviceTableViewController.m */; };
+		589884D12739018200C6B6D1 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAF22738D61E007241B1 /* Device.m */; };
+		589884D22739018700C6B6D1 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D7EAF72738D61E007241B1 /* SDWebImage.framework */; };
+		589884D32739018A00C6B6D1 /* ring.caf in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAF82738D61E007241B1 /* ring.caf */; };
+		589884D42739019200C6B6D1 /* WFCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAFC2738D61E007241B1 /* WFCLoginViewController.m */; };
+		589884D52739019800C6B6D1 /* ptt_begin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAFE2738D61E007241B1 /* ptt_begin.m4a */; };
 		589917112736884C00D43D9C /* AppDelegate+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589917102736884C00D43D9C /* AppDelegate+Config.swift */; };
 		5899171627368F7C00D43D9C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5899171827368F7C00D43D9C /* InfoPlist.strings */; };
 		5899171C27368FB300D43D9C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5899171E27368FB300D43D9C /* Localizable.strings */; };
@@ -311,6 +383,7 @@
 				58D7EB1C2738EE0E007241B1 /* WFAVEngineKit.framework in Frameworks */,
 				58D7E8712738C8C8007241B1 /* UserNotifications.framework in Frameworks */,
 				58D7E86D2738C8BD007241B1 /* AudioToolbox.framework in Frameworks */,
+				589884D22739018700C6B6D1 /* SDWebImage.framework in Frameworks */,
 				58D7E86B2738C8B1007241B1 /* CoreTelephony.framework in Frameworks */,
 				58D7EB1B2738EE0E007241B1 /* WFChatUIKit.framework in Frameworks */,
 				58D7E8692738C8A5007241B1 /* PushKit.framework in Frameworks */,
@@ -962,12 +1035,17 @@
 				5899171C27368FB300D43D9C /* Localizable.strings in Resources */,
 				5877D5A22735384B00C65732 /* Assets.xcassets in Resources */,
 				5877D5A02735384800C65732 /* Main.storyboard in Resources */,
+				589884922739009600C6B6D1 /* CodeScan.bundle in Resources */,
 				58D7EB1A2738EE0E007241B1 /* wfc.strings in Resources */,
+				589884D32739018A00C6B6D1 /* ring.caf in Resources */,
 				58D7EB202738EE0E007241B1 /* Stickers.bundle in Resources */,
 				58D7E9382738CFDA007241B1 /* vvmodule.plist in Resources */,
 				58D7EB222738EE0E007241B1 /* WFChatUIKit.xcassets in Resources */,
 				58D7EB212738EE0E007241B1 /* WFCUShareMessageView.xib in Resources */,
 				5899171627368F7C00D43D9C /* InfoPlist.strings in Resources */,
+				589884AE273900F700C6B6D1 /* Archive.zip in Resources */,
+				589884CC2739017200C6B6D1 /* ptt_end.m4a in Resources */,
+				589884D52739019800C6B6D1 /* ptt_begin.m4a in Resources */,
 				58D7EB182738EE0E007241B1 /* README.md in Resources */,
 				58D7EB172738EE0E007241B1 /* LICENSE.md in Resources */,
 			);
@@ -1022,12 +1100,78 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				589884C22739015100C6B6D1 /* WFCMeTableViewHeaderViewCell.m in Sources */,
+				58988496273900A300C6B6D1 /* LBXScanLineAnimation.m in Sources */,
+				58988497273900A600C6B6D1 /* LBXScanView.m in Sources */,
+				589884D12739018200C6B6D1 /* Device.m in Sources */,
+				58988498273900AC00C6B6D1 /* LBXScanNetAnimation.m in Sources */,
+				589884942739009F00C6B6D1 /* LBXScanViewStyle.m in Sources */,
+				589884B62739012800C6B6D1 /* WFCFavoriteLinkCell.m in Sources */,
+				589884A0273900C400C6B6D1 /* DIYScanViewController.m in Sources */,
 				5877D59D2735384800C65732 /* ViewController.swift in Sources */,
+				5898849E273900BF00C6B6D1 /* UIAlertView+LBXAlertAction.m in Sources */,
+				589884A9273900E200C6B6D1 /* DiscoverViewController.m in Sources */,
+				589884B32739011D00C6B6D1 /* WFCFavoriteTableViewController.m in Sources */,
+				589884BA2739013100C6B6D1 /* WFCFavoriteImageCell.m in Sources */,
+				5898849B273900B500C6B6D1 /* LBXAlertAction.m in Sources */,
+				589884A3273900CD00C6B6D1 /* QQLBXScanViewController.m in Sources */,
+				5898848F2739002700C6B6D1 /* AppService.m in Sources */,
+				589884A1273900C800C6B6D1 /* UIImageView+CornerRadius.m in Sources */,
 				58D7E9362738CFDA007241B1 /* AppModule.swift in Sources */,
+				589884A2273900CA00C6B6D1 /* CreateBarCodeViewController.m in Sources */,
+				589884CB2739016900C6B6D1 /* WFPttCreateChannelViewController.m in Sources */,
 				589917112736884C00D43D9C /* AppDelegate+Config.swift in Sources */,
+				589884B82739012D00C6B6D1 /* WFCFavoriteUnknownCell.m in Sources */,
+				589884BE2739014200C6B6D1 /* PCLoginConfirmViewController.m in Sources */,
+				589884CF2739017D00C6B6D1 /* DeviceViewController.m in Sources */,
+				589884B52739012600C6B6D1 /* WFCFavoriteVideoCell.m in Sources */,
+				589884902739006200C6B6D1 /* PCSessionViewController.m in Sources */,
+				589884C52739015800C6B6D1 /* WFCPrivacyTableViewController.m in Sources */,
+				589884A5273900D600C6B6D1 /* LBXPermissionSetting.m in Sources */,
+				589884B0273900FF00C6B6D1 /* UIFont+YH.m in Sources */,
 				58D7E9352738CFDA007241B1 /* ModuleImport.swift in Sources */,
+				589884C82739016100C6B6D1 /* WFCMeTableViewController.m in Sources */,
+				589884A4273900D100C6B6D1 /* LBXScanNative.m in Sources */,
+				589884AF273900FB00C6B6D1 /* UILabel+YBAttributeTextTapAction.m in Sources */,
 				5877D5992735384800C65732 /* AppDelegate.swift in Sources */,
+				589884CE2739017A00C6B6D1 /* DeviceInfoViewController.m in Sources */,
+				589884D42739019200C6B6D1 /* WFCLoginViewController.m in Sources */,
+				5898849C273900BA00C6B6D1 /* UIWindow+LBXHierarchy.m in Sources */,
+				589884AA273900E600C6B6D1 /* ChatroomListViewController.m in Sources */,
+				589884BD2739013800C6B6D1 /* WFCFavoriteTextCell.m in Sources */,
+				589884A6273900D800C6B6D1 /* LBXPermissionPhotos.m in Sources */,
+				589884B22739010500C6B6D1 /* UIImage+ERCategory.m in Sources */,
+				58988495273900A100C6B6D1 /* LBXScanVideoZoomView.m in Sources */,
+				589884AB273900E800C6B6D1 /* ChatroomItemCell.m in Sources */,
+				589884B72739012A00C6B6D1 /* WFCFavoriteLocationCell.m in Sources */,
+				589884C72739015E00C6B6D1 /* WFCThemeTableViewController.m in Sources */,
+				589884D02739018000C6B6D1 /* DeviceTableViewController.m in Sources */,
+				589884A7273900DB00C6B6D1 /* LBXPermissionCamera.m in Sources */,
+				589884AC273900EB00C6B6D1 /* DiscoverMomentsTableViewCell.m in Sources */,
 				58D7E9372738CFDA007241B1 /* Const.swift in Sources */,
+				589884C12739014F00C6B6D1 /* WFCDiagnoseViewController.m in Sources */,
+				589884C32739015400C6B6D1 /* WFCAboutViewController.m in Sources */,
+				589884BF2739014500C6B6D1 /* WFCBaseTabBarController.m in Sources */,
+				589884C02739014C00C6B6D1 /* WFCSecurityTableViewController.m in Sources */,
+				5898849D273900BC00C6B6D1 /* UIActionSheet+LBXAlertAction.m in Sources */,
+				589884C92739016500C6B6D1 /* WFPttJoinChannelViewController.m in Sources */,
+				589884BC2739013500C6B6D1 /* WFCFavoriteBaseCell.m in Sources */,
+				589884C42739015600C6B6D1 /* WFCSettingTableViewController.m in Sources */,
+				589884CA2739016700C6B6D1 /* WFPttChannelListViewController.m in Sources */,
+				589884C62739015C00C6B6D1 /* WFCThemeTableViewCell.m in Sources */,
+				589884A8273900DE00C6B6D1 /* LBXPermission.m in Sources */,
+				589884B42739012400C6B6D1 /* WFCFavoriteSoundCell.m in Sources */,
+				589884B12739010200C6B6D1 /* UIColor+YH.m in Sources */,
+				589884B92739012F00C6B6D1 /* WFCFavoriteCompositeCell.m in Sources */,
+				58988499273900AF00C6B6D1 /* StyleDIY.m in Sources */,
+				589884932739009C00C6B6D1 /* LBXScanViewController.m in Sources */,
+				5898849F273900C100C6B6D1 /* UIAlertController+supportedInterfaceOrientations.m in Sources */,
+				589884AD273900F200C6B6D1 /* WFCPrivacyViewController.m in Sources */,
+				589884BB2739013300C6B6D1 /* WFCFavoriteFileCell.m in Sources */,
+				589884CD2739017700C6B6D1 /* CreateDeviceViewController.m in Sources */,
+				5898849A273900B100C6B6D1 /* LBXScanTypes.m in Sources */,
+				5898848E2738F90A00C6B6D1 /* WFCConfig.m in Sources */,
+				589884912739006D00C6B6D1 /* SharedConversation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1256,8 +1400,9 @@
 					"$(PROJECT_DIR)/wfchat/Frameworks",
 					"$(PROJECT_DIR)/wfchat/Frameworks/GoogleWebRTC/Frameworks/frameworks",
 					"$(PROJECT_DIR)/wfchat/WildFireChat/Moments",
+					"$(PROJECT_DIR)/wfchat/WildFireChat/SDWebImage",
 				);
-				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/WFChat-Prefix-Header.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/wfchat/WildFireChat/WFChat-Prefix-Header.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YunZaiApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1297,8 +1442,9 @@
 					"$(PROJECT_DIR)/wfchat/Frameworks",
 					"$(PROJECT_DIR)/wfchat/Frameworks/GoogleWebRTC/Frameworks/frameworks",
 					"$(PROJECT_DIR)/wfchat/WildFireChat/Moments",
+					"$(PROJECT_DIR)/wfchat/WildFireChat/SDWebImage",
 				);
-				GCC_PREFIX_HEADER = "$(SRCROOT)/Classes/WFChat-Prefix-Header.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/wfchat/WildFireChat/WFChat-Prefix-Header.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YunZaiApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
