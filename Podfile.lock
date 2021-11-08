@@ -30,6 +30,9 @@ PODS:
   - RxRelay (5.1.3):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
+  - SDWebImage (5.12.1):
+    - SDWebImage/Core (= 5.12.1)
+  - SDWebImage/Core (5.12.1)
   - SnapKit (5.0.1)
   - SWBusinessKit (1.7.4):
     - SWBusinessKit/File (= 1.7.4)
@@ -88,6 +91,7 @@ DEPENDENCIES:
   - HandyJSON (= 5.0.2)
   - Kingfisher
   - R.swift
+  - SDWebImage
   - SnapKit (= 5.0.1)
   - SWBusinessKit (from `./Component/SWBusinessKit`)
   - SWFoundationKit (from `./Component/SWFoundationKit`)
@@ -114,6 +118,7 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SDWebImage
     - SnapKit
     - SwiftDate
 
@@ -151,6 +156,7 @@ SPEC CHECKSUMS:
   RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
   RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SWBusinessKit: 1d01724f07cde9634ca6584e63db5999357ddc09
   SWFoundationKit: 5ca51af0ed7baaf9c6279f38e2b9d3acf3e06639
@@ -160,6 +166,6 @@ SPEC CHECKSUMS:
   SWUIKit: fe9d4d077bbd95418bcf33fa172bbc1fdff1d153
   VVDebugKit: d05551f3c0607debb501229f6ca896765c89f203
 
-PODFILE CHECKSUM: fb8c7cd288cdc45cdfdbec34b46c50ea5d48671b
+PODFILE CHECKSUM: cae3fcb9ba438c094bf2504a7d7b90ae767959f6
 
 COCOAPODS: 1.11.2

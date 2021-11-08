@@ -19,5 +19,7 @@ target 'YunZaiApp' do
   pod 'Kingfisher'
   pod 'R.swift'
   pod 'HandyJSON', '5.0.2'
-
+  
+  #OC 三方库
+  pod 'SDWebImage'
 end

@@ -5,6 +5,12 @@
       location = "group:YunZaiApp.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:wfclient/WFChatClient.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:wfuikit/WFChatUIKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
