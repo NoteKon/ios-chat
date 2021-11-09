@@ -22,5 +22,5 @@ target 'YunZaiApp' do
   
   #OC 三方库
   pod 'SDWebImage'
-  #pod 'Masonry'
+  pod 'Masonry'
 end

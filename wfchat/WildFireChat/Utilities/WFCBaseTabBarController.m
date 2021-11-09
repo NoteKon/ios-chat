@@ -38,7 +38,7 @@
     item.title = LocalizedString(@"tab_cloud");
     item.image = [[UIImage imageNamed:@"tab_cloud_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_cloud_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x0EEAE8"]} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x3EEEED"]} forState:UIControlStateSelected];
     [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x191D33"]} forState:UIControlStateNormal];
     [self addChildViewController:nav];
     
@@ -52,7 +52,7 @@
     item.title = LocalizedString(@"tab_contact");
     item.image = [[UIImage imageNamed:@"tab_contact_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_contact_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x0EEAE8"]} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x3EEEED"]} forState:UIControlStateSelected];
     [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x191D33"]} forState:UIControlStateNormal];
     [self addChildViewController:nav];
     
@@ -64,7 +64,7 @@
     item.title = LocalizedString(@"tab_discover");
     item.image = [[UIImage imageNamed:@"tab_discover_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_discover_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x0EEAE8"]} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x3EEEED"]} forState:UIControlStateSelected];
     [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x191D33"]} forState:UIControlStateNormal];
     [self addChildViewController:nav];
     
@@ -76,7 +76,7 @@
     item.title = LocalizedString(@"tab_me");
     item.image = [[UIImage imageNamed:@"tab_me_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_me_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x0EEAE8"]} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x3EEEED"]} forState:UIControlStateSelected];
     [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x191D33"]} forState:UIControlStateNormal];
     [self addChildViewController:nav];
     self.settingNav = nav;

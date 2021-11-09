@@ -19,6 +19,7 @@ PODS:
   - libwebp/mux (1.2.1):
     - libwebp/demux
   - libwebp/webp (1.2.1)
+  - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJRefresh (3.7.2)
   - R.swift (5.4.0):
@@ -90,6 +91,7 @@ DEPENDENCIES:
   - ActiveLabel (from `./Component/ActiveLabel.swift/ActiveLabel.podspec`)
   - HandyJSON (= 5.0.2)
   - Kingfisher
+  - Masonry
   - R.swift
   - SDWebImage
   - SnapKit (= 5.0.1)
@@ -111,6 +113,7 @@ SPEC REPOS:
     - Kingfisher
     - KingfisherWebP
     - libwebp
+    - Masonry
     - MBProgressHUD
     - MJRefresh
     - R.swift
@@ -149,6 +152,7 @@ SPEC CHECKSUMS:
   Kingfisher: f738f9c4a3415823b8e2985d10aa2d6a9f37bc4d
   KingfisherWebP: f4b76064c50a36c4cadd37548496ecebfdcb39e8
   libwebp: 98a37e597e40bfdb4c911fc98f2c53d0b12d05fc
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
   R.swift: c533450b0f7dc494e0993f5f1a1db925d84c3006
@@ -166,6 +170,6 @@ SPEC CHECKSUMS:
   SWUIKit: fe9d4d077bbd95418bcf33fa172bbc1fdff1d153
   VVDebugKit: d05551f3c0607debb501229f6ca896765c89f203
 
-PODFILE CHECKSUM: 628c0c88ec2ee1164e73d4bc0344ec3cc9c5a423
+PODFILE CHECKSUM: ede6ced0935c9aa2423b6002dd1081f032fe056a
 
 COCOAPODS: 1.11.2

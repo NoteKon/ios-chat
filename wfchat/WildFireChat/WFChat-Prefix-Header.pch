@@ -25,4 +25,5 @@
 //#define WFC_PTT
 
 #import "UIColor+YH.h"
+#import "Masonry.h"
 #endif /* WFChat_Prefix_Header_pch */
