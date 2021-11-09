@@ -5,6 +5,11 @@
   Created by ice on 2021/11/6.
   
 */
+tab_cloud = "云圈";
+tab_contact = "通讯录";
+tab_discover = "发现";
+tab_me = "我的";
+
 Message="消息";
 Contact="联系人";
 Discover="发现";
