@@ -1372,8 +1372,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Classes/Moments",
@@ -1386,9 +1387,16 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/wfchat/WildFireChat/WFChat-Prefix-Header.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YunZaiApp/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "应用在音视频电话来电时需要播放铃声或用户播放语音消息";
+				INFOPLIST_KEY_NSCameraUsageDescription = "应用在拍摄图片发送，修改头像或扫描二维码时需要使用相机";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "应用在发送位置消息时需要访问位置信息";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "应用在音视频通话过程中或者录制语音消息时需要使用麦克风";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "应用需要此权限保存图片消息中的图片";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "应用在发送图片消息时需要访问相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1397,8 +1405,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ice.YunZaiApp;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.yunzai.dao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/YunZaiApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1415,8 +1424,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Classes/Moments",
@@ -1429,9 +1439,16 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/wfchat/WildFireChat/WFChat-Prefix-Header.pch";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YunZaiApp/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "应用在音视频电话来电时需要播放铃声或用户播放语音消息";
+				INFOPLIST_KEY_NSCameraUsageDescription = "应用在拍摄图片发送，修改头像或扫描二维码时需要使用相机";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "应用在发送位置消息时需要访问位置信息";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "应用在音视频通话过程中或者录制语音消息时需要使用麦克风";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "应用需要此权限保存图片消息中的图片";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "应用在发送图片消息时需要访问相册";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1440,8 +1457,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ice.YunZaiApp;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.yunzai.dao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/YunZaiApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
