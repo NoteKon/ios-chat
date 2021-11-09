@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		580BFB7A273A594900500AA9 /* Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BFB79273A594900500AA9 /* Help.m */; };
+		580BFB7B273A72F600500AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA62738D61D007241B1 /* Assets.xcassets */; };
 		5877D5992735384800C65732 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D5982735384800C65732 /* AppDelegate.swift */; };
 		5877D59D2735384800C65732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D59C2735384800C65732 /* ViewController.swift */; };
 		5877D5A02735384800C65732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5877D59E2735384800C65732 /* Main.storyboard */; };
@@ -86,7 +87,6 @@
 		589884D42739019200C6B6D1 /* WFCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAFC2738D61E007241B1 /* WFCLoginViewController.m */; };
 		589884D52739019800C6B6D1 /* ptt_begin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAFE2738D61E007241B1 /* ptt_begin.m4a */; };
 		589884D62739054500C6B6D1 /* ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA52738D61D007241B1 /* ring.mp3 */; };
-		589884D72739055B00C6B6D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA62738D61D007241B1 /* Assets.xcassets */; };
 		589884D82739055D00C6B6D1 /* Album.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA72738D61D007241B1 /* Album.xcassets */; };
 		589884D92739056700C6B6D1 /* foreman.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAC12738D61E007241B1 /* foreman.mp4 */; };
 		589884DA2739072300C6B6D1 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D7EA922738D61D007241B1 /* Bugly.framework */; };
@@ -1030,7 +1030,6 @@
 			files = (
 				58D7EB232738EE0E007241B1 /* Emoj.plist in Resources */,
 				5877D5A52735384B00C65732 /* LaunchScreen.storyboard in Resources */,
-				589884D72739055B00C6B6D1 /* Assets.xcassets in Resources */,
 				589884D62739054500C6B6D1 /* ring.mp3 in Resources */,
 				58D7EB1F2738EE0E007241B1 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				58D7EB1D2738EE0E007241B1 /* wfc.strings in Resources */,
@@ -1051,6 +1050,7 @@
 				589884CC2739017200C6B6D1 /* ptt_end.m4a in Resources */,
 				589884D52739019800C6B6D1 /* ptt_begin.m4a in Resources */,
 				58D7EB182738EE0E007241B1 /* README.md in Resources */,
+				580BFB7B273A72F600500AA9 /* Assets.xcassets in Resources */,
 				58D7EB172738EE0E007241B1 /* LICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
