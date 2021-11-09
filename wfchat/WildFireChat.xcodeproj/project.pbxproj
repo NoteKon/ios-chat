@@ -114,9 +114,6 @@
 		2FFDDCA025515D9000CEFDBB /* WFCFavoriteVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFDDC9E25515D9000CEFDBB /* WFCFavoriteVideoCell.m */; };
 		2FFDDCA4255164DA00CEFDBB /* WFCFavoriteLinkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFDDCA3255164DA00CEFDBB /* WFCFavoriteLinkCell.m */; };
 		2FFDDCA8255168D100CEFDBB /* WFCFavoriteCompositeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FFDDCA6255168D000CEFDBB /* WFCFavoriteCompositeCell.m */; };
-		5877D584273507B800C65732 /* AppDelegate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D583273507B800C65732 /* AppDelegate+Swift.swift */; };
-		5877D5892735288800C65732 /* UIView+UIView_Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 5877D5882735288800C65732 /* UIView+UIView_Gradient.m */; };
-		5877D58B27352E0500C65732 /* UIView+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D58A27352E0500C65732 /* UIView+Ex.swift */; };
 		6E616DA020AB3435002CB8BE /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 6E616D9B20AB3435002CB8BE /* LICENSE.md */; };
 		6E616DA220AB3435002CB8BE /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E616D9F20AB3435002CB8BE /* WebRTC.framework */; };
 		6E616DB520AB3540002CB8BE /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E616D9F20AB3435002CB8BE /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -369,10 +366,6 @@
 		2FFDDCA6255168D000CEFDBB /* WFCFavoriteCompositeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFCFavoriteCompositeCell.m; sourceTree = "<group>"; };
 		2FFDDCA7255168D100CEFDBB /* WFCFavoriteCompositeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFCFavoriteCompositeCell.h; sourceTree = "<group>"; };
 		5877D57E2735061B00C65732 /* WildFireChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WildFireChat-Bridging-Header.h"; sourceTree = "<group>"; };
-		5877D583273507B800C65732 /* AppDelegate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Swift.swift"; sourceTree = "<group>"; };
-		5877D5872735285200C65732 /* UIView+UIView_Gradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+UIView_Gradient.h"; sourceTree = "<group>"; };
-		5877D5882735288800C65732 /* UIView+UIView_Gradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIView_Gradient.m"; sourceTree = "<group>"; };
-		5877D58A27352E0500C65732 /* UIView+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ex.swift"; sourceTree = "<group>"; };
 		6E616D9B20AB3435002CB8BE /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = Frameworks/GoogleWebRTC/LICENSE.md; sourceTree = SOURCE_ROOT; };
 		6E616D9F20AB3435002CB8BE /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebRTC.framework; path = Frameworks/GoogleWebRTC/Frameworks/frameworks/WebRTC.framework; sourceTree = SOURCE_ROOT; };
 		9051774B2243CD830020A2AC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -533,7 +526,6 @@
 		2E1D1FEE1FAF0AE600F4405D = {
 			isa = PBXGroup;
 			children = (
-				5877D5812735079200C65732 /* Classes */,
 				2E1D1FF91FAF0AE600F4405D /* WildFireChat */,
 				2F56F6F4252C956700B829C4 /* ShareExtension */,
 				2EAC88E61FB0A0D6004B34D1 /* Frameworks */,
@@ -894,33 +886,6 @@
 			path = Me;
 			sourceTree = "<group>";
 		};
-		5877D5812735079200C65732 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				5877D585273526C900C65732 /* Extension */,
-				5877D5822735079D00C65732 /* Root */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		5877D5822735079D00C65732 /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				5877D583273507B800C65732 /* AppDelegate+Swift.swift */,
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
-		5877D585273526C900C65732 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				5877D5882735288800C65732 /* UIView+UIView_Gradient.m */,
-				5877D5872735285200C65732 /* UIView+UIView_Gradient.h */,
-				5877D58A27352E0500C65732 /* UIView+Ex.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		6E616D9A20AB3435002CB8BE /* GoogleWebRTC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,7 +1129,6 @@
 				9085427B2229FF160009713D /* StyleDIY.m in Sources */,
 				2FFDDCA8255168D100CEFDBB /* WFCFavoriteCompositeCell.m in Sources */,
 				2F94FB9222291577005BD461 /* LBXScanTypes.m in Sources */,
-				5877D5892735288800C65732 /* UIView+UIView_Gradient.m in Sources */,
 				2F94FC9A22291813005BD461 /* UIWindow+LBXHierarchy.m in Sources */,
 				2F7268FD21F714C900E05F9C /* UILabel+YBAttributeTextTapAction.m in Sources */,
 				2F70C73B2417DB6C0058BD27 /* DiscoverMomentsTableViewCell.m in Sources */,
@@ -1174,7 +1138,6 @@
 				2FFDDCA025515D9000CEFDBB /* WFCFavoriteVideoCell.m in Sources */,
 				2F4B0EAD245BFD22000A41C6 /* Device.m in Sources */,
 				2F638934254E8FAB0084EEA6 /* WFCFavoriteImageCell.m in Sources */,
-				5877D58B27352E0500C65732 /* UIView+Ex.swift in Sources */,
 				149B310A241E300C00B935D3 /* UIFont+YH.m in Sources */,
 				2FFDDCA4255164DA00CEFDBB /* WFCFavoriteLinkCell.m in Sources */,
 				2F94FC9922291813005BD461 /* LBXAlertAction.m in Sources */,
@@ -1199,7 +1162,6 @@
 				2F5527C0252CB33E00B0CDCB /* SharedConversation.m in Sources */,
 				2FF07F5921F82E7200A78A62 /* WFCAboutViewController.m in Sources */,
 				2F94FCA822291813005BD461 /* LBXPermission.m in Sources */,
-				5877D584273507B800C65732 /* AppDelegate+Swift.swift in Sources */,
 				2B840F432442125B006BE3D8 /* WFCThemeTableViewCell.m in Sources */,
 				2FFDDC9C255158FA00CEFDBB /* WFCFavoriteSoundCell.m in Sources */,
 				2E1D1FFC1FAF0AE600F4405D /* AppDelegate.m in Sources */,

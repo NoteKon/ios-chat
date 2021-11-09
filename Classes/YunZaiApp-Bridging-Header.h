@@ -33,3 +33,5 @@
 #import "WFCCNetworkService.h"
 #endif
 
+#import "Help.h"
+

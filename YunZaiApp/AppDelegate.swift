@@ -7,6 +7,10 @@
 
 import UIKit
 import RxSwift
+#if DEBUG
+import VVDebugKit
+#endif
+import AudioToolbox
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, ConnectionStatusDelegate, ReceiveMessageDelegate, QrCodeDelegate {
@@ -17,8 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         config_application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+#if DEBUG
         WFCCNetworkService.startLog()
+#endif
         //WFCCNetworkService.sharedInstance().useSM4()
         WFCCNetworkService.sharedInstance().connectionStatusDelegate = self
         WFCCNetworkService.sharedInstance().receiveMessageDelegate = self
@@ -83,15 +88,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         return true
     }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        _ = updateBadgeNumber()
+        prepardDataForShareExtension()
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+#if DEBUG
+        WFCCNetworkService.stopLog()
+#endif
+    }
 }
 
 extension AppDelegate {
     @objc func onFriendRequestUpdated(notification: Notification) {
         if UIApplication.shared.applicationState == .background {
             let newRequests = notification.object as? [String]
-            //            if newRequests?.count {
-            //                return
-            //            }
+            let count = newRequests?.count ?? 0
+            if count <= 0 {
+                return
+            }
+            
+            let localNote = UILocalNotification()
+            localNote.alertTitle = "收到好友邀请";
+            
+            if newRequests?.count == 1 {
+                WFCCIMService.sharedWFCIM().getUserInfo(newRequests?[0], refresh: false) { userInfo in
+                    DispatchQueue.main.async {
+                        let request = WFCCIMService.sharedWFCIM().getFriendRequest(newRequests?[0], direction: 1)
+                        localNote.alertBody = "\(userInfo?.displayName)\(request?.reason)"
+                        UIApplication.shared.scheduleLocalNotification(localNote)
+                    }
+                } error: { errorCode in
+                    
+                }
+            } else if (count > 1) {
+                localNote.alertBody = "您收到 \(count) 条好友请求"
+                UIApplication.shared.scheduleLocalNotification(localNote)
+            }
         }
     }
     
@@ -168,7 +203,35 @@ extension AppDelegate {
 /// ConnectionStatusDelegate
 extension AppDelegate {
     func onConnectionStatusChanged(_ status: ConnectionStatus) {
-        
+        DispatchQueue.main.async { [weak self] in
+            if status == .rejected ||  status == .tokenIncorrect || status == .secretKeyMismatch || status == .kickedoff {
+                if status == .kickedoff {
+                    self?.jumpToLoginViewController(isKickedOff: true)
+                }
+                
+                WFCCNetworkService.sharedInstance().disconnect(true, clearSession: false)
+                UserDefaults.standard.removeObject(forKey: "savedToken")
+                UserDefaults.standard.removeObject(forKey: "savedUserId")
+                AppService.shared().clearAuthInfos()
+                UserDefaults.standard.synchronize()
+            } else if status == .logout {
+                var alreadyShowLoginVC = false
+                if let nav = self?.window?.rootViewController as? UINavigationController {
+                    if nav.viewControllers.count == 1, let viewController = nav.viewControllers[0] as? WFCLoginViewController, viewController.isKind(of: WFCLoginViewController.self) {
+                        alreadyShowLoginVC = true
+                    }
+                }
+                
+                if alreadyShowLoginVC == false {
+                    self?.jumpToLoginViewController(isKickedOff: false)
+                }
+                
+                UserDefaults.standard.removeObject(forKey: "savedToken")
+                UserDefaults.standard.removeObject(forKey: "savedUserId")
+                AppService.shared().clearAuthInfos()
+                UserDefaults.standard.synchronize()
+            }
+        }
     }
 }
 
@@ -235,6 +298,11 @@ extension AppDelegate {
         }
     }
     
+    func onDeleteMessage(_ messageUid: Int64) {
+        cancelNotification(messageUid: messageUid)
+        _ = updateBadgeNumber()
+    }
+    
     func updateBadgeNumber() -> Int32 {
         let unreadCount = WFCCIMService.sharedWFCIM().getUnreadCount( [NSNumber(value: WFCCConversationType.Single_Type.rawValue), NSNumber(value: WFCCConversationType.Group_Type.rawValue), NSNumber(value: WFCCConversationType.Channel_Type.rawValue)], lines: [0])
         let unreadFriendRequest = WFCCIMService.sharedWFCIM().getUnreadFriendRequestStatus()
@@ -276,9 +344,9 @@ extension AppDelegate {
             return
         }
         
-        let flag = 20 //msg.content.class.performSelector(Selector("WFCCMessageContent.getContentFlags"))
+        let flag = Help.msgFlag(msg)
         let info = WFCCIMService.sharedWFCIM().getConversationInfo(msg.conversation)
-        if (((flag & 0x03) != 0) || msg.content.isKind(of: WFCCRecallMessageContent.self)) && !(info?.isSilent ?? false) && !msg.content.isKind(of: WFCCCallStartMessageContent.self) {
+        if (flag || msg.content.isKind(of: WFCCRecallMessageContent.self)) && !(info?.isSilent ?? false) && !msg.content.isKind(of: WFCCCallStartMessageContent.self) {
             let localNote = UILocalNotification()
             if WFCCIMService.sharedWFCIM().isHiddenNotificationDetail() && msg.content.isKind(of: WFCCRecallMessageContent.self) {
                 localNote.alertBody = "您收到了新消息";
@@ -328,6 +396,92 @@ extension AppDelegate {
             }
         }
     }
+    
+    func prepardDataForShareExtension() {
+        //此处id要与开发者中心创建时一致
+        let sharedDefaults = UserDefaults(suiteName: WFC_SHARE_APP_GROUP_ID)
+        //1. 保存app cookies
+        let authToken = AppService.shared().getAuthToken()
+        if authToken.count > 0 {
+            sharedDefaults?.setValue(authToken, forKey: WFC_SHARE_APPSERVICE_AUTH_TOKEN)
+        } else {
+            let cookiesdata = AppService.shared().getCookies()
+            if cookiesdata.count > 0 {
+                if let cookies = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(cookiesdata) as? [HTTPCookie] {
+                    for cookie in cookies {
+                        HTTPCookieStorage.sharedCookieStorage(forGroupContainerIdentifier: WFC_SHARE_APP_GROUP_ID).setCookie(cookie)
+                    }
+                }
+            } else {
+                if let url = URL(string: APP_SERVER_ADDRESS), let cookies = HTTPCookieStorage.sharedCookieStorage(forGroupContainerIdentifier: WFC_SHARE_APP_GROUP_ID).cookies(for: url) {
+                    for cookie in cookies  {
+                        HTTPCookieStorage.sharedCookieStorage(forGroupContainerIdentifier: WFC_SHARE_APP_GROUP_ID).deleteCookie(cookie)
+                    }
+                }
+            }
+        }
+        
+        //2. 保存会话列表
+        var sharedConvs = [SharedConversation]()
+        var needComposedGroupIds = [String]()
+        if let infos = WFCCIMService.sharedWFCIM().getConversationInfos([NSNumber(value: WFCCConversationType.Single_Type.rawValue), NSNumber(value: WFCCConversationType.Group_Type.rawValue), NSNumber(value: WFCCConversationType.Channel_Type.rawValue)], lines: [0]) {
+            for info in infos {
+                let sc = SharedConversation.from(Int32(info.conversation.type.rawValue), target: info.conversation.target, line: info.conversation.line)
+                let type = info.conversation.type
+                if type == .Single_Type {
+                    let userInfo = WFCCIMService.sharedWFCIM().getUserInfo(info.conversation.target, refresh: false)
+                    if userInfo == nil {
+                        continue
+                    }
+                    sc.title = (userInfo?.friendAlias.isEmpty ?? true) ? (userInfo?.displayName ?? "") : (userInfo?.friendAlias ?? "")
+                    sc.portraitUrl = userInfo?.portrait ?? ""
+                } else if type == .Group_Type {
+                    let groupInfo = WFCCIMService.sharedWFCIM().getGroupInfo(info.conversation.target, refresh: false)
+                    if groupInfo == nil {
+                        continue
+                    }
+                    sc.title = groupInfo?.name ?? "";
+                    sc.portraitUrl = groupInfo?.portrait ?? "";
+                    if groupInfo?.portrait.count ?? 0 <= 0 {
+                        needComposedGroupIds.append(info.conversation.target)
+                    }
+                } else if type == .Channel_Type {
+                    let ci = WFCCIMService.sharedWFCIM().getChannelInfo(info.conversation.target, refresh: false)
+                    if ci == nil {
+                        continue
+                    }
+                    sc.title = ci?.name ?? "";
+                    sc.portraitUrl = ci?.portrait ?? "";
+                }
+                sharedConvs.append(sc)
+            }
+            sharedDefaults?.set(NSKeyedArchiver.archivedData(withRootObject:sharedConvs), forKey: WFC_SHARE_BACKUPED_CONVERSATION_LIST)
+        }
+        
+        //3. 保存群拼接头像
+        //获取分组的共享目录
+        let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: WFC_SHARE_APP_GROUP_ID) //此处id要与开发者中心创建时一致
+        let portraitURL = groupURL?.appendingPathComponent(WFC_SHARE_BACKUPED_GROUP_GRID_PORTRAIT_PATH)
+        for groupId in needComposedGroupIds {
+            //获取已经拼接好的头像，如果没有拼接会返回为空
+            let file = WFCCUtilities.getGroupGridPortrait(groupId, width: 80, generateIfNotExist: false) { userId in
+                return nil
+            }
+            
+            if file?.count ?? 0 > 0 {
+                if let fileURL = portraitURL?.appendingPathComponent(groupId) {
+                    try? Data.init(contentsOf: fileURL).write(to: fileURL)
+                }
+            }
+        }
+    }
+    
+    func jumpToLoginViewController(isKickedOff: Bool) {
+        let loginVC = WFCLoginViewController()
+        loginVC.isKickedOff = isKickedOff
+        let nav = UINavigationController(rootViewController: loginVC)
+        self.window?.rootViewController = nav
+    }
 }
 
 /// QrCodeDelegate
@@ -360,4 +514,170 @@ extension AppDelegate {
         let hexToken = deviceToken.map({ String(format: "%02.2hhx", $0) }).joined(separator: "")
         WFCCNetworkService.sharedInstance().setDeviceToken(hexToken)
     }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let flag = userInfo["voip"] as? String, flag.boolValue {
+            let type = userInfo["voip_type"] as? String
+            
+            if type?.intValue == 1 {
+                if let aps = userInfo["aps"] as? [String:String], let alertDic = aps["alert"] as? [String:String] {
+                    let title = alertDic["title"]
+                    let body = alertDic["body"]
+                    
+                    localCallNotification = nil
+                    localCallNotification = UILocalNotification()
+                    localCallNotification?.alertTitle = title
+                    localCallNotification?.alertBody = body
+                    localCallNotification?.soundName = "ring.caf"
+                    if localCallNotification != nil {
+                        UIApplication.shared.scheduleLocalNotification(localCallNotification!)
+                    }
+                }
+            
+            } else if type?.intValue == 2 {
+                if localCallNotification != nil {
+                    UIApplication.shared.cancelLocalNotification(localCallNotification!)
+                    localCallNotification = nil
+                }
+                
+                if let aps = userInfo["aps"] as? [String:String], let alertDic = aps["alert"] as? [String:String] {
+                    let title = alertDic["title"]
+                    let body = alertDic["body"]
+                    
+                    localCallNotification = UILocalNotification()
+                    localCallNotification?.alertTitle = title
+                    localCallNotification?.alertBody = body
+                   // localCallNotification?.soundName = "ring.caf"
+                    if localCallNotification != nil {
+                        UIApplication.shared.scheduleLocalNotification(localCallNotification!)
+                    }
+                }
+            }
+        }
+        
+        completionHandler(.noData)
+    }
 }
+
+#if WFCU_SUPPORT_VOIP
+//voip 当可以使用pushkit时，如果有来电或者结束，会唤起应用，收到来电通知/电话结束通知，弹出通知。
+extension AppDelegate: WFAVEngineDelegate {
+    func didReceiveCall(_ session: WFAVCallSession!) {
+        //收到来电通知后等待200毫秒，检查session有效后再弹出通知。原因是当当前用户不在线时如果有人来电并挂断，当前用户再连接后，会出现先弹来电界面，再消失的画面。
+        DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(200)) {
+            DispatchQueue.main.async { [weak self] in
+                if WFAVEngineKit.shared().currentSession.state != .incomming {
+                    return
+                }
+                
+                let videoVC: UIViewController?
+                if session.conversation.type == .Group_Type, WFAVEngineKit.shared().supportMultiCall {
+                    videoVC = WFCUMultiVideoViewController.init(session: session)
+                } else {
+                    videoVC = WFCUVideoViewController(session: session)
+                }
+                
+                WFAVEngineKit.shared().present(videoVC)
+                if UIApplication.shared.applicationState == .background {
+                    if WFCCIMService.sharedWFCIM().isVoipNotificationSilent() {
+                        SWLogger.debug("用户设置禁止voip通知，忽略来电提醒")
+                        return
+                    }
+                    if let notification = self?.localCallNotification {
+                        UIApplication.shared.scheduleLocalNotification(notification)
+                    }
+                    self?.localCallNotification = UILocalNotification()
+                    self?.localCallNotification?.alertBody = "来电话了"
+                    
+                    let sender = WFCCIMService.sharedWFCIM().getUserInfo(session.inviter, refresh: false)
+                    if let displayName = sender?.displayName {
+                        self?.localCallNotification?.alertTitle = displayName
+                    }
+                    self?.localCallNotification?.soundName = "ring.caf"
+                    DispatchQueue.main.async {
+                        if let notification = self?.localCallNotification {
+                            UIApplication.shared.scheduleLocalNotification(notification)
+                        }
+                    }
+                } else {
+                    self?.localCallNotification = nil
+                }
+            }
+        }
+    }
+    
+    func shouldStartRing(_ isIncoming: Bool) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + .milliseconds(200)) {
+            DispatchQueue.main.async { [weak self] in
+                let state = WFAVEngineKit.shared().currentSession.state
+                if state == .incomming || state == .outgoing {
+                    if UIApplication.shared.applicationState == .background {
+                        if WFCCIMService.sharedWFCIM().isVoipNotificationSilent() {
+                            SWLogger.debug("用户设置禁止voip通知，忽略来电提醒")
+                            return
+                        }
+                        
+                        Help.ring()
+                    } else {
+                        let audioSession = AVAudioSession.sharedInstance()
+                        //默认情况按静音或者锁屏键会静音
+                        try? audioSession.setCategory(.ambient)
+                        try? audioSession.setActive(true)
+                        
+                        if self?.audioPlayer != nil {
+                            self?.shouldStopRing()
+                        }
+                        
+                        if let url = Bundle.main.url(forResource: "ring", withExtension: "mp3") {
+                            self?.audioPlayer = try? AVAudioPlayer.init(contentsOf: url)
+                            if self?.audioPlayer != nil {
+                                self?.audioPlayer?.numberOfLoops = -1
+                                self?.audioPlayer?.volume = 1.0
+                                self?.audioPlayer?.prepareToPlay()
+                                self?.audioPlayer?.play()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func shouldStopRing() {
+        if audioPlayer != nil {
+            audioPlayer?.stop()
+            audioPlayer = nil
+            try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        }
+    }
+    
+    func didCallEnded(_ reason: WFAVCallEndReason, duration callDuration: Int32) {
+        //在后台时，如果电话挂断，清除掉来电通知，如果未接听超时或者未接通对方挂掉，弹出结束本地通知。
+        if UIApplication.shared.applicationState == .background {
+            if let notification = localCallNotification {
+                UIApplication.shared.cancelLocalNotification(notification)
+                localCallNotification = nil
+            }
+            
+            if (reason == .remoteTimeout) || ((reason == .hangup) && (callDuration == 0)) {
+                let callEndNotification = UILocalNotification()
+                if reason == .remoteTimeout {
+                    callEndNotification.alertBody = "来电未接听"
+                } else {
+                    callEndNotification.alertBody = "来电已取消"
+                }
+                
+                localCallNotification?.alertTitle = "网络通话"
+                if let inviter = WFAVEngineKit.shared().currentSession.inviter {
+                    let sender = WFCCIMService.sharedWFCIM().getUserInfo(inviter, refresh: false)
+                    if let displayName = sender?.displayName {
+                        localCallNotification?.alertTitle = displayName
+                    }
+                }
+                
+                UIApplication.shared.scheduleLocalNotification(callEndNotification)
+            }
+        }
+    }
+}
+#endif
