@@ -57,10 +57,16 @@ alpha:1.0]
     CGFloat paddingEdge = 16;
     CGFloat inputHeight = 40;
     CGFloat hintHeight = 96;
-    CGFloat topPos = kStatusBarAndNavigationBarHeight + 45;
+    CGFloat topPos = kStatusBarAndNavigationBarHeight + 65;
     
-    self.topImageView = [[UIImageView alloc] initWithFrame:CGRectMake((bgRect.size.width - 78) / 2, topPos, 78, hintHeight)];
+    self.topImageView = [[UIImageView alloc] init];
     self.topImageView.image = [UIImage imageNamed:@"login_top"];
+    [self.view addSubview:self.topImageView];
+    [self.topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(78, 96));
+        make.centerX.equalTo(self.view);
+        make.top.equalTo(self.view.mas_top).with.offset(topPos);
+    }];
     
     topPos += hintHeight + 61.5;
     
@@ -126,8 +132,6 @@ alpha:1.0]
     [self.loginBtn setTitleColor:[UIColor colorWithHexString:@"0x1E233A"] forState:UIControlStateNormal];
     self.loginBtn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleMedium size:18];
     self.loginBtn.enabled = NO;
-    
-    [self.view addSubview:self.topImageView];
     
     [userNameContainer addSubview:userNameLabel];
     [userNameContainer addSubview:self.userNameField];
