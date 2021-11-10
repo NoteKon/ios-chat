@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		580BFB7A273A594900500AA9 /* Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BFB79273A594900500AA9 /* Help.m */; };
 		580BFB7B273A72F600500AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA62738D61D007241B1 /* Assets.xcassets */; };
+		58725BAA273B9F69005C6456 /* UIView+UIView_Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 58725BA9273B9F69005C6456 /* UIView+UIView_Gradient.m */; };
 		5877D5992735384800C65732 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D5982735384800C65732 /* AppDelegate.swift */; };
 		5877D59D2735384800C65732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D59C2735384800C65732 /* ViewController.swift */; };
 		5877D5A02735384800C65732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5877D59E2735384800C65732 /* Main.storyboard */; };
@@ -152,6 +153,8 @@
 		580BFB78273A594900500AA9 /* Help.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Help.h; sourceTree = "<group>"; };
 		580BFB79273A594900500AA9 /* Help.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Help.m; sourceTree = "<group>"; };
 		587122D72738BA1C00FC296E /* YunZaiApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YunZaiApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		58725BA8273B9F69005C6456 /* UIView+UIView_Gradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+UIView_Gradient.h"; sourceTree = "<group>"; };
+		58725BA9273B9F69005C6456 /* UIView+UIView_Gradient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIView_Gradient.m"; sourceTree = "<group>"; };
 		5877D5952735384800C65732 /* YunZaiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YunZaiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5877D5982735384800C65732 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5877D59C2735384800C65732 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -761,6 +764,8 @@
 				58D7EA9F2738D61D007241B1 /* UIImage+ERCategory.m */,
 				58D7EAA02738D61D007241B1 /* UIColor+YH.h */,
 				58D7EAA12738D61D007241B1 /* UIFont+YH.h */,
+				58725BA8273B9F69005C6456 /* UIView+UIView_Gradient.h */,
+				58725BA9273B9F69005C6456 /* UIView+UIView_Gradient.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1117,6 +1122,7 @@
 				5898849E273900BF00C6B6D1 /* UIAlertView+LBXAlertAction.m in Sources */,
 				589884A9273900E200C6B6D1 /* DiscoverViewController.m in Sources */,
 				589884B32739011D00C6B6D1 /* WFCFavoriteTableViewController.m in Sources */,
+				58725BAA273B9F69005C6456 /* UIView+UIView_Gradient.m in Sources */,
 				589884BA2739013100C6B6D1 /* WFCFavoriteImageCell.m in Sources */,
 				5898849B273900B500C6B6D1 /* LBXAlertAction.m in Sources */,
 				589884A3273900CD00C6B6D1 /* QQLBXScanViewController.m in Sources */,

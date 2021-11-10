@@ -10,6 +10,20 @@ tab_contact = "通讯录";
 tab_discover = "发现";
 tab_me = "我的";
 
+/// WFCLoginViewController
+login_phone = "手机号码";
+login_vercode = "验证码";
+login_send_vercode = "获取验证码";
+login_action = "登录";
+login_failed = "登录失败";
+login_tip = "您的账号已在其他手机登录";
+login_konw = "知道了";
+login_vercode_sending = "短信发送中";
+login_send_vercode_sucess = "发送成功";
+login_send_vercode_failed = "发送失败";
+login_loging = "登录中...";
+
+
 Message="Message";
 Contact="Contact";
 Discover="Disconver";
