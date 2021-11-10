@@ -31,11 +31,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource = [NSMutableArray arrayWithArray:@[
-                       @{@"title":LocalizedString(@"Chatroom"),@"image":@"discover_chatroom",@"des":@"chatroom"},
-                       @{@"title":LocalizedString(@"Robot"),@"image":@"robot",@"des":@"robot"},
-                       @{@"title":LocalizedString(@"Channel"), @"image":@"chat_channel",@"des":@"channel"},
-                       @{@"title":LocalizedString(@"DevDocs"), @"image":@"dev_docs",@"des":@"Dev"}
-//                     @{@"title":@"Things", @"image":@"discover_things",@"des":@"Things"}
+        @{@"title":LocalizedString(@"Chatroom"),@"image":@"discover_chatroom",@"des":@"chatroom"},
+        @{@"title":LocalizedString(@"Robot"),@"image":@"robot",@"des":@"robot"},
+        @{@"title":LocalizedString(@"Channel"), @"image":@"chat_channel",@"des":@"channel"},
+        @{@"title":LocalizedString(@"DevDocs"), @"image":@"dev_docs",@"des":@"Dev"}
+        //                     @{@"title":@"Things", @"image":@"discover_things",@"des":@"Things"}
     ]];
     
     if(NSClassFromString(@"SDTimeLineTableViewController")) {
@@ -105,15 +105,15 @@
     
     NSString *des = self.dataSource[indexPath.section][@"des"];
     if ([des isEqualToString:@"moment"]) {
-         UIViewController *vc = [[NSClassFromString(@"SDTimeLineTableViewController") alloc] init];
-                   vc.hidesBottomBarWhenPushed = YES;
-                   [self.navigationController pushViewController:vc animated:YES];
+        UIViewController *vc = [[NSClassFromString(@"SDTimeLineTableViewController") alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
     if ([des isEqualToString:@"chatroom"]) {
         ChatroomListViewController *vc = [[ChatroomListViewController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
-                  [self.navigationController pushViewController:vc animated:YES];
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
     if ([des isEqualToString:@"channel"]) {
@@ -123,30 +123,30 @@
     }
     
     if ([des isEqualToString:@"robot"]) {
-            WFCUMessageListViewController *mvc = [[WFCUMessageListViewController alloc] init];
-            mvc.conversation = [[WFCCConversation alloc] init];
-            mvc.conversation.type = Single_Type;
-            mvc.conversation.target = @"FireRobot";
-            mvc.conversation.line = 0;
+        WFCUMessageListViewController *mvc = [[WFCUMessageListViewController alloc] init];
+        mvc.conversation = [[WFCCConversation alloc] init];
+        mvc.conversation.type = Single_Type;
+        mvc.conversation.target = @"FireRobot";
+        mvc.conversation.line = 0;
         
-            mvc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:mvc animated:YES];
+        mvc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:mvc animated:YES];
         
     }
     
-
+    
     if ([des isEqualToString:@"Dev"]) {
         WFCUBrowserViewController *vc = [[WFCUBrowserViewController alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         vc.url = @"http://docs.wildfirechat.cn";
         [self.navigationController pushViewController:vc animated:YES];
     }
-//
-//    if ([des isEqualToString:@"Things"]) {
-//        DeviceTableViewController *vc = [[DeviceTableViewController alloc] init];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
+    //
+    //    if ([des isEqualToString:@"Things"]) {
+    //        DeviceTableViewController *vc = [[DeviceTableViewController alloc] init];
+    //        vc.hidesBottomBarWhenPushed = YES;
+    //        [self.navigationController pushViewController:vc animated:YES];
+    //    }
     
     if ([des isEqualToString:@"Conference"]) {
         WFCUCreateConferenceViewController *vc = [[WFCUCreateConferenceViewController alloc] init];
@@ -188,31 +188,31 @@
     cell.textLabel.text = self.dataSource[indexPath.section][@"title"];
     cell.imageView.image = [UIImage imageNamed:self.dataSource[indexPath.section][@"image"]];
     if (indexPath.section == 0 && self.hasMoments) {
-            DiscoverMomentsTableViewCell *momentsCell = (DiscoverMomentsTableViewCell *)cell;
-            __weak typeof(self)ws = self;
+        DiscoverMomentsTableViewCell *momentsCell = (DiscoverMomentsTableViewCell *)cell;
+        __weak typeof(self)ws = self;
 #ifdef WFC_MOMENTS
-            int unread = [[WFMomentService sharedService] getUnreadCount];
-            if (unread) {
-                momentsCell.bubbleView.hidden = NO;
-                [momentsCell.bubbleView setBubbleTipNumber:unread];
-            } else {
-                momentsCell.bubbleView.hidden = YES;
-            }
-            NSMutableArray<WFMFeed *> *feeds = [[WFMomentService sharedService] restoreCache:nil];
-            if (feeds.count > 0) {
-                momentsCell.lastFeed = [feeds objectAtIndex:0];
-            } else {
-                [[WFMomentService sharedService] getFeeds:0 count:10 fromUser:nil success:^(NSArray<WFMFeed *> * _Nonnull feeds) {
-                    if (feeds.count) {
-                        [[WFMomentService sharedService] storeCache:feeds forUser:nil];
-                        [ws.tableView reloadData];
-                    }
-                } error:^(int error_code) {
-                    
-                }];
-            }
-#endif
+        int unread = [[WFMomentService sharedService] getUnreadCount];
+        if (unread) {
+            momentsCell.bubbleView.hidden = NO;
+            [momentsCell.bubbleView setBubbleTipNumber:unread];
+        } else {
+            momentsCell.bubbleView.hidden = YES;
         }
+        NSMutableArray<WFMFeed *> *feeds = [[WFMomentService sharedService] restoreCache:nil];
+        if (feeds.count > 0) {
+            momentsCell.lastFeed = [feeds objectAtIndex:0];
+        } else {
+            [[WFMomentService sharedService] getFeeds:0 count:10 fromUser:nil success:^(NSArray<WFMFeed *> * _Nonnull feeds) {
+                if (feeds.count) {
+                    [[WFMomentService sharedService] storeCache:feeds forUser:nil];
+                    [ws.tableView reloadData];
+                }
+            } error:^(int error_code) {
+                
+            }];
+        }
+#endif
+    }
     return cell;
 }
 
