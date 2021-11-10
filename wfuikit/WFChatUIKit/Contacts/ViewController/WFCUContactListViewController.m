@@ -100,12 +100,12 @@ static NSString *wfcstar = @"☆";
             [self updateRightBarBtn];
         }
     } else {
-      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add_friend"] style:UIBarButtonItemStyleDone target:self action:@selector(onRightBarBtn:)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add_friend"] style:UIBarButtonItemStyleDone target:self action:@selector(onRightBarBtn:)];
     }
     self.view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserInfoUpdated:) name:kUserInfoUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onContactsUpdated:) name:kFriendListUpdated object:nil];
-
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onClearAllUnread:) name:@"kTabBarClearBadgeNotification" object:nil];
     
@@ -130,7 +130,7 @@ static NSString *wfcstar = @"☆";
     }
     
     [self.searchController.searchBar setPlaceholder:WFCString(@"SearchContact")];
-
+    
     if (@available(iOS 11.0, *)) {
         self.navigationItem.searchController = _searchController;
         _searchController.hidesNavigationBarDuringPresentation = YES;
@@ -138,7 +138,7 @@ static NSString *wfcstar = @"☆";
         self.tableView.tableHeaderView = _searchController.searchBar;
     }
     self.definesPresentationContext = YES;
-
+    
     self.tableView.sectionIndexColor = [UIColor colorWithHexString:@"0x4e4e4e"];
     [self.view addSubview:self.tableView];
     
@@ -155,7 +155,7 @@ static NSString *wfcstar = @"☆";
         }
     }
 }
-    
+
 - (void)updateRightBarBtn {
     if(self.selectedContacts.count == 0) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:WFCString(@"Ok") style:UIBarButtonItemStyleDone target:self action:@selector(onRightBarBtn:)];
@@ -170,17 +170,17 @@ static NSString *wfcstar = @"☆";
 }
 
 - (void)onRightBarBtn:(UIBarButtonItem *)sender {
-  if (self.selectContact) {
-    if (self.selectedContacts) {
-        [self left:^{
-            self.selectResult(self.selectedContacts);
-        }];
+    if (self.selectContact) {
+        if (self.selectedContacts) {
+            [self left:^{
+                self.selectResult(self.selectedContacts);
+            }];
+        }
+    } else {
+        UIViewController *addFriendVC = [[WFCUAddFriendViewController alloc] init];
+        addFriendVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:addFriendVC animated:YES];
     }
-  } else {
-    UIViewController *addFriendVC = [[WFCUAddFriendViewController alloc] init];
-    addFriendVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:addFriendVC animated:YES];
-  }
 }
 
 - (void)onLeftBarBtn:(UIBarButtonItem *)sender {
@@ -266,22 +266,22 @@ static NSString *wfcstar = @"☆";
         dispatch_async(dispatch_get_main_queue(), ^{
             self.allFriendSectionDic = self.resultDic[@"infoDic"];
             self.allKeys = self.resultDic[@"allKeys"];
-          if (!self.selectContact && !self.searchController.active) {
-            UILabel *countLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 48)];
-            countLabel.textAlignment = NSTextAlignmentCenter;
-            
-            UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 0.5)];
-            line.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.8];
-            [countLabel addSubview:line];
-            
-            [countLabel setText:[NSString stringWithFormat:WFCString(@"NumberOfContacts"), (int)self.dataArray.count]];
-            countLabel.font = [UIFont systemFontOfSize:14];
-            countLabel.textColor = [UIColor grayColor];
-            
-            self.tableView.tableFooterView = countLabel;
-          } else {
-            self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-          }
+            if (!self.selectContact && !self.searchController.active) {
+                UILabel *countLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 48)];
+                countLabel.textAlignment = NSTextAlignmentCenter;
+                
+                UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 0.5)];
+                line.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.8];
+                [countLabel addSubview:line];
+                
+                [countLabel setText:[NSString stringWithFormat:WFCString(@"NumberOfContacts"), (int)self.dataArray.count]];
+                countLabel.font = [UIFont systemFontOfSize:14];
+                countLabel.textColor = [UIColor grayColor];
+                
+                self.tableView.tableFooterView = countLabel;
+            } else {
+                self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+            }
             
             [self.tableView reloadData];
             self.sorting = NO;
@@ -319,7 +319,7 @@ static NSString *wfcstar = @"☆";
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSArray *dataSource;
-
+    
     if (self.searchController.active || self.selectContact) {
         if ((self.showCreateChannel || self.showMentionAll) && !self.searchController.active) {
             if (section == 0) {
@@ -423,7 +423,7 @@ static NSString *wfcstar = @"☆";
             dataSource = self.allFriendSectionDic[self.allKeys[indexPath.section - 1]];
         }
     }
-
+    
     
     if (self.selectContact) {
         if (self.multiSelect && !self.withoutCheckBox) {
@@ -439,11 +439,11 @@ static NSString *wfcstar = @"☆";
             }
             if ([self.disableUsers containsObject:userInfo.userId]) {
                 selectCell.disabled = YES;
-              if(self.disableUsersSelected) {
-                selectCell.checked = YES;
-              } else {
-                selectCell.checked = NO;
-              }
+                if(self.disableUsersSelected) {
+                    selectCell.checked = YES;
+                } else {
+                    selectCell.checked = NO;
+                }
             } else {
                 selectCell.disabled = NO;
             }
@@ -462,19 +462,19 @@ static NSString *wfcstar = @"☆";
     } else {
         if (indexPath.section == 0 && !self.searchController.active) {
             if (indexPath.row == 0) {
-              WFCUNewFriendTableViewCell *contactCell = [self dequeueOrAllocNewFriendCell:tableView];
-              [contactCell refresh];
-
-              contactCell.nameLabel.text = WFCString(@"NewFriend");
-              contactCell.portraitView.image = [UIImage imageNamed:@"friend_request_icon"];
-              contactCell.nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
-              cell = contactCell;
+                WFCUNewFriendTableViewCell *contactCell = [self dequeueOrAllocNewFriendCell:tableView];
+                [contactCell refresh];
+                
+                contactCell.nameLabel.text = WFCString(@"NewFriend");
+                contactCell.portraitView.image = [UIImage imageNamed:@"friend_request_icon"];
+                contactCell.nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
+                cell = contactCell;
             } else {
-              WFCUContactTableViewCell *contactCell = [self dequeueOrAllocContactCell:tableView];
-              contactCell.nameLabel.text = WFCString(@"Group");
-              contactCell.portraitView.image = [UIImage imageNamed:@"contact_group_icon"];
-              contactCell.nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
-              cell = contactCell;
+                WFCUContactTableViewCell *contactCell = [self dequeueOrAllocContactCell:tableView];
+                contactCell.nameLabel.text = WFCString(@"Group");
+                contactCell.portraitView.image = [UIImage imageNamed:@"contact_group_icon"];
+                contactCell.nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
+                cell = contactCell;
             }
         } else {
             WFCUContactTableViewCell *contactCell = [self dequeueOrAllocContactCell:tableView];
@@ -560,7 +560,7 @@ static NSString *wfcstar = @"☆";
     if (title == nil || title.length == 0) {
         return nil;
     }
-
+    
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, self.view.frame.size.width, 30)];
     label.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:13];
@@ -589,13 +589,13 @@ static NSString *wfcstar = @"☆";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-  if (self.selectContact) {
+    if (self.selectContact) {
+        return index;
+    }
+    if (self.searchController.active) {
+        return index;
+    }
     return index;
-  }
-  if (self.searchController.active) {
-    return index;
-  }
-  return index;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
@@ -677,7 +677,7 @@ static NSString *wfcstar = @"☆";
         WFCUProfileTableViewController *vc = [[WFCUProfileTableViewController alloc] init];
         WFCCUserInfo *friend = dataSource[indexPath.row];
         vc.userId = friend.userId;
-
+        
         vc.hidesBottomBarWhenPushed = YES;
         
         [self.navigationController pushViewController:vc animated:YES];
@@ -731,35 +731,35 @@ static NSString *wfcstar = @"☆";
     if (!userList)
         return nil;
     NSArray *_keys = @[
-                       wfcstar,
-                       @"A",
-                       @"B",
-                       @"C",
-                       @"D",
-                       @"E",
-                       @"F",
-                       @"G",
-                       @"H",
-                       @"I",
-                       @"J",
-                       @"K",
-                       @"L",
-                       @"M",
-                       @"N",
-                       @"O",
-                       @"P",
-                       @"Q",
-                       @"R",
-                       @"S",
-                       @"T",
-                       @"U",
-                       @"V",
-                       @"W",
-                       @"X",
-                       @"Y",
-                       @"Z",
-                       @"#"
-                       ];
+        wfcstar,
+        @"A",
+        @"B",
+        @"C",
+        @"D",
+        @"E",
+        @"F",
+        @"G",
+        @"H",
+        @"I",
+        @"J",
+        @"K",
+        @"L",
+        @"M",
+        @"N",
+        @"O",
+        @"P",
+        @"Q",
+        @"R",
+        @"S",
+        @"T",
+        @"U",
+        @"V",
+        @"W",
+        @"X",
+        @"Y",
+        @"Z",
+        @"#"
+    ];
     
     NSMutableDictionary *infoDic = [NSMutableDictionary new];
     NSMutableArray *_tempOtherArr = [NSMutableArray new];
@@ -793,7 +793,7 @@ static NSString *wfcstar = @"☆";
         NSMutableArray *tempArr = [NSMutableArray new];
         for (id user in userList) {
             NSString *firstLetter;
-
+            
             WFCCUserInfo *userInfo = (WFCCUserInfo*)user;
             NSString *userName = userInfo.displayName;
             if (userInfo.friendAlias.length) {
@@ -831,9 +831,9 @@ static NSString *wfcstar = @"☆";
     
     NSArray *keys = [[infoDic allKeys]
                      sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                         
-                         return [obj1 compare:obj2 options:NSNumericSearch];
-                     }];
+        
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];
     NSMutableArray *allKeys = [[NSMutableArray alloc] initWithArray:keys];
     if ([allKeys containsObject:@"#"]) {
         [allKeys removeObject:@"#"];
