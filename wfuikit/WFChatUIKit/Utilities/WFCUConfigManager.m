@@ -100,7 +100,7 @@ static WFCUConfigManager *sharedSingleton = nil;
     if (darkModel) {
         return [UIColor colorWithRed:39/255.f green:39/255.f blue:39/255.f alpha:1.0f];
     } else {
-        return [UIColor colorWithRed:239/255.f green:239/255.f blue:239/255.f alpha:1.0f];
+        return [UIColor whiteColor];//[UIColor colorWithRed:239/255.f green:239/255.f blue:239/255.f alpha:1.0f];
     }
 }
 
@@ -139,7 +139,7 @@ static WFCUConfigManager *sharedSingleton = nil;
         if (self.selectedTheme == ThemeType_WFChat) {
             return [UIColor colorWithRed:0.1 green:0.27 blue:0.9 alpha:0.9];
         } else if(self.selectedTheme == ThemeType_White) {
-            return [UIColor colorWithHexString:@"0xededed"];;
+            return [UIColor whiteColor]; //[UIColor colorWithHexString:@"0xededed"];;
         }
         return [UIColor colorWithRed:239/255.f green:239/255.f blue:239/255.f alpha:1.0f];
     }
