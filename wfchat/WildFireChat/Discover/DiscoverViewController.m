@@ -31,11 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource = [NSMutableArray arrayWithArray:@[
-        @{@"title":LocalizedString(@"Chatroom"),@"image":@"discover_chatroom",@"des":@"chatroom"},
-        @{@"title":LocalizedString(@"Robot"),@"image":@"robot",@"des":@"robot"},
-        @{@"title":LocalizedString(@"Channel"), @"image":@"chat_channel",@"des":@"channel"},
-        @{@"title":LocalizedString(@"DevDocs"), @"image":@"dev_docs",@"des":@"Dev"}
-        //                     @{@"title":@"Things", @"image":@"discover_things",@"des":@"Things"}
+        @{@"title":LocalizedString(@"discover_chatroom"),@"image":@"discover_chat",@"des":LocalizedString(@"discover_chatroom")},
+        @{@"title":LocalizedString(@"discover_robot"),@"image":@"discover_robot",@"des":LocalizedString(@"discover_robot")},
     ]];
     
     if(NSClassFromString(@"SDTimeLineTableViewController")) {
@@ -55,7 +52,10 @@
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;
     }
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.01)];
+    
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.5)];
+    footerView.backgroundColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+    self.tableView.tableFooterView = footerView;
     [self.tableView reloadData];
     self.tableView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
     [self.view addSubview:self.tableView];
@@ -67,12 +67,6 @@
 
 - (void)onReceiveComments:(NSNotification *)notification {
     [self.tableView reloadData];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,17 +82,20 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 9)];
+    CGFloat height = section == 0 ? 13 : 9;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-10, 0, self.view.frame.size.width, height)];
     view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    view.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+    view.layer.borderWidth = 0.5;
     return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 9;
+    return  section == 0 ? 13 : 9;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 53;
+    return 64;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -131,7 +128,6 @@
         
         mvc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:mvc animated:YES];
-        
     }
     
     
@@ -141,12 +137,6 @@
         vc.url = @"http://docs.wildfirechat.cn";
         [self.navigationController pushViewController:vc animated:YES];
     }
-    //
-    //    if ([des isEqualToString:@"Things"]) {
-    //        DeviceTableViewController *vc = [[DeviceTableViewController alloc] init];
-    //        vc.hidesBottomBarWhenPushed = YES;
-    //        [self.navigationController pushViewController:vc animated:YES];
-    //    }
     
     if ([des isEqualToString:@"Conference"]) {
         WFCUCreateConferenceViewController *vc = [[WFCUCreateConferenceViewController alloc] init];
@@ -181,7 +171,7 @@
         }
     }
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.accessoryView = nil;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];

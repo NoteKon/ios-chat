@@ -23,6 +23,9 @@ login_send_vercode_sucess = "发送成功";
 login_send_vercode_failed = "发送失败";
 login_loging = "登录中...";
 
+/// DiscoverViewController
+discover_chatroom = "聊天室";
+discover_robot = "机器人";
 
 Message="Message";
 Contact="Contact";

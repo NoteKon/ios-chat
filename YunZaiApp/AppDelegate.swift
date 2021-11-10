@@ -58,6 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let savedToken = UserDefaults.standard.string(forKey: "savedToken")
         let savedUserId = UserDefaults.standard.string(forKey: "savedUserId")
         
+        WFCUConfigManager.global().selectedTheme = .ThemeType_White
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = WFCBaseTabBarController();
         window?.backgroundColor = .white

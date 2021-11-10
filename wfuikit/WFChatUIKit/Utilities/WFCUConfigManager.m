@@ -80,7 +80,7 @@ static WFCUConfigManager *sharedSingleton = nil;
         if (self.selectedTheme == ThemeType_WFChat) {
             return [UIColor colorWithRed:243/255.f green:243/255.f blue:243/255.f alpha:1.0f];
         } else if (self.selectedTheme == ThemeType_White) {
-            return [UIColor colorWithHexString:@"0xededed"];
+            return [UIColor whiteColor]; //[UIColor colorWithHexString:@"0xededed"];
         }
         return [UIColor whiteColor];
     }
