@@ -176,7 +176,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMessageUpdated:) name:kMessageUpdated object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMenuHidden:) name:UIMenuControllerDidHideMenuNotification object:nil];
-
+    
 #if WFCU_SUPPORT_VOIP
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCallStateChanged:) name:kCallStateUpdated object:nil];
 #endif
@@ -1018,7 +1018,7 @@
     if (refresh) {
         self.deliveryDict = [[WFCCIMService sharedWFCIMService] getMessageDelivery:self.conversation];
         WFCCGroupInfo *groupInfo = nil;
-
+        
         for (int i = 0; i < self.modelList.count; i++) {
             WFCUMessageModel *model  = self.modelList[i];
             model.deliveryDict = self.deliveryDict;
@@ -1074,7 +1074,7 @@
     if (refresh) {
         self.readDict = [[WFCCIMService sharedWFCIMService] getConversationRead:self.conversation];
         WFCCGroupInfo *groupInfo = nil;
-
+        
         for (int i = 0; i < self.modelList.count; i++) {
             WFCUMessageModel *model  = self.modelList[i];
             model.readDict = self.readDict;
@@ -1235,10 +1235,10 @@
     CGRect bount = self.view.bounds;
     [UIView animateWithDuration:0.5 animations:^{
         self.mentionedButton.frame = CGRectMake(bount.size.width+15, 240, 0, 30);
-        } completion:^(BOOL finished) {
-            [self.mentionedButton removeFromSuperview];
-            self.mentionedButton = nil;
-        }];
+    } completion:^(BOOL finished) {
+        [self.mentionedButton removeFromSuperview];
+        self.mentionedButton = nil;
+    }];
 }
 
 - (void)onMentionedBtn:(id)sender {
@@ -1298,10 +1298,10 @@
     CGRect bount = self.view.bounds;
     [UIView animateWithDuration:0.5 animations:^{
         self.unreadButton.frame = CGRectMake(bount.size.width+15, 200, 0, 30);
-        } completion:^(BOOL finished) {
-            [self.unreadButton removeFromSuperview];
-            self.unreadButton = nil;
-        }];
+    } completion:^(BOOL finished) {
+        [self.unreadButton removeFromSuperview];
+        self.unreadButton = nil;
+    }];
 }
 
 - (void)onUnreadBtn:(id)sender {
@@ -1586,7 +1586,7 @@
         [session overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker
                                    error:nil];
         
-    
+        
         
         WFCCSoundMessageContent *snc = (WFCCSoundMessageContent *)model.message.content;
         NSError *error = nil;
@@ -1599,7 +1599,7 @@
     } else if([model.message.content isKindOfClass:[WFCCVideoMessageContent class]]) {
         WFCCVideoMessageContent *videoMsg = (WFCCVideoMessageContent *)model.message.content;
         NSURL *url = [NSURL fileURLWithPath:[videoMsg.localPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-
+        
         
         if (!url) {
             [self.view makeToast:@"无法播放"];
@@ -1798,7 +1798,7 @@
         }
     } else if([model.message.content isKindOfClass:[WFCCConferenceInviteMessageContent class]]) {
         if ([WFAVEngineKit sharedEngineKit].supportConference) {
-            WFCCConferenceInviteMessageContent *invite = (WFCCConferenceInviteMessageContent *)model.message.content;   
+            WFCCConferenceInviteMessageContent *invite = (WFCCConferenceInviteMessageContent *)model.message.content;
             WFCUConferenceViewController *vc = [[WFCUConferenceViewController alloc] initWithInvite:invite];
             [[WFAVEngineKit sharedEngineKit] presentViewController:vc];
         }
@@ -1849,7 +1849,7 @@
         textContainer.backgroundColor = self.view.backgroundColor;
         
         UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - kStatusBarAndNavigationBarHeight - kTabbarSafeBottomMargin)];
-         textView.text = txtMsgContent.text;
+        textView.text = txtMsgContent.text;
         textView.textAlignment = NSTextAlignmentCenter;
         textView.font = [UIFont systemFontOfSize:28];
         textView.editable = NO;
@@ -1997,7 +1997,7 @@
                 NSLog(@"msg not exist");
                 return;
             }
-
+            
             if ([msg.content isKindOfClass:[WFCCTextMessageContent class]]) {
                 WFCCTextMessageContent *txtContent = (WFCCTextMessageContent *)msg.content;
                 
@@ -2007,7 +2007,7 @@
                 textContainer.backgroundColor = self.view.backgroundColor;
                 
                 UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - kStatusBarAndNavigationBarHeight - kTabbarSafeBottomMargin)];
-                 textView.text = txtContent.text;
+                textView.text = txtContent.text;
                 textView.textAlignment = NSTextAlignmentCenter;
                 textView.font = [UIFont systemFontOfSize:28];
                 textView.editable = NO;
@@ -2071,9 +2071,9 @@
                 }
             } else {
                 //有些消息内容不能在当前页面显示，跳转到新的页面显示
-//            if ([msg.content isKindOfClass:[WFCCSoundMessageContent class]])
-//            if ([msg.content isKindOfClass:[WFCCStickerMessageContent class]])
-//            if ([msg.content isKindOfClass:[WFCCVideoMessageContent class]])
+                //            if ([msg.content isKindOfClass:[WFCCSoundMessageContent class]])
+                //            if ([msg.content isKindOfClass:[WFCCStickerMessageContent class]])
+                //            if ([msg.content isKindOfClass:[WFCCVideoMessageContent class]])
                 WFCUQuoteViewController *vc = [[WFCUQuoteViewController alloc] init];
                 vc.messageUid = msg.messageUid;
                 [self.navigationController pushViewController:vc animated:YES];
@@ -2127,10 +2127,10 @@
     
     UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000;
     NSString *cacheDir = [[WFCUConfigManager globalManager] cachePathOf:self.conversation mediaType:Media_Type_IMAGE];
-
+    
     NSString *path = [cacheDir stringByAppendingPathComponent:[NSString stringWithFormat:@"img%lld.jpg", recordTime++]];
-        
-        
+    
+    
     WFCCImageMessageContent *imgContent = [WFCCImageMessageContent contentFrom:capturedImage cachePath:path fullImage:fullImage];
     [self sendMessage:imgContent];
 }
@@ -2157,7 +2157,7 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000;
         NSString *cacheDir = [[WFCUConfigManager globalManager] cachePathOf:self.conversation mediaType:Media_Type_IMAGE];
-
+        
         for (UIImage *image in selectedImages) {
             NSString *path = [cacheDir stringByAppendingPathComponent:[NSString stringWithFormat:@"img%lld.jpg", recordTime++]];
             
@@ -2209,7 +2209,7 @@
 
 - (void)recordDidEnd:(NSString *)dataUri duration:(long)duration error:(NSError *)error {
     NSString *cacheDir = [[WFCUConfigManager globalManager] cachePathOf:self.conversation mediaType:Media_Type_VOICE];
-
+    
     UInt64 recordTime = [[NSDate date] timeIntervalSince1970]*1000;
     NSString *amrPath = [cacheDir stringByAppendingPathComponent:[NSString stringWithFormat:@"img%lld.amr", recordTime]];
     
@@ -2218,9 +2218,9 @@
 
 - (BOOL)isEqualRect:(CGRect)first second:(CGRect)second {
     return first.origin.x == second.origin.x
-       && first.origin.y == second.origin.y
-       && first.size.width == second.size.width
-       && first.size.height == second.size.height;
+    && first.origin.y == second.origin.y
+    && first.size.width == second.size.width
+    && first.size.height == second.size.height;
 }
 
 - (void)willChangeFrame:(CGRect)newFrame withDuration:(CGFloat)duration keyboardShowing:(BOOL)keyboardShowing {
@@ -2361,7 +2361,7 @@
         vc.disableUserIds = disabledUser;
         vc.maxSelectCount = isAudioOnly ? [WFAVEngineKit sharedEngineKit].maxAudioCallCount : [WFAVEngineKit sharedEngineKit].maxVideoCallCount;
         vc.groupId = self.targetGroup.target;
-//        vc.maxSelectCount -= 1;
+        //        vc.maxSelectCount -= 1;
         NSMutableArray *candidateUser = [[NSMutableArray alloc] init];
         NSArray<WFCCGroupMember *> *members = [[WFCCIMService sharedWFCIMService] getGroupMembers:self.conversation.target forceUpdate:NO];
         for (WFCCGroupMember *member in members) {
@@ -2588,11 +2588,11 @@
     WFCCMessage *message = self.cell4Menu.model.message;
     if([[WFCCIMService sharedWFCIMService] isCommercialServer]) {
         __weak typeof(self)weakSelf = self;
-
+        
         UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:WFCString(@"ConfirmDelete") message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-
+        
         UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:WFCString(@"Cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-
+            
         }];
         
         UIAlertAction *actionLocalDelete = [UIAlertAction actionWithTitle:WFCString(@"DeleteLocalMsg") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
