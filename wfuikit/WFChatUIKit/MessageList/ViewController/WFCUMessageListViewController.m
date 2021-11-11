@@ -214,6 +214,7 @@
     [self setupNavigationItem];
     
     self.chatInputBar = [[WFCUChatInputBar alloc] initWithSuperView:self.backgroundView conversation:self.conversation delegate:self];
+    self.chatInputBar.backgroundColor = [UIColor whiteColor];
     
     self.orignalDraft = [[WFCCIMService sharedWFCIMService] getConversationInfo:self.conversation].draft;
     
@@ -749,8 +750,8 @@
     
     [self.backgroundView addSubview:self.collectionView];
     
-    self.backgroundView.backgroundColor = [UIColor whiteColor];
-    self.collectionView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    self.backgroundView.backgroundColor = [UIColor colorWithHexString:@"0xF3F3F3"];
+    self.collectionView.backgroundColor = [UIColor colorWithHexString:@"0xF3F3F3"];//[WFCUConfigManager globalManager].backgroudColor;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.alwaysBounceVertical = YES;
@@ -1638,6 +1639,7 @@
     }
     
     cell.delegate = self;
+    cell.backgroundColor = [UIColor colorWithHexString:@"0xF3F3F3"];
     
     [[NSNotificationCenter defaultCenter] removeObserver:cell];
     cell.model = model;

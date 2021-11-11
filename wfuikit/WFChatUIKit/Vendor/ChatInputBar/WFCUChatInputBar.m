@@ -141,7 +141,7 @@
     self.backgroundColor = [UIColor colorWithHexString:@"0xf7f7f7"];
     CGRect parentRect = self.bounds;
     CGFloat voiceAndPttOffset;
-    self.voiceSwitchBtn = [[UIButton alloc] initWithFrame:CGRectMake(CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_ICON_SIZE, CHAT_INPUT_BAR_ICON_SIZE)];
+    self.voiceSwitchBtn = [[UIButton alloc] initWithFrame:CGRectMake(CHAT_INPUT_BAR_PADDING, 11, CHAT_INPUT_BAR_ICON_SIZE, CHAT_INPUT_BAR_ICON_SIZE)];
     [self.voiceSwitchBtn setImage:[UIImage imageNamed:@"chat_input_bar_voice"] forState:UIControlStateNormal];
     [self.voiceSwitchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.voiceSwitchBtn addTarget:self action:@selector(onSwitchBtn:) forControlEvents:UIControlEventTouchDown];
@@ -159,13 +159,13 @@
     }
 #endif
     
-    self.pluginSwitchBtn = [[UIButton alloc] initWithFrame:CGRectMake(parentRect.size.width - CHAT_INPUT_BAR_HEIGHT + CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_ICON_SIZE, CHAT_INPUT_BAR_ICON_SIZE)];
+    self.pluginSwitchBtn = [[UIButton alloc] initWithFrame:CGRectMake(parentRect.size.width - CHAT_INPUT_BAR_HEIGHT + CHAT_INPUT_BAR_PADDING, 11, CHAT_INPUT_BAR_ICON_SIZE, CHAT_INPUT_BAR_ICON_SIZE)];
     [self.pluginSwitchBtn setImage:[UIImage imageNamed:@"chat_input_bar_plugin"] forState:UIControlStateNormal];
     [self.pluginSwitchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.pluginSwitchBtn addTarget:self action:@selector(onSwitchBtn:) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.pluginSwitchBtn];
     
-    self.emojSwitchBtn = [[UIButton alloc] initWithFrame:CGRectMake(parentRect.size.width - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_ICON_SIZE, CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_ICON_SIZE, CHAT_INPUT_BAR_ICON_SIZE)];
+    self.emojSwitchBtn = [[UIButton alloc] initWithFrame:CGRectMake(parentRect.size.width - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_ICON_SIZE, 11, CHAT_INPUT_BAR_ICON_SIZE, CHAT_INPUT_BAR_ICON_SIZE)];
     [self.emojSwitchBtn setImage:[UIImage imageNamed:@"chat_input_bar_emoj"] forState:UIControlStateNormal];
     [self.emojSwitchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.emojSwitchBtn addTarget:self action:@selector(onSwitchBtn:) forControlEvents:UIControlEventTouchDown];
@@ -183,9 +183,12 @@
     [self.textInputView setTextColor:[UIColor blackColor]];
     [self.textInputView setFont:[UIFont systemFontOfSize:16]];
     [self.textInputView setReturnKeyType:UIReturnKeySend];
-    self.textInputView.backgroundColor = [UIColor whiteColor];
+    self.textInputView.backgroundColor = [UIColor colorWithHexString:@"#F5F5F8"];
     self.textInputView.enablesReturnKeyAutomatically = YES;
     self.textInputView.userInteractionEnabled = YES;
+    self.textInputView.layer.borderColor = [UIColor colorWithHexString:@"#6B6B6B" alpha:0.13].CGColor;
+    self.textInputView.layer.borderWidth = 1;
+    self.textInputView.layer.cornerRadius = 16;
     [self addSubview:self.textInputView];
     
     self.inputCoverView = [[UIView alloc] initWithFrame:self.textInputView.bounds];
@@ -206,7 +209,7 @@
     [self addSubview:self.voiceInputBtn];
     
     self.layer.borderWidth = 0.5f;
-    self.layer.borderColor = HEXCOLOR(0xdbdbdd).CGColor;
+    self.layer.borderColor = [UIColor colorWithHexString:@"#000000" alpha:0.1].CGColor;
     
     self.inputBarStatus = ChatInputBarDefaultStatus;
     

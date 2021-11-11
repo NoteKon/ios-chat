@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <WFChatClient/WFCChatClient.h>
 
-#define CHAT_INPUT_BAR_HEIGHT 48
+#define CHAT_INPUT_BAR_HEIGHT 54
 #define TYPING_INTERVAL 10
 
 @interface WFCUMetionInfo : NSObject
