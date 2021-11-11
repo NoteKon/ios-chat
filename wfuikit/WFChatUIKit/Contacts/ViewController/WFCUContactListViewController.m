@@ -80,7 +80,7 @@ static NSString *wfcstar = @"☆";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     CGRect frame = self.view.frame;
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     self.tableView.delegate = self;
@@ -88,10 +88,11 @@ static NSString *wfcstar = @"☆";
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;
     }
-    self.tableView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];//[WFCUConfigManager globalManager].backgroudColor;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.tableView.tableHeaderView = nil;
+    self.tableView.separatorColor = [UIColor colorWithHexString:@"0x141414" alpha:0.1];
     if (self.selectContact) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:WFCString(@"Cancel") style:UIBarButtonItemStyleDone target:self action:@selector(onLeftBarBtn:)];
         
@@ -119,7 +120,7 @@ static NSString *wfcstar = @"☆";
     if (@available(iOS 13, *)) {
         self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
         self.searchController.searchBar.searchTextField.backgroundColor = [WFCUConfigManager globalManager].naviBackgroudColor;
-        UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
+        UIImage *searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
         [self.searchController.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
     } else {
         [self.searchController.searchBar setValue:WFCString(@"Cancel") forKey:@"_cancelButtonText"];
@@ -271,7 +272,7 @@ static NSString *wfcstar = @"☆";
                 countLabel.textAlignment = NSTextAlignmentCenter;
                 
                 UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 0.5)];
-                line.backgroundColor = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.8];
+                line.backgroundColor = [UIColor colorWithHexString:@"0x141414" alpha:0.1];
                 [countLabel addSubview:line];
                 
                 [countLabel setText:[NSString stringWithFormat:WFCString(@"NumberOfContacts"), (int)self.dataArray.count]];
@@ -292,11 +293,6 @@ static NSString *wfcstar = @"☆";
             self.activityIndicator.hidden = YES;
         });
     });
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)onFriendRequestUpdated:(id)sender {
@@ -345,7 +341,7 @@ static NSString *wfcstar = @"☆";
     WFCUContactTableViewCell *contactCell = [tableView dequeueReusableCellWithIdentifier:REUSEIDENTIFY];
     if (contactCell == nil) {
         contactCell = [[WFCUContactTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:REUSEIDENTIFY];
-        contactCell.separatorInset = UIEdgeInsetsMake(0, 68, 0, 0);
+        contactCell.separatorInset = UIEdgeInsetsMake(0, 78, 0, 0);
     }
     return contactCell;
 }
@@ -354,7 +350,7 @@ static NSString *wfcstar = @"☆";
     WFCUNewFriendTableViewCell *contactCell = [tableView dequeueReusableCellWithIdentifier:NEWFRIEND_REUSEIDENTIFY];
     if (contactCell == nil) {
         contactCell = [[WFCUNewFriendTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NEWFRIEND_REUSEIDENTIFY];
-        contactCell.separatorInset = UIEdgeInsetsMake(0, 68, 0, 0);
+        contactCell.separatorInset = UIEdgeInsetsMake(0, 78, 0, 0);
     }
     return contactCell;
 }
@@ -385,7 +381,7 @@ static NSString *wfcstar = @"☆";
                 } else {
                     cell.textLabel.text = WFCString(@"MentionAll");
                 }
-                cell.separatorInset = UIEdgeInsetsMake(0, 68, 0, 0);
+                cell.separatorInset = UIEdgeInsetsMake(0, 78, 0, 0);
                 return cell;
             }
             dataSource = self.allFriendSectionDic[self.allKeys[indexPath.section-1]];
@@ -400,20 +396,19 @@ static NSString *wfcstar = @"☆";
                 contactCell.nameLabel.text = WFCString(@"NewFriend");
                 contactCell.portraitView.image = [UIImage imageNamed:@"friend_request_icon"];
                 [contactCell refresh];
-                contactCell.separatorInset = UIEdgeInsetsMake(0, 60, 0, 0);
+                contactCell.separatorInset = UIEdgeInsetsMake(0, 78, 0, 0);
                 
                 contactCell.nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
                 return contactCell;
             } else if(indexPath.row == 1) {
                 WFCUContactTableViewCell *contactCell = [self dequeueOrAllocContactCell:tableView];
-                contactCell.separatorInset = UIEdgeInsetsMake(0, 60, 0, 0);
+                contactCell.separatorInset = UIEdgeInsetsMake(0, 78, 0, 0);
                 contactCell.nameLabel.text = WFCString(@"Group");
                 contactCell.portraitView.image = [UIImage imageNamed:@"contact_group_icon"];
                 contactCell.nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
                 return contactCell;
             } else {
                 WFCUContactTableViewCell *contactCell = [self dequeueOrAllocContactCell:tableView];
-                
                 contactCell.nameLabel.text = WFCString(@"Channel");
                 contactCell.portraitView.image = [UIImage imageNamed:@"contact_channel_icon"];
                 contactCell.nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
@@ -459,6 +454,7 @@ static NSString *wfcstar = @"☆";
             selectCell.nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
             cell = selectCell;
         }
+        cell.separatorInset = UIEdgeInsetsZero;
     } else {
         if (indexPath.section == 0 && !self.searchController.active) {
             if (indexPath.row == 0) {
@@ -536,7 +532,7 @@ static NSString *wfcstar = @"☆";
         if(section == 0)
             return 0;
     }
-    return 30;
+    return 42;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -561,9 +557,24 @@ static NSString *wfcstar = @"☆";
         return nil;
     }
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, self.view.frame.size.width, 30)];
-    label.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:13];
+    CGFloat width = self.view.frame.size.width;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 42)];
+    UIColor *lineColor = [UIColor colorWithHexString:@"0x141414" alpha:0.1];
+    CGFloat offsetX = 0;
+    if (self.selectContact == NO) {
+        offsetX = section == 1 ? 78 : 0;
+    }
+    UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(offsetX, 0, width - offsetX, 0.5)];
+    topLineView.backgroundColor = lineColor;
+    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 0.5, width, 0.5)];
+    bottomLineView.backgroundColor = lineColor;
+    [view addSubview:topLineView];
+    [view addSubview:bottomLineView];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, width, 42)];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
+    label.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.6];
     label.textAlignment = NSTextAlignmentLeft;
     if ([title isEqualToString:wfcstar]) {
         title = @"☆ 星标好友";
@@ -574,7 +585,7 @@ static NSString *wfcstar = @"☆";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 52;
+    return 68;
 }
 
 - (UIActivityIndicatorView *)activityIndicator {
@@ -599,7 +610,7 @@ static NSString *wfcstar = @"☆";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];//[WFCUConfigManager globalManager].backgroudColor;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

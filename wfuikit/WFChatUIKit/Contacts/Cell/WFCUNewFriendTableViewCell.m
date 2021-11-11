@@ -25,8 +25,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    self.portraitView.frame = CGRectMake(16, (self.frame.size.height - 40) / 2.0, 40, 40);
-    self.nameLabel.frame = CGRectMake(16 + 40 + 11, (self.frame.size.height - 16) / 2.0, [UIScreen mainScreen].bounds.size.width - 64, 16);
+    self.portraitView.frame = CGRectMake(21, (self.frame.size.height - 40) / 2.0, 40, 40);
+    self.nameLabel.frame = CGRectMake(21 + 40 + 16, (self.frame.size.height - 16) / 2.0, [UIScreen mainScreen].bounds.size.width - 64, 16);
 }
 
 - (void)onFriendRequestUpdated:(NSNotification *)notification {
@@ -63,9 +63,9 @@
 
 - (UIImageView *)portraitView {
     if (!_portraitView) {
-        _portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 10, 40, 40)];
+        _portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
         _portraitView.layer.masksToBounds = YES;
-        _portraitView.layer.cornerRadius = 4.f;
+        _portraitView.layer.cornerRadius = 20.f;
         [self.contentView addSubview:_portraitView];
     }
     return _portraitView;
@@ -73,9 +73,9 @@
 
 - (UILabel *)nameLabel {
     if (!_nameLabel) {
-        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(16 + 40 + 11, 19, [UIScreen mainScreen].bounds.size.width - 64, 16)];
-        _nameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:15];
-        _nameLabel.textColor = [UIColor colorWithHexString:@"0x1d1d1d"];
+        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, [UIScreen mainScreen].bounds.size.width - 64, 16)];
+        _nameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
+        _nameLabel.textColor = [UIColor blackColor];
         [self.contentView addSubview:_nameLabel];
     }
     return _nameLabel;

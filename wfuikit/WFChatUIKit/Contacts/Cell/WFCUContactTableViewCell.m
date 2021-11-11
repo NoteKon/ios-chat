@@ -37,8 +37,8 @@
         _nameLabel.frame = CGRectMake(72, (self.frame.size.height - 20) / 2.0, [UIScreen mainScreen].bounds.size.width - 64, 20);
         _nameLabel.font = [UIFont systemFontOfSize:20];
       } else {
-          _portraitView.frame = CGRectMake(16, (self.frame.size.height - 40) / 2.0, 40, 40);
-          _nameLabel.frame = CGRectMake(16 + 40 + 11, (self.frame.size.height - 17) / 2.0, [UIScreen mainScreen].bounds.size.width - (16 + 40 + 11), 17);
+          _portraitView.frame = CGRectMake(21, (self.frame.size.height - 40) / 2.0, 40, 40);
+          _nameLabel.frame = CGRectMake(21 + 40 + 16, (self.frame.size.height - 16) / 2.0, [UIScreen mainScreen].bounds.size.width - (21 + 40 + 16), 16);
             _nameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
       }
 }
@@ -81,7 +81,7 @@
     if (!_portraitView) {
         _portraitView = [UIImageView new];
         _portraitView.layer.masksToBounds = YES;
-        _portraitView.layer.cornerRadius = 3.f;
+        _portraitView.layer.cornerRadius = 20.f;
         [self.contentView addSubview:_portraitView];
     }
     return _portraitView;
@@ -91,6 +91,7 @@
     if (!_nameLabel) {
         _nameLabel = [UILabel new];
         _nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
+        _nameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
         [self.contentView addSubview:_nameLabel];
     }
     return _nameLabel;
