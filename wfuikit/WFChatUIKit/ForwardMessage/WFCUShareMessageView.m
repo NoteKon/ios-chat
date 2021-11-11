@@ -20,6 +20,13 @@
 @end
 
 @implementation WFCUShareMessageView
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.layer.cornerRadius = 5;
+    self.clipsToBounds = YES;
+}
+
 - (void)updateUI {
     self.digestBackgrouView.clipsToBounds = YES;
     self.digestBackgrouView.layer.masksToBounds = YES;
@@ -28,8 +35,8 @@
     self.messageTextView.layer.masksToBounds = YES;
     self.messageTextView.layer.cornerRadius = 8.f;
     self.messageTextView.contentInset = UIEdgeInsetsMake(2, 8, 2, 2);
-    self.messageTextView.layer.borderWidth = 0.5f;
-    self.messageTextView.layer.borderColor = [[UIColor greenColor] CGColor];
+    //self.messageTextView.layer.borderWidth = 0.5f;
+    //self.messageTextView.layer.borderColor = [[UIColor greenColor] CGColor];
 }
 
 - (IBAction)sendAction:(id)sender {
