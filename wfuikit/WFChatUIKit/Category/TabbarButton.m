@@ -79,7 +79,7 @@ NSString *const kTabBarClearBadgeNotification = @"kTabBarClearBadgeNotification"
 - (void)setUp
 {
     CGFloat cornerRadius = (kBtnHeight > kBtnWidth ? kBtnWidth / 2.0 : kBtnHeight / 2.0);
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = [UIColor colorWithRed:255/255.0 green:92/255.0 blue:100/255.0 alpha:1.0];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.titleLabel.font = [UIFont systemFontOfSize:12.f];
     _maxDistance = cornerRadius * 5;

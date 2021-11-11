@@ -16,7 +16,6 @@
 @implementation WFCUConversationTableViewCell
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -41,7 +40,8 @@
     } else if(userInfo.displayName.length > 0) {
         self.targetView.text = userInfo.displayName;
     } else {
-        self.targetView.text = [NSString stringWithFormat:@"user<%@>", self.info.conversation.target];
+        //self.targetView.text = [NSString stringWithFormat:@"user<%@>", self.info.conversation.target];
+        self.targetView.text = [NSString stringWithFormat:@"%@", self.info.conversation.target];
     }
 }
 
@@ -169,9 +169,9 @@
 
 - (void)updateDigestFrame:(BOOL)isSending {
     if (isSending) {
-        _digestView.frame = CGRectMake(16 + 48 + 12 + 18, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16 - 18, 19);
+        _digestView.frame = CGRectMake(16 + 40 + 14 + 18, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16 - 18, 13);
     } else {
-        _digestView.frame = CGRectMake(16 + 48 + 12, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16, 19);
+        _digestView.frame = CGRectMake(16 + 40 + 14, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16, 13);
     }
 }
 - (void)update:(WFCCConversation *)conversation {
@@ -271,7 +271,7 @@
 
 - (UIImageView *)statusView {
     if (!_statusView) {
-        _statusView = [[UIImageView alloc] initWithFrame:CGRectMake(16 + 48 + 12, 42, 16, 16)];
+        _statusView = [[UIImageView alloc] initWithFrame:CGRectMake(16 + 40 + 12, 42, 16, 16)];
         _statusView.image = [UIImage imageNamed:@"conversation_message_sending"];
         [self.contentView addSubview:_statusView];
     }
@@ -280,9 +280,10 @@
 
 - (UILabel *)targetView {
     if (!_targetView) {
-        _targetView = [[UILabel alloc] initWithFrame:CGRectMake(16 + 40 + 14, 16, [UIScreen mainScreen].bounds.size.width - 70  - 68, 20)];
+        _targetView = [[UILabel alloc] initWithFrame:CGRectMake(16 + 40 + 14, 16, [UIScreen mainScreen].bounds.size.width - 70  - 68, 16)];
         _targetView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
         _targetView.textColor = [UIColor blackColor]; //[WFCUConfigManager globalManager].textColor;
+        _targetView.textAlignment = NSTextAlignmentLeft;
         [self.contentView addSubview:_targetView];
     }
     return _targetView;
@@ -290,10 +291,11 @@
 
 - (UILabel *)digestView {
     if (!_digestView) {
-        _digestView = [[UILabel alloc] initWithFrame:CGRectMake(16 + 48 + 12, 42, [UIScreen mainScreen].bounds.size.width - 76  - 16 - 16, 19)];
-        _digestView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
+        _digestView = [[UILabel alloc] initWithFrame:CGRectMake(16 + 40 + 14, 40, [UIScreen mainScreen].bounds.size.width - 70  - 16 - 14, 13)];
+        _digestView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:12];
+        _digestView.textAlignment = NSTextAlignmentLeft;
         _digestView.lineBreakMode = NSLineBreakByTruncatingTail;
-        _digestView.textColor = [UIColor colorWithHexString:@"b3b3b3"];
+        _digestView.textColor = [UIColor colorWithHexString:@"0xB8B5AF"];
         [self.contentView addSubview:_digestView];
     }
     return _digestView;
@@ -310,7 +312,7 @@
 
 - (UILabel *)timeView {
     if (!_timeView) {
-        _timeView = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 52  - 10, 14, 52, 12)];
+        _timeView = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 52  - 10, 14, 52, 10)];
         _timeView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:10];
         _timeView.textAlignment = NSTextAlignmentRight;
         _timeView.textColor = [UIColor colorWithHexString:@"0xB8B5AF"];

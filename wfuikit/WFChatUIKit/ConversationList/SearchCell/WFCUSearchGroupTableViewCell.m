@@ -37,7 +37,7 @@
 - (UIImageView *)portrait {
     if (!_portrait) {
         _portrait = [UIImageView new];
-        _portrait.layer.cornerRadius = 4;
+        _portrait.layer.cornerRadius = 20;
         _portrait.layer.masksToBounds = YES;
         [self.contentView addSubview:_portrait];
     }
@@ -47,8 +47,8 @@
 - (UILabel *)name {
     if (!_name) {
         _name = [UILabel new];
-        [_name setFont:[UIFont pingFangSCWithWeight:FontWeightStyleRegular size:15]];
-        _name.textColor = [UIColor colorWithHexString:@"0x1d1d1d"];
+        [_name setFont:[UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16]];
+        _name.textColor = [UIColor blackColor];
         [self.contentView addSubview:_name];
     }
     return _name;

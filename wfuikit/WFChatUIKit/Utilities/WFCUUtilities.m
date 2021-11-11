@@ -49,9 +49,18 @@
     NSInteger curYears = [calendar component:NSCalendarUnitYear fromDate:current];
 
     if ([calendar isDateInToday:date]) {
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"HH:mm"];
-        return [formatter stringFromDate:date];
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//        [formatter setDateFormat:@"HH:mm"];
+//        return [formatter stringFromDate:date];
+        NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+        double distanceTime = now - timestamp;
+        if (distanceTime < 60) {
+            return @"刚刚";
+        }else if (distanceTime < 60 * 60) {
+            return  [NSString stringWithFormat:@"%ld分钟前",(long)distanceTime/60];
+        } else {
+            return  [NSString stringWithFormat:@"%ld小时前",(long)distanceTime/60/60];
+        }
     } else if([calendar isDateInYesterday:date]) {
         return @"昨天";
     } else {

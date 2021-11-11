@@ -89,6 +89,7 @@
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.tableView.separatorColor = [UIColor clearColor];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"expansion"];
     if (@available(iOS 11.0, *)) {
         self.navigationItem.searchController = _searchController;
@@ -841,7 +842,7 @@
         }
         return 60;
     } else {
-        return 72;
+        return 75;
     }
 }
 
