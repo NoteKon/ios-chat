@@ -26,7 +26,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     if (!self.isBig) {
-        _potraitView.frame = CGRectMake(16, 10, 40, 40);
+        _potraitView.frame = CGRectMake(16, 12, 40, 40);
         _targetView.frame = CGRectMake(16 + 40 + 20, 11, [UIScreen mainScreen].bounds.size.width - (16 + 40 + 20 + 100), 16);
         _targetView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:15];
         _digestView.frame = CGRectMake(16 + 40 + 20, 11 + 16 + 8, [UIScreen mainScreen].bounds.size.width - (16 + 40 + 20 + 20), 19);
@@ -202,7 +202,7 @@
         self.targetView.text = WFCString(@"Chatroom");
     }
     
-    self.potraitView.layer.cornerRadius = 4.f;
+    self.potraitView.layer.cornerRadius = 20.f;
     self.digestView.attributedText = nil;
     if (_info.draft.length) {
         NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:WFCString(@"[Draft]") attributes:@{NSForegroundColorAttributeName : [UIColor redColor]}];
@@ -261,9 +261,9 @@
 
 - (UIImageView *)potraitView {
     if (!_potraitView) {
-        _potraitView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 12, 48, 48)];
+        _potraitView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 12, 40, 40)];
         _potraitView.clipsToBounds = YES;
-        _potraitView.layer.cornerRadius = 4.f;
+        _potraitView.layer.cornerRadius = 20.f;
         [self.contentView addSubview:_potraitView];
     }
     return _potraitView;

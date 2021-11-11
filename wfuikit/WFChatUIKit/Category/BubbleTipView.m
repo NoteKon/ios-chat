@@ -84,11 +84,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    // return;
+  
     CGRect newFrame = self.frame;
-    CGRect superviewFrame =
-    CGRectIsEmpty(_frameToPositionInRelationWith) ? self.superview.frame : _frameToPositionInRelationWith;
-    
     CGFloat textWidth = [self sizeOfTextForCurrentSettings].width;
     
     CGFloat viewWidth = textWidth + kbubbleTipTextSideMargin + (kMarginToDrawInside * 2);
@@ -97,8 +94,8 @@
     if (self.isShowNotificationNumber) {
         newFrame.size.width = viewWidth;
         newFrame.size.height = viewHeight;
-        newFrame.origin.y = 0;
-        newFrame.origin.x = 48;
+        newFrame.origin.y = 37;
+        newFrame.origin.x = [UIScreen mainScreen].bounds.size.width - viewWidth - 10;
     }else{
         newFrame.size.width = 10;
         newFrame.size.height = 10;
