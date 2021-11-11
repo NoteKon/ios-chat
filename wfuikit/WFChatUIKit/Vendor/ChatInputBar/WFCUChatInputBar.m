@@ -33,7 +33,7 @@
 #import <PttClient/WFPttClient.h>
 #import "WFPttViewController.h"
 #endif
-
+#import "UITextView+Placeholder.h"
 
 #define CHAT_INPUT_BAR_PADDING 8
 #define CHAT_INPUT_BAR_ICON_SIZE (CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_PADDING - CHAT_INPUT_BAR_PADDING)
@@ -122,6 +122,7 @@
         self.conversation = conversation;
         self.lastTypingTime = 0;
         self.backupFrame = CGRectZero;
+        self.textInputViewTintColor = [WFCUConfigManager globalManager].textFieldColor;
     }
     return self;
 }
@@ -189,6 +190,7 @@
     self.textInputView.layer.borderColor = [UIColor colorWithHexString:@"#6B6B6B" alpha:0.13].CGColor;
     self.textInputView.layer.borderWidth = 1;
     self.textInputView.layer.cornerRadius = 16;
+    self.textInputView.placeholder = @"请输入内容...";
     [self addSubview:self.textInputView];
     
     self.inputCoverView = [[UIView alloc] initWithFrame:self.textInputView.bounds];

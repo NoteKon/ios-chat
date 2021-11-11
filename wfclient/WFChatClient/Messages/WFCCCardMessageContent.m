@@ -98,8 +98,8 @@
 
 - (NSString *)digest:(WFCCMessage *)message {
     if (self.displayName.length) {
-        return [NSString stringWithFormat:@"[名片]:%@", self.displayName];
+        return [NSString stringWithFormat:@"[个人名片] %@", self.displayName];
     }
-    return @"[名片]";
+    return @"[个人名片]";
 }
 @end

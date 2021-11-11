@@ -9,7 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="ShareMessageView" id="iN0-l3-epB" customClass="WFCUShareMessageView">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="328"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="245"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发送给:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzK-K0-iW6">
@@ -47,7 +47,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-rc-R89">
                     <rect key="frame" x="16" y="113.5" width="265" height="14"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Digest" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VB-O3-qGY">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[个人名片]" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2VB-O3-qGY">
                             <rect key="frame" x="2" y="0.0" width="263" height="14"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="tintColor" red="0.8326586787564767" green="0.8326586787564767" blue="0.8326586787564767" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,8 +68,9 @@
                     </constraints>
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zpX-1J-0nB">
-                    <rect key="frame" x="19" y="142.5" width="262" height="117.5"/>
+                    <rect key="frame" x="19" y="142.5" width="262" height="34.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" red="0.24313725490196078" green="0.93333333333333335" blue="0.92941176470588238" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="VmY-q8-xGy"/>
                     </constraints>
@@ -77,7 +78,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                 </textView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcC-gv-24h" userLabel="BottomView">
-                    <rect key="frame" x="0.0" y="278" width="300" height="50"/>
+                    <rect key="frame" x="0.0" y="195" width="300" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKP-HU-5Tc">
                             <rect key="frame" x="0.0" y="1" width="149.5" height="49"/>

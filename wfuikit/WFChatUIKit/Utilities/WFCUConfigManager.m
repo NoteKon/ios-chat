@@ -211,4 +211,8 @@ static WFCUConfigManager *sharedSingleton = nil;
     }
     return path;
 }
+
+- (UIColor *)textFieldColor {
+    return [UIColor colorWithHexString:@"0x3eeeed"];
+}
 @end
