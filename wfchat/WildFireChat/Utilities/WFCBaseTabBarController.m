@@ -69,7 +69,8 @@
     [self addChildViewController:nav];
     
     /// 我的
-    vc = [WFCMeTableViewController new];
+//    vc = [WFCMeTableViewController new];
+    vc = [[UIStoryboard storyboardWithName:@"My" bundle: nil] instantiateViewControllerWithIdentifier:@"MyViewController"];
     vc.title = LocalizedString(@"tab_me");
     nav = [[UINavigationController alloc] initWithRootViewController:vc];
     item = nav.tabBarItem;

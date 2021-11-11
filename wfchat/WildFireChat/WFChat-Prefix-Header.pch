@@ -27,5 +27,6 @@
 #import "UIColor+YH.h"
 #import "Masonry.h"
 #import "UIView+UIView_Gradient.h"
+#import "YunZaiApp-Swift.h"
 
 #endif /* WFChat_Prefix_Header_pch */

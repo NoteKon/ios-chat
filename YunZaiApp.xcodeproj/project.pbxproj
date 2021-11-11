@@ -15,6 +15,8 @@
 		5877D5A02735384800C65732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5877D59E2735384800C65732 /* Main.storyboard */; };
 		5877D5A22735384B00C65732 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5877D5A12735384B00C65732 /* Assets.xcassets */; };
 		5877D5A52735384B00C65732 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5877D5A32735384B00C65732 /* LaunchScreen.storyboard */; };
+		5878B3D7273D4AD2006120C5 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B3D6273D4AD2006120C5 /* MyViewController.swift */; };
+		5878B3D9273D4AE4006120C5 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5878B3D8273D4AE4006120C5 /* My.storyboard */; };
 		5898848E2738F90A00C6B6D1 /* WFCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAFF2738D61E007241B1 /* WFCConfig.m */; };
 		5898848F2739002700C6B6D1 /* AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAA42738D61D007241B1 /* AppService.m */; };
 		589884902739006200C6B6D1 /* PCSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EACB2738D61E007241B1 /* PCSessionViewController.m */; };
@@ -162,7 +164,8 @@
 		5877D5A12735384B00C65732 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5877D5A42735384B00C65732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5877D5A62735384B00C65732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		589884DB2739077700C6B6D1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5878B3D6273D4AD2006120C5 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		5878B3D8273D4AE4006120C5 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
 		589917102736884C00D43D9C /* AppDelegate+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Config.swift"; sourceTree = "<group>"; };
 		5899171727368F7C00D43D9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5899171927368F9E00D43D9C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -445,9 +448,27 @@
 			path = YunZaiApp;
 			sourceTree = "<group>";
 		};
+		5878B3D4273D4AB0006120C5 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				5878B3D5273D4ABF006120C5 /* My */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		5878B3D5273D4ABF006120C5 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				5878B3D6273D4AD2006120C5 /* MyViewController.swift */,
+				5878B3D8273D4AE4006120C5 /* My.storyboard */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
 		589917082736874900D43D9C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5878B3D4273D4AB0006120C5 /* Business */,
 				58D7EA482738D61C007241B1 /* WildFireChat */,
 				58D7E9302738CFDA007241B1 /* Config */,
 				58D7E8772738CD7E007241B1 /* Frameworks */,
@@ -552,7 +573,6 @@
 		58D7EA482738D61C007241B1 /* WildFireChat */ = {
 			isa = PBXGroup;
 			children = (
-				589884DB2739077700C6B6D1 /* AppDelegate.h */,
 				58D7EA492738D61C007241B1 /* ShareExtension */,
 				58D7EA4F2738D61C007241B1 /* LBXScan */,
 				58D7EA852738D61D007241B1 /* Discover */,
@@ -1036,6 +1056,7 @@
 				58D7EB232738EE0E007241B1 /* Emoj.plist in Resources */,
 				5877D5A52735384B00C65732 /* LaunchScreen.storyboard in Resources */,
 				589884D62739054500C6B6D1 /* ring.mp3 in Resources */,
+				5878B3D9273D4AE4006120C5 /* My.storyboard in Resources */,
 				58D7EB1F2738EE0E007241B1 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				58D7EB1D2738EE0E007241B1 /* wfc.strings in Resources */,
 				5899171C27368FB300D43D9C /* Localizable.strings in Resources */,
@@ -1122,6 +1143,7 @@
 				5898849E273900BF00C6B6D1 /* UIAlertView+LBXAlertAction.m in Sources */,
 				589884A9273900E200C6B6D1 /* DiscoverViewController.m in Sources */,
 				589884B32739011D00C6B6D1 /* WFCFavoriteTableViewController.m in Sources */,
+				5878B3D7273D4AD2006120C5 /* MyViewController.swift in Sources */,
 				58725BAA273B9F69005C6456 /* UIView+UIView_Gradient.m in Sources */,
 				589884BA2739013100C6B6D1 /* WFCFavoriteImageCell.m in Sources */,
 				5898849B273900B500C6B6D1 /* LBXAlertAction.m in Sources */,

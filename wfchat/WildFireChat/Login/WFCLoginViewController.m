@@ -9,7 +9,7 @@
 #import "WFCLoginViewController.h"
 #import <WFChatClient/WFCChatClient.h>
 #import <WFChatUIKit/WFChatUIKit.h>
-#import "AppDelegate.h"
+//#import "AppDelegate.h"
 #import "WFCBaseTabBarController.h"
 #import "MBProgressHUD.h"
 #import "UILabel+YBAttributeTextTapAction.h"
