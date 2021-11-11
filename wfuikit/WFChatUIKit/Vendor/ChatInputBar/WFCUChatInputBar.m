@@ -190,7 +190,7 @@
     self.textInputView.layer.borderColor = [UIColor colorWithHexString:@"#6B6B6B" alpha:0.13].CGColor;
     self.textInputView.layer.borderWidth = 1;
     self.textInputView.layer.cornerRadius = 16;
-    self.textInputView.placeholder = @"请输入内容...";
+    self.textInputView.placeholder = @"  请输入内容...";
     [self addSubview:self.textInputView];
     
     self.inputCoverView = [[UIView alloc] initWithFrame:self.textInputView.bounds];
