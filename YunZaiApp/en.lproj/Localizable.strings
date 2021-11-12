@@ -41,6 +41,15 @@ my_item_integral = "积分";
 my_item_myearnings = "我的收益";
 my_item_settings = "设置";
 
+/// 设置
+seggings_title = "设置";
+settings_private_set = "隐私设置";
+settings_about = "关于";
+settings_judge = "诊断";
+settings_upload_msg = "上传日志";
+settings_improve = "电池优化";
+settings_log_out = "退出登录";
+
 Message="Message";
 Contact="Contact";
 Discover="Disconver";
