@@ -10,7 +10,7 @@ target 'YunZaiApp' do
   pod 'SWUIKit', :path => './Component/SWUIKit'
   pod 'SWPageControl', :path => './Component/SWPageControl'
   pod 'ActiveLabel', :path => './Component/ActiveLabel.swift/ActiveLabel.podspec'
-  pod 'SWToast', :path => './Component/SWToast'
+  #pod 'SWToast', :path => './Component/SWToast'
   pod 'SWUIKit', :path => './Component/SWUIKit'
   pod 'VVDebugKit', :path => './Component/VVDebugKit', :configurations => ['Debug']
   #pod 'SwiftWebVC', :path => './Component/SwiftWebVC'

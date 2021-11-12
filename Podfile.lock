@@ -61,9 +61,6 @@ PODS:
   - SWPageControl (1.0.0):
     - SWPageControl/File (= 1.0.0)
   - SWPageControl/File (1.0.0)
-  - SWToast (1.0.0):
-    - SWToast/File (= 1.0.0)
-  - SWToast/File (1.0.0)
   - SWUIKit (1.7.9):
     - SWUIKit/File (= 1.7.9)
   - SWUIKit/Dependency (1.7.9):
@@ -98,7 +95,6 @@ DEPENDENCIES:
   - SWBusinessKit (from `./Component/SWBusinessKit`)
   - SWFoundationKit (from `./Component/SWFoundationKit`)
   - SWPageControl (from `./Component/SWPageControl`)
-  - SWToast (from `./Component/SWToast`)
   - SWUIKit (from `./Component/SWUIKit`)
   - VVDebugKit (from `./Component/VVDebugKit`)
 
@@ -134,8 +130,6 @@ EXTERNAL SOURCES:
     :path: "./Component/SWFoundationKit"
   SWPageControl:
     :path: "./Component/SWPageControl"
-  SWToast:
-    :path: "./Component/SWToast"
   SWUIKit:
     :path: "./Component/SWUIKit"
   VVDebugKit:
@@ -166,10 +160,9 @@ SPEC CHECKSUMS:
   SWFoundationKit: 5ca51af0ed7baaf9c6279f38e2b9d3acf3e06639
   SwiftDate: 72d28954e8e1c6c1c0f917ccc8005e4f83c7d4b2
   SWPageControl: 0980925abe43a2616f23b3473a532d2c9ada9735
-  SWToast: e6d5144f77fc1f57c1dc9fb46d241febdb0bf664
   SWUIKit: fe9d4d077bbd95418bcf33fa172bbc1fdff1d153
   VVDebugKit: d05551f3c0607debb501229f6ca896765c89f203
 
-PODFILE CHECKSUM: ede6ced0935c9aa2423b6002dd1081f032fe056a
+PODFILE CHECKSUM: 8a2367706a81e73423350a4bb7e0489a5dec8d21
 
 COCOAPODS: 1.11.2
