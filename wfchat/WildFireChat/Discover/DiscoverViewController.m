@@ -99,6 +99,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.view makeToast:@"敬请期待"];
+    return;
     
     NSString *des = self.dataSource[indexPath.section][@"des"];
     if ([des isEqualToString:@"moment"]) {
