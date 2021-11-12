@@ -33,6 +33,9 @@
 #import "WFCCNetworkService.h"
 #endif
 
+#import "WFCSettingTableViewController.h"
+#import "WFCSecurityTableViewController.h"
+
 #import "Help.h"
 
 

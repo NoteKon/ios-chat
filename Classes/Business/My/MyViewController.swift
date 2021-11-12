@@ -7,25 +7,24 @@
 
 import UIKit
 import SWFoundationKit
+import AVFoundation
 @objc class MyViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var bannerView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var statueLabel: PaddingLabel!
     
+    @IBOutlet weak var accountItemView: UIView!
+    @IBOutlet weak var integralItemView: UIView!
+    @IBOutlet weak var myearningsItemView: UIView!
+    @IBOutlet weak var settingItemView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUI()
         createBannerView()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        //bannerView.addCorners([.allCorners], radius: 10)
-        //bottomView.addCorners([.allCorners], radius: 8)
+        addAction()
     }
     
     func setUI() {
@@ -91,8 +90,64 @@ import SWFoundationKit
         }
     }
     
-    @objc func bannerClickAction(_ button: UIButton) {
+    func addAction() {
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(headerClickAction))
+        headerView.addGestureRecognizer(tap)
         
+        let accountTap = UITapGestureRecognizer()
+        accountTap.addTarget(self, action: #selector(accountSafeClickAction))
+        accountItemView.addGestureRecognizer(accountTap)
+        
+        let integralTap = UITapGestureRecognizer()
+        integralTap.addTarget(self, action: #selector(integralClickAction))
+        integralItemView.addGestureRecognizer(integralTap)
+        
+        let myearningsTap = UITapGestureRecognizer()
+        myearningsTap.addTarget(self, action: #selector(myearningsClickAction))
+        myearningsItemView.addGestureRecognizer(myearningsTap)
+        
+        let settingTap = UITapGestureRecognizer()
+        settingTap.addTarget(self, action: #selector(settingClickAction))
+        settingItemView.addGestureRecognizer(settingTap)
+    }
+    
+    /// 查看个人主页
+    @objc func headerClickAction() {
+        let viewController = WFCUMyProfileTableViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    /// 查看消息、主题、动态、收藏模块
+    @objc func bannerClickAction(_ button: UIButton) {
+        print("Banner \(button.tag)")
+        showTip()
+    }
+    
+    /// 账号安全
+    @objc func accountSafeClickAction() {
+        let viewController = WFCSecurityTableViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    /// 积分
+    @objc func integralClickAction() {
+        showTip()
+    }
+    /// 我的收益
+    @objc func myearningsClickAction() {
+        showTip()
+    }
+    /// 设置
+    @objc func settingClickAction() {
+        let viewController = WFCSettingTableViewController()
+        viewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func showTip() {
+        self.view.makeToast("敬请期待")
     }
 }
 

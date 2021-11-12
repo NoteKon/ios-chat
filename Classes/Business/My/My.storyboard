@@ -367,9 +367,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accountItemView" destination="icU-nF-tg8" id="sBd-FE-sBG"/>
                         <outlet property="bannerView" destination="rhx-tK-RVU" id="2V1-EA-w1B"/>
                         <outlet property="bottomView" destination="5RS-4Y-gJH" id="cyJ-dy-jJY"/>
                         <outlet property="headerView" destination="8uT-eo-8gW" id="e6D-fK-Di5"/>
+                        <outlet property="integralItemView" destination="SHP-aJ-edK" id="0bV-k3-pkO"/>
+                        <outlet property="myearningsItemView" destination="t06-M0-8D6" id="Beg-4R-JGV"/>
+                        <outlet property="settingItemView" destination="1iW-Dg-fcH" id="cdv-dK-hcX"/>
                         <outlet property="statueLabel" destination="Z4Q-Hl-fpg" id="9QT-Us-6nl"/>
                     </connections>
                 </viewController>
