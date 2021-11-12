@@ -90,3 +90,121 @@ public extension UIView {
         }
     }
 }
+
+/// Xib、StoryBoard 多语言设置
+var bundleNameKey = "BundleNameKey"
+var localizedKeepKey = "LocalizedKeepKey"
+
+extension UIButton {
+    @IBInspectable public var bundleName: String? {
+        get {
+            if let value = objc_getAssociatedObject(self, &bundleNameKey) as? String {
+                return value
+            }
+            return Bundle.init(for: type(of: self)).className()
+        }
+        set {
+            objc_setAssociatedObject(self, &bundleNameKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            /// 判断空值
+            guard let key = localizedKey, key.count > 0 else {
+                return
+            }
+            setTitle(Bundle.localizedString(key: key, value: "", bundleName: newValue ?? ""), for: .normal)
+        }
+    }
+    
+    /// 配置xib或stroyboard上button文本的本地化语言，省去拉取属性，暂时只支持默认文本
+    @IBInspectable public var localizedKey: String? {
+        get {
+            if let value = objc_getAssociatedObject(self, &localizedKeepKey) as? String {
+                return value
+            }
+            return titleLabel?.text
+        }
+        set {
+            /// 判断空值
+            objc_setAssociatedObject(self, &localizedKeepKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            guard newValue?.count ?? 0 > 0 else {
+                return
+            }
+            setTitle(
+                Bundle.localizedString(key: newValue!, value: "", bundleName: bundleName ?? ""), for: .normal)
+        }
+    }
+}
+
+extension UILabel {
+    @IBInspectable public var bundleName: String? {
+        get {
+            if let value = objc_getAssociatedObject(self, &bundleNameKey) as? String {
+                return value
+            }
+            return Bundle.init(for: type(of: self)).className()
+        }
+        set {
+            objc_setAssociatedObject(self, &bundleNameKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            /// 判断空值
+            guard let key = localizedKey, key.count > 0 else {
+                return
+            }
+            text =
+                Bundle.localizedString(key: key, value: "", bundleName: newValue ?? "")
+        }
+    }
+    
+    /// 配置xib或stroyboard上label文本的本地化语言,省去拉取属性
+    @IBInspectable public var localizedKey: String? {
+        get {
+            if let value = objc_getAssociatedObject(self, &localizedKeepKey) as? String {
+                return value
+            }
+            return text
+        }
+        set {
+            objc_setAssociatedObject(self, &localizedKeepKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            /// 判断空值
+            guard let key = newValue, key.count > 0 else {
+                return
+            }
+            text = Bundle.localizedString(key: key, value: "", bundleName: bundleName ?? "")
+        }
+    }
+}
+
+extension UITextField {
+    @IBInspectable public var bundleName: String? {
+        get {
+            if let value = objc_getAssociatedObject(self, &bundleNameKey) as? String {
+                return value
+            }
+            return Bundle.init(for: type(of: self)).className()
+        }
+        set {
+            objc_setAssociatedObject(self, &bundleNameKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            /// 判断空值
+            guard let key = placeholderLocalizedKey, key.count > 0 else {
+                return
+            }
+            placeholder =
+                Bundle.localizedString(key: key, value: "", bundleName: newValue ?? "")
+        }
+    }
+    
+    /// 配置xib或stroyboard上label文本的本地化语言,省去拉取属性
+    @IBInspectable public var placeholderLocalizedKey: String? {
+        get {
+            if let value = objc_getAssociatedObject(self, &localizedKeepKey) as? String {
+                return value
+            }
+            return placeholder
+        }
+        set {
+            objc_setAssociatedObject(self, &localizedKeepKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            /// 判断空值
+            guard let key = newValue, key.count > 0 else {
+                return
+            }
+            placeholder = Bundle.localizedString(key: key, value: "", bundleName: bundleName ?? "")
+        }
+    }
+}

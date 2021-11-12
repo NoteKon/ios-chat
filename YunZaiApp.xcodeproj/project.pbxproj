@@ -18,6 +18,7 @@
 		5878B3D7273D4AD2006120C5 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B3D6273D4AD2006120C5 /* MyViewController.swift */; };
 		5878B3D9273D4AE4006120C5 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5878B3D8273D4AE4006120C5 /* My.storyboard */; };
 		5878B3DD273E45E1006120C5 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B3DC273E45E1006120C5 /* PaddingLabel.swift */; };
+		5878B3E3273E73E3006120C5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B3E2273E73E3006120C5 /* Utils.swift */; };
 		5898848E2738F90A00C6B6D1 /* WFCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAFF2738D61E007241B1 /* WFCConfig.m */; };
 		5898848F2739002700C6B6D1 /* AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAA42738D61D007241B1 /* AppService.m */; };
 		589884902739006200C6B6D1 /* PCSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EACB2738D61E007241B1 /* PCSessionViewController.m */; };
@@ -169,6 +170,7 @@
 		5878B3D8273D4AE4006120C5 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
 		5878B3DC273E45E1006120C5 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		5878B3DF273E4BEB006120C5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		5878B3E2273E73E3006120C5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		589917102736884C00D43D9C /* AppDelegate+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Config.swift"; sourceTree = "<group>"; };
 		5899171727368F7C00D43D9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5899171927368F9E00D43D9C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -486,9 +488,18 @@
 			path = Component/PaddingLabel;
 			sourceTree = SOURCE_ROOT;
 		};
+		5878B3E1273E73CC006120C5 /* UItils */ = {
+			isa = PBXGroup;
+			children = (
+				5878B3E2273E73E3006120C5 /* Utils.swift */,
+			);
+			path = UItils;
+			sourceTree = "<group>";
+		};
 		589917082736874900D43D9C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5878B3E1273E73CC006120C5 /* UItils */,
 				5878B3DA273E45D2006120C5 /* Component */,
 				5878B3D4273D4AB0006120C5 /* Business */,
 				58D7EA482738D61C007241B1 /* WildFireChat */,
@@ -1245,6 +1256,7 @@
 				589884AD273900F200C6B6D1 /* WFCPrivacyViewController.m in Sources */,
 				589884BB2739013300C6B6D1 /* WFCFavoriteFileCell.m in Sources */,
 				589884CD2739017700C6B6D1 /* CreateDeviceViewController.m in Sources */,
+				5878B3E3273E73E3006120C5 /* Utils.swift in Sources */,
 				5898849A273900B100C6B6D1 /* LBXScanTypes.m in Sources */,
 				5898848E2738F90A00C6B6D1 /* WFCConfig.m in Sources */,
 				589884912739006D00C6B6D1 /* SharedConversation.m in Sources */,

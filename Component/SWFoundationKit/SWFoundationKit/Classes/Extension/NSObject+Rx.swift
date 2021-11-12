@@ -16,3 +16,20 @@ extension NSObject {
         return result
     }
 }
+
+extension NSObject {
+    /// 获取命名空间加类名称 eg: VVLife.UIRemoteKeyboardWindow
+    public func className() -> String {
+        guard let spaceName = Bundle.main.infoDictionary!["CFBundleExecutable"] as? String else {
+            print("获取命名空间失败")
+            return ""
+        }
+        
+        let name =  type(of: self).description()
+        if name.contains(".") {
+            return spaceName + "." + name.components(separatedBy: ".")[1]
+        } else {
+            return spaceName + "." + name
+        }
+    }
+}

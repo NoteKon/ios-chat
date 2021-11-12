@@ -35,6 +35,7 @@
 
 #import "WFCSettingTableViewController.h"
 #import "WFCSecurityTableViewController.h"
+#import "WFCFavoriteTableViewController.h"
 
 #import "Help.h"
 

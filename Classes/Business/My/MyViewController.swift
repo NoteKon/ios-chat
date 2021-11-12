@@ -12,6 +12,11 @@ import AVFoundation
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var bannerView: UIView!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var accountImage: UIImageView!
+    @IBOutlet weak var accountName: UILabel!
+    
+    @IBOutlet weak var accountIdLabel: UILabel!
+    
     @IBOutlet weak var statueLabel: PaddingLabel!
     
     @IBOutlet weak var accountItemView: UIView!
@@ -45,10 +50,12 @@ import AVFoundation
         statueLabel.layer.cornerRadius = 9
         statueLabel.clipsToBounds = true
         statueLabel.padding = UIEdgeInsets(top: 4, left: 12, bottom: 4, right: 12)
+        
+        accountIdLabel.text = localizedString("my_account_id") + " 12789946"
     }
     
     func createBannerView() {
-        let bannerArr = [("my_banner_msg", "消息"), ("my_banner_theme", "主题"), ("my_banner_new", "动态"), ("my_banner_fav", "收藏")]
+        let bannerArr = [("my_banner_msg", localizedString("my_banner_msg")), ("my_banner_theme", localizedString("my_banner_theme")), ("my_banner_new", localizedString("my_banner_new")), ("my_banner_fav", localizedString("my_banner_fav"))]
         
         var lastView: UIView? = nil
         let offsetX = (SCREEN_WIDTH - 21 * 2 - 16 * 2 - 45 * 4) / 3
@@ -122,7 +129,13 @@ import AVFoundation
     /// 查看消息、主题、动态、收藏模块
     @objc func bannerClickAction(_ button: UIButton) {
         print("Banner \(button.tag)")
-        showTip()
+        if button.tag == 103 {
+            let viewController = WFCFavoriteTableViewController()
+            viewController.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            showTip()
+        }
     }
     
     /// 账号安全

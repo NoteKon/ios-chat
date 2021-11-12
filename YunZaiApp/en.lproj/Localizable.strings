@@ -27,6 +27,20 @@ login_loging = "登录中...";
 discover_chatroom = "聊天室";
 discover_robot = "机器人";
 
+/// MyViewController
+my_header_tip = "个人主页";
+my_account_id = "云圈号:";
+my_account_statue_unkonw = "未认证";
+my_banner_msg = "消息";
+my_banner_theme = "主题";
+my_banner_new = "动态";
+my_banner_fav = "收藏";
+
+my_item_safeaccount = "账号与安全";
+my_item_integral = "积分";
+my_item_myearnings = "我的收益";
+my_item_settings = "设置";
+
 Message="Message";
 Contact="Contact";
 Discover="Disconver";
