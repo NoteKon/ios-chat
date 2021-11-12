@@ -17,6 +17,7 @@
 		5877D5A52735384B00C65732 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5877D5A32735384B00C65732 /* LaunchScreen.storyboard */; };
 		5878B3D7273D4AD2006120C5 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B3D6273D4AD2006120C5 /* MyViewController.swift */; };
 		5878B3D9273D4AE4006120C5 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5878B3D8273D4AE4006120C5 /* My.storyboard */; };
+		5878B3DD273E45E1006120C5 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5878B3DC273E45E1006120C5 /* PaddingLabel.swift */; };
 		5898848E2738F90A00C6B6D1 /* WFCConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAFF2738D61E007241B1 /* WFCConfig.m */; };
 		5898848F2739002700C6B6D1 /* AppService.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EAA42738D61D007241B1 /* AppService.m */; };
 		589884902739006200C6B6D1 /* PCSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D7EACB2738D61E007241B1 /* PCSessionViewController.m */; };
@@ -166,6 +167,8 @@
 		5877D5A62735384B00C65732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5878B3D6273D4AD2006120C5 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		5878B3D8273D4AE4006120C5 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
+		5878B3DC273E45E1006120C5 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		5878B3DF273E4BEB006120C5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		589917102736884C00D43D9C /* AppDelegate+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Config.swift"; sourceTree = "<group>"; };
 		5899171727368F7C00D43D9C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5899171927368F9E00D43D9C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -433,6 +436,7 @@
 		5877D5972735384800C65732 /* YunZaiApp */ = {
 			isa = PBXGroup;
 			children = (
+				5878B3DF273E4BEB006120C5 /* R.generated.swift */,
 				5877D5982735384800C65732 /* AppDelegate.swift */,
 				589917102736884C00D43D9C /* AppDelegate+Config.swift */,
 				5877D59C2735384800C65732 /* ViewController.swift */,
@@ -465,9 +469,27 @@
 			path = My;
 			sourceTree = "<group>";
 		};
+		5878B3DA273E45D2006120C5 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				5878B3DB273E45E1006120C5 /* PaddingLabel */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		5878B3DB273E45E1006120C5 /* PaddingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				5878B3DC273E45E1006120C5 /* PaddingLabel.swift */,
+			);
+			name = PaddingLabel;
+			path = Component/PaddingLabel;
+			sourceTree = SOURCE_ROOT;
+		};
 		589917082736874900D43D9C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5878B3DA273E45D2006120C5 /* Component */,
 				5878B3D4273D4AB0006120C5 /* Business */,
 				58D7EA482738D61C007241B1 /* WildFireChat */,
 				58D7E9302738CFDA007241B1 /* Config */,
@@ -998,6 +1020,7 @@
 			buildConfigurationList = 5877D5A92735384B00C65732 /* Build configuration list for PBXNativeTarget "YunZaiApp" */;
 			buildPhases = (
 				6B7DE12113E18915240B52FF /* [CP] Check Pods Manifest.lock */,
+				5878B3DE273E4B79006120C5 /* ShellScript */,
 				5877D5912735384800C65732 /* Sources */,
 				5877D5922735384800C65732 /* Frameworks */,
 				5877D5932735384800C65732 /* Resources */,
@@ -1084,6 +1107,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		5878B3DE273E4B79006120C5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		5DDE9CD5603905F8A974BC19 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1194,6 +1236,7 @@
 				589884C62739015C00C6B6D1 /* WFCThemeTableViewCell.m in Sources */,
 				589884A8273900DE00C6B6D1 /* LBXPermission.m in Sources */,
 				589884B42739012400C6B6D1 /* WFCFavoriteSoundCell.m in Sources */,
+				5878B3DD273E45E1006120C5 /* PaddingLabel.swift in Sources */,
 				589884B12739010200C6B6D1 /* UIColor+YH.m in Sources */,
 				589884B92739012F00C6B6D1 /* WFCFavoriteCompositeCell.m in Sources */,
 				58988499273900AF00C6B6D1 /* StyleDIY.m in Sources */,
