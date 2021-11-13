@@ -78,8 +78,8 @@
 "DeleteFailed"="删除失败";
 "SearchContact"="搜索联系人";
 "NumberOfContacts"="%d 位联系人";
-"NewFriend"="新朋友";
-"Group"="群组";
+"NewFriend"="新的朋友";
+"Group"="群聊";
 "Channel"="频道";
 "NumberOfRecords"="%d 条记录";
 "[Draft]"="[草稿]";

@@ -328,7 +328,7 @@ static NSString *wfcstar = @"☆";
         return dataSource.count;
     } else {
         if (section == 0) {
-            return 3;
+            return 2;
         } else {
             dataSource = self.allFriendSectionDic[self.allKeys[section - 1]];
             return dataSource.count;
