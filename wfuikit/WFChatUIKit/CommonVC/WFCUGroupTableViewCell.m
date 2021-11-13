@@ -27,13 +27,13 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     _portrait.frame = CGRectMake(18, (self.frame.size.height - 40) / 2.0, 40, 40);
-    _name.frame = CGRectMake(18 + 40 + 9, (self.frame.size.height - 17) / 2.0, [UIScreen mainScreen].bounds.size.width - (18 + 40 + 9), 17);
+    _name.frame = CGRectMake(18 + 40 + 16, (self.frame.size.height - 15) / 2.0, [UIScreen mainScreen].bounds.size.width - (18 + 40 + 16), 15);
 }
 
 - (UIImageView *)portrait {
     if (!_portrait) {
         _portrait = [UIImageView new];
-        _portrait.layer.cornerRadius = 4.0f;
+        _portrait.layer.cornerRadius = 20.0f;
         _portrait.layer.masksToBounds = YES;
         [self.contentView addSubview:_portrait];
     }
@@ -43,8 +43,8 @@
 - (UILabel *)name {
     if (!_name) {
         _name = [UILabel new];
-        _name.textColor = [UIColor colorWithHexString:@"0x1d1d1d"];
-        _name.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:17];
+        _name.textColor = [UIColor blackColor];
+        _name.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
         [self.contentView addSubview:_name];
     }
     return _name;

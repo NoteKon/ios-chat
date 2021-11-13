@@ -8,9 +8,11 @@
 
 #import "UIFont+YH.h"
 
-
-
 @implementation UIFont (YH)
++ (UIFont *)pingFangSCWithRegular:(CGFloat)fontSize {
+    return [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:fontSize];
+}
+
 + (UIFont *)pingFangSCWithWeight:(FontWeightStyle)fontWeight size:(CGFloat)fontSize {
     if (fontWeight < FontWeightStyleMedium || fontWeight > FontWeightStyleThin) {
         fontWeight = FontWeightStyleRegular;

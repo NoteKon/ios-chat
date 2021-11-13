@@ -14,6 +14,8 @@
 #import "WFCUInviteGroupMemberViewController.h"
 #import "UIView+Toast.h"
 #import "WFCUConfigManager.h"
+#import "UIFont+YH.h"
+#import "UIColor+YH.h"
 
 @interface WFCUFavGroupTableViewController ()
 @property (nonatomic, strong)NSMutableArray<WFCCGroupInfo *> *groups;
@@ -23,10 +25,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIColor *bgColor = [UIColor colorWithRed:251/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
+    UIColor *lineColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
     self.groups = [[NSMutableArray alloc] init];
     self.title = WFCString(@"MyGroup");
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    self.tableView.backgroundColor = bgColor; //[WFCUConfigManager globalManager].backgroudColor;
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, width + 10, 40)];
+    headerView.backgroundColor = bgColor;
+    headerView.layer.borderWidth = 0.5;
+    headerView.layer.borderColor = lineColor.CGColor;
+    UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 0, width - 17, 40)];
+    headLabel.text = WFCString(@"Group");
+    headLabel.backgroundColor = [UIColor clearColor];
+    headLabel.font = [UIFont pingFangSCWithRegular: 14];
+    headLabel.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.6];
+    [headerView addSubview:headLabel];
+    self.tableView.tableHeaderView = headerView;
+    self.tableView.separatorColor = lineColor;
 }
 
 - (void)refreshList {
@@ -60,24 +78,25 @@
     self.tabBarController.tabBar.hidden = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.groups.count;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    CGFloat offsetX = 62;
+    if (indexPath.row == self.groups.count - 1) {
+        offsetX = 0;
+    }
+    cell.separatorInset = UIEdgeInsetsMake(0, offsetX, 0, 0);
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WFCUGroupTableViewCell *cell = (WFCUGroupTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"groupCellId"];
     if (cell == nil) {
         cell = [[WFCUGroupTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"groupCellId"];
     }
-    
     cell.groupInfo = self.groups[indexPath.row];
     
     return cell;
@@ -99,7 +118,6 @@
 }
 
 
-
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -111,7 +129,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 51;
+    return 57;
 }
 
 - (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {

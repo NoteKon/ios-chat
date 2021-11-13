@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, FontWeightStyle) {
 };
 
 @interface UIFont (YH)
++ (UIFont *)pingFangSCWithRegular:(CGFloat)fontSize;
 /**
  苹方字体
 
