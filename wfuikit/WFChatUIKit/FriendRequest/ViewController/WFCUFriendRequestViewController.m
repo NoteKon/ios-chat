@@ -15,6 +15,8 @@
 #import "WFCUAddFriendViewController.h"
 #import "UIView+Toast.h"
 #import "WFCUConfigManager.h"
+#import "UIColor+YH.h"
+#import "UIFont+YH.h"
 
 @interface WFCUFriendRequestViewController () <UITableViewDataSource, UITableViewDelegate, WFCUFriendRequestTableViewCellDelegate>
 @property (nonatomic, strong)  UITableView              *tableView;
@@ -60,15 +62,31 @@
     CGFloat screenHeight = self.view.frame.size.height;
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     
+    UIColor *bgColor = [UIColor colorWithHexString:@"0xFBFBFB" alpha:1.0];
+    UIColor *lineColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+
     //设置代理
     _tableView.delegate   = self;
     _tableView.dataSource = self;
     _tableView.allowsSelection = YES;
-    _tableView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    _tableView.backgroundColor = bgColor;//[WFCUConfigManager globalManager].backgroudColor;
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, width + 10, 40)];
+    headerView.backgroundColor = bgColor;
+    headerView.layer.borderWidth = 0.5;
+    headerView.layer.borderColor = lineColor.CGColor;
+    UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 0, width - 17, 40)];
+    headLabel.text = WFCString(@"NewFriend");
+    headLabel.backgroundColor = [UIColor clearColor];
+    headLabel.font = [UIFont pingFangSCWithRegular: 14];
+    headLabel.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.6];
+    [headerView addSubview:headLabel];
+    self.tableView.tableHeaderView = headerView;
+
     [self.view addSubview:_tableView];
-  
+    
   self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:WFCString(@"AddFriend") style:UIBarButtonItemStyleDone target:self action:@selector(onRightBarBtn:)];
 }
 
