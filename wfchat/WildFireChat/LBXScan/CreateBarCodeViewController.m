@@ -12,12 +12,14 @@
 #import "UIImageView+CornerRadius.h"
 #import <WFChatClient/WFCChatClient.h>
 #import <WFChatUIKit/WFChatUIKit.h>
-
+#import "UIFont+YH.h"
+#import "UIColor+YH.h"
 
 @interface CreateBarCodeViewController ()
 @property (nonatomic, strong)UIImageView *logoView;
 @property (nonatomic, strong)UILabel *nameLabel;
-@property (nonatomic, strong) UIImageView* logoImgView;
+@property (nonatomic, strong)UILabel *idLabel;
+@property (nonatomic, strong) UIImageView* headerImageView;
 
 @property (nonatomic, strong) UIView *qrView;
 @property (nonatomic, strong) UIImageView* qrImgView;
@@ -39,7 +41,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"..." style:UIBarButtonItemStyleDone target:self action:@selector(onRightBtn:)];
     
-    self.view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"]; //[WFCUConfigManager globalManager].backgroudColor;
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -48,7 +50,6 @@
     __weak typeof(self) ws = self;
     if (self.qrType == QRType_User) {
         self.qrStr = [NSString stringWithFormat:@"wildfirechat://user/%@", self.target];
-//        self.qrStr = [NSString stringWithFormat:@"wildfirechat://user/%@?from=%@", self.target, [WFCCNetworkService sharedInstance].userId];
         
         [[NSNotificationCenter defaultCenter] addObserverForName:kUserInfoUpdated object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull notification) {
             if ([ws.target isEqualToString:notification.object]) {
@@ -59,7 +60,6 @@
         self.userInfo = [[WFCCIMService sharedWFCIMService] getUserInfo:[WFCCNetworkService sharedInstance].userId refresh:NO];
     } else if(self.qrType == QRType_Group) {
         self.qrStr = [NSString stringWithFormat:@"wildfirechat://group/%@", self.target];
-//        self.qrStr = [NSString stringWithFormat:@"wildfirechat://group/%@?from=%@", self.target, [WFCCNetworkService sharedInstance].userId];
         
         [[NSNotificationCenter defaultCenter] addObserverForName:kGroupInfoUpdated object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull notification) {
             if ([ws.target isEqualToString:notification.object]) {
@@ -135,6 +135,8 @@
     } else {
         self.labelStr = @"用户";
     }
+    
+    self.idLabel.text = [NSString stringWithFormat:@"云圈号: %@", userInfo.userId];
 }
 
 - (void)setGroupInfo:(WFCCGroupInfo *)groupInfo {
@@ -168,7 +170,6 @@
     _qrLogo = qrLogo;
     __weak typeof(self)ws = self;
     dispatch_async(dispatch_get_global_queue(0, DISPATCH_QUEUE_PRIORITY_DEFAULT), ^{
-        CGSize logoSize=CGSizeMake(50, 50);
         UIImage *logo;
         if ([NSURL URLWithString:qrLogo].baseURL) {
             logo = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:ws.qrLogo]]];
@@ -179,11 +180,9 @@
             logo = [UIImage imageNamed:@"group_default_portrait"];
         }
         
+        //_headerImageView
         dispatch_async(dispatch_get_main_queue(), ^{
-            ws.logoImgView = [ws roundCornerWithImage:logo size:logoSize];
-            ws.logoImgView.bounds = CGRectMake(0, 0, logoSize.width, logoSize.height);
-            ws.logoImgView.center = CGPointMake(40, 40);
-            [ws.qrView addSubview:ws.logoImgView];
+            self.headerImageView.image = logo;
         });
     });
 }
@@ -193,34 +192,66 @@
     self.nameLabel.text = labelStr;
 }
 
+- (UIImageView *)headerImageView {
+    if (!_headerImageView) {
+        _headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(31, 28, 50, 50)];
+        _headerImageView.layer.cornerRadius = 25;
+        _headerImageView.clipsToBounds = YES;
+        [self.qrView addSubview:_headerImageView];
+    }
+    return _headerImageView;
+}
+
 - (UILabel *)nameLabel {
     if (!_nameLabel) {
-        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(72, 28, self.qrView.bounds.size.width - 72 - 16, 22)];
+        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(101, 28, self.qrView.bounds.size.width - 101 - 34, 15)];
+        _nameLabel.font = [UIFont systemFontOfSize:16];
+        _nameLabel.textColor = [UIColor blackColor];
         [self.qrView addSubview:_nameLabel];
     }
     return _nameLabel;
 }
 
+- (UILabel *)idLabel {
+    if (!_idLabel) {
+        _idLabel = [[UILabel alloc] initWithFrame:CGRectMake(101, 61, self.qrView.bounds.size.width - 101 - 34, 14)];
+        _idLabel.font = [UIFont systemFontOfSize:14];
+        _idLabel.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.6];
+        [self.qrView addSubview:_idLabel];
+    }
+    return _idLabel;
+}
+
+- (UIImageView *)qrImgView {
+    if (!_qrImgView) {
+        _qrImgView = [[UIImageView alloc] initWithFrame:CGRectMake(31, 111, self.qrView.frame.size.width - 62, 244)];
+        [self.qrView addSubview:_qrImgView];
+    }
+    return _qrImgView;
+}
+
 - (UIView *)qrView {
     if (!_qrView) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake( (CGRectGetWidth(self.view.frame)-CGRectGetWidth(self.view.frame)*5/6)/2, 100, CGRectGetWidth(self.view.frame)*5/6, CGRectGetWidth(self.view.frame)*5/6+60)];
-        [self.view addSubview:view];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(31, 45, CGRectGetWidth(self.view.frame) - 62, 428)];
         view.backgroundColor = [UIColor whiteColor];
-        view.layer.shadowOffset = CGSizeMake(0, 2);
-        view.layer.shadowRadius = 2;
-        view.layer.shadowColor = [UIColor blackColor].CGColor;
-        view.layer.shadowOpacity = 0.5;
+        view.layer.cornerRadius = 15;
+        view.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+        view.layer.borderWidth = 0.5;
         _qrView = view;
+        [self.view addSubview:view];
+        
+        UILabel *tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 14 - 35, view.frame.size.width, 14)];
+        tipLabel.font = [UIFont systemFontOfSize:14];
+        tipLabel.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.8];
+        tipLabel.textAlignment = NSTextAlignmentCenter;
+        tipLabel.text = @"扫一扫加群聊";
+        [view addSubview:tipLabel];
     }
     return _qrView;
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.qrImgView = [[UIImageView alloc]init];
-    _qrImgView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.qrView.frame)-12, CGRectGetWidth(self.qrView.frame)-12);
-    _qrImgView.center = CGPointMake(CGRectGetWidth(self.qrView.frame)/2, CGRectGetHeight(self.qrView.frame)/2+30);
-    [self.qrView addSubview:_qrImgView];
     
     [self createQR_logo];
 }
@@ -228,17 +259,17 @@
 - (void)createQR_logo
 {
     _qrView.hidden = NO;
-    _qrImgView.image = [LBXScanNative createQRWithString:self.qrStr QRSize:_qrImgView.bounds.size];
+    self.qrImgView.image = [LBXScanNative createQRWithString:self.qrStr QRSize:self.qrImgView.bounds.size];
 }
 
 - (UIImageView*)roundCornerWithImage:(UIImage*)logoImg size:(CGSize)size
 {
     //logo圆角
-    UIImageView *backImage = [[UIImageView alloc] initWithCornerRadiusAdvance:6.0f rectCornerType:UIRectCornerAllCorners];
+    UIImageView *backImage = [[UIImageView alloc] initWithCornerRadiusAdvance:25.0f rectCornerType:UIRectCornerAllCorners];
     backImage.frame = CGRectMake(0, 0, size.width, size.height);
     backImage.backgroundColor = [UIColor whiteColor];
     
-    UIImageView *logImage = [[UIImageView alloc] initWithCornerRadiusAdvance:6.0f rectCornerType:UIRectCornerAllCorners];
+    UIImageView *logImage = [[UIImageView alloc] initWithCornerRadiusAdvance:25.0f rectCornerType:UIRectCornerAllCorners];
     logImage.image =logoImg;
     CGFloat diff  =2;
     logImage.frame = CGRectMake(diff, diff, size.width - 2 * diff, size.height - 2 * diff);
