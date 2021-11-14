@@ -70,7 +70,7 @@
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];
-    self.tableView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];  //[WFCUConfigManager globalManager].backgroudColor;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     if (@available(iOS 15, *)) {
@@ -79,7 +79,16 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"..." style:UIBarButtonItemStyleDone target:self action:@selector(onRightBtn:)];
     
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1)];
+    UIColor *lineColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 10)];
+    headerView.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
+    headerView.layer.borderColor = lineColor.CGColor;
+    headerView.layer.borderWidth = 0.5;
+    self.tableView.tableHeaderView = headerView;
+    
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.5)];
+    footerView.backgroundColor = lineColor;
+    self.tableView.tableFooterView = footerView;
 
 
     [self loadData];
@@ -227,46 +236,51 @@
     self.cells = [[NSMutableArray alloc] init];
     
     self.headerCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    [self showSeparatorLine:self.headerCell];
     for (UIView *subView in self.headerCell.subviews) {
         [subView removeFromSuperview];
     }
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     
-    self.portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 14, 58, 58)];
-    
-    self.portraitView.layer.cornerRadius = 10;
+    self.portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 16, 60, 60)];
+    self.portraitView.layer.cornerRadius = 30;
     self.portraitView.layer.masksToBounds = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onViewPortrait:)];
     [self.portraitView addGestureRecognizer:tap];
     self.portraitView.userInteractionEnabled = YES;
     
-    
     [self.portraitView sd_setImageWithURL:[NSURL URLWithString:[self.userInfo.portrait stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage: [UIImage imageNamed:@"PersonalChat"]];
+    [self.headerCell addSubview:self.portraitView];
     
     NSString *alias = [[WFCCIMService sharedWFCIMService] getFriendAlias:self.userId];
+    CGFloat offsetX = 98;
     if (alias.length) {
-        self.aliasLabel = [[UILabel alloc] initWithFrame:CGRectMake(94, 8, width - 64 - 8, 21)];
-        self.aliasLabel.text = alias;
-        
-        self.displayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(94, 32, width - 94 - 8, 21)];
+        self.displayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 19, width - offsetX - 8, 16)];
         self.displayNameLabel.text = self.userInfo.displayName;
         
-        self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(94, 60, width - 94 - 8, 11)];
-        self.userNameLabel.text = [NSString stringWithFormat:@"野火号:%@", self.userInfo.name];
-        self.userNameLabel.font = [UIFont systemFontOfSize:12];
-        self.userNameLabel.textColor = [UIColor grayColor];
+        self.aliasLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 42, width - 64 - 8, 13)];
+        self.aliasLabel.text = [NSString stringWithFormat:@"昵称: %@", alias];;
+        
+        self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 63, width - offsetX - 8, 13)];
+        self.userNameLabel.text = [NSString stringWithFormat:@"云圈号: %@", self.userInfo.name];
     } else {
-        self.aliasLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-
-        self.displayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(94, 23, width - 94 - 8, 21)];
-        self.displayNameLabel.text = self.userInfo.displayName;
-        self.displayNameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleMedium size:20];
+        self.displayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 19, width - offsetX - 8, 13)];
         
-        self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(94, 50, width - 94 - 8, 21)];
-        self.userNameLabel.text = [NSString stringWithFormat:@"野火号:%@", self.userInfo.name];
-        self.userNameLabel.font = [UIFont systemFontOfSize:12];
-        self.userNameLabel.textColor = [UIColor grayColor];
+        self.aliasLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        
+        self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 50, width - offsetX - 8, 13)];
+        self.userNameLabel.text = [NSString stringWithFormat:@"云圈号: %@", self.userInfo.name];
     }
+    
+    UIColor *textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.9];
+    self.aliasLabel.font = [UIFont pingFangSCWithRegular:16];
+    self.aliasLabel.textColor = textColor;
+    
+    self.displayNameLabel.font = [UIFont pingFangSCWithRegular:13];
+    self.displayNameLabel.textColor = textColor;
+    
+    self.userNameLabel.font = [UIFont pingFangSCWithRegular:13];
+    self.userNameLabel.textColor = textColor;
     
     if ([[WFCCIMService sharedWFCIMService] isFavUser:self.userId]) {
         self.starLabel = [[UILabel alloc] initWithFrame:CGRectMake(width - 16 - 20, self.displayNameLabel.frame.origin.y, 20, 20)];
@@ -276,8 +290,7 @@
         
         [self.headerCell addSubview:self.starLabel];
     }
-    
-    [self.headerCell addSubview:self.portraitView];
+
     [self.headerCell addSubview:self.displayNameLabel];
     [self.headerCell addSubview:self.userNameLabel];
     [self.headerCell addSubview:self.aliasLabel];
@@ -306,25 +319,24 @@
             UITableViewCell *alisaCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"setAlisa"];
             alisaCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(16, 0, self.view.frame.size.width - 16 - 60, 50)];
+            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 20 - 80 - 50, 60)];
             [btn setTitle:WFCString(@"ModifyNickname") forState:UIControlStateNormal];
-            [btn setTitleColor:[WFCUConfigManager globalManager].textColor forState:UIControlStateNormal];
+            [btn setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
             [btn addTarget:self action:@selector(setFriendNote) forControlEvents:UIControlEventTouchUpInside];
             btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
             [alisaCell.contentView addSubview:btn];
-            [self showSeparatorLine:alisaCell];
+            //[self showSeparatorLine:alisaCell];
+            
+            UILabel *nickLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 80 - 45, 0, 80, 60)];
+            nickLabel.textColor = [UIColor blackColor];
+            nickLabel.textAlignment = NSTextAlignmentRight;
+            nickLabel.font = [UIFont pingFangSCWithRegular:16];
+            nickLabel.text = alias;
+            [alisaCell.contentView addSubview:nickLabel];
+            
             [self.headerCells addObject:alisaCell];
 
-    //        if (self.userInfo.mobile.length > 0) {
-    //            self.mobileLabel = [[UILabel alloc] initWithFrame:CGRectMake(92, 50, width - 94 - 8, 21)];
-    //            self.mobileLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
-    //            self.mobileLabel.textColor = [UIColor colorWithHexString:@"0x828282"];
-    //            self.mobileLabel.text = [NSString stringWithFormat:@"%@: %@",WFCString(@"Mobile"),self.userInfo.mobile];
-    //            [self.headerCell addSubview:self.mobileLabel];
-    //
-    //        }
-            
             if (self.userInfo.email.length > 0) {
                 UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
                 cell.textLabel.text = self.userInfo.email;
@@ -353,6 +365,8 @@
         if (self.fromConversation.type == Group_Type) {
             self.userMessagesCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
             self.userMessagesCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            self.userMessagesCell.textLabel.font = [UIFont pingFangSCWithRegular:16];
+            self.userMessagesCell.textLabel.textColor = [UIColor blackColor];
             if([self.userId isEqualToString:[WFCCNetworkService sharedInstance].userId]) {
                 self.userMessagesCell.textLabel.text = @"查看我的消息";
             } else {
@@ -387,11 +401,11 @@
             for (UIView *subView in self.sendMessageCell.subviews) {
                 [subView removeFromSuperview];
             }
-            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 50)];
+            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 60)];
             [btn setImage:[UIImage imageNamed:@"message"] forState:UIControlStateNormal];
             btn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
             [btn setTitle:WFCString(@"SendMessage") forState:UIControlStateNormal];
-            [btn setTitleColor:[WFCUConfigManager globalManager].textColor forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor colorWithHexString:@"#06CCCA"] forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleMedium size:16];
             [btn addTarget:self action:@selector(onSendMessageBtn:) forControlEvents:UIControlEventTouchDown];
             if (@available(iOS 14, *)) {
@@ -508,7 +522,6 @@
     [actionSheet addAction:actionVideo];
     [actionSheet addAction:actionCancel];
     
-    
     //相当于之前的[actionSheet show];
     [self presentViewController:actionSheet animated:YES completion:nil];
 #endif
@@ -520,11 +533,6 @@
     vc.sourceType = self.sourceType;
     vc.sourceTargetId = self.sourceTargetId;
     [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDataSource<NSObject>
@@ -541,9 +549,9 @@
         return self.cells.count;
     } else {
         if (self.sendMessageCell) {
-            if (self.voipCallCell) {
-                return 2;
-            }
+//            if (self.voipCallCell) {
+//                return 2;
+//            }
             return 1;
         } else {
             return 1;
@@ -582,20 +590,21 @@
     }
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section != 0) {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 10)];
-        view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
-        return view;
-    } else {
+    if (section == 0 || (section == 1 && self.momentCell == nil) || (section == 2 && self.cells.count <= 0)) {
         return nil;
     }
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 10)];
+    view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
+   // view.text = [[NSString alloc] initWithFormat:@"%d", section];
+    view.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+    view.layer.borderWidth = 0.5;
+    return view;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
+    if (section == 0 || (section == 1 && self.momentCell == nil) || (section == 2 && self.cells.count <= 0)) {
         return 0;
-    } else {
-        return 10;
     }
+    return 10;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -615,9 +624,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            return 100;
+            return 90;
         } else {
-            return 50;
+            return 60;
         }
     } else if(indexPath.section == 1) {
         if (self.momentCell) {
