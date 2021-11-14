@@ -80,12 +80,13 @@
     }
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    UIView *footerView =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 146)];
-    footerView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
+    UIView *footerView =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.5)];
+    footerView.backgroundColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
     self.tableView.tableFooterView = footerView;
-    if (self.conversation.type  != Group_Type) {
-        footerView.frame = CGRectMake(0, 0, 0, 0);
-    }
+//    if (self.conversation.type  != Group_Type) {
+//        footerView.frame = CGRectMake(0, 0, 0, 0);
+//    }
     
     [self.view addSubview:self.tableView];
     
@@ -202,14 +203,14 @@
         if (self.showMoreMember) {
             UIView *head = [[UIView alloc] init];
             CGRect frame = self.memberCollectionView.frame;
-            frame.size.height += 36;
+            frame.size.height += 57;
             head.frame = frame;
             [head addSubview:self.memberCollectionView];
             
-            UIButton *moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, frame.size.height - 40, frame.size.width, 36)];
+            UIButton *moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, frame.size.height - 57, frame.size.width, 57)];
             [moreBtn setTitle:WFCString(@"ShowAllMembers") forState:UIControlStateNormal];
-            moreBtn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:17];
-            [moreBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            moreBtn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
+            [moreBtn setTitleColor:[UIColor colorWithHexString:@"0x000000" alpha:0.6] forState:UIControlStateNormal];
             moreBtn.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
             [moreBtn addTarget:self action:@selector(onViewAllMember:) forControlEvents:UIControlEventTouchDown];
             [head addSubview:moreBtn];
@@ -571,12 +572,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 9;
+    return 10;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,9)];
-    view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10,10)];
+    view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"]; //[WFCUConfigManager globalManager].backgroudColor;
+    view.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+    view.layer.borderWidth = 0.5;
     return view;
 }
 
@@ -605,7 +608,11 @@
         cell.textLabel.text = title;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.type = type;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0 );
+        cell.valueSwitch.onTintColor = [UIColor colorWithHexString:@"0x0EEAE8"];
+        cell.valueSwitch.thumbTintColor = [UIColor whiteColor];
+//        cell.valueSwitch.layer.borderWidth = 0.5;
+//        cell.valueSwitch.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+        //cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0 );
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"style1Cell"];
@@ -619,7 +626,7 @@
         cell.accessoryType = withDI ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
         cell.accessoryView = nil;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0 );
+        //cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0 );
 
         return cell;
     }
@@ -686,7 +693,7 @@
       UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buttonCell"];
       if (cell == nil) {
           cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"buttonCell"];
-          cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+          //cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
           for (UIView *subView in cell.subviews) {
               [subView removeFromSuperview];
           }
@@ -717,7 +724,7 @@
                 [btn setTitle:WFCString(@"QuitGroup") forState:UIControlStateNormal];
             }
             btn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
-            [btn setTitleColor:[UIColor colorWithHexString:@"0xf95569"] forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor colorWithHexString:@"0xFF5959"] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(onDeleteAndQuit:) forControlEvents:UIControlEventTouchUpInside];
             if (@available(iOS 14, *)) {
                 [cell.contentView addSubview:btn];

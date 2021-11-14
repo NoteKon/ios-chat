@@ -35,10 +35,9 @@
 - (UILabel *)nameLabel {
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
+        _nameLabel.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.6];
         _nameLabel.textAlignment = NSTextAlignmentCenter;
-        _nameLabel.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
-        _nameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:11];
+        _nameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
         [[self contentView] addSubview:_nameLabel];
     }
     return _nameLabel;
@@ -52,9 +51,8 @@
         _headerImageView.contentMode = UIViewContentModeScaleAspectFill;
         _headerImageView.clipsToBounds = YES;
         
-        _headerImageView.layer.borderWidth = 1;
         _headerImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        _headerImageView.layer.cornerRadius = 8;
+        _headerImageView.layer.cornerRadius = 25;
         _headerImageView.layer.masksToBounds = YES;
         _headerImageView.backgroundColor = [UIColor clearColor];
         _headerImageView.layer.edgeAntialiasingMask =

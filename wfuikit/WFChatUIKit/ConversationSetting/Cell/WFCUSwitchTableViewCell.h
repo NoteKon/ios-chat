@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, SwitchType) {
 };
 
 @interface WFCUSwitchTableViewCell : UITableViewCell
+@property(nonatomic, strong)UISwitch *valueSwitch;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier conversation:(WFCCConversation*)conversation;
 @property(nonatomic, assign)SwitchType type;
 @end

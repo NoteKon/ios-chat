@@ -12,7 +12,6 @@
 
 @interface WFCUSwitchTableViewCell()
 @property(nonatomic, strong)WFCCConversation *conversation;
-@property(nonatomic, strong)UISwitch *valueSwitch;
 @end
 
 @implementation WFCUSwitchTableViewCell
