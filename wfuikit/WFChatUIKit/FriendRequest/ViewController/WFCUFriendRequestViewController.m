@@ -73,17 +73,19 @@
     _tableView.backgroundColor = bgColor;//[WFCUConfigManager globalManager].backgroudColor;
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, width + 10, 40)];
-    headerView.backgroundColor = bgColor;
-    headerView.layer.borderWidth = 0.5;
-    headerView.layer.borderColor = lineColor.CGColor;
-    UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 0, width - 17, 40)];
-    headLabel.text = WFCString(@"NewFriend");
-    headLabel.backgroundColor = [UIColor clearColor];
-    headLabel.font = [UIFont pingFangSCWithRegular: 14];
-    headLabel.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.6];
-    [headerView addSubview:headLabel];
-    self.tableView.tableHeaderView = headerView;
+    if (_dataList.count > 0) {
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, width + 10, 40)];
+        headerView.backgroundColor = bgColor;
+        headerView.layer.borderWidth = 0.5;
+        headerView.layer.borderColor = lineColor.CGColor;
+        UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(17, 0, width - 17, 40)];
+        headLabel.text = WFCString(@"NewFriend");
+        headLabel.backgroundColor = [UIColor clearColor];
+        headLabel.font = [UIFont pingFangSCWithRegular: 14];
+        headLabel.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.6];
+        [headerView addSubview:headLabel];
+        self.tableView.tableHeaderView = headerView;
+    }
 
     [self.view addSubview:_tableView];
     
