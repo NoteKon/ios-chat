@@ -10,6 +10,7 @@ import Foundation
 @_exported import SWFoundationKit
 @_exported import SWBusinessKit
 //@_exported import SWToast
+@_exported import SnapKit
 #if DEBUG
 @_exported import VVDebugKit
 #endif
