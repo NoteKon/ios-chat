@@ -28,7 +28,7 @@
 @property (strong, nonatomic)UILabel *aliasLabel;
 @property (strong, nonatomic)UILabel *displayNameLabel;
 @property (strong, nonatomic)UILabel *userNameLabel;
-@property (strong, nonatomic)UILabel *starLabel;
+@property (strong, nonatomic)UIImageView *starImageView;
 @property (strong, nonatomic)UITableViewCell *headerCell;
 
 
@@ -283,12 +283,9 @@
     self.userNameLabel.textColor = textColor;
     
     if ([[WFCCIMService sharedWFCIMService] isFavUser:self.userId]) {
-        self.starLabel = [[UILabel alloc] initWithFrame:CGRectMake(width - 16 - 20, self.displayNameLabel.frame.origin.y, 20, 20)];
-        self.starLabel.text = @"☆";
-        self.starLabel.font = [UIFont systemFontOfSize:18];
-        self.starLabel.textColor = [UIColor yellowColor];
-        
-        [self.headerCell addSubview:self.starLabel];
+        self.starImageView = [[UIImageView alloc] initWithFrame:CGRectMake(width - 16 - 20, self.displayNameLabel.frame.origin.y, 20, 20)];
+        self.starImageView.image = [UIImage imageNamed:@"best_start"];
+        [self.headerCell addSubview:self.starImageView];
     }
 
     [self.headerCell addSubview:self.displayNameLabel];
