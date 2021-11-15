@@ -166,10 +166,11 @@
         _sendBtn.tag = 333;
         _sendBtn.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         _sendBtn.frame = CGRectMake(self.frame.size.width - 52,5,52, 37);
+        _sendBtn.layer.cornerRadius = 5;
+        _sendBtn.clipsToBounds = YES;
         [_sendBtn setTitle:@"发送" forState:UIControlStateNormal];
-        [_sendBtn setTitleColor:[WFCUConfigManager globalManager].textColor forState:UIControlStateNormal];
-        self.sendBtn.layer.borderWidth = 0.5f;
-        self.sendBtn.layer.borderColor = HEXCOLOR(0xdbdbdd).CGColor;
+        [_sendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _sendBtn.backgroundColor = [UIColor colorWithRed:90/255.0 green:236/255.0 blue:237/255.0 alpha:1.0];
         [_sendBtn addTarget:self action:@selector(sendBtnHandle:) forControlEvents:UIControlEventTouchUpInside];
         [_tabbarView addSubview:_sendBtn];
         
