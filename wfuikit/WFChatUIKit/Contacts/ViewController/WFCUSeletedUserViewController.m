@@ -343,6 +343,7 @@ UISearchBarDelegate>
  
     if (enable) {
         self.doneButton.enabled = YES;
+        self.doneButton.userInteractionEnabled = YES;
         self.doneButton.alpha = 1.0;
         
         [self.doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -359,6 +360,7 @@ UISearchBarDelegate>
         }
     } else {
         self.doneButton.enabled = NO;
+        self.doneButton.userInteractionEnabled = NO;
         self.doneButton.alpha = 0.6;
         self.doneButton.frame = CGRectMake(0, 0, 52, height);
         [self.doneButton setTitleColor:[UIColor colorWithHexString:@"0x000000" alpha:0.5] forState:UIControlStateNormal];

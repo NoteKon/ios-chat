@@ -169,7 +169,7 @@ typedef enum {
         self.opaque = YES;
         self.alpha = 0;
         
-        self.layer.shadowOpacity = 0.5;
+        self.layer.shadowOpacity = 0.3;
         self.layer.shadowOffset = CGSizeMake(2, 2);
         self.layer.shadowRadius = 2;
     }
@@ -318,6 +318,8 @@ typedef enum {
     _menuItems = menuItems;
     
     _contentView = [self mkContentView];
+//    _contentView.layer.borderWidth = 1;
+//    _contentView.layer.borderColor = [UIColor redColor].CGColor;
     [self addSubview:_contentView];
     
     [self setupFrameInView:view fromRect:rect];
@@ -397,7 +399,7 @@ typedef enum {
     const CGFloat kMarginY = 5.f;
     
     UIFont *titleFont = [KxMenu titleFont];
-    if (!titleFont) titleFont = [UIFont boldSystemFontOfSize:16];
+    if (!titleFont) titleFont = [UIFont systemFontOfSize:14];
     
     CGFloat maxImageWidth = 0;    
     CGFloat maxItemHeight = 0;
@@ -435,8 +437,8 @@ typedef enum {
     const CGFloat titleX = kMarginX * 2 + maxImageWidth;
     const CGFloat titleWidth = maxItemWidth - titleX - kMarginX * 2;
     
-    UIImage *selectedImage = [KxMenuView selectedImage:(CGSize){maxItemWidth, maxItemHeight + 2}];
-    UIImage *gradientLine = [KxMenuView gradientLine: (CGSize){maxItemWidth - kMarginX * 4, 1}];
+    //UIImage *selectedImage = [KxMenuView selectedImage:(CGSize){maxItemWidth, maxItemHeight + 2}];
+    //UIImage *gradientLine = [KxMenuView gradientLine: (CGSize){maxItemWidth - kMarginX * 4, 1}];
     
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
     contentView.autoresizingMask = UIViewAutoresizingNone;
@@ -471,7 +473,7 @@ typedef enum {
                        action:@selector(performAction:)
              forControlEvents:UIControlEventTouchUpInside];
             
-            [button setBackgroundImage:selectedImage forState:UIControlStateHighlighted];
+            //[button setBackgroundImage:selectedImage forState:UIControlStateHighlighted];
             
             [itemView addSubview:button];
         }
@@ -503,7 +505,7 @@ typedef enum {
             titleLabel.text = menuItem.title;
             titleLabel.font = titleFont;
             titleLabel.textAlignment = menuItem.alignment;
-            titleLabel.textColor = menuItem.foreColor ? menuItem.foreColor : [UIColor whiteColor];
+            titleLabel.textColor = menuItem.foreColor ? menuItem.foreColor : [UIColor blackColor];
             titleLabel.backgroundColor = [UIColor clearColor];
             titleLabel.autoresizingMask = UIViewAutoresizingNone;
             //titleLabel.backgroundColor = [UIColor greenColor];
@@ -521,15 +523,15 @@ typedef enum {
             [itemView addSubview:imageView];
         }
         
-        if (itemNum < _menuItems.count - 1) {
-            
-            UIImageView *gradientView = [[UIImageView alloc] initWithImage:gradientLine];
-            gradientView.frame = (CGRect){kMarginX * 2, maxItemHeight + 1, gradientLine.size};
-            gradientView.contentMode = UIViewContentModeLeft;
-            [itemView addSubview:gradientView];
-            
-            itemY += 2;
-        }
+//        if (itemNum < _menuItems.count - 1) {
+//
+//            UIImageView *gradientView = [[UIImageView alloc] initWithImage:gradientLine];
+//            gradientView.frame = (CGRect){kMarginX * 2, maxItemHeight + 1, gradientLine.size};
+//            gradientView.contentMode = UIViewContentModeLeft;
+//            [itemView addSubview:gradientView];
+//
+//            itemY += 2;
+//        }
         
         itemY += maxItemHeight;
         ++itemNum;
@@ -627,11 +629,12 @@ typedef enum {
     CGFloat R0 = 0.267, G0 = 0.303, B0 = 0.335;
     CGFloat R1 = 0.040, G1 = 0.040, B1 = 0.040;
     
-    UIColor *tintColor = [KxMenu tintColor];
+    UIColor *tintColor = [UIColor whiteColor];//[KxMenu tintColor];
     if (tintColor) {
         
         CGFloat a;
         [tintColor getRed:&R0 green:&G0 blue:&B0 alpha:&a];
+        [tintColor getRed:&R1 green:&G1 blue:&B1 alpha:&a];
     }
     
     CGFloat X0 = frame.origin.x;
