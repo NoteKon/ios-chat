@@ -156,6 +156,7 @@
     } else {
         self.labelStr = @"群组";
     }
+    self.idLabel.text = [NSString stringWithFormat:@"群号: %@", groupInfo.target];
 }
 
 - (void)onUserInfoUpdated:(NSNotification *)notification {
