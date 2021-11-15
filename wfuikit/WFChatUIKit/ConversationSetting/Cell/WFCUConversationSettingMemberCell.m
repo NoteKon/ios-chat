@@ -29,7 +29,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.headerImageView.frame = CGRectMake(2, 2, self.frame.size.width - 4, self.frame.size.width - 4);
-    self.nameLabel.frame = CGRectMake(0, self.frame.size.width + 3, self.frame.size.width, 11);
+    self.nameLabel.frame = CGRectMake(0, self.frame.size.width + 4, self.frame.size.width, 15);
 }
 
 - (UILabel *)nameLabel {
@@ -52,7 +52,7 @@
         _headerImageView.clipsToBounds = YES;
         
         _headerImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        _headerImageView.layer.cornerRadius = 25;
+        _headerImageView.layer.cornerRadius = (self.frame.size.width - 4) / 2;
         _headerImageView.layer.masksToBounds = YES;
         _headerImageView.backgroundColor = [UIColor clearColor];
         _headerImageView.layer.edgeAntialiasingMask =
@@ -65,7 +65,6 @@
 
 - (void)setModel:(NSObject *)model withType:(WFCCConversationType)type {
     self.contentView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
-//    self.nameLabel.textColor = [WFCUConfigManager globalManager].textColor;
     
     self.model = model;
     

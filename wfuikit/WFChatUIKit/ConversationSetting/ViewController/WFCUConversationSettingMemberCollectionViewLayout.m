@@ -42,6 +42,11 @@
     }
     return _itemWidth;
 }
+
+- (CGFloat)itemHeight {
+    return 95;
+}
+
 - (void)prepareLayout {
     int itemCount = (int)[self.collectionView numberOfItemsInSection:0];
     if (itemCount == 0) {
@@ -62,9 +67,9 @@
                                                inSection:0]];
 
         attributes.frame = CGRectMake(column * self.itemAreaWidth + self.itemMargin,
-                                      row * self.itemAreaWidth + self.itemMargin,
+                                      row * self.itemHeight + self.itemMargin,
                                       self.itemWidth,
-                                      self.itemWidth);
+                                      self.itemHeight);
         
         [self.attributesArray addObject:attributes];
     }
@@ -77,8 +82,8 @@
         return 0;
     } else {
         int lines = (itemCount - 1) / 5 + 1;
-        CGFloat height = self.itemAreaWidth * lines;
-        height += 12;
+        CGFloat height = self.itemHeight * lines;
+        height += 15;
         return height;
     }
 }
