@@ -799,21 +799,8 @@
       }];
     };
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:gmvc];
+      nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.navigationController presentViewController:nav animated:YES completion:nil];
-//  } else if ([self isGroupPortraitCell:indexPath]) {
-//      if (self.groupInfo.type == GroupType_Restricted && ![self isGroupManager]) {
-//          [self.view makeToast:WFCString(@"OnlyManangerCanChangeGroupPortraitHint") duration:1 position:CSToastPositionCenter];
-//          return;
-//      }
-//    WFCUCreateGroupViewController *vc = [[WFCUCreateGroupViewController alloc] init];
-//    vc.isModifyPortrait = YES;
-//    vc.groupId = self.groupInfo.target;
-//    vc.memberIds = [[NSMutableArray alloc] init];
-//    for (WFCCGroupMember *member in self.memberList) {
-//      [vc.memberIds addObject:member.memberId];
-//    }
-//    
-//    [self.navigationController pushViewController:vc animated:YES];
   } else if ([self isGroupManageCell:indexPath]) {
       GroupManageTableViewController *gmvc = [[GroupManageTableViewController alloc] init];
       gmvc.groupInfo = self.groupInfo;
