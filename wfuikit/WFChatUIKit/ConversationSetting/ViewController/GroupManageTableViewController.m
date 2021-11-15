@@ -23,13 +23,16 @@
     
     self.title = WFCString(@"GroupManage");
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;
     }
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
+    self.tableView.separatorColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+    self.tableView.backgroundColor = [UIColor colorWithRed:251/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableView reloadData];
     
@@ -56,6 +59,11 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.accessoryView = nil;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.font = [UIFont systemFontOfSize:16];
+    cell.textLabel.textColor = [UIColor blackColor];
+    
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+    cell.detailTextLabel.textColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha: 0.6];
     
     cell.detailTextLabel.text = nil;
     if (indexPath.section == 0) {
@@ -133,11 +141,13 @@
     }
     return nil;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 30.f;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.f;
+    return 0.1f;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2; //成员管理，加群设置
