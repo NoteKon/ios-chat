@@ -285,14 +285,14 @@ UISearchBarDelegate>
     
     if (self.type == Vertical) {
         self.searchBar.barTintColor = [UIColor whiteColor];
-        self.selectedUserCollectionView.backgroundColor = [UIColor colorWithHexString:@"0x1f2026"];
+        self.selectedUserCollectionView.backgroundColor = [UIColor whiteColor];
         UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
         [self.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
         self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
         UINavigationBar *bar = [UINavigationBar appearance];
         bar.barTintColor = [UIColor whiteColor];
         bar.tintColor = [UIColor whiteColor];
-        bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+        bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
         bar.barStyle = UIBarStyleDefault;
         
         if (@available(iOS 13, *)) {
@@ -300,58 +300,42 @@ UISearchBarDelegate>
             bar.standardAppearance = navBarAppearance;
             bar.scrollEdgeAppearance = navBarAppearance;
             navBarAppearance.backgroundColor = [UIColor whiteColor];
-            navBarAppearance.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+            navBarAppearance.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor]};
         }
         self.title = @"选择成员";
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
-        
-        self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.doneButton.frame = CGRectMake(0, 0, 52, 24);
-        [self setDoneButtonStyleAndContent:NO];
-        self.doneButton.backgroundColor = [UIColor whiteColor];
-        [self.doneButton setTitle:@"完成" forState:UIControlStateNormal];
-        self.doneButton.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
-        [self.doneButton setTintColor:[UIColor colorWithHexString:@"3DEDEC"]];
-        self.doneButton.layer.cornerRadius = 12;
-        self.doneButton.layer.masksToBounds = YES;
-        self.doneButton.enabled = NO;
-        self.doneButton.userInteractionEnabled = NO;
-        [self.doneButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.doneButton];
-        
     } else {
         self.selectedUserCollectionView.backgroundColor = [UIColor whiteColor];
         self.searchBar.barTintColor = [UIColor whiteColor];
         UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
         [self.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
         self.title = @"创建会话";
-        
-        self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.doneButton.frame = CGRectMake(0, 0, 52, 24);
-        [self setDoneButtonStyleAndContent:NO];
-        self.doneButton.backgroundColor = [UIColor whiteColor];
-        [self.doneButton setTitle:@"完成" forState:UIControlStateNormal];
-        self.doneButton.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
-        
-        [self.doneButton setTintColor:[UIColor whiteColor]];
-        self.doneButton.layer.cornerRadius = 12;
-        self.doneButton.layer.masksToBounds = YES;
-        self.doneButton.enabled = NO;
-        self.doneButton.userInteractionEnabled = NO;
-        [self.doneButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
-        
-        UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
-        leftItem.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
-        [leftItem addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-        [leftItem setTitle:@"取消" forState:UIControlStateNormal];
-        [leftItem setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftItem];
-        
-        UIButton *rightItem = [UIButton buttonWithType:UIButtonTypeCustom];
-        rightItem.frame = CGRectMake(0, 0, 52, 24);
-        [rightItem addSubview:self.doneButton];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItem];
     }
+    
+    UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftItem.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
+    [leftItem addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    [leftItem setTitle:@"取消" forState:UIControlStateNormal];
+    [leftItem setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftItem];
+    
+    self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.doneButton.frame = CGRectMake(0, 0, 52, 24);
+    [self setDoneButtonStyleAndContent:NO];
+    self.doneButton.backgroundColor = [UIColor whiteColor];
+    [self.doneButton setTitle:@"完成" forState:UIControlStateNormal];
+    self.doneButton.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
+    
+    [self.doneButton setTintColor:[UIColor whiteColor]];
+    self.doneButton.layer.cornerRadius = 12;
+    self.doneButton.layer.masksToBounds = YES;
+    self.doneButton.enabled = NO;
+    self.doneButton.userInteractionEnabled = NO;
+    [self.doneButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *rightItem = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightItem.frame = CGRectMake(0, 0, 52, 24);
+    [rightItem addSubview:self.doneButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItem];
 }
 
 - (void)setDoneButtonStyleAndContent:(BOOL)enable {
