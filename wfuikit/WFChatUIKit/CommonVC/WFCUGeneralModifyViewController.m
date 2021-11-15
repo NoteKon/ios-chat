@@ -26,6 +26,7 @@
     
     self.tipLabel.text = @"备注名";
     self.textField.text = self.defaultValue;
+    [self.view addSubview:self.lineView];
     
     UIButton *leftButton = [UIButton buttonWithType: UIButtonTypeCustom];
     [leftButton setTitle:WFCString(@"Cancel") forState:UIControlStateNormal];
@@ -97,21 +98,24 @@
 - (UITextField *)textField {
     if(!_textField) {
         CGFloat offsetX = 21;
-        _textField = [[UITextField alloc] initWithFrame:CGRectMake(offsetX, kStatusBarAndNavigationBarHeight + 64, [UIScreen mainScreen].bounds.size.width - offsetX * 2, 32)];
+        _textField = [[UITextField alloc] initWithFrame:CGRectMake(offsetX, kStatusBarAndNavigationBarHeight + 54, [UIScreen mainScreen].bounds.size.width - offsetX * 2, 32)];
         _textField.borderStyle = UITextBorderStyleNone;
         _textField.clearButtonMode = UITextFieldViewModeAlways;
         _textField.textColor = [UIColor blackColor];
         _textField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
         _textField.delegate = self;
         
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, _textField.frame.size.height - 0.5, _textField.frame.size.width, 0.5)];
-        lineView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.1];
-        self.lineView = lineView;
-        [_textField addSubview:lineView];
-        
         [self.view addSubview:_textField];
     }
     return _textField;
+}
+
+- (UIView *)lineView {
+    if (!_lineView) {
+        _lineView = [[UIView alloc] initWithFrame:CGRectMake(_textField.frame.origin.x, _textField.frame.origin.y + _textField.frame.size.height + 10, _textField.frame.size.width, 0.5)];
+        _lineView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.1];
+    }
+    return _lineView;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
