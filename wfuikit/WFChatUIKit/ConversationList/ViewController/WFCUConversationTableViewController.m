@@ -189,14 +189,10 @@
                                     image:[UIImage imageNamed:@"menu_start_chat"]
                                    target:self
                                    action:@selector(startChatAction:)],
-                     [KxMenuItem menuItem:WFCString(@"AddFriend")
+                     [KxMenuItem menuItem: @"添加朋友"
                                     image:[UIImage imageNamed:@"menu_add_friends"]
                                    target:self
                                    action:@selector(addFriendsAction:)],
-                     [KxMenuItem menuItem:WFCString(@"SubscribeChannel")
-                                    image:[UIImage imageNamed:@"menu_listen_channel"]
-                                   target:self
-                                   action:@selector(listenChannelAction:)],
                      [KxMenuItem menuItem:WFCString(@"ScanQRCode")
                                     image:[UIImage imageNamed:@"menu_scan_qr"]
                                    target:self

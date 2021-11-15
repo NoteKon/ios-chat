@@ -88,8 +88,8 @@
 "GroupNameMatch"="群名包含:";
 "Etc"="等";
 "Search"="搜索";
-"StartChat"="发起聊天";
-"ScanQRCode"="扫二维码";
+"StartChat"="发起群聊";
+"ScanQRCode"="扫一扫";
 "NotLogin"="未登录";
 "NotConnect"="未连接";
 "Connecting"="连接中...";
