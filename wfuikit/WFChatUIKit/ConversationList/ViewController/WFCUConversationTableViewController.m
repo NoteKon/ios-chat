@@ -65,8 +65,9 @@
     self.searchController.dimsBackgroundDuringPresentation = NO;
     if (@available(iOS 13, *)) {
         self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
-        self.searchController.searchBar.searchTextField.backgroundColor = [WFCUConfigManager globalManager].naviBackgroudColor;
-        UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
+        self.searchController.searchBar.searchTextField.font = [UIFont pingFangSCWithRegular:14];
+        self.searchController.searchBar.searchTextField.backgroundColor = [UIColor clearColor];
+        UIImage *searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"0xF7F7F7"] size:CGSizeMake(self.view.frame.size.width - 20 * 2, 32) cornerRadius:16];
         [self.searchController.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
     } else {
         [self.searchController.searchBar setValue:WFCString(@"Cancel") forKey:@"_cancelButtonText"];

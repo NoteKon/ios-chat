@@ -124,32 +124,34 @@ UISearchBarDelegate>
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (self.type == Vertical) {
-        cell.backgroundColor = [UIColor colorWithHexString:@"0x1f2026"];
-        cell.separatorInset = UIEdgeInsetsMake(0, 60, 0, 0);
-        cell.nameLabel.textColor = [UIColor whiteColor];
-        cell.nameLabel.textColor = [UIColor whiteColor];
-    } else {
-        cell.separatorInset = UIEdgeInsetsMake(0, 16, 0, 16);
-        cell.backgroundColor = [UIColor whiteColor];
-        cell.nameLabel.textColor = [UIColor colorWithHexString:@"0x1d1d1d"];
-    }
+    cell.backgroundColor = [UIColor whiteColor];
+    cell.nameLabel.textColor = [UIColor blackColor];
+    cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     return cell;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (self.type == Horizontal) {
         NSString *title = self.sectionKeys[section];
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-        view.backgroundColor = [UIColor colorWithHexString:@"0xededed"];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, self.view.frame.size.width, 30)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 27)];
+        view.backgroundColor = [UIColor colorWithHexString:@"0xF5F5F5"];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, self.view.frame.size.width, 27)];
         label.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:13];
-        label.textColor = [UIColor colorWithHexString:@"0x828282"];
+        label.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.5];
         label.textAlignment = NSTextAlignmentLeft;
         label.text = [NSString stringWithFormat:@"%@", title];
         [view addSubview:label];
-        return view;
         
+        UIColor *lineColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+        if (section == 0) {
+            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 0.5, self.view.frame.size.width, 0.5)];
+            lineView.backgroundColor = lineColor;
+            [view addSubview:lineView];
+        } else {
+            view.layer.borderWidth = 0.5;
+            view.layer.borderColor = lineColor.CGColor;
+        }
+        return view;
     } else {
         return nil;
     }
@@ -165,13 +167,12 @@ UISearchBarDelegate>
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 51;
+    return 60;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (self.type == Horizontal) {
-        return 30;
-        
+        return 27;
     } else {
         return 0;
     }
@@ -233,11 +234,16 @@ UISearchBarDelegate>
         } else {
             collectionViewWidth = contentSize.width;
         }
-        self.selectedUserCollectionView.frame = CGRectMake(16, 6, collectionViewWidth, 40);
-        self.searchBar.frame = CGRectMake(16 + collectionViewWidth + 8, 0, self.view.frame.size.width - (16 + collectionViewWidth + 8 * 2), 52);
+        self.selectedUserCollectionView.frame = CGRectMake(16, 19, collectionViewWidth, 40);
+        self.searchBar.frame = CGRectMake(collectionViewWidth + 8, 16, self.view.frame.size.width - (collectionViewWidth + 8 * 2), 44);
         self.topView.frame = CGRectMake(0, topSpace, self.view.frame.size.width, 60);
-        self.tableView.frame = CGRectMake(0, topSpace + 60, self.view.frame.size.width, self.view.frame.size.height - (60 + topSpace + 2));
+        self.tableView.frame = CGRectMake(0, topSpace + self.topView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.topView.frame.size.height + topSpace));
     }
+    
+//    self.topView.layer.borderColor = [UIColor redColor].CGColor;
+//    self.topView.layer.borderWidth = 1;
+//    self.tableView.layer.borderColor = [UIColor redColor].CGColor;
+//    self.tableView.layer.borderWidth = 1;
 }
 
 - (void)loadData {
@@ -273,16 +279,18 @@ UISearchBarDelegate>
         [self.topView addSubview:self.selectedUserCollectionView];
     }
     [self.view addSubview:self.tableView];
+    
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xF5F5F5"];
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"0xF5F5F5"];
+    
     if (self.type == Vertical) {
-        self.view.backgroundColor = [UIColor colorWithHexString:@"0x1f2026"];
-        self.tableView.backgroundColor = [UIColor colorWithHexString:@"0x1f2026"];
-        self.searchBar.barTintColor = [UIColor colorWithHexString:@"313236"];
+        self.searchBar.barTintColor = [UIColor whiteColor];
         self.selectedUserCollectionView.backgroundColor = [UIColor colorWithHexString:@"0x1f2026"];
-        UIImage* searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"313236"] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
+        UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
         [self.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
-        self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"0x1f2026"];
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
         UINavigationBar *bar = [UINavigationBar appearance];
-        bar.barTintColor = [UIColor colorWithHexString:@"0x1f2026"];
+        bar.barTintColor = [UIColor whiteColor];
         bar.tintColor = [UIColor whiteColor];
         bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
         bar.barStyle = UIBarStyleDefault;
@@ -291,70 +299,86 @@ UISearchBarDelegate>
             UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
             bar.standardAppearance = navBarAppearance;
             bar.scrollEdgeAppearance = navBarAppearance;
-            navBarAppearance.backgroundColor = [UIColor colorWithHexString:@"0x1f2026"];
+            navBarAppearance.backgroundColor = [UIColor whiteColor];
             navBarAppearance.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
         }
         self.title = @"选择成员";
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
         
         self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.doneButton.frame = CGRectMake(0, 0, 52, 30);
+        self.doneButton.frame = CGRectMake(0, 0, 52, 24);
         [self setDoneButtonStyleAndContent:NO];
-        self.doneButton.backgroundColor = [UIColor colorWithHexString:@"0x3e65e4"];
+        self.doneButton.backgroundColor = [UIColor whiteColor];
         [self.doneButton setTitle:@"完成" forState:UIControlStateNormal];
-        self.doneButton.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:15];
-        [self.doneButton setTintColor:[UIColor whiteColor]];
-        self.doneButton.layer.cornerRadius = 4;
+        self.doneButton.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
+        [self.doneButton setTintColor:[UIColor colorWithHexString:@"3DEDEC"]];
+        self.doneButton.layer.cornerRadius = 12;
         self.doneButton.layer.masksToBounds = YES;
         self.doneButton.enabled = NO;
+        self.doneButton.userInteractionEnabled = NO;
         [self.doneButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.doneButton];
         
     } else {
-        self.view.backgroundColor = [UIColor whiteColor];
-        self.tableView.backgroundColor = [UIColor whiteColor];
         self.selectedUserCollectionView.backgroundColor = [UIColor whiteColor];
         self.searchBar.barTintColor = [UIColor whiteColor];
         UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
         [self.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
         self.title = @"创建会话";
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
         
         self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.doneButton.frame = CGRectMake(0, 0, 52, 30);
+        self.doneButton.frame = CGRectMake(0, 0, 52, 24);
         [self setDoneButtonStyleAndContent:NO];
-        self.doneButton.backgroundColor = [UIColor colorWithHexString:@"0x3e65e4"];
+        self.doneButton.backgroundColor = [UIColor whiteColor];
         [self.doneButton setTitle:@"完成" forState:UIControlStateNormal];
-        self.doneButton.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:15];
+        self.doneButton.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
+        
         [self.doneButton setTintColor:[UIColor whiteColor]];
-        self.doneButton.layer.cornerRadius = 4;
+        self.doneButton.layer.cornerRadius = 12;
         self.doneButton.layer.masksToBounds = YES;
         self.doneButton.enabled = NO;
+        self.doneButton.userInteractionEnabled = NO;
         [self.doneButton addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.doneButton];
         
+        UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
+        leftItem.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
+        [leftItem addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+        [leftItem setTitle:@"取消" forState:UIControlStateNormal];
+        [leftItem setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftItem];
+        
+        UIButton *rightItem = [UIButton buttonWithType:UIButtonTypeCustom];
+        rightItem.frame = CGRectMake(0, 0, 52, 24);
+        [rightItem addSubview:self.doneButton];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItem];
     }
 }
 
 - (void)setDoneButtonStyleAndContent:(BOOL)enable {
+    CGFloat height = 24;
+ 
     if (enable) {
         self.doneButton.enabled = YES;
         self.doneButton.alpha = 1.0;
         
+        [self.doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.doneButton.backgroundColor = [UIColor colorWithHexString:@"3DEDEC"];
+        
         if (self.type == Horizontal) {
             [self.doneButton setTitle:[NSString stringWithFormat:@"完成(%lu)", (unsigned long)self.selectedUsers.count] forState:UIControlStateNormal];
             [self.doneButton sizeToFit];
-            self.doneButton.frame = CGRectMake(0, 0, self.doneButton.frame.size.width + 8 * 2, self.doneButton.frame.size.height);
+            self.doneButton.frame = CGRectMake(0, 0, self.doneButton.frame.size.width + 8 * 2, height);
         } else {
             [self.doneButton setTitle:[NSString stringWithFormat:@"完成(%lu/%d)", (unsigned long)self.selectedUsers.count, self.maxSelectCount] forState:UIControlStateNormal];
                     [self.doneButton sizeToFit];
-                    self.doneButton.frame = CGRectMake(0, 0, self.doneButton.frame.size.width + 8 * 2, self.doneButton.frame.size.height);
+                    self.doneButton.frame = CGRectMake(0, 0, self.doneButton.frame.size.width + 8 * 2, height);
         }
-
     } else {
         self.doneButton.enabled = NO;
         self.doneButton.alpha = 0.6;
-        self.doneButton.frame = CGRectMake(0, 0, 52, 30);
+        self.doneButton.frame = CGRectMake(0, 0, 52, height);
+        [self.doneButton setTitleColor:[UIColor colorWithHexString:@"0x000000" alpha:0.5] forState:UIControlStateNormal];
+        self.doneButton.backgroundColor = [UIColor whiteColor];
         [self.doneButton setTitle:@"完成" forState:UIControlStateNormal];
     }
 }
@@ -427,9 +451,7 @@ UISearchBarDelegate>
         [self reloadCellForUser:user];
     }
     
-    
     return YES;
-    
 }
 
 - (void)reloadCellForUser:(WFCUSelectedUserInfo *)user {
@@ -457,10 +479,9 @@ UISearchBarDelegate>
             flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
             rect = CGRectMake(16, 0, self.view.frame.size.width - 16 * 2, 1);
         } else {
-            flowLayout.itemSize = CGSizeMake(40, 40);
+            flowLayout.itemSize = CGSizeMake(32, 32);
             flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-            rect = CGRectMake(16, 6, 1, 24);
-            
+            rect = CGRectMake(16, 16, 1, 32);
         }
         
         _selectedUserCollectionView = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:flowLayout];
@@ -493,9 +514,11 @@ UISearchBarDelegate>
     if (!_topView) {
         _topView = [UIView new];
         if (self.type == Horizontal) {
-            _topView.backgroundColor = [WFCUConfigManager globalManager].naviBackgroudColor;
-            UIView *insertView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 52)];
+            _topView.backgroundColor = [UIColor colorWithHexString:@"F5F5F5"];
+            UIView *insertView = [[UIView alloc] initWithFrame:CGRectMake(0, 16, self.view.frame.size.width, 44)];
             insertView.backgroundColor = [UIColor whiteColor];
+            insertView.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+            insertView.layer.borderWidth = 0.5;
             [_topView addSubview:insertView];
         }
     }
@@ -507,7 +530,8 @@ UISearchBarDelegate>
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
         _searchBar.delegate = self;
         _searchBar.placeholder = @"搜索";
-        _searchBar.barStyle = UIBarStyleDefault;
+        _searchBar.barStyle = UIBarStyleBlackOpaque;
+        [_searchBar setBackgroundImage:[UIImage new]];
     }
     return _searchBar;
 }
