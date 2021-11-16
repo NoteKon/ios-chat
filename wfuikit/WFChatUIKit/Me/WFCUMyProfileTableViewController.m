@@ -15,6 +15,7 @@
 #import "WFCUModifyMyProfileViewController.h"
 #import "QrCodeHelper.h"
 #import "WFCUConfigManager.h"
+#import "UIColor+YH.h"
 
 
 @interface WFCUMyProfileTableViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -31,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.view addSubview:self.tableView];
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;
@@ -39,9 +40,13 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.tableView.tableHeaderView = nil;
+    // 掩藏第一个section
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+    self.tableView.sectionHeaderHeight = 12;
+    self.tableView.sectionFooterHeight = 0.01;
 
-    self.tableView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"FBFBFB"];//[WFCUConfigManager globalManager].backgroudColor;
+    self.tableView.separatorColor = [WFCUConfigManager globalManager].separateColor;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserInfoUpdated:) name:kUserInfoUpdated object:nil];
     
     self.title = WFCString(@"MyInformation");
@@ -77,11 +82,12 @@
     }
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     
-    self.portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(width - 104, 6, 64, 64)];
+    self.portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(width - 104, 13, 60, 60)];
+    self.portraitView.layer.cornerRadius = 30;
+    self.portraitView.clipsToBounds = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onViewPortrait:)];
     [self.portraitView addGestureRecognizer:tap];
     self.portraitView.userInteractionEnabled = YES;
-    
     
     [self.portraitView sd_setImageWithURL:[NSURL URLWithString:[self.userInfo.portrait stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage: [UIImage imageNamed:@"PersonalChat"]];
     
@@ -100,7 +106,7 @@
     [self.cells1 addObject:cell];
     UIImage *qrcode = [UIImage imageNamed:@"qrcode"];
     
-    UIImageView *qrview = [[UIImageView alloc] initWithFrame:CGRectMake(width - 56, 5, 30, 30)];
+    UIImageView *qrview = [[UIImageView alloc] initWithFrame:CGRectMake(width - 56, 19, 20, 20)];
     qrview.image = qrcode;
     [cell addSubview:qrview];
 
@@ -142,9 +148,6 @@
 
 - (UITableViewCell *)getAttrCell:(NSString *)leftText rightText:(NSString *)rightText mutable:(BOOL)mutable {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-//    for (UIView *subView in cell.subviews) {
-//        [subView removeFromSuperview];
-//    }
     if (!mutable) {
         cell.accessoryType = UITableViewCellAccessoryNone;
     } else {
@@ -153,47 +156,43 @@
 
     cell.tag = -1;
     [self addLabel:leftText onCell:cell isHeaderCell:NO isLeft:YES];
-//    if (rightText.length == 0) {
-//        rightText = @"未填写";
-//    }
     [self addLabel:rightText onCell:cell isHeaderCell:NO isLeft:NO];
     return cell;
 }
 
 - (void)addLabel:(NSString *)titleStr onCell:(UITableViewCell *)cell isHeaderCell:(BOOL)isHeaderCell isLeft:(BOOL)left {
-    UILabel *title ;
+    UILabel *titleLabel;
     if (isHeaderCell) {
-        title = [[UILabel alloc] initWithFrame:CGRectMake(8, 4, 68, 68)];
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(19, 30, 68, 16)];
     } else {
         if (left) {
-            title = [[UILabel alloc] initWithFrame:CGRectMake(8, 2, 72, 36)];
+            titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(19, 21, 72, 16)];
+            titleLabel.textColor = [UIColor blackColor];
+            [titleLabel setFont:[UIFont systemFontOfSize:16]];
         } else {
             CGFloat width = [UIScreen mainScreen].bounds.size.width;
-            title = [[UILabel alloc] initWithFrame:CGRectMake(88, 2, width - 108 - 28, 36)];
+            titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(width - 36 - 100, 21, 100, 16)];
+            titleLabel.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.6];
+            [titleLabel setFont:[UIFont systemFontOfSize:14]];
         }
     }
     
-    [title setFont:[UIFont systemFontOfSize:16]];
-    [title setText:titleStr];
+    [titleLabel setText:titleStr];
     if (left) {
-        [title setTextAlignment:NSTextAlignmentLeft];
-        title.tag = 1;
+        [titleLabel setTextAlignment:NSTextAlignmentLeft];
+        titleLabel.tag = 1;
     } else {
-        [title setTextAlignment:NSTextAlignmentRight];
-        title.tag = 2;
+        [titleLabel setTextAlignment:NSTextAlignmentRight];
+        titleLabel.tag = 2;
     }
     
-    [cell addSubview:title];
+    [cell addSubview:titleLabel];
 }
 
 - (void)onViewPortrait:(id)sender {
     WFCUMyPortraitViewController *pvc = [[WFCUMyPortraitViewController alloc] init];
     pvc.userId = self.userInfo.userId;
     [self.navigationController pushViewController:pvc animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - UITableViewDataSource<NSObject>
@@ -265,14 +264,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0 && indexPath.section == 0) {
-        return 76;
+        return 86;
     } else {
-        return 40 ;
+        return 58;
     }
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @" ";
 }
 
 - (void)updateGender:(int)gender {
