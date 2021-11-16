@@ -92,7 +92,7 @@ static NSString *wfcstar = @"☆";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.tableView.tableHeaderView = nil;
-    self.tableView.separatorColor = [UIColor colorWithHexString:@"0x141414" alpha:0.1];
+    self.tableView.separatorColor = [WFCUConfigManager globalManager].separateColor;
     if (self.selectContact) {
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:WFCString(@"Cancel") style:UIBarButtonItemStyleDone target:self action:@selector(onLeftBarBtn:)];
         
@@ -560,18 +560,10 @@ static NSString *wfcstar = @"☆";
     }
     
     CGFloat width = self.view.frame.size.width;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 42)];
-    UIColor *lineColor = [UIColor colorWithHexString:@"0x141414" alpha:0.1];
-    CGFloat offsetX = 0;
-    if (self.selectContact == NO) {
-        offsetX = section == 1 ? 78 : 0;
-    }
-    UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(offsetX, 0, width - offsetX, 0.5)];
-    topLineView.backgroundColor = lineColor;
-    UIView *bottomLineView = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 0.5, width, 0.5)];
-    bottomLineView.backgroundColor = lineColor;
-    [view addSubview:topLineView];
-    [view addSubview:bottomLineView];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, width + 10, 42)];
+    UIColor *lineColor = [WFCUConfigManager globalManager].separateColor;
+    view.layer.borderColor = lineColor.CGColor;
+    view.layer.borderWidth = 0.5;
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, width, 42)];
     label.backgroundColor = [UIColor clearColor];
@@ -612,7 +604,7 @@ static NSString *wfcstar = @"☆";
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];//[WFCUConfigManager globalManager].backgroudColor;
+    view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

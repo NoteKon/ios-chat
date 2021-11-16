@@ -180,9 +180,9 @@ static WFCUConfigManager *sharedSingleton = nil;
     }
     
     if (darkModel) {
-        return [UIColor colorWithHexString:@"0x3f3f3f"];
+        return [UIColor colorWithHexString:@"0xebebeb"];
     } else {
-        return [UIColor colorWithHexString:@"0xe7e7e7"];
+        return [UIColor colorWithHexString:@"0xebebeb"];
     }
     
 }
