@@ -184,9 +184,9 @@ CGFloat imageHeight = 52;
 
 - (void)updateDigestFrame:(BOOL)isSending {
     if (isSending) {
-        _digestView.frame = CGRectMake(20 + imageHeight + 14 + 18, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16 - 18, 14);
+        _digestView.frame = CGRectMake(20 + imageHeight + 14 + 18, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16 - 18, 16);
     } else {
-        _digestView.frame = CGRectMake(20 + imageHeight + 14, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16, 14);
+        _digestView.frame = CGRectMake(20 + imageHeight + 14, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16, 16);
     }
 }
 - (void)update:(WFCCConversation *)conversation {
@@ -295,7 +295,7 @@ CGFloat imageHeight = 52;
 /// 名称
 - (UILabel *)targetView {
     if (!_targetView) {
-        _targetView = [[UILabel alloc] initWithFrame:CGRectMake(20 + imageHeight + 14, 16, [UIScreen mainScreen].bounds.size.width - 70  - 68, 16)];
+        _targetView = [[UILabel alloc] initWithFrame:CGRectMake(20 + imageHeight + 14, 16, [UIScreen mainScreen].bounds.size.width - 70  - 68, 18)];
         _targetView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:18];
         _targetView.textColor = [UIColor blackColor]; //[WFCUConfigManager globalManager].textColor;
         _targetView.textAlignment = NSTextAlignmentLeft;
@@ -306,7 +306,7 @@ CGFloat imageHeight = 52;
 ///
 - (UILabel *)digestView {
     if (!_digestView) {
-        _digestView = [[UILabel alloc] initWithFrame:CGRectMake(20 + imageHeight + 14, 40, [UIScreen mainScreen].bounds.size.width - 70  - 16 - 14, 14)];
+        _digestView = [[UILabel alloc] initWithFrame:CGRectMake(20 + imageHeight + 14, 40, [UIScreen mainScreen].bounds.size.width - 70  - 16 - 14, 15)];
         _digestView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
         _digestView.textAlignment = NSTextAlignmentLeft;
         _digestView.lineBreakMode = NSLineBreakByTruncatingTail;
