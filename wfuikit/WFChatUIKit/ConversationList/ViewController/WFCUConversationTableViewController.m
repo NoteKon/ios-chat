@@ -65,21 +65,21 @@
     self.searchController.dimsBackgroundDuringPresentation = NO;
     if (@available(iOS 13, *)) {
         self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
-        self.searchController.searchBar.searchTextField.font = [UIFont pingFangSCWithRegular:14];
+        self.searchController.searchBar.searchTextField.font = [UIFont pingFangSCWithRegular:12];
         self.searchController.searchBar.searchTextField.backgroundColor = [UIColor clearColor];
-        UIImage *searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"0xF7F7F7"] size:CGSizeMake(self.view.frame.size.width - 20 * 2, 32) cornerRadius:16];
+        self.searchController.searchBar.searchTextField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
+        UIImage *searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"0xF7F7F7"] size:CGSizeMake(self.view.frame.size.width - 20 * 2, 36) cornerRadius:18];
         [self.searchController.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
+        UIImage *searchImg = [[UIImage imageNamed:@"msglist_search_icn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+           [self.searchController.searchBar setImage:searchImg forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
     } else {
         [self.searchController.searchBar setValue:WFCString(@"Cancel") forKey:@"_cancelButtonText"];
     }
-    
-    
+
     if (@available(iOS 9.1, *)) {
         self.searchController.obscuresBackgroundDuringPresentation = NO;
     }
     self.searchController.searchBar.placeholder = WFCString(@"Search");
-    
-    
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     if (@available(iOS 15, *)) {

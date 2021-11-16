@@ -95,7 +95,7 @@
         newFrame.size.width = viewWidth;
         newFrame.size.height = viewHeight;
         newFrame.origin.y = 37;
-        newFrame.origin.x = [UIScreen mainScreen].bounds.size.width - viewWidth - 10;
+        newFrame.origin.x = [UIScreen mainScreen].bounds.size.width - viewWidth - 20;
     }else{
         newFrame.size.width = 10;
         newFrame.size.height = 10;

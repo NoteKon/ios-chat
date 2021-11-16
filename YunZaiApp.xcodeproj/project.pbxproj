@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		580BFB7A273A594900500AA9 /* Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BFB79273A594900500AA9 /* Help.m */; };
-		580BFB7B273A72F600500AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EAA62738D61D007241B1 /* Assets.xcassets */; };
 		58725BAA273B9F69005C6456 /* UIView+UIView_Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 58725BA9273B9F69005C6456 /* UIView+UIView_Gradient.m */; };
 		5877D5992735384800C65732 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D5982735384800C65732 /* AppDelegate.swift */; };
 		5877D59D2735384800C65732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D59C2735384800C65732 /* ViewController.swift */; };
@@ -1110,7 +1109,6 @@
 				589884CC2739017200C6B6D1 /* ptt_end.m4a in Resources */,
 				589884D52739019800C6B6D1 /* ptt_begin.m4a in Resources */,
 				58D7EB182738EE0E007241B1 /* README.md in Resources */,
-				580BFB7B273A72F600500AA9 /* Assets.xcassets in Resources */,
 				58D7EB172738EE0E007241B1 /* LICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
