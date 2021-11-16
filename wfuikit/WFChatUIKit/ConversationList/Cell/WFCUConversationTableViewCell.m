@@ -169,9 +169,9 @@
 
 - (void)updateDigestFrame:(BOOL)isSending {
     if (isSending) {
-        _digestView.frame = CGRectMake(16 + 40 + 14 + 18, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16 - 18, 13);
+        _digestView.frame = CGRectMake(16 + 48 + 14 + 18, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16 - 18, 13);
     } else {
-        _digestView.frame = CGRectMake(16 + 40 + 14, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16, 13);
+        _digestView.frame = CGRectMake(16 + 48 + 14, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16, 13);
     }
 }
 - (void)update:(WFCCConversation *)conversation {
@@ -202,7 +202,7 @@
         self.targetView.text = WFCString(@"Chatroom");
     }
     
-    self.potraitView.layer.cornerRadius = 20.f;
+    self.potraitView.layer.cornerRadius = 24.f;
     self.digestView.attributedText = nil;
     if (_info.draft.length) {
         NSMutableAttributedString *attString = [[NSMutableAttributedString alloc] initWithString:WFCString(@"[Draft]") attributes:@{NSForegroundColorAttributeName : [UIColor redColor]}];
@@ -258,29 +258,29 @@
         self.digestView.text = _info.lastMessage.digest;
     }
 }
-
+/// 头像
 - (UIImageView *)potraitView {
     if (!_potraitView) {
-        _potraitView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 12, 40, 40)];
+        _potraitView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 8.5, 48, 48)];
         _potraitView.clipsToBounds = YES;
-        _potraitView.layer.cornerRadius = 20.f;
+        _potraitView.layer.cornerRadius = 24.f;
         [self.contentView addSubview:_potraitView];
     }
     return _potraitView;
 }
-
+///
 - (UIImageView *)statusView {
     if (!_statusView) {
-        _statusView = [[UIImageView alloc] initWithFrame:CGRectMake(16 + 40 + 12, 42, 16, 16)];
+        _statusView = [[UIImageView alloc] initWithFrame:CGRectMake(16 + 48 + 12, 42, 16, 16)];
         _statusView.image = [UIImage imageNamed:@"conversation_message_sending"];
         [self.contentView addSubview:_statusView];
     }
     return _statusView;
 }
-
+/// 名称
 - (UILabel *)targetView {
     if (!_targetView) {
-        _targetView = [[UILabel alloc] initWithFrame:CGRectMake(16 + 40 + 14, 16, [UIScreen mainScreen].bounds.size.width - 70  - 68, 16)];
+        _targetView = [[UILabel alloc] initWithFrame:CGRectMake(16 + 48 + 14, 16, [UIScreen mainScreen].bounds.size.width - 70  - 68, 16)];
         _targetView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
         _targetView.textColor = [UIColor blackColor]; //[WFCUConfigManager globalManager].textColor;
         _targetView.textAlignment = NSTextAlignmentLeft;
@@ -288,10 +288,10 @@
     }
     return _targetView;
 }
-
+///
 - (UILabel *)digestView {
     if (!_digestView) {
-        _digestView = [[UILabel alloc] initWithFrame:CGRectMake(16 + 40 + 14, 40, [UIScreen mainScreen].bounds.size.width - 70  - 16 - 14, 13)];
+        _digestView = [[UILabel alloc] initWithFrame:CGRectMake(16 + 48 + 14, 40, [UIScreen mainScreen].bounds.size.width - 70  - 16 - 14, 13)];
         _digestView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:12];
         _digestView.textAlignment = NSTextAlignmentLeft;
         _digestView.lineBreakMode = NSLineBreakByTruncatingTail;

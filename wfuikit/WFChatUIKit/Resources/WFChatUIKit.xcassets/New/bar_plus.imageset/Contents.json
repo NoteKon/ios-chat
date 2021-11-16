@@ -2,22 +2,21 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "plus-circle.png",
       "scale" : "1x"
     },
     {
+      "filename" : "bar_plus@2x.png",
       "idiom" : "universal",
-      "filename" : "plus-circle@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "bar_plus@3x.png",
       "idiom" : "universal",
-      "filename" : "plus-circle@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

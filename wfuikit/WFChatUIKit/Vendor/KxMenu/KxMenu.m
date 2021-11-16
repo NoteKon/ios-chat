@@ -169,9 +169,10 @@ typedef enum {
         self.opaque = YES;
         self.alpha = 0;
         
-        self.layer.shadowOpacity = 0.3;
-        self.layer.shadowOffset = CGSizeMake(2, 2);
+        self.layer.shadowOpacity = 1;
+        self.layer.shadowOffset = CGSizeMake(0, 0.5);
         self.layer.shadowRadius = 2;
+        self.layer.shadowColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1].CGColor;
     }
     
     return self;
@@ -393,7 +394,7 @@ typedef enum {
     if (!_menuItems.count)
         return nil;
  
-    const CGFloat kMinMenuItemHeight = 32.f;
+    const CGFloat kMinMenuItemHeight = 50.f;
     const CGFloat kMinMenuItemWidth = 32.f;
     const CGFloat kMarginX = 10.f;
     const CGFloat kMarginY = 5.f;

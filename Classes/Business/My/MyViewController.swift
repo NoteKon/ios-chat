@@ -39,8 +39,8 @@ import AVFoundation
         //headerView.clipsToBounds = true
         
         bannerView.layer.cornerRadius = 10
-        let shadowColor = UIColor(hex: 0xBBBBBB, alpha: 0.65)
-        let offset = CGSize(width: 0, height: 2)
+        let shadowColor = UIColor(hex: 0xE7E7E7, alpha: 0.65)
+        let offset = CGSize(width: 0, height: 0.2)
         bannerView.addShadow(color: shadowColor, offset: offset, opacity: 1, radius: 10)
         
         bottomView.layer.cornerRadius = 8

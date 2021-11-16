@@ -199,7 +199,7 @@ alpha:1.0]
     //self.loginBtn.backgroundColor = [UIColor colorWithHexString:@"0x59ECEB" alpha:0.4];
     [self.loginBtn setBackgroundImage:[self loginImage:NO] forState:UIControlStateNormal];
     
-    [self.loginBtn setTitleColor:[UIColor colorWithHexString:@"0x1E233A"] forState:UIControlStateNormal];
+    [self.loginBtn setTitleColor:[UIColor colorWithHexString:@"0x1E233A" alpha:0.4] forState:UIControlStateNormal];
     self.loginBtn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleMedium size:18];
     self.loginBtn.enabled = NO;
     UIColor *shadowColor = [UIColor colorWithRed:85/255.0 green:235/255.0 blue:234/255.0 alpha:0.79];
@@ -389,15 +389,21 @@ alpha:1.0]
         
         if ([self isValidCode]) {
             [self.loginBtn setBackgroundImage:[self loginImage:YES] forState:UIControlStateNormal];
+            [self.loginBtn setBackgroundImage:[self loginImage:YES] forState:UIControlStateHighlighted];
+            [self.loginBtn setTitleColor:[UIColor colorWithHexString:@"0x1E233A"] forState:UIControlStateNormal];
             self.loginBtn.enabled = YES;
         } else {
             [self.loginBtn setBackgroundImage:[self loginImage:NO] forState:UIControlStateNormal];
+            [self.loginBtn setBackgroundImage:[self loginImage:NO] forState:UIControlStateHighlighted];
+            [self.loginBtn setTitleColor:[UIColor colorWithHexString:@"0x1E233A" alpha:0.4] forState:UIControlStateNormal];
             self.loginBtn.enabled = NO;
         }
     } else {
         self.sendCodeBtn.enabled = NO;
         [self.sendCodeBtn setBackgroundColor:[UIColor colorWithHexString:@"0xFFD767" alpha:0.3]];
         [self.loginBtn setBackgroundImage:[self loginImage:NO] forState:UIControlStateNormal];
+        [self.loginBtn setBackgroundImage:[self loginImage:NO] forState:UIControlStateHighlighted];
+        [self.loginBtn setTitleColor:[UIColor colorWithHexString:@"0x1E233A" alpha:0.4] forState:UIControlStateNormal];
         self.loginBtn.enabled = NO;
     }
 }
