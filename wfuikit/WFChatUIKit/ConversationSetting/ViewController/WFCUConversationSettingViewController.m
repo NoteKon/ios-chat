@@ -74,19 +74,18 @@
         self.memberList = @[self.conversation.target];
     }
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;
     }
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
-    UIView *footerView =  [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.5)];
-    footerView.backgroundColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
-    self.tableView.tableFooterView = footerView;
-//    if (self.conversation.type  != Group_Type) {
-//        footerView.frame = CGRectMake(0, 0, 0, 0);
-//    }
+
+    self.tableView.separatorColor = [WFCUConfigManager globalManager].separateColor;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+    self.tableView.sectionHeaderHeight = 12;
+    self.tableView.sectionFooterHeight = 0.01;
     
     [self.view addSubview:self.tableView];
     
@@ -571,27 +570,15 @@
     return 0;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 10;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10,10)];
-    view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"]; //[WFCUConfigManager globalManager].backgroudColor;
-    view.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
-    view.layer.borderWidth = 0.5;
-    return view;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self isGroupAnnouncementCell:indexPath]) {
         float height = [WFCUUtilities getTextDrawingSize:self.groupAnnouncement.text font:[UIFont pingFangSCWithWeight:FontWeightStyleRegular size:12] constrainedSize:CGSizeMake(self.view.bounds.size.width - 48, 1000)].height;
         if (height > 12 * 3.2) {
             height = 12 * 3.2;
         }
-        return height + 50;
+        return height + 58;
     }
-    return 50;
+    return 58;
 }
 
 - (UITableViewCell *)cellOfTable:(UITableView *)tableView WithTitle:(NSString *)title withDetailTitle:(NSString *)detailTitle withDisclosureIndicator:(BOOL)withDI withSwitch:(BOOL)withSwitch withSwitchType:(SwitchType)type {
@@ -645,7 +632,7 @@
       
       CGFloat width = [UIScreen mainScreen].bounds.size.width;
       UIImage *qrcode = [UIImage imageNamed:@"qrcode"];
-      UIImageView *qrview = [[UIImageView alloc] initWithFrame:CGRectMake(width - 60, (50 - 22) / 2.0, 22, 22)];
+      UIImageView *qrview = [[UIImageView alloc] initWithFrame:CGRectMake(width - 60, (58 - 22) / 2.0, 22, 22)];
       qrview.image = qrcode;
       [cell addSubview:qrview];
       
@@ -653,8 +640,6 @@
   } else if ([self isGroupManageCell:indexPath]) {
     return [self cellOfTable:tableView WithTitle:WFCString(@"GroupManage") withDetailTitle:nil withDisclosureIndicator:YES withSwitch:NO withSwitchType:SwitchType_Conversation_None];
   } else if([self isGroupAnnouncementCell:indexPath]) {
-//    return [self cellOfTable:tableView WithTitle:@"群公告" withDetailTitle:nil withDisclosureIndicator:YES withSwitch:NO withSwitchType:SwitchType_Conversation_None];
-      
       UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"announcementCell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"announcementCell"];
@@ -693,7 +678,7 @@
       UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buttonCell"];
       if (cell == nil) {
           cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"buttonCell"];
-          //cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
+          cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
           for (UIView *subView in cell.subviews) {
               [subView removeFromSuperview];
           }
@@ -732,6 +717,7 @@
                 [cell addSubview:btn];
             }
         }
+      cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
         return cell;
   } else if([self isUnsubscribeChannel:indexPath]) {
       UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buttonCell"];
@@ -750,7 +736,6 @@
           btn.layer.cornerRadius = 5.f;
           btn.layer.masksToBounds = YES;
           
-          btn.backgroundColor = [UIColor redColor];
           [btn addTarget:self action:@selector(onDeleteAndQuit:) forControlEvents:UIControlEventTouchUpInside];
           if (@available(iOS 14, *)) {
               [cell.contentView addSubview:btn];
