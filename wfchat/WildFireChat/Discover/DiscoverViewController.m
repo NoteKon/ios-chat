@@ -54,10 +54,11 @@
     }
     
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.5)];
-    footerView.backgroundColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+    footerView.backgroundColor = [WFCUConfigManager globalManager].separateColor;
     self.tableView.tableFooterView = footerView;
     [self.tableView reloadData];
-    self.tableView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"FBFBFB"];
+    self.tableView.scrollEnabled = NO;
     [self.view addSubview:self.tableView];
     self.view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
 #ifdef WFC_MOMENTS
@@ -82,16 +83,16 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    CGFloat height = section == 0 ? 13 : 9;
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-10, 0, self.view.frame.size.width, height)];
-    view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
-    view.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+    CGFloat height = 12;
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, height)];
+    view.backgroundColor = [UIColor colorWithHexString:@"FBFBFB"];
+    view.layer.borderColor = [WFCUConfigManager globalManager].separateColor.CGColor;
     view.layer.borderWidth = 0.5;
     return view;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return  section == 0 ? 13 : 9;
+    return  12;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -156,7 +157,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+   // view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
