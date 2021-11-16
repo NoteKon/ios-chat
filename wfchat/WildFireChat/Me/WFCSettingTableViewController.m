@@ -29,25 +29,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;
     }
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor =  [UIColor colorWithHexString: @"#FBFBFB"];
-    self.tableView.separatorColor = [UIColor colorWithHexString:@"000000" alpha:0.06];
+    self.tableView.separatorColor = [WFCUConfigManager globalManager].separateColor;
     self.title = LocalizedString(@"Settings");
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.5)];
-    lineView.backgroundColor = self.tableView.separatorColor;
-    self.tableView.tableFooterView = lineView;
+    self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, CGFLOAT_MIN)];
+    self.tableView.sectionHeaderHeight = 12;
+    self.tableView.sectionFooterHeight = 0.01;
+
     [self.tableView reloadData];
     
     [self.view addSubview:self.tableView];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+    return 58;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,30 +58,6 @@
         [self.navigationController pushViewController:pvc animated:YES];
     } else {
         [self.view makeToast:@"敬请期待"];
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return 0.01;
-    } else {
-        return 11;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
-    view.backgroundColor = [UIColor colorWithHexString: @"#FBFBFB"];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return nil;
-    } else {
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 11)];
-        view.backgroundColor = [UIColor colorWithHexString: @"#FBFBFB"];
-        view.layer.borderColor = [UIColor colorWithHexString:@"000000" alpha:0.06].CGColor;
-        view.layer.borderWidth = 0.5;
-        return view;
     }
 }
 
