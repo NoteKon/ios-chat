@@ -184,9 +184,9 @@ CGFloat imageHeight = 52;
 
 - (void)updateDigestFrame:(BOOL)isSending {
     if (isSending) {
-        _digestView.frame = CGRectMake(20 + imageHeight + 14 + 18, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16 - 18, 16);
+        _digestView.frame = CGRectMake(20 + imageHeight + 14 + 18, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16 - 18 - 15, 16);
     } else {
-        _digestView.frame = CGRectMake(20 + imageHeight + 14, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16, 16);
+        _digestView.frame = CGRectMake(20 + imageHeight + 14, 40, [UIScreen mainScreen].bounds.size.width - 76 - 16 - 16 - 15, 16);
     }
 }
 - (void)update:(WFCCConversation *)conversation {
@@ -306,7 +306,7 @@ CGFloat imageHeight = 52;
 ///
 - (UILabel *)digestView {
     if (!_digestView) {
-        _digestView = [[UILabel alloc] initWithFrame:CGRectMake(20 + imageHeight + 14, 40, [UIScreen mainScreen].bounds.size.width - 70  - 16 - 14, 15)];
+        _digestView = [[UILabel alloc] initWithFrame:CGRectMake(20 + imageHeight + 14, 40, [UIScreen mainScreen].bounds.size.width - 70  - 16 - 14 - 15, 15)];
         _digestView.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:14];
         _digestView.textAlignment = NSTextAlignmentLeft;
         _digestView.lineBreakMode = NSLineBreakByTruncatingTail;

@@ -165,7 +165,7 @@
 
 - (void)setupMemberCollectionView {
     if (self.conversation.type == Single_Type || self.conversation.type == Group_Type) {
-        self.memberCollectionViewLayout = [[WFCUConversationSettingMemberCollectionViewLayout alloc] initWithItemMargin:8];
+        self.memberCollectionViewLayout = [[WFCUConversationSettingMemberCollectionViewLayout alloc] initWithItemMargin:20];
 
         if (self.conversation.type == Single_Type) {
             self.extraBtnNumber = 1;
@@ -864,6 +864,8 @@
         }
         cell.headerImageView.layer.cornerRadius = 0;
     }
+//    cell.layer.borderWidth = 1;
+//    cell.layer.borderColor = [UIColor redColor].CGColor;
     return cell;
 }
 

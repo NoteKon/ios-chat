@@ -14,6 +14,8 @@
 @property(nonatomic, assign) CGFloat itemAreaWidth;
 @property(nonatomic, assign) CGFloat itemWidth;
 @property(nonatomic, assign) CGFloat itemMargin;
+@property(nonatomic, assign) CGFloat middleOffsetX;
+@property(nonatomic, assign) CGFloat middleOffsetY;
 
 @property(nonatomic, assign) int itemsPerLine;
 @end
@@ -25,6 +27,8 @@
     if (self) {
         self.itemMargin = itemMargin;
         self.itemsPerLine = 5;
+        self.middleOffsetX = 15;
+        self.middleOffsetY = 20;
     }
     return self;
 }
@@ -32,19 +36,19 @@
 - (CGFloat)itemAreaWidth {
     if (!_itemAreaWidth) {
         CGRect frame = [UIScreen mainScreen].bounds;
-        _itemAreaWidth = frame.size.width / self.itemsPerLine;
+        _itemAreaWidth = (frame.size.width - self.itemMargin * 2 - (self.itemsPerLine - 1) * self.middleOffsetX) / self.itemsPerLine;
     }
     return _itemAreaWidth;
 }
 - (CGFloat)itemWidth {
     if (!_itemWidth) {
-        _itemWidth = self.itemAreaWidth - self.itemMargin - self.itemMargin;
+        _itemWidth = self.itemAreaWidth; //- self.itemMargin - self.itemMargin;
     }
     return _itemWidth;
 }
 
 - (CGFloat)itemHeight {
-    return 95;
+    return 85;
 }
 
 - (void)prepareLayout {
@@ -65,9 +69,9 @@
          layoutAttributesForCellWithIndexPath:[NSIndexPath
                                                indexPathForItem:i
                                                inSection:0]];
-
-        attributes.frame = CGRectMake(column * self.itemAreaWidth + self.itemMargin,
-                                      row * self.itemHeight + self.itemMargin,
+        
+        attributes.frame = CGRectMake(column * (self.itemAreaWidth + self.middleOffsetX) + self.itemMargin,
+                                      row * (self.itemHeight + self.middleOffsetY) + self.itemMargin,
                                       self.itemWidth,
                                       self.itemHeight);
         
@@ -82,7 +86,7 @@
         return 0;
     } else {
         int lines = (itemCount - 1) / 5 + 1;
-        CGFloat height = self.itemHeight * lines;
+        CGFloat height = (self.itemHeight + self.middleOffsetY) * lines;
         height += 15;
         return height;
     }
