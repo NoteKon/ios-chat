@@ -18,7 +18,7 @@
 + (CGSize)sizeForClientArea:(WFCUMessageModel *)msgModel withViewWidth:(CGFloat)width {
     WFCCSoundMessageContent *soundContent = (WFCCSoundMessageContent *)msgModel.message.content;
     long duration = soundContent.duration;
-    return CGSizeMake(50 + 30 * (MIN(MAX(0, duration-5), 20)/20.0), 30);
+    return CGSizeMake(60 + 30 * (MIN(MAX(0, duration-5), 20)/20.0), 30);
 }
 
 - (void)setModel:(WFCUMessageModel *)model {
@@ -26,12 +26,12 @@
     
     CGRect bounds = self.contentArea.bounds;
     if (model.message.direction == MessageDirection_Send) {
-        self.voiceBtn.frame = CGRectMake(bounds.size.width - 30, 4, 22, 22);
-        self.durationLabel.frame = CGRectMake(bounds.size.width - 48, 19, 18, 9);
+        self.voiceBtn.frame = CGRectMake(bounds.size.width - 20, (bounds.size.height - 25) / 2, 18, 25);
+        self.durationLabel.frame = CGRectMake(bounds.size.width - 48, (bounds.size.height - 15) / 2, 18, 15);
         self.unplayedView.hidden = YES;
     } else {
-        self.voiceBtn.frame = CGRectMake(4, 4, 22, 22);
-        self.durationLabel.frame = CGRectMake(32, 19, 18, 9);
+        self.voiceBtn.frame = CGRectMake(4, (bounds.size.height - 25) / 2, 18, 25);
+        self.durationLabel.frame = CGRectMake(32, (bounds.size.height - 15) / 2, 18, 15);
         
         if (model.message.status == Message_Status_Played) {
             self.unplayedView.hidden = YES;
@@ -77,7 +77,8 @@
 - (UILabel *)durationLabel {
     if (!_durationLabel) {
         _durationLabel = [[UILabel alloc] init];
-        _durationLabel.font = [UIFont systemFontOfSize:9];
+        _durationLabel.font = [UIFont systemFontOfSize:14];
+        _durationLabel.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.9];
         [self.contentArea addSubview:_durationLabel];
     }
     return _durationLabel;

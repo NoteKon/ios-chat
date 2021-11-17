@@ -1,15 +1,16 @@
 {
   "images" : [
     {
-      "filename" : "sent_voice_2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "received_voice_3@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "received_voice_3@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
