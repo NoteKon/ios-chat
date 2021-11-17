@@ -34,8 +34,9 @@
 #import "WFPttViewController.h"
 #endif
 #import "UITextView+Placeholder.h"
+#import "UIColor+YH.h"
 
-#define CHAT_INPUT_BAR_PADDING 8
+#define CHAT_INPUT_BAR_PADDING 11.5
 #define CHAT_INPUT_BAR_ICON_SIZE (CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_PADDING - CHAT_INPUT_BAR_PADDING)
 
 #define CHAT_INPUT_QUOTE_PADDING 5
@@ -175,27 +176,25 @@
 #ifdef WFC_PTT
     self.textInputView = [[UITextView alloc] initWithFrame:CGRectMake(voiceAndPttOffset + CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_PADDING, parentRect.size.width - voiceAndPttOffset - CHAT_INPUT_BAR_PADDING - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT + CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_ICON_SIZE)];
 #else
-    self.textInputView = [[UITextView alloc] initWithFrame:CGRectMake(CHAT_INPUT_BAR_HEIGHT, CHAT_INPUT_BAR_PADDING, parentRect.size.width - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT + CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_ICON_SIZE)];
+    self.textInputView = [[UITextView alloc] initWithFrame:CGRectMake(CHAT_INPUT_BAR_HEIGHT + 12, CHAT_INPUT_BAR_PADDING, parentRect.size.width - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT + CHAT_INPUT_BAR_PADDING - 24, CHAT_INPUT_BAR_ICON_SIZE)];
 #endif
     
     self.textInputView.delegate = self;
+    self.textInputView.showsVerticalScrollIndicator = NO;
     self.textInputView.layoutManager.allowsNonContiguousLayout = NO;
     [self.textInputView setExclusiveTouch:YES];
     [self.textInputView setTextColor:[UIColor blackColor]];
     [self.textInputView setFont:[UIFont systemFontOfSize:16]];
     [self.textInputView setReturnKeyType:UIReturnKeySend];
-    self.textInputView.backgroundColor = [UIColor colorWithHexString:@"#F5F5F8"];
+    
     self.textInputView.enablesReturnKeyAutomatically = YES;
     self.textInputView.userInteractionEnabled = YES;
-    self.textInputView.layer.borderColor = [UIColor colorWithHexString:@"#6B6B6B" alpha:0.13].CGColor;
-    self.textInputView.layer.borderWidth = 1;
-    self.textInputView.layer.cornerRadius = 16;
+    self.textInputView.backgroundColor = [UIColor clearColor];
     self.textInputView.tintColor = [WFCUConfigManager globalManager].textFieldColor;
-    self.textInputView.placeholder = @"  请输入内容...";
+    //self.textInputView.placeholder = @"  请输入内容...";
     [self addSubview:self.textInputView];
     
     self.inputCoverView = [[UIView alloc] initWithFrame:self.textInputView.bounds];
-    self.inputCoverView.backgroundColor = [UIColor clearColor];
     [self.textInputView addSubview:self.inputCoverView];
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapInputView:)];
         tap.numberOfTapsRequired = 1;
@@ -253,6 +252,32 @@
     }
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    UIView *bgView = [self viewWithTag:10087];
+    if (bgView != nil) {
+        [bgView removeFromSuperview];
+    }
+    
+    switch (self.inputBarStatus) {
+        case ChatInputBarEmojiStatus:
+        case ChatInputBarKeyboardStatus:
+        case ChatInputBarPluginStatus:
+        case ChatInputBarDefaultStatus: {
+            CGRect frame = self.textInputView.frame;
+            bgView = [[UIView alloc] initWithFrame:CGRectMake(frame.origin.x - 12, frame.origin.y, frame.size.width + 24, frame.size.height + 1)];
+            bgView.tag = 10087;
+            bgView.layer.cornerRadius = 16;
+            bgView.clipsToBounds = true;
+            bgView.backgroundColor = [UIColor colorWithHexString:@"0xF5F5F8"];
+            [self insertSubview:bgView belowSubview:self.textInputView];
+        }
+        default: {
+            break;
+        }
+    }
+}
 #ifdef WFC_PTT
 - (void)playPttRing:(NSString *)ring {
     if([[UIApplication sharedApplication].delegate respondsToSelector:@selector(playPttRing:)]) {
@@ -523,6 +548,7 @@
     }
     
     _inputBarStatus = inputBarStatus;
+    [self layoutSubviews];
     switch (inputBarStatus) {
         case ChatInputBarKeyboardStatus:
             self.voiceInput = NO;
@@ -1224,16 +1250,16 @@
     }
     if (height <= 32.f) {
         tvFrame.size.height = 32.f;
-        diff = (48.f - baseFrame.size.height + quoteHeight);
-        baseFrame.size.height = 48.f;
+        diff = (54.f - baseFrame.size.height + quoteHeight);
+        baseFrame.size.height = 54.f;
     } else if (height > 32.f && height < 50.f) {
         tvFrame.size.height = 50.f;
-        diff = (66.f - baseFrame.size.height + quoteHeight);
-        baseFrame.size.height = 66.f;
+        diff = (72.f - baseFrame.size.height + quoteHeight);
+        baseFrame.size.height = 72.f;
     } else {
         tvFrame.size.height = 65.f;
-        diff = (81.f - baseFrame.size.height + quoteHeight);
-        baseFrame.size.height = 81.f;
+        diff = (87.f - baseFrame.size.height + quoteHeight);
+        baseFrame.size.height = 87.f;
     }
     if (self.quoteContainerView) {
         baseFrame.size.height += quoteHeight;

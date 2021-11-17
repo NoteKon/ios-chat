@@ -26,11 +26,11 @@
     
     CGRect bounds = self.contentArea.bounds;
     if (model.message.direction == MessageDirection_Send) {
-        self.voiceBtn.frame = CGRectMake(bounds.size.width - 20, (bounds.size.height - 25) / 2, 18, 25);
+        self.voiceBtn.frame = CGRectMake(bounds.size.width - 20, (bounds.size.height - 19) / 2, 14, 19);
         self.durationLabel.frame = CGRectMake(bounds.size.width - 48, (bounds.size.height - 15) / 2, 18, 15);
         self.unplayedView.hidden = YES;
     } else {
-        self.voiceBtn.frame = CGRectMake(4, (bounds.size.height - 25) / 2, 18, 25);
+        self.voiceBtn.frame = CGRectMake(4, (bounds.size.height - 19) / 2, 14, 19);
         self.durationLabel.frame = CGRectMake(32, (bounds.size.height - 15) / 2, 18, 15);
         
         if (model.message.status == Message_Status_Played) {
