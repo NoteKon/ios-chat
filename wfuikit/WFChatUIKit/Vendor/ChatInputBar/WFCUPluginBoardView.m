@@ -10,10 +10,10 @@
 #import "WFCUPluginItemView.h"
 #import "WFCUConfigManager.h"
 
-#define PLUGIN_AREA_HEIGHT 211
+#define PLUGIN_AREA_HEIGHT 279
 
-#define LeftOffset ([UIScreen mainScreen].bounds.size.width-75*4)/5.0
-#define RCPlaginBoardCellSize ((CGSize){ 75, 80 })
+#define LeftOffset ([UIScreen mainScreen].bounds.size.width-85*4)/5.0
+#define RCPlaginBoardCellSize ((CGSize){ 85, 91 })
 #define HorizontalItemsCount 4
 #define VerticalItemsCount 2
 
@@ -70,7 +70,6 @@
             
             PluginItem *pluginItem = self.pluginItems[i];
             
-            
             WFCUPluginItemView *item = [[WFCUPluginItemView alloc] initWithTitle:pluginItem.title image:pluginItem.image frame:frame];
             item.tag = pluginItem.tag;
             NSUInteger tag = item.tag;
@@ -88,13 +87,13 @@
 - (NSMutableArray *)pluginItems {
     if (!_pluginItems) {
         _pluginItems = [@[
-                          [[PluginItem alloc] initWithTitle:WFCString(@"Album") image:[UIImage imageNamed:@"chat_input_plugin_album"] tag:1],
-                          [[PluginItem alloc] initWithTitle:@"拍摄" image:[UIImage imageNamed:@"chat_input_plugin_camera"] tag:2],
-                          [[PluginItem alloc] initWithTitle:@"位置" image:[UIImage imageNamed:@"chat_input_plugin_location"] tag:3],
-                          [[PluginItem alloc] initWithTitle:@"文件" image:[UIImage imageNamed:@"chat_input_plugin_file"] tag:5],
-                          [[PluginItem alloc] initWithTitle:@"名片" image:[UIImage imageNamed:@"chat_input_plugin_card"] tag:6]
-                          ] mutableCopy];
-
+            [[PluginItem alloc] initWithTitle:WFCString(@"Album") image:[UIImage imageNamed:@"chat_input_plugin_album"] tag:1],
+            [[PluginItem alloc] initWithTitle:@"拍摄" image:[UIImage imageNamed:@"chat_input_plugin_camera"] tag:2],
+            [[PluginItem alloc] initWithTitle:@"位置" image:[UIImage imageNamed:@"chat_input_plugin_location"] tag:3],
+            [[PluginItem alloc] initWithTitle:@"文件" image:[UIImage imageNamed:@"chat_input_plugin_file"] tag:5],
+            [[PluginItem alloc] initWithTitle:@"名片" image:[UIImage imageNamed:@"chat_input_plugin_card"] tag:6]
+        ] mutableCopy];
+        
 #if WFCU_SUPPORT_VOIP
         if (self.hasVoip) {
             [_pluginItems insertObject:[[PluginItem alloc] initWithTitle:@"视频通话" image:[UIImage imageNamed:@"chat_input_plugin_video_call"] tag:4] atIndex:2];
@@ -108,4 +107,5 @@
     }
     return _pluginItems;
 }
+
 @end

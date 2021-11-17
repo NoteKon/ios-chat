@@ -79,6 +79,7 @@
 @property (nonatomic, strong)UIButton *voiceInputBtn;
 
 @property (nonatomic, strong)UIView *emojInputView;
+/// 选择各种不同消息
 @property (nonatomic, strong)UIView *pluginInputView;
 
 @property (nonatomic, strong)UIView *quoteContainerView;
@@ -167,7 +168,7 @@
     [self.pluginSwitchBtn addTarget:self action:@selector(onSwitchBtn:) forControlEvents:UIControlEventTouchDown];
     [self addSubview:self.pluginSwitchBtn];
     
-    self.emojSwitchBtn = [[UIButton alloc] initWithFrame:CGRectMake(parentRect.size.width - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_ICON_SIZE, 11, CHAT_INPUT_BAR_ICON_SIZE, CHAT_INPUT_BAR_ICON_SIZE)];
+    self.emojSwitchBtn = [[UIButton alloc] initWithFrame:CGRectMake(parentRect.size.width - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_ICON_SIZE + 4, 11, CHAT_INPUT_BAR_ICON_SIZE, CHAT_INPUT_BAR_ICON_SIZE)];
     [self.emojSwitchBtn setImage:[UIImage imageNamed:@"chat_input_bar_emoj"] forState:UIControlStateNormal];
     [self.emojSwitchBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.emojSwitchBtn addTarget:self action:@selector(onSwitchBtn:) forControlEvents:UIControlEventTouchDown];
@@ -176,7 +177,7 @@
 #ifdef WFC_PTT
     self.textInputView = [[UITextView alloc] initWithFrame:CGRectMake(voiceAndPttOffset + CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_PADDING, parentRect.size.width - voiceAndPttOffset - CHAT_INPUT_BAR_PADDING - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT + CHAT_INPUT_BAR_PADDING, CHAT_INPUT_BAR_ICON_SIZE)];
 #else
-    self.textInputView = [[UITextView alloc] initWithFrame:CGRectMake(CHAT_INPUT_BAR_HEIGHT + 12, CHAT_INPUT_BAR_PADDING, parentRect.size.width - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT + CHAT_INPUT_BAR_PADDING - 24, CHAT_INPUT_BAR_ICON_SIZE)];
+    self.textInputView = [[UITextView alloc] initWithFrame:CGRectMake(CHAT_INPUT_BAR_HEIGHT + 12, CHAT_INPUT_BAR_PADDING, parentRect.size.width - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT - CHAT_INPUT_BAR_HEIGHT + CHAT_INPUT_BAR_PADDING - 20, CHAT_INPUT_BAR_ICON_SIZE)];
 #endif
     
     self.textInputView.delegate = self;
@@ -211,7 +212,7 @@
     [self addSubview:self.voiceInputBtn];
     
     self.layer.borderWidth = 0.5f;
-    self.layer.borderColor = [UIColor colorWithHexString:@"#000000" alpha:0.1].CGColor;
+    self.layer.borderColor = [WFCUConfigManager globalManager].separateColor.CGColor;
     
     self.inputBarStatus = ChatInputBarDefaultStatus;
     
