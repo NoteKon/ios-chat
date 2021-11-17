@@ -142,7 +142,7 @@ UISearchBarDelegate>
         label.text = [NSString stringWithFormat:@"%@", title];
         [view addSubview:label];
         
-        UIColor *lineColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+        UIColor *lineColor = [WFCUConfigManager globalManager].separateColor;
         if (section == 0) {
             UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, view.frame.size.height - 0.5, self.view.frame.size.width, 0.5)];
             lineView.backgroundColor = lineColor;
@@ -503,7 +503,7 @@ UISearchBarDelegate>
             _topView.backgroundColor = [UIColor colorWithHexString:@"F5F5F5"];
             UIView *insertView = [[UIView alloc] initWithFrame:CGRectMake(0, 16, self.view.frame.size.width, 44)];
             insertView.backgroundColor = [UIColor whiteColor];
-            insertView.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+            insertView.layer.borderColor = [WFCUConfigManager globalManager].separateColor.CGColor;
             insertView.layer.borderWidth = 0.5;
             [_topView addSubview:insertView];
         }

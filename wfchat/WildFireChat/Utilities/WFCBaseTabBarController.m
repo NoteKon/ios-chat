@@ -21,7 +21,7 @@
 #define kImgKey     @"imageName"
 #define kSelImgKey  @"selectedImageName"
 
-@interface WFCBaseTabBarController ()
+@interface WFCBaseTabBarController ()<UINavigationControllerDelegate>
 @property (nonatomic, strong)UINavigationController *firstNav;
 @property (nonatomic, strong)UINavigationController *settingNav;
 @end
@@ -35,6 +35,7 @@
     vc.title = LocalizedString(@"tab_cloud");
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     UITabBarItem *item = nav.tabBarItem;
+    nav.delegate = self;
     item.title = LocalizedString(@"tab_cloud");
     item.image = [[UIImage imageNamed:@"tab_cloud_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_cloud_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -48,6 +49,7 @@
     vc = [WFCUContactListViewController new];
     vc.title = LocalizedString(@"tab_contact");
     nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.delegate = self;
     item = nav.tabBarItem;
     item.title = LocalizedString(@"tab_contact");
     item.image = [[UIImage imageNamed:@"tab_contact_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -60,6 +62,7 @@
     vc = [DiscoverViewController new];
     vc.title = LocalizedString(@"tab_discover");
     nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.delegate = self;
     item = nav.tabBarItem;
     item.title = LocalizedString(@"tab_discover");
     item.image = [[UIImage imageNamed:@"tab_discover_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -73,6 +76,7 @@
     vc = [[UIStoryboard storyboardWithName:@"My" bundle: nil] instantiateViewControllerWithIdentifier:@"MyViewController"];
     vc.title = LocalizedString(@"tab_me");
     nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.delegate = self;
     item = nav.tabBarItem;
     item.title = LocalizedString(@"tab_me");
     item.image = [[UIImage imageNamed:@"tab_me_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -96,6 +100,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self updateBadgeNumber];
+   // [self adaptTabBar];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self adaptTabBar];
 }
 
 - (void)updateBadgeNumber {
@@ -130,6 +141,56 @@
             [self.view removeFromSuperview];
             [superView addSubview:self.view];
         }
+    }
+}
+
+
+#pragma mark -
+/// UINavigationControllerDelegate
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if (viewController == self) {
+        
+    } else {
+        
+    }
+    
+    [self adaptTabBar];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [self hideShadowView:self.tabBar];
+}
+
+- (void)showTabBar {
+    
+}
+
+- (void)hideTabBar {
+    
+}
+
+- (void)adaptTabBar {
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGSize size = CGSizeMake(width, 48);
+    
+    UIImage *shadowImage = [UIImage imageWithColor:[UIColor redColor] size: CGSizeMake(width, 0.5)];
+    self.tabBar.shadowImage = shadowImage;
+    self.tabBar.backgroundImage = [UIImage imageWithColor:[UIColor whiteColor] size: size];
+    self.tabBar.barTintColor = [UIColor whiteColor];
+}
+
+- (void)hideShadowView:(UIView *)rootView {
+    if (rootView == nil) {
+        return;
+    }
+    
+    for (UIView *subView in rootView.subviews) {
+        Class subClass = NSClassFromString(@"_UIBarBackgroundShadowView");
+        if ([subClass isKindOfClass:[subClass class]]) {
+            subView.backgroundColor = [UIColor redColor];
+        }
+        
+        [self hideShadowView:subView];
     }
 }
 

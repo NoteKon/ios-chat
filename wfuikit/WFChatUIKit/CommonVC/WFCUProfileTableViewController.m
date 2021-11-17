@@ -79,7 +79,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"..." style:UIBarButtonItemStyleDone target:self action:@selector(onRightBtn:)];
     
-    UIColor *lineColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+    UIColor *lineColor = [WFCUConfigManager globalManager].separateColor;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 10)];
     headerView.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
     headerView.layer.borderColor = lineColor.CGColor;
@@ -593,7 +593,7 @@
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 10)];
     view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
    // view.text = [[NSString alloc] initWithFormat:@"%d", section];
-    view.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+    view.layer.borderColor = [WFCUConfigManager globalManager].separateColor.CGColor;
     view.layer.borderWidth = 0.5;
     return view;
 }

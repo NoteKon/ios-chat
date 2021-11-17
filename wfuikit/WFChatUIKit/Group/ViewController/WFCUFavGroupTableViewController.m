@@ -27,7 +27,7 @@
     [super viewDidLoad];
     
     UIColor *bgColor = [UIColor colorWithRed:251/255.0 green:251/255.0 blue:251/255.0 alpha:1.0];
-    UIColor *lineColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+    UIColor *lineColor = [WFCUConfigManager globalManager].separateColor;
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     self.groups = [[NSMutableArray alloc] init];
     self.title = WFCString(@"MyGroup");

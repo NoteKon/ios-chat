@@ -63,7 +63,7 @@
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, screenHeight)];
     
     UIColor *bgColor = [UIColor colorWithHexString:@"0xFBFBFB" alpha:1.0];
-    UIColor *lineColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1];
+    UIColor *lineColor = [WFCUConfigManager globalManager].separateColor;
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
 
     //设置代理
