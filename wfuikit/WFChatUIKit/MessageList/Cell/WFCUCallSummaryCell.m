@@ -153,16 +153,14 @@
     if (!_infoLabel) {
         _infoLabel = [[UILabel alloc] init];
         _infoLabel.numberOfLines = 0;
-        _infoLabel.font = [UIFont systemFontOfSize:14];
-        
-        _infoLabel.numberOfLines = 0;
         _infoLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         _infoLabel.textAlignment = NSTextAlignmentCenter;
-        _infoLabel.font = [UIFont systemFontOfSize:14.f];
+        _infoLabel.font = [UIFont systemFontOfSize:16.f];
         _infoLabel.layer.masksToBounds = YES;
         _infoLabel.layer.cornerRadius = 5.f;
         _infoLabel.textAlignment = NSTextAlignmentCenter;
         _infoLabel.userInteractionEnabled = YES;
+        _infoLabel.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.9];
         
         [self.contentArea addSubview:_infoLabel];
     }
