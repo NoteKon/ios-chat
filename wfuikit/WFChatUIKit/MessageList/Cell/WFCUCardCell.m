@@ -52,6 +52,8 @@
 - (UIImageView *)cardPortrait {
     if (!_cardPortrait) {
         _cardPortrait = [[UIImageView alloc] initWithFrame:CGRectMake(13, 9, 40, 40)];
+        _cardPortrait.layer.cornerRadius = 20;
+        _cardPortrait.clipsToBounds = YES;
         [self.contentArea addSubview:_cardPortrait];
     }
     return _cardPortrait;

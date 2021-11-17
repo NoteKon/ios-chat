@@ -46,11 +46,11 @@
 
 @implementation WFCUMessageCell
 + (CGFloat)clientAreaWidth {
-  return [WFCUMessageCell bubbleWidth] - Bubble_Padding_Arraw - Bubble_Padding_Another_Side;
+    return [WFCUMessageCell bubbleWidth] - Bubble_Padding_Arraw - Bubble_Padding_Another_Side;
 }
 
 + (CGFloat)bubbleWidth {
-    return ([UIScreen mainScreen].bounds.size.width - Portrait_Size - Portrait_Padding_Left - Portrait_Padding_Right) * 0.7;
+    return ([UIScreen mainScreen].bounds.size.width - Portrait_Size - Portrait_Padding_Left - Portrait_Padding_Right) - 70;
 }
 
 + (CGSize)sizeForCell:(WFCUMessageModel *)msgModel withViewWidth:(CGFloat)width {
@@ -198,7 +198,12 @@
 
       
     CGSize size = [self.class sizeForClientArea:model withViewWidth:[WFCUMessageCell clientAreaWidth]];
-      self.bubbleView.image = [UIImage imageNamed:@"sent_msg_background"];
+      Class cardCellClass = NSClassFromString(@"WFCCCardMessageContent");
+      UIImage *bgImage = [UIImage imageNamed:@"sent_msg_background"];
+      if ([model.message.content isKindOfClass:[cardCellClass class]] ) {
+          bgImage = [UIImage imageNamed:@"sent_msg_background_white"];
+      }
+      self.bubbleView.image = bgImage;
       self.bubbleView.frame = CGRectMake(frame.size.width - Portrait_Size - Portrait_Padding_Right - Name_Label_Padding - size.width - Bubble_Padding_Arraw - Bubble_Padding_Another_Side - selectViewOffset, top + Name_Client_Padding, size.width + Bubble_Padding_Arraw + Bubble_Padding_Another_Side, size.height + Client_Bubble_Top_Padding + Client_Bubble_Bottom_Padding);
     self.contentArea.frame = CGRectMake(Bubble_Padding_Another_Side, Client_Bubble_Top_Padding, size.width, size.height);
       
@@ -219,9 +224,11 @@
       self.nameLabel.hidden = YES;
     }
       
-      
-      
       NSString *bubbleImageName = @"received_msg_background";
+      Class cardCellClass = NSClassFromString(@"WFCCCardMessageContent");
+      if ([model.message.content isKindOfClass:[cardCellClass class]] ) {
+          bubbleImageName = @"received_msg_background_white";
+      }
       if (@available(iOS 13.0, *)) {
           if(UITraitCollection.currentTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
               bubbleImageName = @"chat_from_bg_normal_dark";
@@ -442,7 +449,7 @@
   if (!_portraitView) {
     _portraitView = [[UIImageView alloc] init];
     _portraitView.clipsToBounds = YES;
-    _portraitView.layer.cornerRadius = 3.f;
+    _portraitView.layer.cornerRadius = Portrait_Size / 2;
     [_portraitView setImage:[UIImage imageNamed:@"PersonalChat"]];
     
     [_portraitView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapPortrait:)]];

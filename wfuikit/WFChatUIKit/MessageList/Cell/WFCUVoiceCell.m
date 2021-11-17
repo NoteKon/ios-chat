@@ -114,9 +114,9 @@
     }
     
     if (self.model.message.direction == MessageDirection_Send) {
-        [self.voiceBtn setImage:[UIImage imageNamed:@"sent_voice"]];
+        [self.voiceBtn setImage:[UIImage imageNamed:@"sent_voice_3"]];
     } else {
-        [self.voiceBtn setImage:[UIImage imageNamed:@"received_voice"]];
+        [self.voiceBtn setImage:[UIImage imageNamed:@"received_voice_3"]];
     }
 }
 

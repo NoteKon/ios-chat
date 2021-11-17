@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		580BFB7A273A594900500AA9 /* Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BFB79273A594900500AA9 /* Help.m */; };
+		58311E4E2744B13C00D00805 /* WFChatUIKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EB142738EE0D007241B1 /* WFChatUIKit.xcassets */; };
 		58725BAA273B9F69005C6456 /* UIView+UIView_Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 58725BA9273B9F69005C6456 /* UIView+UIView_Gradient.m */; };
 		5877D5992735384800C65732 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D5982735384800C65732 /* AppDelegate.swift */; };
 		5877D59D2735384800C65732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D59C2735384800C65732 /* ViewController.swift */; };
@@ -122,7 +123,6 @@
 		58D7EB1F2738EE0E007241B1 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EB112738EE0D007241B1 /* unicode_to_hanyu_pinyin.txt */; };
 		58D7EB202738EE0E007241B1 /* Stickers.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EB122738EE0D007241B1 /* Stickers.bundle */; };
 		58D7EB212738EE0E007241B1 /* WFCUShareMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EB132738EE0D007241B1 /* WFCUShareMessageView.xib */; };
-		58D7EB222738EE0E007241B1 /* WFChatUIKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EB142738EE0D007241B1 /* WFChatUIKit.xcassets */; };
 		58D7EB232738EE0E007241B1 /* Emoj.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EB152738EE0E007241B1 /* Emoj.plist */; };
 		58D7EB242738EE0E007241B1 /* WFChatClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58D7EB162738EE0E007241B1 /* WFChatClient.framework */; };
 		58D7EB282738F2CA007241B1 /* WebRTC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58D7EB072738EE0D007241B1 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1097,12 +1097,12 @@
 				5877D5A02735384800C65732 /* Main.storyboard in Resources */,
 				589884922739009600C6B6D1 /* CodeScan.bundle in Resources */,
 				589884D92739056700C6B6D1 /* foreman.mp4 in Resources */,
+				58311E4E2744B13C00D00805 /* WFChatUIKit.xcassets in Resources */,
 				58D7EB1A2738EE0E007241B1 /* wfc.strings in Resources */,
 				589884D32739018A00C6B6D1 /* ring.caf in Resources */,
 				58D7EB202738EE0E007241B1 /* Stickers.bundle in Resources */,
 				589884D82739055D00C6B6D1 /* Album.xcassets in Resources */,
 				58D7E9382738CFDA007241B1 /* vvmodule.plist in Resources */,
-				58D7EB222738EE0E007241B1 /* WFChatUIKit.xcassets in Resources */,
 				58D7EB212738EE0E007241B1 /* WFCUShareMessageView.xib in Resources */,
 				5899171627368F7C00D43D9C /* InfoPlist.strings in Resources */,
 				589884AE273900F700C6B6D1 /* Archive.zip in Resources */,

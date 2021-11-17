@@ -83,26 +83,25 @@
     if (!self.timeLabel.hidden) {
         timeLableEnd = self.timeLabel.frame.size.height + self.timeLabel.frame.origin.y;
     }
-    self.infoLabel.frame = CGRectMake((width - size.width)/2 - 8, timeLableEnd + TEXT_LABEL_TOP_PADDING, size.width + 16, size.height + TEXT_TOP_PADDING + TEXT_BUTTOM_PADDING);
-//    self.infoLabel.textAlignment = NSTextAlignmentCenter;
-
+    CGFloat height = size.height + TEXT_TOP_PADDING + TEXT_BUTTOM_PADDING;
+    self.infoLabel.frame = CGRectMake((width - size.width)/2 - 8, timeLableEnd + TEXT_LABEL_TOP_PADDING, size.width + 16, height);
+    self.infoLabel.layer.cornerRadius = height / 2;
 }
 
 - (UILabel *)infoLabel {
     if (!_infoLabel) {
         _infoLabel = [[UILabel alloc] init];
         _infoLabel.numberOfLines = 0;
-        _infoLabel.font = [UIFont systemFontOfSize:14];
+        _infoLabel.font = [UIFont systemFontOfSize:16];
         
-        _infoLabel.textColor = [UIColor whiteColor];
+        _infoLabel.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
         _infoLabel.numberOfLines = 0;
         _infoLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         _infoLabel.textAlignment = NSTextAlignmentCenter;
         _infoLabel.font = [UIFont systemFontOfSize:14.f];
         _infoLabel.layer.masksToBounds = YES;
-        _infoLabel.layer.cornerRadius = 5.f;
         _infoLabel.textAlignment = NSTextAlignmentCenter;
-        _infoLabel.backgroundColor = [UIColor colorWithRed:201/255.f green:201/255.f blue:201/255.f alpha:1.f];
+        _infoLabel.backgroundColor = [UIColor whiteColor];
         
         [self.contentView addSubview:_infoLabel];
     }
