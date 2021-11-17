@@ -236,7 +236,7 @@
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake(31, 45, CGRectGetWidth(self.view.frame) - 62, 428)];
         view.backgroundColor = [UIColor whiteColor];
         view.layer.cornerRadius = 15;
-        view.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
+        view.layer.borderColor = [WFCUConfigManager globalManager].separateColor.CGColor;
         view.layer.borderWidth = 0.5;
         _qrView = view;
         [self.view addSubview:view];

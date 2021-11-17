@@ -199,8 +199,9 @@
       
     CGSize size = [self.class sizeForClientArea:model withViewWidth:[WFCUMessageCell clientAreaWidth]];
       Class cardCellClass = NSClassFromString(@"WFCCCardMessageContent");
+      Class fileCellClass =  NSClassFromString(@"WFCCFileMessageContent");
       UIImage *bgImage = [UIImage imageNamed:@"sent_msg_background"];
-      if ([model.message.content isKindOfClass:[cardCellClass class]] ) {
+      if ([model.message.content isKindOfClass:[cardCellClass class]] || [model.message.content isKindOfClass:[fileCellClass class]]) {
           bgImage = [UIImage imageNamed:@"sent_msg_background_white"];
       }
       self.bubbleView.image = bgImage;
@@ -226,7 +227,8 @@
       
       NSString *bubbleImageName = @"received_msg_background";
       Class cardCellClass = NSClassFromString(@"WFCCCardMessageContent");
-      if ([model.message.content isKindOfClass:[cardCellClass class]] ) {
+      Class fileCellClass = NSClassFromString(@"WFCCFileMessageContent");
+      if ([model.message.content isKindOfClass:[cardCellClass class]] || [model.message.content isKindOfClass:[fileCellClass class]]) {
           bubbleImageName = @"received_msg_background_white";
       }
       if (@available(iOS 13.0, *)) {
