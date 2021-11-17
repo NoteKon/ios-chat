@@ -201,14 +201,16 @@
         tap.numberOfTapsRequired = 1;
         [self.inputCoverView addGestureRecognizer:tap];
     
-    
-    self.voiceInputBtn = [[UIButton alloc] initWithFrame:self.textInputView.frame];
+    CGRect frame = self.textInputView.frame;
+    CGRect voiceFrame = CGRectMake(frame.origin.x - 12, frame.origin.y, frame.size.width + 24, frame.size.height + 1);
+    self.voiceInputBtn = [[UIButton alloc] initWithFrame: voiceFrame];
     [self.voiceInputBtn setTitle:WFCString(@"HoldToTalk") forState:UIControlStateNormal];
+    self.voiceInputBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.voiceInputBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    self.voiceInputBtn.layer.cornerRadius = 4;
+    self.voiceInputBtn.layer.cornerRadius = self.textInputView.frame.size.height / 2;
     self.voiceInputBtn.layer.masksToBounds = YES;
     self.voiceInputBtn.layer.borderWidth = 0.5f;
-    self.voiceInputBtn.layer.borderColor = HEXCOLOR(0xdbdbdd).CGColor;
+    self.voiceInputBtn.layer.borderColor = [WFCUConfigManager globalManager].separateColor.CGColor;
     [self addSubview:self.voiceInputBtn];
     
     self.layer.borderWidth = 0.5f;
