@@ -57,7 +57,7 @@
     WFCCLocationMessageContent *content = [[WFCCLocationMessageContent alloc] init];
     content.coordinate = coordinate;
     content.title = title;
-    content.thumbnail = [WFCCUtilities generateThumbnail:thumbnail withWidth:180 withHeight:120];;
+    content.thumbnail = thumbnail;//[WFCCUtilities generateThumbnail:thumbnail withWidth:180 withHeight:120];;
     return content;
 }
 
