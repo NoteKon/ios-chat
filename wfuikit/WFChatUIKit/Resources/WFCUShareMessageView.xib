@@ -39,7 +39,7 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p3O-f2-hIG" userLabel="LineView">
                     <rect key="frame" x="19" y="100" width="262" height="0.5"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="0.5" id="Tcd-tW-HRE"/>
                     </constraints>
@@ -69,7 +69,7 @@
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zpX-1J-0nB">
                     <rect key="frame" x="19" y="142.5" width="262" height="34.5"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="deviceRGB"/>
                     <color key="tintColor" red="0.24313725490196078" green="0.93333333333333335" blue="0.92941176470588238" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="VmY-q8-xGy"/>
@@ -81,10 +81,10 @@
                     <rect key="frame" x="0.0" y="195" width="300" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKP-HU-5Tc">
-                            <rect key="frame" x="0.0" y="1" width="149.5" height="49"/>
+                            <rect key="frame" x="0.0" y="0.5" width="150" height="49.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="49" id="zZN-Zc-WPB"/>
+                                <constraint firstAttribute="height" constant="49.5" id="zZN-Zc-WPB"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="取消">
@@ -95,10 +95,10 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nA-7v-Qj0">
-                            <rect key="frame" x="150.5" y="1" width="149.5" height="49"/>
+                            <rect key="frame" x="150.5" y="0.5" width="149.5" height="49.5"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="49" id="90Y-Ng-EOb"/>
+                                <constraint firstAttribute="height" constant="49.5" id="90Y-Ng-EOb"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="发送">
@@ -109,13 +109,13 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="deviceRGB"/>
+                    <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
-                        <constraint firstItem="KKP-HU-5Tc" firstAttribute="top" secondItem="HcC-gv-24h" secondAttribute="top" constant="1" id="073-Yb-ag9"/>
-                        <constraint firstItem="7nA-7v-Qj0" firstAttribute="top" secondItem="HcC-gv-24h" secondAttribute="top" constant="1" id="7Mr-m7-UlX"/>
+                        <constraint firstItem="KKP-HU-5Tc" firstAttribute="top" secondItem="HcC-gv-24h" secondAttribute="top" constant="0.5" id="073-Yb-ag9"/>
+                        <constraint firstItem="7nA-7v-Qj0" firstAttribute="top" secondItem="HcC-gv-24h" secondAttribute="top" constant="0.5" id="7Mr-m7-UlX"/>
                         <constraint firstAttribute="bottom" secondItem="7nA-7v-Qj0" secondAttribute="bottom" id="7ts-rG-zfv"/>
-                        <constraint firstItem="KKP-HU-5Tc" firstAttribute="width" secondItem="HcC-gv-24h" secondAttribute="width" multiplier="0.5" constant="-0.5" id="9jF-GD-hdL"/>
-                        <constraint firstItem="7nA-7v-Qj0" firstAttribute="width" secondItem="HcC-gv-24h" secondAttribute="width" multiplier="0.5" constant="-0.5" id="Lzf-Wq-i3G"/>
+                        <constraint firstItem="KKP-HU-5Tc" firstAttribute="width" secondItem="HcC-gv-24h" secondAttribute="width" multiplier="0.5" constant="-0.25" id="9jF-GD-hdL"/>
+                        <constraint firstItem="7nA-7v-Qj0" firstAttribute="width" secondItem="HcC-gv-24h" secondAttribute="width" multiplier="0.5" constant="-0.25" id="Lzf-Wq-i3G"/>
                         <constraint firstItem="KKP-HU-5Tc" firstAttribute="leading" secondItem="HcC-gv-24h" secondAttribute="leading" id="TPD-4U-XD5"/>
                         <constraint firstAttribute="trailing" secondItem="7nA-7v-Qj0" secondAttribute="trailing" id="Z0t-Mz-RVm"/>
                         <constraint firstAttribute="bottom" secondItem="KKP-HU-5Tc" secondAttribute="bottom" id="lsg-oc-BHV"/>

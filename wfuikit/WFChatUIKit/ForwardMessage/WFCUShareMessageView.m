@@ -32,12 +32,11 @@
     self.digestBackgrouView.layer.masksToBounds = YES;
     self.digestBackgrouView.layer.cornerRadius = 8.f;
     self.messageTextView.placeholder = WFCString(@"LeaveMessage");
+    [self.messageTextView setPlaceholderColor:[[UIColor blackColor] colorWithAlphaComponent:0.2]];
     self.messageTextView.layer.masksToBounds = YES;
-    self.messageTextView.layer.cornerRadius = 8.f;
+    self.messageTextView.layer.cornerRadius = 5.f;
     self.messageTextView.contentInset = UIEdgeInsetsMake(2, 8, 2, 2);
     self.messageTextView.tintColor = HEXCOLOR(0x3eeeed);
-    //self.messageTextView.layer.borderWidth = 0.5f;
-    //self.messageTextView.layer.borderColor = [[UIColor greenColor] CGColor];
 }
 
 - (IBAction)sendAction:(id)sender {
