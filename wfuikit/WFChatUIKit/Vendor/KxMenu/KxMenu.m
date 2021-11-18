@@ -170,9 +170,9 @@ typedef enum {
         self.alpha = 0;
         
         self.layer.shadowOpacity = 1;
-        self.layer.shadowOffset = CGSizeMake(0, 0.5);
+        self.layer.shadowOffset = CGSizeMake(0, 1);
         self.layer.shadowRadius = 2;
-        self.layer.shadowColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1].CGColor;
+        self.layer.shadowColor = [[UIColor blackColor] colorWithAlphaComponent:0.15].CGColor;
     }
     
     return self;
@@ -394,9 +394,9 @@ typedef enum {
     if (!_menuItems.count)
         return nil;
  
-    const CGFloat kMinMenuItemHeight = 50.f;
+    const CGFloat kMinMenuItemHeight = 46.f;
     const CGFloat kMinMenuItemWidth = 32.f;
-    const CGFloat kMarginX = 10.f;
+    const CGFloat kMarginX = 7.f;
     const CGFloat kMarginY = 5.f;
     
     UIFont *titleFont = [KxMenu titleFont];
