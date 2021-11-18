@@ -43,6 +43,7 @@ typedef NS_ENUM(NSInteger, WFCUThemeType) {
 
 @property(nonatomic, strong)UIColor *separateColor;
 @property(nonatomic, strong)UIColor *textFieldColor;
+@property(nonatomic, strong)UIColor *switchColor;
 
 @property(nonatomic, weak)id<WFCUAppServiceProvider> appServiceProvider;
 

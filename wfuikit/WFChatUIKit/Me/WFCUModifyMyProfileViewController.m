@@ -15,6 +15,7 @@
 @interface WFCUModifyMyProfileViewController () <UITextFieldDelegate>
 @property(nonatomic, strong)UITextField *textField;
 @property(nonatomic, assign)BOOL isAccount;
+@property (nonatomic, strong) UIView *lineView;
 @end
 
 @implementation WFCUModifyMyProfileViewController
@@ -77,6 +78,8 @@
     self.view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
     
     [self.textField becomeFirstResponder];
+    
+    [self.view addSubview:self.lineView];
 }
 
 - (void)onDone:(id)sender {
@@ -126,14 +129,23 @@
 
 - (UITextField *)textField {
     if(!_textField) {
-        _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight + 20, [UIScreen mainScreen].bounds.size.width, 32)];
-        _textField.borderStyle = UITextBorderStyleRoundedRect;
+        _textField = [[UITextField alloc] initWithFrame:CGRectMake(21, kStatusBarAndNavigationBarHeight + 20, [UIScreen mainScreen].bounds.size.width - 21 * 2, 32)];
+        _textField.borderStyle = UITextBorderStyleNone;
         _textField.clearButtonMode = UITextFieldViewModeAlways;
+        _textField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
         _textField.delegate = self;
         [_textField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
         [self.view addSubview:_textField];
     }
     return _textField;
+}
+
+- (UIView *)lineView {
+    if (!_lineView) {
+        _lineView = [[UIView alloc] initWithFrame:CGRectMake(_textField.frame.origin.x, _textField.frame.origin.y + _textField.frame.size.height + 10, _textField.frame.size.width, 0.5)];
+        _lineView.backgroundColor = [WFCUConfigManager globalManager].separateColor;
+    }
+    return _lineView;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -156,6 +168,12 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self onDone:textField];
+    return YES;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    textField.textColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.4];
+    self.lineView.backgroundColor = HEXCOLOR(0x64EEED);
     return YES;
 }
 

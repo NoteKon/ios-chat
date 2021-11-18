@@ -80,23 +80,22 @@
         self.searchController.obscuresBackgroundDuringPresentation = NO;
     }
     self.searchController.searchBar.placeholder = WFCString(@"Search");
-    
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+
+    CGRect frame = CGRectMake(0, kStatusBarAndNavigationBarHeight + 10, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;
     }
     [self.view addSubview:self.tableView];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+//    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.tableView.separatorColor = [UIColor clearColor];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"expansion"];
-    if (@available(iOS 11.0, *)) {
-        self.navigationItem.searchController = _searchController;
-    } else {
-        self.tableView.tableHeaderView = _searchController.searchBar;
-    }
+    self.navigationItem.searchController = _searchController;
+    
     self.definesPresentationContext = YES;
     
     self.view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;

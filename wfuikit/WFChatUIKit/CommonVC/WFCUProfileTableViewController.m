@@ -305,7 +305,7 @@
         [btn setImage:[UIImage imageNamed:@"message"] forState:UIControlStateNormal];
         btn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
         [btn setTitle:WFCString(@"SendMessage") forState:UIControlStateNormal];
-        [btn setTitleColor:[WFCUConfigManager globalManager].textColor forState:UIControlStateNormal];
+        [btn setTitleColor: HEXCOLOR(0x06CCCA) forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleMedium size:16];
         [btn addTarget:self action:@selector(onSendMessageBtn:) forControlEvents:UIControlEventTouchDown];
         if (@available(iOS 14, *)) {
@@ -400,7 +400,7 @@
             for (UIView *subView in self.sendMessageCell.subviews) {
                 [subView removeFromSuperview];
             }
-            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 60)];
+            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 50)];
             [btn setImage:[UIImage imageNamed:@"message"] forState:UIControlStateNormal];
             btn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
             [btn setTitle:WFCString(@"SendMessage") forState:UIControlStateNormal];

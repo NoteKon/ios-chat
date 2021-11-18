@@ -8,7 +8,7 @@
 
 #import "WFCUGeneralSwitchTableViewCell.h"
 #import "MBProgressHUD.h"
-
+#import "WFCUConfigManager.h"
 
 @interface WFCUGeneralSwitchTableViewCell()
 @end
@@ -20,10 +20,17 @@
     // Initialization code
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    self.valueSwitch.frame = CGRectMake(self.frame.size.width - 56, 13, 40, 40);
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self) {
-        self.valueSwitch = [[UISwitch alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 56, 8, 40, 40)];
+        self.valueSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        self.valueSwitch.onTintColor = [WFCUConfigManager globalManager].switchColor;
         [self.contentView addSubview:self.valueSwitch];
         [self.valueSwitch addTarget:self action:@selector(onSwitch:) forControlEvents:UIControlEventValueChanged];
     }

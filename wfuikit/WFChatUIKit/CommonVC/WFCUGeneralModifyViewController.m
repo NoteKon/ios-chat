@@ -113,7 +113,7 @@
 - (UIView *)lineView {
     if (!_lineView) {
         _lineView = [[UIView alloc] initWithFrame:CGRectMake(_textField.frame.origin.x, _textField.frame.origin.y + _textField.frame.size.height + 10, _textField.frame.size.width, 0.5)];
-        _lineView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.1];
+        _lineView.backgroundColor = [WFCUConfigManager globalManager].separateColor;
     }
     return _lineView;
 }
@@ -125,7 +125,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     textField.textColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.4];
-    self.lineView.backgroundColor = [UIColor colorWithRed:100/255.0 green:238/255.0 blue:237/255.0 alpha:1.0];
+    self.lineView.backgroundColor =  HEXCOLOR(0x64EEED);
     return YES;
 }
 
