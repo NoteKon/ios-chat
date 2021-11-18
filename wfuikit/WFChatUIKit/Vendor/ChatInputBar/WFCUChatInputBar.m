@@ -1423,6 +1423,8 @@
         [self notifyTyping:3];
         return;
     } else if(itemTag == 4) {
+        [self.parentView makeToast:@"敬请期待"];
+        return;
 #if WFCU_SUPPORT_VOIP
         UIActionSheet *actionSheet =
         [[UIActionSheet alloc] initWithTitle:nil

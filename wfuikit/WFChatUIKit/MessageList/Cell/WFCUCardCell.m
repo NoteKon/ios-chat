@@ -72,7 +72,7 @@
     if (!_cardSeparateLine) {
         CGRect bounds = self.contentArea.bounds;
         _cardSeparateLine = [[UIView alloc] initWithFrame:CGRectMake(13, 59, bounds.size.width - 13 - 8, 1)];
-        _cardSeparateLine.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha: 0.1];
+        _cardSeparateLine.backgroundColor = HEXCOLOR(0xebebeb);
         [self.contentArea addSubview:_cardSeparateLine];
     }
     return _cardSeparateLine;

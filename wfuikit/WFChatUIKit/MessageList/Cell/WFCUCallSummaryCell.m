@@ -132,12 +132,13 @@
     
     CGSize textSize = [WFCUUtilities getTextDrawingSize:self.infoLabel.text font:[UIFont systemFontOfSize:18] constrainedSize:CGSizeMake(width, 8000)];
     
+    CGFloat imageWidth = 20;
     if (model.message.direction == MessageDirection_Send) {
-        self.infoLabel.frame = CGRectMake(0, 0, width - 25, 30);
-        self.modeImageView.frame = CGRectMake(width - 25, 3, 25, 25);
+        self.infoLabel.frame = CGRectMake(0, 0, width - imageWidth, 30);
+        self.modeImageView.frame = CGRectMake(width - imageWidth, 3, imageWidth, imageWidth);
     } else {
-        self.infoLabel.frame = CGRectMake(0, 0, width-25, 30);
-        self.modeImageView.frame = CGRectMake(width-25, 3, 25, 25);
+        self.modeImageView.frame = CGRectMake(0, 3, imageWidth, imageWidth);
+        self.infoLabel.frame = CGRectMake(imageWidth, 0, width - imageWidth, 30);
     }
     if ([self.model.message.content isKindOfClass:[WFCCCallStartMessageContent class]]) {
         WFCCCallStartMessageContent *startContent = (WFCCCallStartMessageContent *)self.model.message.content;
@@ -169,6 +170,7 @@
 - (UIImageView *)modeImageView {
     if (!_modeImageView) {
         _modeImageView = [[UIImageView alloc] init];
+        _modeImageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentArea addSubview:_modeImageView];
     }
     return _modeImageView;

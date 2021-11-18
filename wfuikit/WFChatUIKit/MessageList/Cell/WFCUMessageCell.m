@@ -201,8 +201,9 @@
       Class cardCellClass = NSClassFromString(@"WFCCCardMessageContent");
       Class fileCellClass =  NSClassFromString(@"WFCCFileMessageContent");
       Class locationClass = NSClassFromString(@"WFCCLocationMessageContent");
+      Class imageClass = NSClassFromString(@"WFCCImageMessageContent");
       UIImage *bgImage = [UIImage imageNamed:@"sent_msg_background"];
-      if ([model.message.content isKindOfClass:[cardCellClass class]] || [model.message.content isKindOfClass:[fileCellClass class]] || [model.message.content isKindOfClass:[locationClass class]]) {
+      if ([model.message.content isKindOfClass:[cardCellClass class]] || [model.message.content isKindOfClass:[fileCellClass class]] || [model.message.content isKindOfClass:[locationClass class]] || [model.message.content isKindOfClass:[imageClass class]]) {
           bgImage = [UIImage imageNamed:@"sent_msg_background_white"];
       }
       self.bubbleView.image = bgImage;
@@ -230,7 +231,8 @@
       Class cardCellClass = NSClassFromString(@"WFCCCardMessageContent");
       Class fileCellClass = NSClassFromString(@"WFCCFileMessageContent");
       Class locationClass = NSClassFromString(@"WFCCLocationMessageContent");
-      if ([model.message.content isKindOfClass:[cardCellClass class]] || [model.message.content isKindOfClass:[fileCellClass class]] || [model.message.content isKindOfClass:[locationClass class]]) {
+      Class imageClass = NSClassFromString(@"WFCCImageMessageContent");
+      if ([model.message.content isKindOfClass:[cardCellClass class]] || [model.message.content isKindOfClass:[fileCellClass class]] || [model.message.content isKindOfClass:[locationClass class]] || [model.message.content isKindOfClass:[imageClass class]]) {
           bubbleImageName = @"received_msg_background_white";
       }
       if (@available(iOS 13.0, *)) {

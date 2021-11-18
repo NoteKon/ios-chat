@@ -25,7 +25,7 @@
     
     CGRect bounds = self.contentArea.bounds;
     if (model.message.direction == MessageDirection_Send) {
-        self.fileImageView.frame = CGRectMake(bounds.size.width - 42, (bounds.size.height - 42) / 2, 33, 42);
+        self.fileImageView.frame = CGRectMake(bounds.size.width - 50, (bounds.size.height - 50) / 2, 50, 50);
         CGFloat offsetX = 5;
         self.fileNameLabel.frame = CGRectMake(offsetX, 19, bounds.size.width - 67, 15);
         CGFloat offsetY = self.fileNameLabel.frame.origin.y + self.fileNameLabel.frame.size.height + 10;
@@ -33,7 +33,7 @@
         self.fileNameLabel.textAlignment = NSTextAlignmentLeft;
         self.sizeLabel.textAlignment = NSTextAlignmentLeft;
     } else {
-        self.fileImageView.frame = CGRectMake(9, (bounds.size.height - 42) / 2, 33, 42);
+        self.fileImageView.frame = CGRectMake(9, (bounds.size.height - 60) / 2, 50, 50);
         CGFloat offsetX = self.fileImageView.frame.origin.x + self.fileImageView.frame.size.width + 10;
         self.fileNameLabel.frame = CGRectMake(offsetX, 19, bounds.size.width - offsetX - 10, 15);
         CGFloat offsetY = self.fileNameLabel.frame.origin.y + self.fileNameLabel.frame.size.height + 10;
@@ -54,6 +54,7 @@
 - (UIImageView *)fileImageView {
     if (!_fileImageView) {
         _fileImageView = [[UIImageView alloc] init];
+        _fileImageView.contentMode = UIViewContentModeScaleAspectFill;
         [self.contentArea addSubview:_fileImageView];
     }
     return _fileImageView;
