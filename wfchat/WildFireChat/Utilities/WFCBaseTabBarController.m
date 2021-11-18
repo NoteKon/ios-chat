@@ -178,7 +178,7 @@
     barAppearance.backgroundColor = [UIColor whiteColor];
     self.tabBar.standardAppearance = barAppearance;
     if (@available(iOS 15.0, *)) {
-        self.tabBar.scrollEdgeAppearance = barAppearance;
+        //self.tabBar.scrollEdgeAppearance = barAppearance;
     } else {
         // Fallback on earlier versions
     }

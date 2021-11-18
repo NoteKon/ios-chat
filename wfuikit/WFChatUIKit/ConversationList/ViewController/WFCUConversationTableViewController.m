@@ -68,7 +68,8 @@
         self.searchController.searchBar.searchTextField.font = [UIFont pingFangSCWithRegular:12];
         self.searchController.searchBar.searchTextField.backgroundColor = [UIColor clearColor];
         self.searchController.searchBar.searchTextField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
-        UIImage *searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"0xF7F7F7"] size:CGSizeMake(self.view.frame.size.width - 20 * 2, 36) cornerRadius:18];
+        self.searchController.searchBar.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:WFCString(@"Search") attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14], NSForegroundColorAttributeName:[[UIColor blackColor] colorWithAlphaComponent:0.4]}];
+        UIImage *searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"0xF5F5F8"] size:CGSizeMake(self.view.frame.size.width - 20 * 2, 36) cornerRadius:18];
         [self.searchController.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
         UIImage *searchImg = [[UIImage imageNamed:@"msglist_search_icn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
            [self.searchController.searchBar setImage:searchImg forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
@@ -79,9 +80,8 @@
     if (@available(iOS 9.1, *)) {
         self.searchController.obscuresBackgroundDuringPresentation = NO;
     }
-    self.searchController.searchBar.placeholder = WFCString(@"Search");
 
-    CGRect frame = CGRectMake(0, kStatusBarAndNavigationBarHeight + 10, self.view.bounds.size.width, self.view.bounds.size.height);
+    CGRect frame = CGRectMake(0, kStatusBarAndNavigationBarHeight, self.view.bounds.size.width, self.view.bounds.size.height);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;
@@ -90,6 +90,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 //    self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.tableView.separatorColor = [UIColor clearColor];

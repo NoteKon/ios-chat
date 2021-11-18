@@ -122,7 +122,7 @@ static NSString *wfcstar = @"☆";
         self.searchController.searchBar.searchTextField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
         self.searchController.searchBar.searchTextField.font = [UIFont pingFangSCWithRegular:14];
         self.searchController.searchBar.searchTextField.backgroundColor = [UIColor whiteColor];
-        UIImage *searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"F2F3F6"] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:18];
+        UIImage *searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"0xF5F5F8"] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:18];
         [self.searchController.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
     } else {
         [self.searchController.searchBar setValue:WFCString(@"Cancel") forKey:@"_cancelButtonText"];
@@ -132,7 +132,7 @@ static NSString *wfcstar = @"☆";
         self.searchController.obscuresBackgroundDuringPresentation = NO;
     }
     
-    [self.searchController.searchBar setPlaceholder:WFCString(@"SearchContact")];
+    self.searchController.searchBar.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:WFCString(@"SearchContact") attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14], NSForegroundColorAttributeName:[[UIColor blackColor] colorWithAlphaComponent:0.4]}];
     
     if (@available(iOS 11.0, *)) {
         self.navigationItem.searchController = _searchController;
