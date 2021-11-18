@@ -30,6 +30,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIOffset textOffset = UIOffsetMake(0, -5);
+    UIEdgeInsets imageInsets = UIEdgeInsetsMake(-3, 0, 3, 0);
+    if (kIs_iPhoneX) {
+        textOffset = UIOffsetMake(0, 0);
+        imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    }
+    
     /// 云圈
     UIViewController *vc = [WFCUConversationTableViewController new];
     vc.title = LocalizedString(@"tab_cloud");
@@ -37,6 +44,8 @@
     UITabBarItem *item = nav.tabBarItem;
     nav.delegate = self;
     item.title = LocalizedString(@"tab_cloud");
+    item.titlePositionAdjustment = textOffset;
+    item.imageInsets = imageInsets;
     item.image = [[UIImage imageNamed:@"tab_cloud_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_cloud_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x3EEEED"]} forState:UIControlStateSelected];
@@ -51,6 +60,8 @@
     nav = [[UINavigationController alloc] initWithRootViewController:vc];
     nav.delegate = self;
     item = nav.tabBarItem;
+    item.titlePositionAdjustment = textOffset;
+    item.imageInsets = imageInsets;
     item.title = LocalizedString(@"tab_contact");
     item.image = [[UIImage imageNamed:@"tab_contact_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_contact_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -64,6 +75,8 @@
     nav = [[UINavigationController alloc] initWithRootViewController:vc];
     nav.delegate = self;
     item = nav.tabBarItem;
+    item.titlePositionAdjustment = textOffset;
+    item.imageInsets = imageInsets;
     item.title = LocalizedString(@"tab_discover");
     item.image = [[UIImage imageNamed:@"tab_discover_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_discover_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -78,6 +91,8 @@
     nav = [[UINavigationController alloc] initWithRootViewController:vc];
     nav.delegate = self;
     item = nav.tabBarItem;
+    item.titlePositionAdjustment = textOffset;
+    item.imageInsets = imageInsets;
     item.title = LocalizedString(@"tab_me");
     item.image = [[UIImage imageNamed:@"tab_me_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_me_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
