@@ -140,9 +140,10 @@ import AVFoundation
     
     /// 账号安全
     @objc func accountSafeClickAction() {
-        let viewController = WFCSecurityTableViewController()
-        viewController.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(viewController, animated: true)
+        showTip()
+//        let viewController = WFCSecurityTableViewController()
+//        viewController.hidesBottomBarWhenPushed = true
+//        self.navigationController?.pushViewController(viewController, animated: true)
     }
     /// 积分
     @objc func integralClickAction() {
