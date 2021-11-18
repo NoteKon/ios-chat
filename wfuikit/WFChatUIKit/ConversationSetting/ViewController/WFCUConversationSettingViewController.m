@@ -584,12 +584,18 @@
 - (UITableViewCell *)cellOfTable:(UITableView *)tableView WithTitle:(NSString *)title withDetailTitle:(NSString *)detailTitle withDisclosureIndicator:(BOOL)withDI withSwitch:(BOOL)withSwitch withSwitchType:(SwitchType)type {
     if (withSwitch) {
         WFCUSwitchTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"styleSwitch"];
+        
+        UIView *qrView = [cell viewWithTag:100897];
+        if (qrView) {
+            [qrView removeFromSuperview];
+        }
+        
         if(cell == nil) {
             cell = [[WFCUSwitchTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"styleSwitch" conversation:self.conversation];
         }
         cell.textLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
         cell.textLabel.textColor = [WFCUConfigManager globalManager].textColor;
-        cell.detailTextLabel.text = nil;
+        cell.detailTextLabel.text = @"";
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.accessoryView = nil;
         cell.textLabel.text = title;
@@ -597,12 +603,13 @@
         cell.type = type;
         cell.valueSwitch.onTintColor = [UIColor colorWithHexString:@"0x0EEAE8"];
         cell.valueSwitch.thumbTintColor = [UIColor whiteColor];
-//        cell.valueSwitch.layer.borderWidth = 0.5;
-//        cell.valueSwitch.layer.borderColor = [UIColor colorWithHexString:@"0x000000" alpha:0.1].CGColor;
-        //cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0 );
         return cell;
     } else {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"style1Cell"];
+        UIView *qrView = [cell viewWithTag:100897];
+        if (qrView) {
+            [qrView removeFromSuperview];
+        }
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"style1Cell"];
         }
@@ -634,6 +641,7 @@
       UIImage *qrcode = [UIImage imageNamed:@"qrcode"];
       UIImageView *qrview = [[UIImageView alloc] initWithFrame:CGRectMake(width - 60, (58 - 22) / 2.0, 22, 22)];
       qrview.image = qrcode;
+      qrview.tag = 100897;
       [cell addSubview:qrview];
       
       return cell;

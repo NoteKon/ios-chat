@@ -11,6 +11,8 @@
 #import "GroupMuteTableViewController.h"
 #import "GroupMemberControlTableViewController.h"
 #import "UIView+Toast.h"
+#import "UIFont+YH.h"
+#import "UIColor+YH.h"
 
 @interface GroupManageTableViewController () <UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)UITableView *tableView;
@@ -133,22 +135,37 @@
     return 0;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return WFCString(@"MemberManage");
-    } else if(section == 1) {
-        return WFCString(@"GroupGeneralSetting");
-    }
-    return nil;
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    if (section == 0) {
+//        return WFCString(@"MemberManage");
+//    } else if(section == 1) {
+//        return WFCString(@"GroupGeneralSetting");
+//    }
+//    return nil;
+//}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30.f;
+    return 40.f;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1f;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 58;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 40)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, tableView.frame.size.width - 32, 40)];
+    titleLabel.font = [UIFont pingFangSCWithRegular: 14];
+    titleLabel.textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.6];
+    titleLabel.text = section == 0 ? WFCString(@"MemberManage") : WFCString(@"GroupGeneralSetting");
+    [bgView addSubview:titleLabel];
+    return bgView;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2; //成员管理，加群设置
 }

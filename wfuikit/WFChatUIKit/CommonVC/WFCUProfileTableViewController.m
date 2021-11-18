@@ -85,6 +85,7 @@
     headerView.layer.borderColor = lineColor.CGColor;
     headerView.layer.borderWidth = 0.5;
     self.tableView.tableHeaderView = headerView;
+    self.tableView.separatorColor = lineColor;
     
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.5)];
     footerView.backgroundColor = lineColor;
@@ -236,6 +237,7 @@
     self.cells = [[NSMutableArray alloc] init];
     
     self.headerCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    self.headerCell.selectionStyle = UITableViewCellSelectionStyleNone;
     [self showSeparatorLine:self.headerCell];
     for (UIView *subView in self.headerCell.subviews) {
         [subView removeFromSuperview];
@@ -273,7 +275,7 @@
     }
     
     UIColor *textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.9];
-    self.aliasLabel.font = [UIFont pingFangSCWithRegular:16];
+    self.aliasLabel.font = [UIFont pingFangSCWithRegular:13];
     self.aliasLabel.textColor = textColor;
     
     self.displayNameLabel.font = [UIFont pingFangSCWithRegular:13];
@@ -316,7 +318,7 @@
             UITableViewCell *alisaCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"setAlisa"];
             alisaCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 20 - 80 - 50, 60)];
+            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(20, 0, self.view.frame.size.width - 20, 60)];
             [btn setTitle:WFCString(@"ModifyNickname") forState:UIControlStateNormal];
             [btn setTitleColor: [UIColor blackColor] forState:UIControlStateNormal];
             btn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
@@ -590,7 +592,7 @@
     if (section == 0 || (section == 1 && self.momentCell == nil) || (section == 2 && self.cells.count <= 0)) {
         return nil;
     }
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 10)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 12)];
     view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
    // view.text = [[NSString alloc] initWithFormat:@"%d", section];
     view.layer.borderColor = [WFCUConfigManager globalManager].separateColor.CGColor;
@@ -601,7 +603,7 @@
     if (section == 0 || (section == 1 && self.momentCell == nil) || (section == 2 && self.cells.count <= 0)) {
         return 0;
     }
-    return 10;
+    return 12;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

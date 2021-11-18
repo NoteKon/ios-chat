@@ -23,16 +23,26 @@
     // Initialization code
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    _checkImageView.frame = CGRectMake(16, (self.frame.size.height - 20) / 2.0, 20, 20);
+    _portraitView.frame = CGRectMake(50, (self.frame.size.height - 52) / 2.0, 52, 52);
+    CGFloat offsetX = _portraitView.frame.origin.x + _portraitView.frame.size.width + 10;
+    _nameLabel.frame = CGRectMake(offsetX, (self.frame.size.height - 20) / 2.0, [UIScreen mainScreen].bounds.size.width - 64, 20);
+}
+
 - (UIImageView *)checkImageView {
     if (!_checkImageView) {
-        _checkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16, 18, 20, 20)];
+        _checkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
         [self.contentView addSubview:_checkImageView];
     }
     return _checkImageView;
 }
+
 - (UIImageView *)portraitView {
     if (!_portraitView) {
-        _portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(50, 8, 40, 40)];
+        _portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 52, 52)];
         _portraitView.layer.masksToBounds = YES;
         _portraitView.layer.cornerRadius = 3.f;
         [self.contentView addSubview:_portraitView];
@@ -42,9 +52,9 @@
 
 - (UILabel *)nameLabel {
     if(!_nameLabel) {
-        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50 + 40 + 12, 19, [UIScreen mainScreen].bounds.size.width - (16 + 20 + 19 + 40 + 12) - 48, 16)];
+        _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - (16 + 20 + 19 + 40 + 12) - 48, 16)];
         _nameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
-               _nameLabel.textColor = [UIColor colorWithHexString:@"0x1d1d1d"];
+        _nameLabel.textColor = [UIColor colorWithHexString:@"0x1d1d1d"];
         [self.contentView addSubview:_nameLabel];
     }
     return _nameLabel;
@@ -56,11 +66,6 @@
     } else {
         [self.checkImageView setAlpha:1.f];
     }
-}
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (void)setChecked:(BOOL)checked {
