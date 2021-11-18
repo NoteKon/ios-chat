@@ -166,7 +166,7 @@
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    //[self hideShadowView:self.tabBar];
+    ///
 }
 
 - (void)setTabBarAppearance {
@@ -178,7 +178,7 @@
     barAppearance.backgroundColor = [UIColor whiteColor];
     self.tabBar.standardAppearance = barAppearance;
     if (@available(iOS 15.0, *)) {
-        //self.tabBar.scrollEdgeAppearance = barAppearance;
+        self.tabBar.scrollEdgeAppearance = barAppearance;
     } else {
         // Fallback on earlier versions
     }

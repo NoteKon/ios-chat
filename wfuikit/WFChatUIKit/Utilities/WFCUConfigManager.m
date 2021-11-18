@@ -9,6 +9,7 @@
 #import "WFCUConfigManager.h"
 #import "UIColor+YH.h"
 #import <WFChatClient/WFCChatClient.h>
+#import "UIImage+ERCategory.h"
 
 static WFCUConfigManager *sharedSingleton = nil;
 @implementation WFCUConfigManager
@@ -53,6 +54,10 @@ static WFCUConfigManager *sharedSingleton = nil;
     
     if (@available(iOS 13, *)) {
         UINavigationBarAppearance *navBarAppearance = [[UINavigationBarAppearance alloc] init];
+        CGFloat width = [UIScreen mainScreen].bounds.size.width;
+        UIImage *shadowImage = [UIImage imageWithColor:[WFCUConfigManager globalManager].separateColor size: CGSizeMake(width, 0.5)];
+        navBarAppearance.shadowImage = shadowImage;
+        
         bar.standardAppearance = navBarAppearance;
         bar.scrollEdgeAppearance = navBarAppearance;
         navBarAppearance.backgroundColor = [WFCUConfigManager globalManager].naviBackgroudColor;
