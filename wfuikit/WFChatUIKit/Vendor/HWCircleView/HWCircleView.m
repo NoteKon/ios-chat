@@ -17,10 +17,10 @@
 }
  
 - (void)drawRect:(CGRect)rect {
-    int lineWidth = 3;
+    int lineWidth = 4;
     UIBezierPath *path = [[UIBezierPath alloc] init];
     path.lineWidth = lineWidth;
-    [[UIColor greenColor] set];
+    [[UIColor whiteColor] set];
     path.lineCapStyle = kCGLineCapRound;
     path.lineJoinStyle = kCGLineJoinRound;
     CGFloat radius = (MIN(rect.size.width, rect.size.height) - lineWidth - 20) * 0.5;

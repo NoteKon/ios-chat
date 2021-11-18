@@ -94,7 +94,7 @@
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
     SDWaitingView *waiting = [[SDWaitingView alloc] init];
-    waiting.bounds = CGRectMake(0, 0, 100, 100);
+    waiting.bounds = CGRectMake(0, 0, 60, 60);
     waiting.mode = SDWaitingViewProgressMode;
     _waitingView = waiting;
     [self addSubview:waiting];

@@ -5,17 +5,18 @@
       "scale" : "1x"
     },
     {
+      "filename" : "VoiceRecordFeedback006@2x.png",
       "idiom" : "universal",
-      "filename" : "VoiceSearchFeedback006@2x.png",
       "scale" : "2x"
     },
     {
+      "filename" : "VoiceRecordFeedback006@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

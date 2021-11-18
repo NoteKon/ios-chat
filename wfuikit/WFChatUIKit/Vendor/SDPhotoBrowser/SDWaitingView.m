@@ -79,7 +79,7 @@
             
         default:
             {
-                CGContextSetLineWidth(ctx, 15);
+                CGContextSetLineWidth(ctx, 4);
                 CGContextSetLineCap(ctx, kCGLineCapRound);
                 CGFloat to = - M_PI * 0.5 + self.progress * M_PI * 2 + 0.05; // 初始值0.05
                 CGFloat radius = MIN(rect.size.width, rect.size.height) * 0.5 - SDWaitingViewItemMargin;

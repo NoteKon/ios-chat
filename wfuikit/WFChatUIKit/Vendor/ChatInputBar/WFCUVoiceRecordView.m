@@ -13,7 +13,7 @@
 + (void)initialize {
     // UIAppearance Proxy Defaults
     WFCUVoiceRecordView *recordView = [self appearance];
-    recordView.voiceMessageAnimationImages = @[@"VoiceRecordFeedback001",@"VoiceRecordFeedback002",@"VoiceRecordFeedback003",@"VoiceRecordFeedback004",@"VoiceRecordFeedback005",@"VoiceRecordFeedback006",@"VoiceRecordFeedback007",@"VoiceRecordFeedback008",@"VoiceRecordFeedback009",@"VoiceRecordFeedback010",@"VoiceRecordFeedback011",@"VoiceRecordFeedback012",@"VoiceRecordFeedback013",@"VoiceRecordFeedback014",@"VoiceRecordFeedback015",@"VoiceRecordFeedback016",@"VoiceRecordFeedback017",@"VoiceRecordFeedback018",@"VoiceRecordFeedback019",@"VoiceRecordFeedback020"];
+    recordView.voiceMessageAnimationImages = @[@"VoiceRecordFeedback001",@"VoiceRecordFeedback002",@"VoiceRecordFeedback003",@"VoiceRecordFeedback004",@"VoiceRecordFeedback005",@"VoiceRecordFeedback006",@"VoiceRecordFeedback007",@"VoiceRecordFeedback008"];
     recordView.upCancelText = @"手指上滑取消发送";
     recordView.loosenCancelText = @"松开手指取消发送";
 }
@@ -30,7 +30,7 @@
         bgView.alpha = 0.6;
         [self addSubview:bgView];
         
-        _recordAnimationView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, self.bounds.size.width - 20, self.bounds.size.height - 30)];
+        _recordAnimationView = [[UIImageView alloc] initWithFrame:CGRectMake((self.bounds.size.width - 70) / 2, 22, 70, 70)];
         _recordAnimationView.image = [UIImage imageNamed:@"VoiceRecordFeedback001"];
         _recordAnimationView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_recordAnimationView];
@@ -118,7 +118,7 @@
 -(void)recordButtonDragOutside
 {
     _textLabel.text = _loosenCancelText;
-    _textLabel.backgroundColor = [UIColor redColor];
+    _textLabel.backgroundColor = HEXCOLOR(0xff5c64);
 }
 
 -(void)setCountdown:(int)countdown {

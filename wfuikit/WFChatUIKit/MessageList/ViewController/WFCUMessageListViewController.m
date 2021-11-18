@@ -1507,13 +1507,13 @@
 
 - (UIButton *)newMsgTipButton {
     if (!_newMsgTipButton) {
-        _newMsgTipButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 36, self.chatInputBar.frame.origin.y - 40, 24, 24)];
-        _newMsgTipButton.layer.cornerRadius = 12;
+        _newMsgTipButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 36, self.chatInputBar.frame.origin.y - 40, 25, 25)];
+        _newMsgTipButton.layer.cornerRadius = 12.5;
         _newMsgTipButton.titleLabel.font = [UIFont systemFontOfSize:8];
         _newMsgTipButton.layer.borderColor = [UIColor blackColor].CGColor;
-        _newMsgTipButton.backgroundColor = [UIColor blueColor];
+        _newMsgTipButton.backgroundColor = HEXCOLOR(0xd2d2d2);
         [_newMsgTipButton addTarget:self action:@selector(onNewMsgTipBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [_newMsgTipButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_newMsgTipButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [self.backgroundView addSubview:_newMsgTipButton];
     }
     return _newMsgTipButton;;

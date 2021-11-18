@@ -107,7 +107,12 @@
 
 - (UIView *)progressView {
     if(!_progressView) {
-        _progressView = [[HWCircleView alloc] initWithFrame:[self getProgressParentView].bounds];
+        CGFloat width = 60;
+        CGRect frame = [self getProgressParentView].bounds;
+        frame.origin.x = (frame.size.width - width) / 2;
+        frame.origin.y = (frame.size.height - width) / 2;
+        frame.size = CGSizeMake(width, width);
+        _progressView = [[HWCircleView alloc] initWithFrame: frame];
         [[self getProgressParentView] addSubview:_progressView];
     }
     return _progressView;
