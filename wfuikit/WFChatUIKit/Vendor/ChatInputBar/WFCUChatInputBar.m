@@ -1841,7 +1841,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [MBProgressHUD showHUDAddedTo:self.parentView animated:YES];
         [MBProgressHUD HUDForView:self.parentView].mode = MBProgressHUDModeDeterminate;
-        [MBProgressHUD HUDForView:self.parentView].label.text = @"正在处理中...";
+        //[MBProgressHUD HUDForView:self.parentView].label.text = @"正在处理中...";
     });
     
     __weak typeof(self)ws = self;
@@ -1893,8 +1893,6 @@
                     AVURLAsset *urlAsset = (AVURLAsset *)asset;
                     [weakself handleVideo:urlAsset.URL photos:photos isFullImage:isFullImage];
                 }
-                
-                
             }];
         } else if(phAsset.mediaType == PHAssetMediaTypeImage) {
             PHImageRequestOptions *imageRequestOption = [[PHImageRequestOptions alloc] init];

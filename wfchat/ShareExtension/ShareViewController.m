@@ -255,7 +255,7 @@
             } success:^(NSString *url){
                 UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:ws.imageUrls[0]]]];
                 
-                UIImage *thumbnail = [ShareUtility generateThumbnail:image withWidth:120 withHeight:120];
+                UIImage *thumbnail = [ShareUtility generateThumbnail:image withWidth:141 withHeight:141];
                 [[ShareAppService sharedAppService] sendImageMessage:conversation
                                                             mediaUrl:url
                                                             thubnail:thumbnail

@@ -77,9 +77,8 @@
     
     // 2.保存按钮
     UIButton *saveButton = [[UIButton alloc] init];
-    [saveButton setTitle:@"保存" forState:UIControlStateNormal];
-    [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    saveButton.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.90f];
+    [saveButton setImage:[UIImage imageNamed:@"photo_save"] forState:UIControlStateNormal];
+    saveButton.backgroundColor = [UIColor clearColor];
     saveButton.layer.cornerRadius = 5;
     saveButton.clipsToBounds = YES;
     [saveButton addTarget:self action:@selector(saveImage) forControlEvents:UIControlEventTouchUpInside];
@@ -89,9 +88,8 @@
     // Show all button
     if (self.showAll) {
         UIButton *allButton = [[UIButton alloc] init];
-        [allButton setTitle:@"全部" forState:UIControlStateNormal];
-        [allButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        allButton.backgroundColor = [UIColor colorWithRed:0.1f green:0.1f blue:0.1f alpha:0.90f];
+        [allButton setImage:[UIImage imageNamed:@"photo_all"] forState:UIControlStateNormal];
+        allButton.backgroundColor = [UIColor clearColor];
         allButton.layer.cornerRadius = 5;
         allButton.clipsToBounds = YES;
         [allButton addTarget:self action:@selector(allImage) forControlEvents:UIControlEventTouchUpInside];
@@ -296,9 +294,10 @@
        // [self showFirstImage];
     }
     
+    CGFloat width = self.bounds.size.width;
     _indexLabel.center = CGPointMake(self.bounds.size.width * 0.5, kStatusBarAndNavigationBarHeight - 64 + 35);
-    _saveButton.frame = CGRectMake(30, self.bounds.size.height - 70, 50, 25);
-    _allButton.frame = CGRectMake(100, self.bounds.size.height - 70, 50, 25);
+    _saveButton.frame = CGRectMake(width - 81, self.bounds.size.height - 70, 25, 25);
+    _allButton.frame = CGRectMake(width - 34, self.bounds.size.height - 70, 25, 25);
 }
 
 - (void)show

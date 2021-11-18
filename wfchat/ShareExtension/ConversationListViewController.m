@@ -72,7 +72,7 @@
             NSLog(@"sent done, url is %@", url);
             UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:ws.imageUrls[0]]]];
             
-            UIImage *thumbnail = [ShareUtility generateThumbnail:image withWidth:120 withHeight:120];
+            UIImage *thumbnail = [ShareUtility generateThumbnail:image withWidth:141 withHeight:141];
             NSLog(@"sent image msg");
             [[ShareAppService sharedAppService] sendImageMessage:conversation
                                                         mediaUrl:url

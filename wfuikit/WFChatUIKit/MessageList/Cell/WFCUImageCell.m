@@ -19,8 +19,10 @@
 + (CGSize)sizeForClientArea:(WFCUMessageModel *)msgModel withViewWidth:(CGFloat)width {
     WFCCImageMessageContent *imgContent = (WFCCImageMessageContent *)msgModel.message.content;
     CGSize size = CGSizeMake(141, 141);
-    if(imgContent.thumbnail) {
-        size = imgContent.thumbnail.size;
+    UIImage *thumbnailImage = imgContent.thumbnail;
+    NSLog(@"<==> 接收方图片尺寸: content.size = %@, thumbnailsize = %@",NSStringFromCGSize(imgContent.size), NSStringFromCGSize(thumbnailImage.size));
+    if(thumbnailImage) {
+        size = thumbnailImage.size;
     } else {
         size = [WFCCUtilities imageScaleSize:imgContent.size targetSize:CGSizeMake(141, 141) thumbnailPoint:nil];
     }

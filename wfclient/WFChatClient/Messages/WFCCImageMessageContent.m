@@ -29,14 +29,13 @@
     }
     
     NSData *imgData = UIImageJPEGRepresentation(image, 0.85);
-        
-    
     [imgData writeToFile:path atomically:YES];
     
     content.localPath = path;
     content.size = image.size;
-    content.thumbnail = [WFCCUtilities generateThumbnail:image withWidth:141 withHeight:141];
-    
+    UIImage *thumbnailImage = [WFCCUtilities generateThumbnail:image withWidth:141 withHeight:141];
+    content.thumbnail = thumbnailImage;
+    NSLog(@"<==> 发送方图片尺寸: content.size = %@, thumbnailsize = %@",NSStringFromCGSize(content.size), NSStringFromCGSize(thumbnailImage.size));
     return content;
 }
 
