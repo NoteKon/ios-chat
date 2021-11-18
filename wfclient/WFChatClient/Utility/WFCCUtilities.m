@@ -75,7 +75,8 @@ static NSLock *wfcImageLock;
     CGFloat imageWidth = image.size.width;
     CGFloat imageHeight = image.size.height;
     
-    UIGraphicsBeginImageContext(CGSizeMake(scaledWidth, scaledHeight));
+    //UIGraphicsBeginImageContext(CGSizeMake(scaledWidth, scaledHeight));
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(scaledWidth, scaledHeight), NO, [UIScreen mainScreen].scale);
     
     CGRect thumbnailRect = CGRectZero;
     thumbnailRect.origin = thumbnailPoint;
@@ -130,7 +131,8 @@ static NSLock *wfcImageLock;
         originHeight *= sqrt(MAX(originWidth/originHeight, originHeight/originWidth));
     }
     
-    UIGraphicsBeginImageContext(CGSizeMake(scaledWidth, scaledHeight));
+   // UIGraphicsBeginImageContext(CGSizeMake(scaledWidth, scaledHeight));
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(scaledWidth, scaledHeight), NO, [UIScreen mainScreen].scale);
     CGRect rect = CGRectMake(0, 0, scaledWidth, scaledHeight);
     [image drawInRect:rect];
     
@@ -380,7 +382,7 @@ static NSLock *wfcImageLock;
              
             __block UIImage *image;
             dispatch_sync(dispatch_get_main_queue(), ^{
-                UIGraphicsBeginImageContextWithOptions(combineHeadView.frame.size, NO, 2.0);
+                UIGraphicsBeginImageContextWithOptions(combineHeadView.frame.size, NO, [UIScreen mainScreen].scale);
                 [combineHeadView.layer renderInContext:UIGraphicsGetCurrentContext()];
                 image = UIGraphicsGetImageFromCurrentImageContext();
                 UIGraphicsEndImageContext();
