@@ -5,11 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "img_video_play_session.png",
+      "filename" : "video_msg_cover@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "video_msg_cover@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

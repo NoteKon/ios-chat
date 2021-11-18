@@ -18,11 +18,11 @@
 
 + (CGSize)sizeForClientArea:(WFCUMessageModel *)msgModel withViewWidth:(CGFloat)width {
     WFCCImageMessageContent *imgContent = (WFCCImageMessageContent *)msgModel.message.content;
-    CGSize size = CGSizeMake(120, 120);
+    CGSize size = CGSizeMake(141, 141);
     if(imgContent.thumbnail) {
         size = imgContent.thumbnail.size;
     } else {
-        size = [WFCCUtilities imageScaleSize:imgContent.size targetSize:CGSizeMake(120, 120) thumbnailPoint:nil];
+        size = [WFCCUtilities imageScaleSize:imgContent.size targetSize:CGSizeMake(141, 141) thumbnailPoint:nil];
     }
     
     
@@ -48,6 +48,7 @@
 - (UIImageView *)thumbnailView {
     if (!_thumbnailView) {
         _thumbnailView = [[UIImageView alloc] init];
+        _thumbnailView.contentMode = UIViewContentModeScaleAspectFill;
         [self.bubbleView addSubview:_thumbnailView];
     }
     return _thumbnailView;

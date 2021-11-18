@@ -35,7 +35,7 @@
     
     content.localPath = path;
     content.size = image.size;
-    content.thumbnail = [WFCCUtilities generateThumbnail:image withWidth:120 withHeight:120];
+    content.thumbnail = [WFCCUtilities generateThumbnail:image withWidth:141 withHeight:141];
     
     return content;
 }
@@ -106,7 +106,7 @@
 - (UIImage *)thumbnail {
     if (!_thumbnail && self.localPath.length && [[NSFileManager defaultManager] isExecutableFileAtPath:self.localPath]) {
         UIImage *image = [UIImage imageWithContentsOfFile:self.localPath];
-        _thumbnail = [WFCCUtilities generateThumbnail:image withWidth:120 withHeight:120];
+        _thumbnail = [WFCCUtilities generateThumbnail:image withWidth:141 withHeight:141];
     }
     return _thumbnail;
 }
