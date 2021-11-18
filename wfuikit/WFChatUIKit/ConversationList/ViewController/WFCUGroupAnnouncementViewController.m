@@ -11,7 +11,7 @@
 #import <SDWebImage/SDWebImage.h>
 #import "WFCUConfigManager.h"
 #import "MBProgressHUD.h"
-
+#import "UITextView+Placeholder.h"
 
 @interface WFCUGroupAnnouncementViewController () <UITextViewDelegate>
 @property(nonatomic, strong)UIImageView *portraitView;
@@ -29,6 +29,8 @@
     int offset = 0;
     if (self.announcement.author.length && self.announcement.text.length) {
         self.portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(16, kStatusBarAndNavigationBarHeight + 16, 48, 48)];
+        self.portraitView.layer.cornerRadius = 24;
+        self.portraitView.clipsToBounds = YES;
         WFCCUserInfo *author = [[WFCCIMService sharedWFCIMService] getUserInfo:self.announcement.author refresh:NO];
         [self.portraitView sd_setImageWithURL:[NSURL URLWithString:author.portrait] placeholderImage: [UIImage imageNamed:@"PersonalChat"]];
         
@@ -50,18 +52,9 @@
         offset = 16;
     }
     
-    
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(16, kStatusBarAndNavigationBarHeight + offset, self.view.bounds.size.width - 32, 0.5)];
-    line.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:line];
-    
     CGFloat hintSize = 0;
     if (!self.isManager) {
-        line = [[UIView alloc] initWithFrame:CGRectMake(16, self.view.bounds.size.height - kTabbarSafeBottomMargin - 40, self.view.bounds.size.width - 32, 0.5)];
-        line.backgroundColor = [UIColor grayColor];
-        [self.view addSubview:line];
-        
-        UILabel *hint = [[UILabel alloc] initWithFrame:CGRectMake(16, self.view.bounds.size.height - kTabbarSafeBottomMargin - 36, self.view.bounds.size.width - 32, 16)];
+        UILabel *hint = [[UILabel alloc] initWithFrame:CGRectMake(16, kStatusBarAndNavigationBarHeight + offset + 200 + 20, self.view.bounds.size.width - 32, 16)];
         hint.textAlignment = NSTextAlignmentCenter;
         hint.text = @"仅群主和管理员可编辑";
         hint.textColor = [UIColor grayColor];
@@ -72,9 +65,17 @@
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleDone target:self action:@selector(onEditBtn:)];
     }
     
-    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(16, kStatusBarAndNavigationBarHeight + offset + 1, self.view.bounds.size.width - 31, self.view.bounds.size.height - 81 - kStatusBarAndNavigationBarHeight - kTabbarSafeBottomMargin - hintSize)];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(16, kStatusBarAndNavigationBarHeight + offset, self.view.bounds.size.width - 31, 200)];
     self.textView.editable = NO;
+    self.textView.layer.cornerRadius = 5;
+    self.textView.clipsToBounds = YES;
     self.textView.text = self.announcement.text;
+    self.textView.tintColor = [WFCUConfigManager globalManager].textFieldColor;
+    if (self.announcement.text.length <= 0) {
+        self.textView.placeholder = @"  点击编辑输入群公告";
+        [self.textView setPlaceholderColor:[[UIColor blackColor] colorWithAlphaComponent:0.4]];
+    }
+    self.textView.backgroundColor = HEXCOLOR(0xF7F7F7);
     self.textView.font = [UIFont systemFontOfSize:[UIFont systemFontSize]];
     self.textView.delegate = self;
     [self.view addSubview:self.textView];
