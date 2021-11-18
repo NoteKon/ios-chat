@@ -37,7 +37,7 @@ alpha:1.0]
 #define NIGHT @"night"
 
 //是否iPhoneX YES:iPhoneX屏幕 NO:传统屏幕
-#define kIs_iPhoneX  (UIApplication.sharedApplication.delegate.window != nil && UIApplication.sharedApplication.delegate.window.window.safeAreaInsets.bottom > 0)
+#define kIs_iPhoneX  (UIApplication.sharedApplication.delegate.window != nil && UIApplication.sharedApplication.delegate.window.safeAreaInsets.bottom > 0)
 
 #define kStatusBarAndNavigationBarHeight (kIs_iPhoneX ? 88.f : 64.f)
 

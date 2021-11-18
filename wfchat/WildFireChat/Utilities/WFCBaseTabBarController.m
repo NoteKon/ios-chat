@@ -32,10 +32,16 @@
     
     UIOffset textOffset = UIOffsetMake(0, -5);
     UIEdgeInsets imageInsets = UIEdgeInsetsMake(-3, 0, 3, 0);
-    if (kIs_iPhoneX) {
+    if kIs_iPhoneX {
         textOffset = UIOffsetMake(0, 0);
         imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     }
+    
+    UIColor *textNormalColor = [UIColor colorWithHexString:@"0x191D33"];
+    UIColor *textSelectColor = [UIColor colorWithHexString:@"0x3EEEED"];
+    self.tabBar.tintColor = textSelectColor;
+    [[UITabBar appearance] setUnselectedItemTintColor: textNormalColor];
+    [self setTabBarAppearance];
     
     /// 云圈
     UIViewController *vc = [WFCUConversationTableViewController new];
@@ -48,8 +54,8 @@
     item.imageInsets = imageInsets;
     item.image = [[UIImage imageNamed:@"tab_cloud_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_cloud_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x3EEEED"]} forState:UIControlStateSelected];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x191D33"]} forState:UIControlStateNormal];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : textSelectColor} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : textNormalColor} forState:UIControlStateNormal];
     [self addChildViewController:nav];
     
     self.firstNav = nav;
@@ -65,8 +71,8 @@
     item.title = LocalizedString(@"tab_contact");
     item.image = [[UIImage imageNamed:@"tab_contact_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_contact_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x3EEEED"]} forState:UIControlStateSelected];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x191D33"]} forState:UIControlStateNormal];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : textSelectColor} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : textNormalColor} forState:UIControlStateNormal];
     [self addChildViewController:nav];
     
     /// 发现
@@ -80,8 +86,8 @@
     item.title = LocalizedString(@"tab_discover");
     item.image = [[UIImage imageNamed:@"tab_discover_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_discover_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x3EEEED"]} forState:UIControlStateSelected];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x191D33"]} forState:UIControlStateNormal];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : textSelectColor} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : textNormalColor} forState:UIControlStateNormal];
     [self addChildViewController:nav];
     
     /// 我的
@@ -96,8 +102,8 @@
     item.title = LocalizedString(@"tab_me");
     item.image = [[UIImage imageNamed:@"tab_me_unselect"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item.selectedImage = [[UIImage imageNamed:@"tab_me_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x3EEEED"]} forState:UIControlStateSelected];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithHexString:@"0x191D33"]} forState:UIControlStateNormal];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : textSelectColor} forState:UIControlStateSelected];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName : textNormalColor} forState:UIControlStateNormal];
     [self addChildViewController:nav];
     self.settingNav = nav;
 
@@ -115,13 +121,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self updateBadgeNumber];
-   // [self adaptTabBar];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    [self adaptTabBar];
 }
 
 - (void)updateBadgeNumber {
@@ -163,35 +162,26 @@
 #pragma mark -
 /// UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    if (viewController == self) {
-        
-    } else {
-        
-    }
-    
-    [self adaptTabBar];
+    ///
 }
 
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    [self hideShadowView:self.tabBar];
+    //[self hideShadowView:self.tabBar];
 }
 
-- (void)showTabBar {
-    
-}
-
-- (void)hideTabBar {
-    
-}
-
-- (void)adaptTabBar {
+- (void)setTabBarAppearance {
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
-    CGSize size = CGSizeMake(width, 48);
+    UIImage *shadowImage = [UIImage imageWithColor:[WFCUConfigManager globalManager].separateColor size: CGSizeMake(width, 0.5)];
     
-    UIImage *shadowImage = [UIImage imageWithColor:[UIColor redColor] size: CGSizeMake(width, 0.5)];
-    self.tabBar.shadowImage = shadowImage;
-    self.tabBar.backgroundImage = [UIImage imageWithColor:[UIColor whiteColor] size: size];
-    self.tabBar.barTintColor = [UIColor whiteColor];
+    UITabBarAppearance *barAppearance = [self.tabBar.standardAppearance copy];
+    barAppearance.shadowImage = shadowImage;
+    barAppearance.backgroundColor = [UIColor whiteColor];
+    self.tabBar.standardAppearance = barAppearance;
+    if (@available(iOS 15.0, *)) {
+        //self.tabBar.scrollEdgeAppearance = barAppearance;
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 - (void)hideShadowView:(UIView *)rootView {

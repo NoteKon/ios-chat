@@ -22,10 +22,6 @@
 #import "AFNetworking.h"
 #import <AVFoundation/AVFoundation.h>
 
-
-//是否iPhoneX YES:iPhoneX屏幕 NO:传统屏幕
-#define kIs_iPhoneX ([UIScreen mainScreen].bounds.size.height == 812.0f ||[UIScreen mainScreen].bounds.size.height == 896.0f ||[UIScreen mainScreen].bounds.size.height == 844.0f ||[UIScreen mainScreen].bounds.size.height == 926.0f)
-
 #define kStatusBarAndNavigationBarHeight (kIs_iPhoneX ? 88.f : 64.f)
 
 #define  kTabbarSafeBottomMargin        (kIs_iPhoneX ? 34.f : 0.f)
