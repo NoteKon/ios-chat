@@ -255,10 +255,7 @@ alpha:1.0]
 - (void)sendCodeDone:(BOOL)success {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (success) {
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.label.text = LocalizedString(@"login_send_vercode_sucess");
-            hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
+            [self.view makeToast: LocalizedString(@"login_send_vercode_sucess")];
             self.sendCodeTime = [NSDate date].timeIntervalSince1970;
             self.countdownTimer = [NSTimer scheduledTimerWithTimeInterval:1
                                                                 target:self
@@ -266,15 +263,8 @@ alpha:1.0]
                                                               userInfo:nil
                                                                repeats:YES];
             [self.countdownTimer fire];
-            
-            
-            [hud hideAnimated:YES afterDelay:1.f];
         } else {
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.label.text = LocalizedString(@"login_send_vercode_failed");
-            hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
-            [hud hideAnimated:YES afterDelay:1.f];
+            [self.view makeToast: LocalizedString(@"login_send_vercode_failed")];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.sendCodeBtn setTitle:LocalizedString(@"login_send_vercode") forState:UIControlStateNormal];
                 self.sendCodeBtn.enabled = YES;
@@ -299,10 +289,7 @@ alpha:1.0]
     }
     
     [self resetKeyboard:nil];
-    
-  MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-  hud.label.text = LocalizedString(@"login_loging");
-  [hud showAnimated:YES];
+    [self.view makeToast:LocalizedString(@"login_loging")];
   
     [[AppService sharedAppService] login:user password:password success:^(NSString *userId, NSString *token, BOOL newUser) {
         [[NSUserDefaults standardUserDefaults] setObject:user forKey:@"savedName"];
@@ -315,7 +302,7 @@ alpha:1.0]
         [[WFCCNetworkService sharedInstance] connect:userId token:token];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-          [hud hideAnimated:YES];
+         
             WFCBaseTabBarController *tabBarVC = [WFCBaseTabBarController new];
             tabBarVC.newUser = newUser;
             [UIApplication sharedApplication].delegate.window.rootViewController =  tabBarVC;
@@ -323,13 +310,7 @@ alpha:1.0]
     } error:^(int errCode, NSString *message) {
         NSLog(@"login error with code %d, message %@", errCode, message);
       dispatch_async(dispatch_get_main_queue(), ^{
-        [hud hideAnimated:YES];
-        
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-          hud.label.text = LocalizedString(@"login_failed");
-        hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
-        [hud hideAnimated:YES afterDelay:1.f];
+          [self.view makeToast:LocalizedString(@"login_failed")];
       });
     }];
 }
