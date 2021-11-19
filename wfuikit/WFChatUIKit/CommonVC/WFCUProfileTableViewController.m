@@ -258,22 +258,21 @@
     CGFloat offsetX = 98;
     if (alias.length) {
         self.displayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 19, width - offsetX - 8, 16)];
-        self.displayNameLabel.text = self.userInfo.displayName;
         
         self.aliasLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 42, width - 64 - 8, 13)];
         self.aliasLabel.text = [NSString stringWithFormat:@"昵称: %@", alias];;
         
         self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 63, width - offsetX - 8, 13)];
-        self.userNameLabel.text = [NSString stringWithFormat:@"云圈号: %@", self.userInfo.name];
     } else {
         self.displayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 19, width - offsetX - 8, 13)];
         
         self.aliasLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         
         self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 50, width - offsetX - 8, 13)];
-        self.userNameLabel.text = [NSString stringWithFormat:@"云圈号: %@", self.userInfo.name];
-    }
-    
+}
+    self.displayNameLabel.text = self.userInfo.displayName;
+    self.userNameLabel.text = [NSString stringWithFormat:@"云圈号: %@", self.userInfo.name];
+
     UIColor *textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.9];
     self.aliasLabel.font = [UIFont pingFangSCWithRegular:13];
     self.aliasLabel.textColor = textColor;

@@ -51,7 +51,10 @@ import AVFoundation
         statueLabel.clipsToBounds = true
         statueLabel.padding = UIEdgeInsets(top: 4, left: 12, bottom: 4, right: 12)
         
-        accountIdLabel.text = localizedString("my_account_id") + " 12789946"
+        let myInfo = WFCCIMService.sharedWFCIM().getUserInfo(WFCCNetworkService.sharedInstance().userId, refresh: true)
+        accountImage.loadImage(imageUrl: myInfo?.portrait, placeholder: UIImage(named: "PersonalChat"))
+        accountName.text = myInfo?.displayName
+        accountIdLabel.text = localizedString("my_account_id") + " \(myInfo?.name ?? "")"
     }
     
     func createBannerView() {
