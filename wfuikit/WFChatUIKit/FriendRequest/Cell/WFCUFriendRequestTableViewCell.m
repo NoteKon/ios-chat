@@ -43,6 +43,8 @@
     self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     CGFloat offsetX = 20;
     self.portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(offsetX, 10, 40, 40)];
+    self.portraitView.layer.cornerRadius = 20;
+    self.portraitView.clipsToBounds = YES;
     self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX + 40 + 17,14, width - 128, 15)];
     self.nameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
     self.nameLabel.textColor = [UIColor blackColor];
@@ -83,6 +85,7 @@
     if (date.timeIntervalSince1970*1000 - friendRequest.timestamp > 7 * 24 * 60 * 60 * 1000) {
         expired = YES;
     }
+    
     if (friendRequest.status == 0 && !expired) {
         [self.acceptBtn setTitle:WFCString(@"Accept") forState:UIControlStateNormal];
         //[self.acceptBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -104,6 +107,11 @@
        // [self.acceptBtn setBackgroundColor:[UIColor grayColor]];
         [self.acceptBtn setEnabled:NO];
     }
+    
+    const CGSize titleSize = [self.acceptBtn.titleLabel.text sizeWithFont:self.acceptBtn.titleLabel.font];
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    CGFloat btnWidth = MAX(62, titleSize.width + 20);
+    self.acceptBtn.frame = CGRectMake(width - btnWidth - 23, 19, btnWidth, 24);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

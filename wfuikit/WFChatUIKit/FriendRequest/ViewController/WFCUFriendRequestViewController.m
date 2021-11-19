@@ -72,6 +72,7 @@
     _tableView.allowsSelection = YES;
     _tableView.backgroundColor = bgColor;//[WFCUConfigManager globalManager].backgroudColor;
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _tableView.separatorColor = lineColor;
 
     if (_dataList.count > 0) {
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(-5, 0, width + 10, 40)];
@@ -131,7 +132,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    return 58;
 }
 #pragma mark - FriendRequestTableViewCellDelegate
 - (void)onAcceptBtn:(NSString *)targetUserId {

@@ -14,6 +14,7 @@
 #import "WFCUConfigManager.h"
 #import "UIImage+ERCategory.h"
 #import "UIColor+YH.h"
+#import "WFCUContactTableViewCell.h"
 
 @interface WFCUAddFriendViewController () <UITableViewDataSource, UISearchControllerDelegate, UISearchResultsUpdating, UITableViewDelegate>
 @property (nonatomic, strong)  UITableView              *tableView;
@@ -70,6 +71,8 @@
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;
     }
+    
+    self.tableView.separatorColor = [WFCUConfigManager globalManager].separateColor;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     if (@available(iOS 11.0, *)) {
@@ -108,6 +111,7 @@
         pvc.userId = userInfo.userId;
         pvc.sourceType = FriendSource_Search;
         [self.navigationController pushViewController:pvc animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 //返回单元格内容
@@ -115,14 +119,13 @@
     static NSString *flag = @"cell";
 
     if (self.searchController.active) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:flag];
+        WFCUContactTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:flag];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:flag];
+            cell = [[WFCUContactTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:flag];
         }
         WFCCUserInfo *userInfo = self.searchList[indexPath.row];
-        [cell.textLabel setText:userInfo.displayName];
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[userInfo.portrait stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"PersonalChat"]];
-      
+        [cell.nameLabel setText:userInfo.displayName];
+        [cell.portraitView sd_setImageWithURL:[NSURL URLWithString:[userInfo.portrait stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"PersonalChat"]];
       cell.userInteractionEnabled = YES;
       return cell;
     }
@@ -132,7 +135,7 @@
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 56;
+    return 68;
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {

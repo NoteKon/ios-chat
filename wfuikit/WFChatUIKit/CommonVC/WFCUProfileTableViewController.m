@@ -438,18 +438,16 @@
             for (UIView *subView in self.addFriendCell.subviews) {
                 [subView removeFromSuperview];
             }
-            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(20, 8, width - 40, 40)];
-            [btn setTitle:WFCString(@"AddFriend") forState:UIControlStateNormal];
-            [btn setBackgroundColor:[UIColor greenColor]];
+            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 50)];
+            btn.titleLabel.font = [UIFont pingFangSCWithRegular:16];
+            [btn setTitle:@"添加到通讯录" forState:UIControlStateNormal];
+            [btn setTitleColor:HEXCOLOR(0x06CCCA) forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(onAddFriendBtn:) forControlEvents:UIControlEventTouchDown];
-            btn.layer.cornerRadius = 5.f;
-            btn.layer.masksToBounds = YES;
             if (@available(iOS 14, *)) {
                 [self.addFriendCell.contentView addSubview:btn];
             } else {
                 [self.addFriendCell addSubview:btn];
             }
-            
         }
     }
     [self.tableView reloadData];

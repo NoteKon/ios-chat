@@ -319,8 +319,6 @@ typedef enum {
     _menuItems = menuItems;
     
     _contentView = [self mkContentView];
-//    _contentView.layer.borderWidth = 1;
-//    _contentView.layer.borderColor = [UIColor redColor].CGColor;
     [self addSubview:_contentView];
     
     [self setupFrameInView:view fromRect:rect];
