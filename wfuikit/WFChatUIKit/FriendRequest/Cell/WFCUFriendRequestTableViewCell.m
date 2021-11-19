@@ -45,7 +45,7 @@
     self.portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(offsetX, 10, 40, 40)];
     self.portraitView.layer.cornerRadius = 20;
     self.portraitView.clipsToBounds = YES;
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX + 40 + 17,14, width - 128, 15)];
+    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX + 40 + 17,14, width - 128, 16)];
     self.nameLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
     self.nameLabel.textColor = [UIColor blackColor];
     self.reasonLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX + 40 + 17, 14 + 15 + 9, width - 128, 14)];

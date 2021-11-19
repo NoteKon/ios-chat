@@ -13,6 +13,7 @@
 #import "UIColor+YH.h"
 #import "WFCUConfigManager.h"
 #import "WFCUPinyinUtility.h"
+#import "UIImage+ERCategory.h"
 
 @interface WFCUSeletedUserSearchResultViewController ()<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (nonatomic, strong)UISearchBar *searchBar;
@@ -26,10 +27,21 @@
     self.results = [NSMutableArray new];
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width - 16 * 2,44)];
     self.searchBar.backgroundColor = [UIColor clearColor];
-    self.searchBar.placeholder = @"搜索";
+
+    self.searchBar.searchTextField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
+    /// 背景图
+    UIImage *searchBarBg = [UIImage imageWithColor: HEXCOLOR(0xF5F5F8) size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:18];
+    [self.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
     
-    self.view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
-    self.tableView.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    /// 搜索图标
+    UIImageView *searchImageView = [[UIImageView alloc] initWithImage:[WFCUConfigManager searchImage]];
+    self.searchBar.searchTextField.leftView = searchImageView;
+    
+    /// placeholder
+    self.searchBar.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17], NSForegroundColorAttributeName:[[UIColor blackColor] colorWithAlphaComponent:0.4]}];
+    
+    self.view.backgroundColor = HEXCOLOR(0xFBFBFB); //[WFCUConfigManager globalManager].backgroudColor;
+    self.tableView.backgroundColor = HEXCOLOR(0xFBFBFB); //[WFCUConfigManager globalManager].backgroudColor;
 
     for (UIView *sView in self.searchBar.subviews[0].subviews) {
         if([sView isKindOfClass:NSClassFromString(@"UISearchBarBackground")]){
@@ -121,7 +133,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 51;
+    return 60;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -191,6 +203,7 @@
         }
         [_tableView registerClass:[WFCUSelectedUserTableViewCell class] forCellReuseIdentifier:@"selectedUserT"];
         _tableView.tableFooterView = [UIView new];
+        _tableView.separatorColor = [WFCUConfigManager globalManager].separateColor;
     }
     return _tableView;
 }

@@ -238,6 +238,7 @@
     
     self.headerCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     self.headerCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.headerCell.backgroundColor = [UIColor whiteColor];
     [self showSeparatorLine:self.headerCell];
     for (UIView *subView in self.headerCell.subviews) {
         [subView removeFromSuperview];
@@ -260,11 +261,11 @@
         self.displayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 19, width - offsetX - 8, 16)];
         
         self.aliasLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 42, width - 64 - 8, 13)];
-        self.aliasLabel.text = [NSString stringWithFormat:@"昵称: %@", alias];;
+        self.aliasLabel.text = [NSString stringWithFormat:@"昵称: %@", alias];
         
         self.userNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 63, width - offsetX - 8, 13)];
     } else {
-        self.displayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 19, width - offsetX - 8, 13)];
+        self.displayNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 19, width - offsetX - 8, 16)];
         
         self.aliasLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         
@@ -272,14 +273,14 @@
 }
     self.displayNameLabel.text = self.userInfo.displayName;
     self.userNameLabel.text = [NSString stringWithFormat:@"云圈号: %@", self.userInfo.name];
-
+    /// 昵称
     UIColor *textColor = [UIColor colorWithHexString:@"0x000000" alpha:0.9];
     self.aliasLabel.font = [UIFont pingFangSCWithRegular:13];
     self.aliasLabel.textColor = textColor;
-    
-    self.displayNameLabel.font = [UIFont pingFangSCWithRegular:13];
+    /// 名称
+    self.displayNameLabel.font = [UIFont pingFangSCWithRegular:16];
     self.displayNameLabel.textColor = textColor;
-    
+    /// 圆圈号
     self.userNameLabel.font = [UIFont pingFangSCWithRegular:13];
     self.userNameLabel.textColor = textColor;
     

@@ -66,7 +66,7 @@
     if (!_portraitView) {
         _portraitView = [[UIImageView alloc] initWithFrame:CGRectMake(50, 10, 40, 40)];
         _portraitView.layer.masksToBounds = YES;
-        _portraitView.layer.cornerRadius = 3.f;
+        _portraitView.layer.cornerRadius = 20.f;
         [self.contentView addSubview:_portraitView];
     }
     return _portraitView;

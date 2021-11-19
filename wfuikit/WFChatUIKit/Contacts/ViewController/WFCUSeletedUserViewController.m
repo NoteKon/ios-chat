@@ -62,16 +62,6 @@ UISearchBarDelegate>
     [self resizeAllView];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"contentSize"]) {
         [self resizeAllView];
@@ -235,15 +225,10 @@ UISearchBarDelegate>
             collectionViewWidth = contentSize.width;
         }
         self.selectedUserCollectionView.frame = CGRectMake(16, 19, collectionViewWidth, 40);
-        self.searchBar.frame = CGRectMake(collectionViewWidth + 8, 16, self.view.frame.size.width - (collectionViewWidth + 8 * 2), 44);
+        self.searchBar.frame = CGRectMake(collectionViewWidth + 13, 16, self.view.frame.size.width - (collectionViewWidth + 13 * 2), 44);
         self.topView.frame = CGRectMake(0, topSpace, self.view.frame.size.width, 60);
         self.tableView.frame = CGRectMake(0, topSpace + self.topView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.topView.frame.size.height + topSpace));
     }
-    
-//    self.topView.layer.borderColor = [UIColor redColor].CGColor;
-//    self.topView.layer.borderWidth = 1;
-//    self.tableView.layer.borderColor = [UIColor redColor].CGColor;
-//    self.tableView.layer.borderWidth = 1;
 }
 
 - (void)loadData {
@@ -280,14 +265,10 @@ UISearchBarDelegate>
     }
     [self.view addSubview:self.tableView];
     
-    self.view.backgroundColor = [UIColor colorWithHexString:@"0xF5F5F5"];
-    self.tableView.backgroundColor = [UIColor colorWithHexString:@"0xF5F5F5"];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"0xFBFBFB"];
     
     if (self.type == Vertical) {
-        self.searchBar.barTintColor = [UIColor whiteColor];
-        self.selectedUserCollectionView.backgroundColor = [UIColor whiteColor];
-        UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
-        [self.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
         self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
         UINavigationBar *bar = [UINavigationBar appearance];
         bar.barTintColor = [UIColor whiteColor];
@@ -304,12 +285,13 @@ UISearchBarDelegate>
         }
         self.title = @"选择成员";
     } else {
-        self.selectedUserCollectionView.backgroundColor = [UIColor whiteColor];
-        self.searchBar.barTintColor = [UIColor whiteColor];
-        UIImage* searchBarBg = [UIImage imageWithColor:[UIColor whiteColor] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:4];
-        [self.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
         self.title = @"创建会话";
     }
+    
+    self.selectedUserCollectionView.backgroundColor = [UIColor whiteColor];
+    self.searchBar.barTintColor = [WFCUConfigManager globalManager].textFieldColor;
+    UIImage *searchBarBg = [UIImage imageWithColor: HEXCOLOR(0xF5F5F8) size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:18];
+    [self.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
     
     UIButton *leftItem = [UIButton buttonWithType:UIButtonTypeCustom];
     leftItem.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
@@ -515,9 +497,14 @@ UISearchBarDelegate>
     if (!_searchBar) {
         _searchBar = [[UISearchBar alloc] initWithFrame:CGRectZero];
         _searchBar.delegate = self;
-        _searchBar.placeholder = @"搜索";
+        _searchBar.searchTextField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
         _searchBar.barStyle = UIBarStyleBlackOpaque;
         [_searchBar setBackgroundImage:[UIImage new]];
+        
+        _searchBar.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"搜索" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17], NSForegroundColorAttributeName:[[UIColor blackColor] colorWithAlphaComponent:0.4]}];
+
+        UIImageView *searchImageView = [[UIImageView alloc] initWithImage:[WFCUConfigManager searchImage]];
+        _searchBar.searchTextField.leftView = searchImageView;
     }
     return _searchBar;
 }

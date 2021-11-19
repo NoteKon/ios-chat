@@ -24,7 +24,7 @@
 
 - (void)setIsSmall:(BOOL)isSmall {
     if (isSmall) {
-        self.imgV.layer.cornerRadius = 4;
+        self.imgV.layer.cornerRadius = 16;
     }
 }
 

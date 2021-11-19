@@ -132,7 +132,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 58;
+    return 60;
 }
 #pragma mark - FriendRequestTableViewCellDelegate
 - (void)onAcceptBtn:(NSString *)targetUserId {
