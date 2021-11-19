@@ -224,4 +224,16 @@ static WFCUConfigManager *sharedSingleton = nil;
 - (UIColor *)switchColor {
     return [UIColor colorWithHexString:@"#3DEDEC"];
 }
+
++ (UIImage *)searchBgImage {
+    UIImage *searchBarBg = [UIImage imageNamed:@"default_search_bg"];
+    searchBarBg = [searchBarBg resizableImageWithCapInsets:UIEdgeInsetsMake(40, 50, 40, 50) resizingMode:UIImageResizingModeStretch];
+    return  searchBarBg;
+}
+
++ (UIImage *)searchImage {
+    UIImage *searchImg = [[UIImage imageNamed:@"msglist_search_icn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    return  searchImg;
+}
+
 @end

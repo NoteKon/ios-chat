@@ -52,6 +52,8 @@ typedef NS_ENUM(NSInteger, WFCUThemeType) {
 @property(nonatomic, strong)NSString *conversationFilesDir;
 
 - (NSString *)cachePathOf:(WFCCConversation *)conversation mediaType:(WFCCMediaType)mediaType;
++ (UIImage *)searchBgImage;
++ (UIImage *)searchImage;
 @end
 
 NS_ASSUME_NONNULL_END

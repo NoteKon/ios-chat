@@ -68,11 +68,11 @@
         self.searchController.searchBar.searchTextField.font = [UIFont pingFangSCWithRegular:12];
         self.searchController.searchBar.searchTextField.backgroundColor = [UIColor clearColor];
         self.searchController.searchBar.searchTextField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
-        self.searchController.searchBar.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:WFCString(@"Search") attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14], NSForegroundColorAttributeName:[[UIColor blackColor] colorWithAlphaComponent:0.4]}];
-        UIImage *searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"0xF5F5F8"] size:CGSizeMake(self.view.frame.size.width - 20 * 2, 36) cornerRadius:18];
-        [self.searchController.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
-        UIImage *searchImg = [[UIImage imageNamed:@"msglist_search_icn"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-           [self.searchController.searchBar setImage:searchImg forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+        self.searchController.searchBar.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:WFCString(@"Search") attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13], NSForegroundColorAttributeName:[[UIColor blackColor] colorWithAlphaComponent:0.4]}];
+        
+        [self.searchController.searchBar setSearchFieldBackgroundImage: [WFCUConfigManager searchBgImage] forState:UIControlStateNormal];
+        
+        [self.searchController.searchBar setImage:[WFCUConfigManager searchImage] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
     } else {
         [self.searchController.searchBar setValue:WFCString(@"Cancel") forKey:@"_cancelButtonText"];
     }

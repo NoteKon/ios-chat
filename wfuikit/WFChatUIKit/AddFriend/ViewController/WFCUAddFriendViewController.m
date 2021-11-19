@@ -52,13 +52,16 @@
     if (@available(iOS 13, *)) {
         self.searchController.searchBar.searchBarStyle = UISearchBarStyleDefault;
         self.searchController.searchBar.searchTextField.backgroundColor = [UIColor whiteColor];
-        UIImage* searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"0xF5F5F8"] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:18];
-        [self.searchController.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
+//        UIImage* searchBarBg = [UIImage imageWithColor:[UIColor colorWithHexString:@"0xF5F5F8"] size:CGSizeMake(self.view.frame.size.width - 8 * 2, 36) cornerRadius:18];
+//        [self.searchController.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
     } else {
         [self.searchController.searchBar setValue:WFCString(@"Cancel") forKey:@"_cancelButtonText"];
     }
     
+    self.searchController.searchBar.searchTextField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
     self.searchController.searchBar.searchTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:WFCString(@"SearchUserHint") attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14], NSForegroundColorAttributeName:[[UIColor blackColor] colorWithAlphaComponent:0.4]}];
+    [self.searchController.searchBar setSearchFieldBackgroundImage: [WFCUConfigManager searchBgImage] forState:UIControlStateNormal];
+    [self.searchController.searchBar setImage:[WFCUConfigManager searchImage] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     [self.view addSubview:self.tableView];

@@ -133,30 +133,19 @@ alpha:1.0]
         make.height.mas_equalTo(60);
     }];
     
-    UILabel *passwordLabel = [[UILabel alloc] init];
-    passwordLabel.text = LocalizedString(@"login_vercode");
-    passwordLabel.textColor = [UIColor colorWithHexString:@"0xA3A3A3"];
-    passwordLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:17];
-    [passwordContainer addSubview:passwordLabel];
-    [passwordLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(passwordContainer.mas_left);
-        make.top.equalTo(passwordContainer.mas_top).offset(21);
-        make.height.mas_equalTo(15);
-    }];
-    
     self.passwordField = [[UITextField alloc] init];
     self.passwordField.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
-    //self.passwordField.placeholder = @"请输入验证码";
     self.passwordField.returnKeyType = UIReturnKeyDone;
     self.passwordField.keyboardType = UIKeyboardTypeNumberPad;
     self.passwordField.delegate = self;
     self.passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.passwordField.tintColor = [UIColor colorWithHexString:@"0x3eeeed"];
+    self.passwordField.placeholder = LocalizedString(@"login_vercode");
     [self.passwordField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventEditingChanged];
     [passwordContainer addSubview:self.passwordField];
     [self.passwordField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(passwordLabel.mas_right).offset(5);
-        make.centerY.equalTo(passwordLabel.mas_centerY);
+        make.left.equalTo(passwordContainer.mas_left);
+        make.top.equalTo(passwordContainer.mas_top).offset(21);
         make.width.mas_greaterThanOrEqualTo(100);
         make.height.mas_equalTo(30);
     }];
