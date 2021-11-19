@@ -55,6 +55,7 @@
     self.tableView.dataSource = self;
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.separatorColor = [WFCUConfigManager globalManager].separateColor;
     [self.tableView reloadData];
     
     [self.view addSubview:self.tableView];
@@ -63,7 +64,7 @@
     [self loadMoreData];
     [self.tableView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapCell:)]];
     [self.tableView addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongTapCell:)]];
-    self.view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
+    self.view.backgroundColor = HEXCOLOR(0xFBFBFB);//[WFCUConfigManager globalManager].backgroudColor;
     self.title = @"我的收藏";
 }
 
@@ -446,7 +447,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
+    return 12;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -454,7 +455,7 @@
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 10)];
+    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 12)];
 }
 
 #pragma mark - UITableViewDelegate
