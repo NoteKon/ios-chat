@@ -81,7 +81,8 @@
         self.searchController.obscuresBackgroundDuringPresentation = NO;
     }
 
-    CGRect frame = CGRectMake(0, kStatusBarAndNavigationBarHeight, self.view.bounds.size.width, self.view.bounds.size.height);
+    CGFloat tabBarHeight = 60;//[UIApplication sharedApplication].delegate.window.rootViewController.tabBarController.view.frame.size.height;
+    CGRect frame = CGRectMake(0, kStatusBarAndNavigationBarHeight, self.view.bounds.size.width, self.view.frame.size.height - tabBarHeight);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     if (@available(iOS 15, *)) {
         self.tableView.sectionHeaderTopPadding = 0;

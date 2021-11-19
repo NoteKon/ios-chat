@@ -12,24 +12,27 @@
 #import "WFCUConfigManager.h"
 
 
-@interface WFCUVerifyRequestViewController ()
+@interface WFCUVerifyRequestViewController ()<UITextFieldDelegate>
 @property(nonatomic, strong)UITextField *verifyField;
+@property (nonatomic, strong) UIView *lineView;
 @end
 
 @implementation WFCUVerifyRequestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
     CGRect clientArea = self.view.bounds;
-    UILabel *hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 8 + kStatusBarAndNavigationBarHeight, clientArea.size.width - 16, 16)];
+    UILabel *hintLabel = [[UILabel alloc] initWithFrame:CGRectMake(18, 23 + kStatusBarAndNavigationBarHeight, clientArea.size.width - 16, 16)];
     hintLabel.text = WFCString(@"AddFriendReasonHint");
-    hintLabel.font = [UIFont systemFontOfSize:12];
-    hintLabel.textColor = [UIColor grayColor];
+    hintLabel.font = [UIFont systemFontOfSize:14];
+    hintLabel.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
     [self.view addSubview:hintLabel];
     self.view.backgroundColor = [WFCUConfigManager globalManager].backgroudColor;
     
-    self.verifyField = [[UITextField alloc] initWithFrame:CGRectMake(0, 32 + kStatusBarAndNavigationBarHeight, clientArea.size.width, 32)];
+    self.verifyField = [[UITextField alloc] initWithFrame:CGRectMake(21, 73 + kStatusBarAndNavigationBarHeight, clientArea.size.width - 21 * 2, 32)];
+    self.verifyField.delegate = self;
+    self.verifyField.tintColor = [WFCUConfigManager globalManager].textFieldColor;
     WFCCUserInfo *me = [[WFCCIMService sharedWFCIMService] getUserInfo:[WFCCNetworkService sharedInstance].userId refresh:NO];
     self.verifyField.font = [UIFont systemFontOfSize:16];
     if(me.displayName){
@@ -46,15 +49,23 @@
             }
         });
     }
-    self.verifyField.borderStyle = UITextBorderStyleRoundedRect;
+    self.verifyField.borderStyle = UITextBorderStyleNone;
     self.verifyField.clearButtonMode = UITextFieldViewModeAlways;
     
     
     [self.view addSubview:self.verifyField];
+    [self.view addSubview:self.lineView];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:WFCString(@"Send") style:UIBarButtonItemStyleDone target:self action:@selector(onSend:)];
 }
 
+- (UIView *)lineView {
+    if (!_lineView) {
+        _lineView = [[UIView alloc] initWithFrame:CGRectMake(_verifyField.frame.origin.x, _verifyField.frame.origin.y + _verifyField.frame.size.height + 10, _verifyField.frame.size.width, 0.5)];
+        _lineView.backgroundColor = [WFCUConfigManager globalManager].separateColor;
+    }
+    return _lineView;
+}
 
 - (void)onSend:(id)sender {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -98,14 +109,11 @@
         });
     }];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    textField.textColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.4];
+    self.lineView.backgroundColor = HEXCOLOR(0x64EEED);
+    return YES;
 }
-*/
 
 @end

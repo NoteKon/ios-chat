@@ -30,6 +30,7 @@ import AVFoundation
         setUI()
         createBannerView()
         addAction()
+        addNotification()
     }
     
     func setUI() {
@@ -51,10 +52,7 @@ import AVFoundation
         statueLabel.clipsToBounds = true
         statueLabel.padding = UIEdgeInsets(top: 4, left: 12, bottom: 4, right: 12)
         
-        let myInfo = WFCCIMService.sharedWFCIM().getUserInfo(WFCCNetworkService.sharedInstance().userId, refresh: true)
-        accountImage.loadImage(imageUrl: myInfo?.portrait, placeholder: UIImage(named: "PersonalChat"))
-        accountName.text = myInfo?.displayName
-        accountIdLabel.text = localizedString("my_account_id") + " \(myInfo?.name ?? "")"
+        setAccountInfo()
     }
     
     func createBannerView() {
@@ -165,5 +163,22 @@ import AVFoundation
     
     func showTip() {
         self.view.makeToast("敬请期待")
+    }
+}
+
+extension MyViewController {
+    func addNotification() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kUserInfoUpdated), object: nil, queue: OperationQueue.main) { [weak self] note in
+            if let userId = note.object as? String, WFCCNetworkService.sharedInstance().userId == userId {
+                self?.setAccountInfo()
+            }
+        }
+    }
+    
+    func setAccountInfo() {
+        let myInfo = WFCCIMService.sharedWFCIM().getUserInfo(WFCCNetworkService.sharedInstance().userId, refresh: true)
+        accountImage.loadImage(imageUrl: myInfo?.portrait, placeholder: UIImage(named: "PersonalChat"))
+        accountName.text = myInfo?.displayName
+        accountIdLabel.text = localizedString("my_account_id") + " \(myInfo?.name ?? "")"
     }
 }
