@@ -27,6 +27,7 @@
     [self.view setBackgroundColor:[UIColor blackColor]];
   
     self.portraitView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    self.portraitView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:self.portraitView];
     
     if ([[WFCCNetworkService sharedInstance].userId isEqualToString:self.userId]) {

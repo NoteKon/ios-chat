@@ -34,8 +34,9 @@
     content.localPath = path;
     content.size = image.size;
     UIImage *thumbnailImage = [WFCCUtilities generateThumbnail:image withWidth:141 withHeight:141];
+    
     content.thumbnail = thumbnailImage;
-    NSLog(@"<==> 发送方图片尺寸: content.size = %@, thumbnailsize = %@",NSStringFromCGSize(content.size), NSStringFromCGSize(thumbnailImage.size));
+    NSLog(@"<==> 发送方图片尺寸: content.size = %@, thumbnailsize = %@ path = %@",NSStringFromCGSize(content.size), NSStringFromCGSize(thumbnailImage.size), path);
     return content;
 }
 

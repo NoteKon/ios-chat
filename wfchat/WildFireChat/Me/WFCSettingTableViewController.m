@@ -105,7 +105,7 @@
         for (UIView *subView in cell.subviews) {
             [subView removeFromSuperview];
         }
-        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 50)];
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width + 10, 58)];
         [btn setTitle:LocalizedString(@"Logout") forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont pingFangSCWithWeight:FontWeightStyleRegular size:16];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

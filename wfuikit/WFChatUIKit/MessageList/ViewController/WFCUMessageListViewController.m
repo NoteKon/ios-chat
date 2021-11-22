@@ -262,6 +262,64 @@
     self.nMsgSet = [[NSMutableSet alloc] init];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (!self.firstAppear) {
+        [self.chatInputBar willAppear];
+    }
+    if(self.conversation.type == Single_Type) {
+        WFCCUserInfo *userInfo = [[WFCCIMService sharedWFCIMService] getUserInfo:self.conversation.target refresh:YES];
+        self.targetUser = userInfo;
+    } else if(self.conversation.type == Group_Type) {
+        WFCCGroupInfo *groupInfo = [[WFCCIMService sharedWFCIMService] getGroupInfo:self.conversation.target refresh:YES];
+        self.targetGroup = groupInfo;
+    } else if (self.conversation.type == Channel_Type) {
+        WFCCChannelInfo *channelInfo = [[WFCCIMService sharedWFCIMService] getChannelInfo:self.conversation.target refresh:YES];
+        self.targetChannel = channelInfo;
+    } else if(self.conversation.type == Chatroom_Type) {
+        __weak typeof(self)ws = self;
+        [[WFCCIMService sharedWFCIMService] getChatroomInfo:self.conversation.target upateDt:ws.targetChatroom.updateDt success:^(WFCCChatroomInfo *chatroomInfo) {
+            ws.targetChatroom = chatroomInfo;
+        } error:^(int error_code) {
+            
+        }];
+    }
+    
+    self.tabBarController.tabBar.hidden = YES;
+    [self.collectionView reloadData];
+    
+    if (self.navigationController.viewControllers.count > 1) {          // 记录系统返回手势的代理
+        _scrollBackDelegate = self.navigationController.interactivePopGestureRecognizer.delegate;          // 设置系统返回手势的代理为当前控制器
+        self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    }
+    
+    if (self.conversation.type == Group_Type) {
+        self.showAlias = ![[WFCCIMService sharedWFCIMService] isHiddenGroupMemberName:self.targetGroup.target];
+    }
+    
+    if (self.firstAppear) {
+        self.firstAppear = NO;
+        [self scrollToBottom:NO];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSString *newDraft = self.chatInputBar.draft;
+    if (![self.orignalDraft isEqualToString:newDraft]) {
+        self.orignalDraft = newDraft;
+        [[WFCCIMService sharedWFCIMService] setConversation:self.conversation draft:newDraft];
+    }
+    // 设置系统返回手势的代理为我们刚进入控制器的时候记录的系统的返回手势代理
+    self.navigationController.interactivePopGestureRecognizer.delegate = _scrollBackDelegate;
+    
+    [self.chatInputBar resetInputBarStatue];
+}
+
 //The VC maybe pushed from search VC, so no need go back to search VC, need remove all the VC between current VC to WFCUConversationTableViewController
 - (void)removeControllerStackIfNeed {
     //highlightMessageId will be positive if the VC pushed from search VC
@@ -760,7 +818,6 @@
     self.view.backgroundColor = self.collectionView.backgroundColor;
     
     [self registerCell:[WFCUTextCell class] forContent:[WFCCTextMessageContent class]];
-    [self registerCell:[WFCUTextCell class] forContent:[WFCCPTextMessageContent class]];
     [self registerCell:[WFCUImageCell class] forContent:[WFCCImageMessageContent class]];
     [self registerCell:[WFCUVoiceCell class] forContent:[WFCCSoundMessageContent class]];
     [self registerCell:[WFCUVideoCell class] forContent:[WFCCVideoMessageContent class]];
@@ -849,65 +906,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if (!self.firstAppear) {
-        [self.chatInputBar willAppear];
-    }
-    if(self.conversation.type == Single_Type) {
-        WFCCUserInfo *userInfo = [[WFCCIMService sharedWFCIMService] getUserInfo:self.conversation.target refresh:YES];
-        self.targetUser = userInfo;
-    } else if(self.conversation.type == Group_Type) {
-        WFCCGroupInfo *groupInfo = [[WFCCIMService sharedWFCIMService] getGroupInfo:self.conversation.target refresh:YES];
-        self.targetGroup = groupInfo;
-    } else if (self.conversation.type == Channel_Type) {
-        WFCCChannelInfo *channelInfo = [[WFCCIMService sharedWFCIMService] getChannelInfo:self.conversation.target refresh:YES];
-        self.targetChannel = channelInfo;
-    } else if(self.conversation.type == Chatroom_Type) {
-        __weak typeof(self)ws = self;
-        [[WFCCIMService sharedWFCIMService] getChatroomInfo:self.conversation.target upateDt:ws.targetChatroom.updateDt success:^(WFCCChatroomInfo *chatroomInfo) {
-            ws.targetChatroom = chatroomInfo;
-        } error:^(int error_code) {
-            
-        }];
-    }
-    
-    self.tabBarController.tabBar.hidden = YES;
-    [self.collectionView reloadData];
-    
-    if (self.navigationController.viewControllers.count > 1) {          // 记录系统返回手势的代理
-        _scrollBackDelegate = self.navigationController.interactivePopGestureRecognizer.delegate;          // 设置系统返回手势的代理为当前控制器
-        self.navigationController.interactivePopGestureRecognizer.delegate = self;
-    }
-    
-    if (self.conversation.type == Group_Type) {
-        self.showAlias = ![[WFCCIMService sharedWFCIMService] isHiddenGroupMemberName:self.targetGroup.target];
-    }
-    
-    if (self.firstAppear) {
-        self.firstAppear = NO;
-        [self scrollToBottom:NO];
-    }
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    NSString *newDraft = self.chatInputBar.draft;
-    if (![self.orignalDraft isEqualToString:newDraft]) {
-        self.orignalDraft = newDraft;
-        [[WFCCIMService sharedWFCIMService] setConversation:self.conversation draft:newDraft];
-    }
-    // 设置系统返回手势的代理为我们刚进入控制器的时候记录的系统的返回手势代理
-    self.navigationController.interactivePopGestureRecognizer.delegate = _scrollBackDelegate;
-    
-    [self.chatInputBar resetInputBarStatue];
-}
-
 
 - (void)sendMessage:(WFCCMessageContent *)content {
     //发送消息时，client会发出"kSendingMessageStatusUpdated“的通知，消息界面收到通知后加入到列表中。
@@ -1208,8 +1206,12 @@
         [[WFCCIMService sharedWFCIMService] clearUnreadStatus:self.conversation];
     }
     
-    self.modelList = [[NSMutableArray alloc] init];
-    
+    if (self.modelList == nil) {
+        self.modelList = [[NSMutableArray alloc] init];
+    } else {
+        [self.modelList removeAllObjects];
+    }
+  
     [self appendMessages:messageList newMessage:NO highlightId:self.highlightMessageId forceButtom:NO];
     self.highlightMessageId = 0;
 }

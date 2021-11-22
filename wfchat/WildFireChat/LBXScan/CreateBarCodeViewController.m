@@ -16,20 +16,20 @@
 #import "UIColor+YH.h"
 
 @interface CreateBarCodeViewController ()
-@property (nonatomic, strong)UIImageView *logoView;
-@property (nonatomic, strong)UILabel *nameLabel;
-@property (nonatomic, strong)UILabel *idLabel;
+@property (nonatomic, strong) UIImageView *logoView;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *idLabel;
 @property (nonatomic, strong) UIImageView* headerImageView;
 
 @property (nonatomic, strong) UIView *qrView;
 @property (nonatomic, strong) UIImageView* qrImgView;
 
-@property (nonatomic, strong)NSString *qrStr;
-@property (nonatomic, strong)NSString *qrLogo;
-@property (nonatomic, strong)NSString *labelStr;
+@property (nonatomic, strong) NSString *qrStr;
+@property (nonatomic, strong) NSString *qrLogo;
+@property (nonatomic, strong) NSString *labelStr;
 
-@property (nonatomic, strong)WFCCUserInfo *userInfo;
-@property (nonatomic, strong)WFCCGroupInfo *groupInfo;
+@property (nonatomic, strong) WFCCUserInfo *userInfo;
+@property (nonatomic, strong) WFCCGroupInfo *groupInfo;
 
 @property (nonatomic, strong)UIActivityIndicatorView *indicatorView;
 @end
@@ -76,7 +76,7 @@
     UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
     
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] init];
-    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleLarge;
     indicator.center = self.view.center;
     _indicatorView = indicator;
     [[UIApplication sharedApplication].keyWindow addSubview:indicator];
@@ -160,11 +160,11 @@
 }
 
 - (void)onUserInfoUpdated:(NSNotification *)notification {
-        self.userInfo = notification.userInfo[@"userInfo"];
+    self.userInfo = notification.userInfo[@"userInfo"];
 }
 
 - (void)onGroupInfoUpdated:(NSNotification *)notification {
-        self.groupInfo = notification.userInfo[@"groupInfo"];
+    self.groupInfo = notification.userInfo[@"groupInfo"];
 }
 
 - (void)setQrLogo:(NSString *)qrLogo {
@@ -225,7 +225,7 @@
 
 - (UIImageView *)qrImgView {
     if (!_qrImgView) {
-        _qrImgView = [[UIImageView alloc] initWithFrame:CGRectMake(31, 111, self.qrView.frame.size.width - 62, 244)];
+        _qrImgView = [[UIImageView alloc] initWithFrame:CGRectMake(31, 111, self.qrView.frame.size.width - 62, self.qrView.frame.size.width - 62)];
         [self.qrView addSubview:_qrImgView];
     }
     return _qrImgView;

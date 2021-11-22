@@ -447,13 +447,7 @@
         } else {
             self.tableView.tableHeaderView = nil;
         }
-    } else {
     }
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -576,7 +570,6 @@
     if ([[WFCUConfigManager globalManager].appServiceProvider respondsToSelector:@selector(showPCSessionViewController:pcClient:)]) {
         [[WFCUConfigManager globalManager].appServiceProvider showPCSessionViewController:self pcClient:[onlines objectAtIndex:0]];
     }
-    
 }
 
 #pragma mark - Table view data source
