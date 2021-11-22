@@ -32,11 +32,11 @@ CGFloat imageHeight = 52;
 //        _digestView.frame = CGRectMake(16 + 40 + 20, 11 + 16 + 8, [UIScreen mainScreen].bounds.size.width - (16 + 40 + 20 + 20), 19);
 //    }
     
-    if (self.bubbleView.hidden) {
-        self.contentView.backgroundColor = [UIColor whiteColor];
-        UIView *bgView = [self viewWithTag:10010];
-        [bgView removeFromSuperview];
-    } else {
+    UIView *bgView = [self viewWithTag:10010];
+    self.contentView.backgroundColor = [UIColor whiteColor];
+    [bgView removeFromSuperview];
+    
+    if (self.bubbleView.hidden == NO) {
         CGFloat offsetX = 10;
         UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(offsetX, 0, self.contentView.frame.size.width - offsetX * 2, self.contentView.frame.size.height - 8)];
         bgView.tag = 10010;

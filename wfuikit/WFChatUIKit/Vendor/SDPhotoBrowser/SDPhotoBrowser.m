@@ -161,6 +161,7 @@
     
     for (int i = 0; i < self.imageCount; i++) {
         SDBrowserImageView *imageView = [[SDBrowserImageView alloc] init];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.tag = i;
 
         // 单击图片

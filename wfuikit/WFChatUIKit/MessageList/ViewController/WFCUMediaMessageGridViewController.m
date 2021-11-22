@@ -87,6 +87,7 @@
     MediaMessageGridViewCell *cell = (MediaMessageGridViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     WFCCMessage *msg = self.mediaMessages[indexPath.row];
     cell.mediaMessage = msg;
+    cell.clipsToBounds = YES;
     return cell;
 }
 

@@ -12,7 +12,7 @@
 
 @interface WFCUMediaMessageCell ()
 @property (nonatomic, strong)UIView *maskView;
-@property (nonatomic, strong)UIActivityIndicatorView *activityView;
+//@property (nonatomic, strong)UIActivityIndicatorView *activityView;
 
 @property (nonatomic, strong)HWCircleView *progressView;
 @end
@@ -76,12 +76,12 @@
     _maskView.frame = self.bubbleView.bounds;
     [self.bubbleView bringSubviewToFront:_maskView];
     
-    if (!_activityView) {
-        _activityView = [[UIActivityIndicatorView alloc] init];
-        [_maskView addSubview:_activityView];
-    }
-    _activityView.center = CGPointMake(self.maskView.bounds.size.width/2, self.maskView.bounds.size.height/2);
-    [_activityView startAnimating];
+//    if (!_activityView) {
+//        _activityView = [[UIActivityIndicatorView alloc] init];
+//        [_maskView addSubview:_activityView];
+//    }
+//    _activityView.center = CGPointMake(self.maskView.bounds.size.width/2, self.maskView.bounds.size.height/2);
+//    [_activityView startAnimating];
     
 }
 
@@ -91,11 +91,11 @@
         _maskView = nil;
     }
 
-    if (_activityView) {
-        [_activityView removeFromSuperview];
-        [_activityView stopAnimating];
-        _activityView = nil;
-    }
+//    if (_activityView) {
+//        [_activityView removeFromSuperview];
+//        [_activityView stopAnimating];
+//        _activityView = nil;
+//    }
     
     if ([sender isKindOfClass:[NSNotification class]]) {
         NSNotification *noti = (NSNotification *)sender;

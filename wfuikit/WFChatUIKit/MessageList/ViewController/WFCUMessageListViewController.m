@@ -567,7 +567,7 @@
     if(targetUser.friendAlias.length) {
         self.title = targetUser.friendAlias;
     } else if(targetUser.displayName.length == 0) {
-        self.title = [NSString stringWithFormat:@"%@<%@>", WFCString(@"User"), self.conversation.target];
+        self.title = self.conversation.target;
     } else {
         self.title = targetUser.displayName;
     }

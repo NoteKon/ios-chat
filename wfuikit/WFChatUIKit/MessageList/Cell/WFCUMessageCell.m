@@ -35,7 +35,7 @@
 
 
 @interface WFCUMessageCell ()
-@property (nonatomic, strong)UIActivityIndicatorView *activityIndicatorView;
+//@property (nonatomic, strong)UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, strong)UIImageView *failureView;
 @property (nonatomic, strong)UIImageView *maskView;
 
@@ -107,12 +107,12 @@
             frame.origin.y = frame.origin.y + frame.size.height - 24;
             frame.size.width = 20;
             frame.size.height = 20;
-            self.activityIndicatorView.hidden = NO;
-            self.activityIndicatorView.frame = frame;
-            [self.activityIndicatorView startAnimating];
+//            self.activityIndicatorView.hidden = NO;
+//            self.activityIndicatorView.frame = frame;
+//            [self.activityIndicatorView startAnimating];
         } else {
-            [_activityIndicatorView stopAnimating];
-            _activityIndicatorView.hidden = YES;
+//            [_activityIndicatorView stopAnimating];
+//            _activityIndicatorView.hidden = YES;
             [self updateReceiptView];
         }
         
@@ -128,8 +128,8 @@
             _failureView.hidden = YES;
         }
     } else {
-        [_activityIndicatorView stopAnimating];
-        _activityIndicatorView.hidden = YES;
+//        [_activityIndicatorView stopAnimating];
+//        _activityIndicatorView.hidden = YES;
         _failureView.hidden = YES;
     }
 }
@@ -514,13 +514,13 @@
     }
     return _bubbleView;
 }
-- (UIActivityIndicatorView *)activityIndicatorView {
-    if (!_activityIndicatorView) {
-        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [self.contentView addSubview:_activityIndicatorView];
-    }
-    return _activityIndicatorView;
-}
+//- (UIActivityIndicatorView *)activityIndicatorView {
+//    if (!_activityIndicatorView) {
+//        _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//        [self.contentView addSubview:_activityIndicatorView];
+//    }
+//    return _activityIndicatorView;
+//}
 - (UIImageView *)failureView {
     if (!_failureView) {
         _failureView = [[UIImageView alloc] init];
