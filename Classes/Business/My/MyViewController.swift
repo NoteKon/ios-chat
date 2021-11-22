@@ -80,7 +80,10 @@ import AVFoundation
             let btn = UIButton(frame: CGRect(x: 0, y: 14, width: 45, height: 45))
             btn.tag = 100 + i
             btn.setImage(UIImage(named: item.0), for: .normal)
-            btn.addTarget(self, action: #selector(bannerClickAction(_:)), for: .touchUpInside)
+            //btn.addTarget(self, action: #selector(bannerClickAction(_:)), for: .touchUpInside)
+            btn.addAction(2) { [weak self] _ in
+                self?.bannerClickAction(btn)
+            }
             subView.addSubview(btn)
             
             let label = UILabel(frame: CGRect(x: 0, y: 68, width: 45, height: 15))
@@ -135,34 +138,38 @@ import AVFoundation
             viewController.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(viewController, animated: true)
         } else {
-            showTip()
+            self.view.makeToast("敬请期待")
         }
     }
     
     /// 账号安全
-    @objc func accountSafeClickAction() {
-        showTip()
+    @objc func accountSafeClickAction(sender: UITapGestureRecognizer) {
+        showTip(view: sender.view)
 //        let viewController = WFCSecurityTableViewController()
 //        viewController.hidesBottomBarWhenPushed = true
 //        self.navigationController?.pushViewController(viewController, animated: true)
     }
     /// 积分
-    @objc func integralClickAction() {
-        showTip()
+    @objc func integralClickAction(sender: UITapGestureRecognizer) {
+        showTip(view: sender.view)
     }
     /// 我的收益
-    @objc func myearningsClickAction() {
-        showTip()
+    @objc func myearningsClickAction(sender: UITapGestureRecognizer) {
+        showTip(view: sender.view)
     }
     /// 设置
-    @objc func settingClickAction() {
+    @objc func settingClickAction(sender: UITapGestureRecognizer) {
         let viewController = WFCSettingTableViewController()
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func showTip() {
+    func showTip(view: UIView?) {
         self.view.makeToast("敬请期待")
+        view?.isUserInteractionEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            view?.isUserInteractionEnabled = true
+        }
     }
 }
 

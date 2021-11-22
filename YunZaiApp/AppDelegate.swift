@@ -515,6 +515,7 @@ extension AppDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let hexToken = deviceToken.map({ String(format: "%02.2hhx", $0) }).joined(separator: "")
         WFCCNetworkService.sharedInstance().setDeviceToken(hexToken)
+        print("Token: \(hexToken)")
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

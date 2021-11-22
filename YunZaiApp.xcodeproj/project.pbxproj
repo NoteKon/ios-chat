@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		580BFB7A273A594900500AA9 /* Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 580BFB79273A594900500AA9 /* Help.m */; };
 		58311E4E2744B13C00D00805 /* WFChatUIKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D7EB142738EE0D007241B1 /* WFChatUIKit.xcassets */; };
+		5843E17B274B737F0072F4B1 /* UIControl+Touch.m in Sources */ = {isa = PBXBuildFile; fileRef = 5843E17A274B737F0072F4B1 /* UIControl+Touch.m */; };
 		58725BAA273B9F69005C6456 /* UIView+UIView_Gradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 58725BA9273B9F69005C6456 /* UIView+UIView_Gradient.m */; };
 		5877D5992735384800C65732 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D5982735384800C65732 /* AppDelegate.swift */; };
 		5877D59D2735384800C65732 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877D59C2735384800C65732 /* ViewController.swift */; };
@@ -155,6 +156,8 @@
 		5248E3F7D65C754FCEB8C153 /* Pods-YunZaiApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YunZaiApp.release.xcconfig"; path = "Target Support Files/Pods-YunZaiApp/Pods-YunZaiApp.release.xcconfig"; sourceTree = "<group>"; };
 		580BFB78273A594900500AA9 /* Help.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Help.h; sourceTree = "<group>"; };
 		580BFB79273A594900500AA9 /* Help.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Help.m; sourceTree = "<group>"; };
+		5843E179274B737F0072F4B1 /* UIControl+Touch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+Touch.h"; sourceTree = "<group>"; };
+		5843E17A274B737F0072F4B1 /* UIControl+Touch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Touch.m"; sourceTree = "<group>"; };
 		587122D72738BA1C00FC296E /* YunZaiApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YunZaiApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		58725BA8273B9F69005C6456 /* UIView+UIView_Gradient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+UIView_Gradient.h"; sourceTree = "<group>"; };
 		58725BA9273B9F69005C6456 /* UIView+UIView_Gradient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIView_Gradient.m"; sourceTree = "<group>"; };
@@ -818,6 +821,8 @@
 				58D7EAA12738D61D007241B1 /* UIFont+YH.h */,
 				58725BA8273B9F69005C6456 /* UIView+UIView_Gradient.h */,
 				58725BA9273B9F69005C6456 /* UIView+UIView_Gradient.m */,
+				5843E179274B737F0072F4B1 /* UIControl+Touch.h */,
+				5843E17A274B737F0072F4B1 /* UIControl+Touch.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1226,6 +1231,7 @@
 				589884A6273900D800C6B6D1 /* LBXPermissionPhotos.m in Sources */,
 				589884B22739010500C6B6D1 /* UIImage+ERCategory.m in Sources */,
 				58988495273900A100C6B6D1 /* LBXScanVideoZoomView.m in Sources */,
+				5843E17B274B737F0072F4B1 /* UIControl+Touch.m in Sources */,
 				589884AB273900E800C6B6D1 /* ChatroomItemCell.m in Sources */,
 				589884B72739012A00C6B6D1 /* WFCFavoriteLocationCell.m in Sources */,
 				589884C72739015E00C6B6D1 /* WFCThemeTableViewController.m in Sources */,
